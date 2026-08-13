@@ -1,7 +1,7 @@
 {
-  "name": "中職抽卡模擬器",
-  "short_name": "中職抽卡",
-  "description": "中職球員卡抽卡與收藏遊戲",
+  "name": "棒球抽卡對戰",
+  "short_name": "棒球抽卡對戰",
+  "description": "球員卡抽卡與收藏遊戲",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
