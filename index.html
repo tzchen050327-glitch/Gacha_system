@@ -229,7 +229,7 @@ body{background:radial-gradient(circle at top,#2a1a55 0%,#14162d 36%,#080a14 100
 
 
 
-/* v1.12：木製棒球大廳、好友通知、設定與球場環境音 */
+/* v1.13：木製棒球大廳、好友通知、設定與球場環境音 */
 .lobbyWrap{max-width:780px;padding:12px 12px 26px}
 .lobbyWood{position:relative;overflow:hidden;border-radius:26px;padding:16px 14px 22px;border:1px solid #d9a85b66;box-shadow:0 24px 70px #0009, inset 0 0 0 1px #fff1;background:
  linear-gradient(180deg,#0003,#0006),
@@ -259,7 +259,7 @@ body{background:radial-gradient(circle at top,#2a1a55 0%,#14162d 36%,#080a14 100
 
 
 
-/* v1.12：9:16 主視覺大廳 + 登入同主視覺 + 好友私訊 */
+/* v1.13：9:16 主視覺大廳 + 登入同主視覺 + 好友私訊 */
 html,body{height:100%;overflow:hidden}
 body{
  display:flex;align-items:center;justify-content:center;
@@ -374,7 +374,7 @@ body::before{
 
 
 
-/* v1.12 修正版：私訊列表 / 未讀 / 輕快 BGM */
+/* v1.13 修正版：私訊列表 / 未讀 / 輕快 BGM */
 .dmUnreadBadge{position:absolute;left:-6px;top:-7px;min-width:24px;height:24px;padding:0 6px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:#ff3150;color:#fff;border:2px solid #fff;font-size:11px;font-weight:1000;box-shadow:0 4px 10px #0008;z-index:4}.dmUnreadBadge[hidden]{display:none!important}
 .chatListModal{max-width:500px;max-height:min(88dvh,760px);display:flex;flex-direction:column}.chatListHeadActions{display:flex;gap:6px}.chatListSummary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;margin:10px 0;border-radius:13px;background:#ffffff08;border:1px solid #ffffff13}.chatListSummary strong{color:#ffd84d}.chatList{display:grid;gap:8px;overflow:auto;min-height:180px;max-height:min(58dvh,500px);padding:2px}.chatListRow{position:relative;display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:10px 11px;border-radius:14px;background:#ffffff09;border:1px solid #ffffff14;cursor:pointer;touch-action:manipulation}.chatListRow:active{transform:translateY(1px)}.chatAvatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#2c6f9e,#183d5b);border:1px solid #8fe4ff45;font-size:22px;box-shadow:0 5px 12px #0005}.chatListMain{min-width:0}.chatListName{display:flex;align-items:center;gap:7px;font-weight:950}.chatListPreview{margin-top:4px;font-size:11px;color:#ffffff83;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chatListMeta{text-align:right;min-width:42px}.chatListTime{font-size:9px;color:#ffffff5f}.chatUnread{display:inline-flex;align-items:center;justify-content:center;margin-top:5px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#ff3150;color:#fff;font-size:10px;font-weight:1000}.chatListEmpty{padding:28px 12px;text-align:center;color:#ffffff66}.chatListHint{margin-top:8px;text-align:center;font-size:10px;color:#ffffff5d}.friendManageBack{background:#1a4268!important;color:#e7f8ff!important;border:1px solid #78d6ff42!important}.dmBackBtn{background:#1a4268!important;color:#e7f8ff!important;border:1px solid #78d6ff42!important}
 .dmModal .modalHead{flex:0 0 auto}.dmMessages{max-height:none;min-height:0;flex:1}.dmModal{height:min(82dvh,680px)}
@@ -382,7 +382,7 @@ body::before{
 
 
 
-/* v1.12 UI tweak: top header + dock buttons */
+/* v1.13 UI tweak: top header + dock buttons */
 .lobbyBrandRow{display:block!important;padding:4px 2px 8px!important}
 .lobbyTopInfo{display:grid;gap:6px}
 .lobbyTitleRow{display:grid;grid-template-columns:1fr auto;align-items:start;gap:10px}
@@ -411,48 +411,105 @@ body::before{
 }
 
 
-/* v1.12 私訊訊息框高度修正 */
+/* v1.13 私訊訊息框高度修正 */
 .dmMessages{align-content:start!important;grid-auto-rows:max-content!important}
 .dmRow{align-self:start!important;align-items:flex-start!important;min-height:0!important}
 .dmBubble{height:auto!important;min-height:0!important;align-self:flex-start!important}
 
 
 
-/* v1.12 iPhone safe-area：縮短上下高度避免被系統裁切 */
-body{
-  padding-top:max(10px,env(safe-area-inset-top));
-  padding-bottom:max(10px,env(safe-area-inset-bottom));
-}
-.wrap.lobbyWrap{
-  height:min(
-    calc(100dvh - max(10px,env(safe-area-inset-top)) - max(10px,env(safe-area-inset-bottom))),
-    calc(100vw * 16 / 9)
-  )!important;
-  width:min(
-    100vw,
-    calc((100dvh - max(10px,env(safe-area-inset-top)) - max(10px,env(safe-area-inset-bottom))) * 9 / 16)
-  )!important;
-  padding-top:6px!important;
-  padding-bottom:6px!important;
-}
-.modalBackdrop,.authGate,.drawOverlay{
-  padding-top:max(14px,env(safe-area-inset-top))!important;
-  padding-bottom:max(14px,env(safe-area-inset-bottom))!important;
-}
-.modal,.authCard,.dmModal{
-  max-height:calc(100dvh - max(28px,env(safe-area-inset-top)) - max(28px,env(safe-area-inset-bottom)))!important;
-}
-@media(max-width:520px){
-  .wrap.lobbyWrap{
-    height:calc(100dvh - max(10px,env(safe-area-inset-top)) - max(10px,env(safe-area-inset-bottom)))!important;
-    width:100vw!important;
-    padding-top:4px!important;
-    padding-bottom:4px!important;
+/* v1.13：僅修正手機聊天室上下安全高度（不改主頁） */
+@media (max-width:520px){
+  .dmModal,
+  .chatListModal,
+  .chatModal{
+    height:min(76svh,620px)!important;
+    max-height:calc(100svh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 36px)!important;
+    min-height:0!important;
+    overflow:hidden!important;
+    padding:12px!important;
   }
-  .lobbyWood{border-radius:22px!important}
+  .dmMessages,
+  .chatMessages{
+    min-height:0!important;
+    max-height:none!important;
+    flex:1 1 auto!important;
+    overflow-y:auto!important;
+    overscroll-behavior:contain;
+  }
+  .chatList{
+    min-height:0!important;
+    flex:1 1 auto!important;
+    overflow-y:auto!important;
+  }
+  .dmComposer,
+  .chatComposer{
+    flex:0 0 auto!important;
+  }
+}
+@media (max-width:520px) and (max-height:720px){
+  .dmModal,
+  .chatListModal,
+  .chatModal{
+    height:min(72svh,540px)!important;
+    padding:10px!important;
+  }
+  .dmMessages,.chatMessages{padding:8px!important}
 }
 
-</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow"><h1>⚾ 棒球抽卡對戰</h1><button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定">⚙️</button></div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section class="homePoolCarousel lobbyPoolCarousel" aria-label="卡池輪播"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div></section><div id="notice" class="notice lobbyNotice"></div><div class="lobbyMenuGrid"><button id="collection" class="lobbyMenuBtn"><span class="lobbyIcon">📖</span><span>我的圖鑑</span></button><button id="drawMenu" class="lobbyMenuBtn"><span class="lobbyIcon">🎴</span><span>抽獎系統</span></button><button id="daily" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>每日登入<br>+1500 鑽</span></button><button id="giftBtn" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>贈送</span></button></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button"><span class="battleBall">⚾</span><span>對戰</span><small>COMING SOON</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div></div></div><div id="modal"></div><div id="authGate" class="authGate"></div><div class="appVersion" id="appVersion">v1.12</div><script>
+
+/* v1.13：手機私人聊天室訊息泡泡高度強制依文字內容 */
+.dmMessages{
+  display:flex!important;
+  flex-direction:column!important;
+  justify-content:flex-start!important;
+  align-items:stretch!important;
+  gap:8px!important;
+}
+.dmRow{
+  display:flex!important;
+  flex:0 0 auto!important;
+  width:100%!important;
+  height:auto!important;
+  min-height:0!important;
+  align-items:flex-start!important;
+}
+.dmRow.mine{justify-content:flex-end!important}
+.dmRow:not(.mine){justify-content:flex-start!important}
+.dmBubble{
+  display:block!important;
+  flex:0 0 auto!important;
+  width:fit-content!important;
+  height:fit-content!important;
+  min-height:0!important;
+  max-width:82%!important;
+  align-self:flex-start!important;
+}
+.dmRow.mine .dmBubble{
+  margin-left:auto!important;
+  margin-right:0!important;
+}
+.dmRow:not(.mine) .dmBubble{
+  margin-left:0!important;
+  margin-right:auto!important;
+}
+.dmMeta,.dmText{
+  height:auto!important;
+  min-height:0!important;
+}
+@media(max-width:520px){
+  .dmBubble{
+    width:fit-content!important;
+    max-width:84%!important;
+    padding:9px 11px!important;
+  }
+  .dmText{
+    font-size:13px!important;
+    line-height:1.45!important;
+  }
+}
+
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow"><h1>⚾ 棒球抽卡對戰</h1><button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定">⚙️</button></div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section class="homePoolCarousel lobbyPoolCarousel" aria-label="卡池輪播"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div></section><div id="notice" class="notice lobbyNotice"></div><div class="lobbyMenuGrid"><button id="collection" class="lobbyMenuBtn"><span class="lobbyIcon">📖</span><span>我的圖鑑</span></button><button id="drawMenu" class="lobbyMenuBtn"><span class="lobbyIcon">🎴</span><span>抽獎系統</span></button><button id="daily" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>每日登入<br>+1500 鑽</span></button><button id="giftBtn" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>贈送</span></button></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button"><span class="battleBall">⚾</span><span>對戰</span><small>COMING SOON</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div></div></div><div id="modal"></div><div id="authGate" class="authGate"></div><div class="appVersion" id="appVersion">v1.13</div><script>
 const storage=(()=>{const memory={};try{const ls=window.localStorage;const t="__cp_test__";ls.setItem(t,"1");ls.removeItem(t);return{getItem:k=>ls.getItem(k),setItem:(k,v)=>ls.setItem(k,String(v)),removeItem:k=>ls.removeItem(k)}}catch(e){return{getItem:k=>Object.prototype.hasOwnProperty.call(memory,k)?memory[k]:null,setItem:(k,v)=>{memory[k]=String(v)},removeItem:k=>{delete memory[k]}}}})();
 const cardDB=(()=>{let dbPromise;function open(){if(!('indexedDB' in window))return Promise.reject(new Error('IndexedDB unavailable'));if(dbPromise)return dbPromise;dbPromise=new Promise((resolve,reject)=>{const req=indexedDB.open('cp_cardgame_test_db',1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('cards'))db.createObjectStore('cards',{keyPath:'id'})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||new Error('無法開啟卡牌資料庫'))});return dbPromise}async function get(){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('cards','readonly'),st=tx.objectStore('cards'),req=st.get('all');req.onsuccess=()=>resolve(req.result?.data||null);req.onerror=()=>reject(req.error)})}async function set(cards){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('cards','readwrite');tx.objectStore('cards').put({id:'all',data:cards});tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('卡牌儲存失敗'))})}async function clear(){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('cards','readwrite');tx.objectStore('cards').clear();tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)})}return{get,set,clear}})();
 const uid=()=>crypto.randomUUID?crypto.randomUUID():'card_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2);
@@ -932,7 +989,7 @@ async function initializeGame(){
  }
  if(!POOLS.some(p=>p.id===ACTIVE_POOL_ID))ACTIVE_POOL_ID=POOLS[0]?.id||'';
  owned=owned.filter(id=>CARDS.some(c=>c.id===id));save();renderGems();renderPoolBanner();updatePlayerNameUI();
- $('collection').onclick=()=>showCollection('default','SSR');$('drawMenu').onclick=showDrawMenu;$('lobbyChat').onclick=openLobbyChat;$('friendsBtn').onclick=openChatList;$('giftBtn').onclick=openGiftPage;$('settingsBtn').onclick=openSettings;/* v1.12 對戰入口暫不綁定功能 */
+ $('collection').onclick=()=>showCollection('default','SSR');$('drawMenu').onclick=showDrawMenu;$('lobbyChat').onclick=openLobbyChat;$('friendsBtn').onclick=openChatList;$('giftBtn').onclick=openGiftPage;$('settingsBtn').onclick=openSettings;/* v1.13 對戰入口暫不綁定功能 */
  let versionTapCount=0,versionTapTimer=0;const versionEl=$('appVersion');if(versionEl)versionEl.onclick=()=>{versionTapCount++;clearTimeout(versionTapTimer);versionTapTimer=setTimeout(()=>{versionTapCount=0},2000);if(versionTapCount>=5){versionTapCount=0;clearTimeout(versionTapTimer);adminLogin()}};
  $('daily').onclick=()=>{if(storage.getItem('test_daily_day')===day()){$('notice').textContent='⏰ 今天已領取，晚上12點後重置';return}gems+=1500;storage.setItem('test_daily_day',day());save();$('notice').textContent='🎁 +1500 鑽！'};
  startHeartbeat();clearInterval(DM_BADGE_TIMER);DM_BADGE_TIMER=setInterval(()=>{if(PLAYER_TOKEN&&document.visibilityState==='visible')refreshPrivateMessageBadge()},12000);refreshPrivateMessageBadge();
