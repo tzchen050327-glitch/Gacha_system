@@ -410,6 +410,48 @@ body::before{
   .dockIconBtn{width:56px;height:56px;font-size:26px!important}
 }
 
+
+/* v1.12 私訊訊息框高度修正 */
+.dmMessages{align-content:start!important;grid-auto-rows:max-content!important}
+.dmRow{align-self:start!important;align-items:flex-start!important;min-height:0!important}
+.dmBubble{height:auto!important;min-height:0!important;align-self:flex-start!important}
+
+
+
+/* v1.12 iPhone safe-area：縮短上下高度避免被系統裁切 */
+body{
+  padding-top:max(10px,env(safe-area-inset-top));
+  padding-bottom:max(10px,env(safe-area-inset-bottom));
+}
+.wrap.lobbyWrap{
+  height:min(
+    calc(100dvh - max(10px,env(safe-area-inset-top)) - max(10px,env(safe-area-inset-bottom))),
+    calc(100vw * 16 / 9)
+  )!important;
+  width:min(
+    100vw,
+    calc((100dvh - max(10px,env(safe-area-inset-top)) - max(10px,env(safe-area-inset-bottom))) * 9 / 16)
+  )!important;
+  padding-top:6px!important;
+  padding-bottom:6px!important;
+}
+.modalBackdrop,.authGate,.drawOverlay{
+  padding-top:max(14px,env(safe-area-inset-top))!important;
+  padding-bottom:max(14px,env(safe-area-inset-bottom))!important;
+}
+.modal,.authCard,.dmModal{
+  max-height:calc(100dvh - max(28px,env(safe-area-inset-top)) - max(28px,env(safe-area-inset-bottom)))!important;
+}
+@media(max-width:520px){
+  .wrap.lobbyWrap{
+    height:calc(100dvh - max(10px,env(safe-area-inset-top)) - max(10px,env(safe-area-inset-bottom)))!important;
+    width:100vw!important;
+    padding-top:4px!important;
+    padding-bottom:4px!important;
+  }
+  .lobbyWood{border-radius:22px!important}
+}
+
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow"><h1>⚾ 棒球抽卡對戰</h1><button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定">⚙️</button></div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section class="homePoolCarousel lobbyPoolCarousel" aria-label="卡池輪播"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div></section><div id="notice" class="notice lobbyNotice"></div><div class="lobbyMenuGrid"><button id="collection" class="lobbyMenuBtn"><span class="lobbyIcon">📖</span><span>我的圖鑑</span></button><button id="drawMenu" class="lobbyMenuBtn"><span class="lobbyIcon">🎴</span><span>抽獎系統</span></button><button id="daily" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>每日登入<br>+1500 鑽</span></button><button id="giftBtn" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>贈送</span></button></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button"><span class="battleBall">⚾</span><span>對戰</span><small>COMING SOON</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div></div></div><div id="modal"></div><div id="authGate" class="authGate"></div><div class="appVersion" id="appVersion">v1.12</div><script>
 const storage=(()=>{const memory={};try{const ls=window.localStorage;const t="__cp_test__";ls.setItem(t,"1");ls.removeItem(t);return{getItem:k=>ls.getItem(k),setItem:(k,v)=>ls.setItem(k,String(v)),removeItem:k=>ls.removeItem(k)}}catch(e){return{getItem:k=>Object.prototype.hasOwnProperty.call(memory,k)?memory[k]:null,setItem:(k,v)=>{memory[k]=String(v)},removeItem:k=>{delete memory[k]}}}})();
 const cardDB=(()=>{let dbPromise;function open(){if(!('indexedDB' in window))return Promise.reject(new Error('IndexedDB unavailable'));if(dbPromise)return dbPromise;dbPromise=new Promise((resolve,reject)=>{const req=indexedDB.open('cp_cardgame_test_db',1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('cards'))db.createObjectStore('cards',{keyPath:'id'})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||new Error('無法開啟卡牌資料庫'))});return dbPromise}async function get(){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('cards','readonly'),st=tx.objectStore('cards'),req=st.get('all');req.onsuccess=()=>resolve(req.result?.data||null);req.onerror=()=>reject(req.error)})}async function set(cards){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('cards','readwrite');tx.objectStore('cards').put({id:'all',data:cards});tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('卡牌儲存失敗'))})}async function clear(){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('cards','readwrite');tx.objectStore('cards').clear();tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)})}return{get,set,clear}})();
