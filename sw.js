@@ -1,4 +1,4 @@
-const CACHE_NAME='cp-gacha-v137-static';
+const CACHE_NAME='cp-gacha-v138-static';
 
 self.addEventListener('install',event=>{
   self.skipWaiting()
