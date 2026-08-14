@@ -1009,6 +1009,116 @@ html,body{min-height:100%;min-height:100dvh}
  .gameModeFooter{padding-top:4px}
 }
 
+/* v1.24 排組更新：5個牌組、9先發、3替補、2應援、三局投手選擇 */
+.lineupEditorModal{max-width:760px;height:min(93dvh,850px);display:flex;flex-direction:column;overflow:hidden}
+.lineupEditorBody{min-height:0;flex:1;overflow:auto;padding-right:2px}
+.deckTabs{display:grid;grid-template-columns:repeat(5,1fr);gap:5px;margin:8px 0}
+.deckTab{
+ position:relative;padding:8px 3px!important;border-radius:11px!important;
+ border:1px solid #ffffff16!important;background:#ffffff09!important;color:#ffffffa0!important;
+ font-size:9px!important;font-weight:1000!important
+}
+.deckTab.active{background:linear-gradient(145deg,#6c481c,#34200d)!important;color:#ffe39a!important;border-color:#efc96766!important}
+.deckTab.using::after{content:"使用中";display:block;margin-top:2px;font-size:6px;color:#7ff0b5}
+.deckTab.dirty::before{content:"•";position:absolute;right:5px;top:1px;color:#ffcf5b;font-size:16px;line-height:1}
+.lineupSubTabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.lineupSubTab{
+ padding:8px!important;border-radius:11px!important;background:#ffffff09!important;border:1px solid #ffffff14!important;
+ color:#ffffff9b!important;font-size:10px!important;font-weight:900!important
+}
+.lineupSubTab.active{background:#cf9e3524!important;color:#ffe29b!important;border-color:#e8bd5c55!important}
+.deckStatusBar{display:grid;grid-template-columns:repeat(4,1fr);gap:5px;margin-bottom:8px}
+.deckStatus{
+ padding:7px 4px;border-radius:10px;text-align:center;background:#ffffff08;border:1px solid #ffffff12
+}
+.deckStatus small{display:block;font-size:7px;color:#ffffff69}.deckStatus b{display:block;margin-top:2px;font-size:11px}
+.lineupEditorActions{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-bottom:8px}
+.lineupEditorActions button{padding:7px!important;font-size:9px!important}
+.lineupSectionHead{display:flex;align-items:end;justify-content:space-between;gap:7px;margin:9px 1px 5px}
+.lineupSectionHead b{font-size:11px}.lineupSectionHead small{font-size:7px;color:#ffffff68}
+.starterGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.lineupPlayerSlot{
+ position:relative;min-width:0;min-height:126px;padding:5px!important;border-radius:13px!important;
+ background:linear-gradient(145deg,#171d29,#0c1018)!important;border:1px solid #ffffff15!important;
+ color:#fff!important;text-align:left!important;overflow:hidden
+}
+.lineupPlayerSlot.empty{display:grid;place-items:center;text-align:center;color:#ffffff66}
+.lineupPlayerSlot img{display:block;width:100%;height:65px;object-fit:cover;border-radius:8px;background:#000}
+.lineupSlotNo{
+ position:absolute;z-index:2;left:7px;top:7px;display:grid;place-items:center;width:22px;height:22px;
+ border-radius:50%;background:#e7b548;color:#251606;font-size:9px;font-weight:1000;box-shadow:0 2px 6px #0008
+}
+.lineupPlayerSlot .slotBody{display:block;margin-top:5px;min-width:0}
+.lineupPlayerSlot .slotBody b{display:block;font-size:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lineupPlayerSlot .slotBody small{display:block;margin-top:2px;font-size:6.5px;color:#ffffff70;line-height:1.35}
+.lineupPlayerSlot .slotStats{display:flex;justify-content:space-between;gap:3px;margin-top:3px;font-size:6.5px;color:#ffd983}
+.lineupEmptyPlus{font-size:21px;line-height:1}.lineupEmptyText{display:block;margin-top:5px;font-size:8px;font-weight:900}
+.benchGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
+.benchGrid .lineupPlayerSlot{min-height:110px}.benchGrid .lineupPlayerSlot img{height:52px}
+.cheerDeckGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.cheerDeckSlot{
+ min-height:205px;padding:7px!important;border-radius:15px!important;background:linear-gradient(145deg,#272033,#11141c)!important;
+ border:1px solid #caa7ff2e!important;color:#fff!important;text-align:left!important;overflow:hidden
+}
+.cheerDeckSlot.empty{display:grid;place-items:center;text-align:center;color:#ffffff62}
+.cheerDeckSlot img{width:100%;height:112px;object-fit:cover;border-radius:10px;display:block}
+.cheerDeckSlot b{display:block;margin-top:6px;font-size:10px}.cheerDeckSlot small{display:block;margin-top:3px;font-size:7px;color:#ffffff73;line-height:1.4}
+.cheerDeckNo{display:inline-block;margin-bottom:5px;padding:3px 6px;border-radius:999px;background:#a27de72b;color:#dfccff;font-size:7px;font-weight:1000}
+.lineupRuleBox{
+ margin-top:9px;padding:8px 10px;border-radius:11px;background:#f2c85b0c;border:1px solid #f2c85b1f;
+ color:#ecd694;font-size:8px;line-height:1.55
+}
+.lineupRuleBox b{color:#ffe5a2}
+.lineupSaveBar{flex:0 0 auto;display:grid;grid-template-columns:1fr 1fr;gap:7px;padding-top:8px;border-top:1px solid #ffffff12}
+.lineupSaveBar button{min-height:40px;font-size:10px!important}
+.lineupSaveNotice{grid-column:1/-1;min-height:11px;font-size:7px;color:#ffffff69;text-align:center}
+.lineupPickerModal{max-width:650px;height:min(88dvh,780px);display:flex;flex-direction:column}
+.lineupPickerTools{display:grid;grid-template-columns:1fr auto;gap:6px;margin:8px 0}
+.lineupPickerList{display:grid;gap:6px;overflow:auto;min-height:0;flex:1;padding-right:2px}
+.lineupPickerCard{
+ display:grid;grid-template-columns:51px 1fr auto;gap:8px;align-items:center;padding:6px!important;border-radius:12px!important;
+ background:#ffffff09!important;border:1px solid #ffffff13!important;color:#fff!important;text-align:left!important
+}
+.lineupPickerCard img{width:51px;height:62px;object-fit:cover;border-radius:7px;background:#000}
+.lineupPickerCard b{display:block;font-size:9px}.lineupPickerCard small{display:block;margin-top:2px;font-size:7px;color:#ffffff70;line-height:1.45}
+.lineupPickerStats{text-align:right}.lineupPickerStats b{color:#ffd778}.lineupPickerStats small{font-size:6.5px}
+.lineupUsedTag{display:inline-block;margin-top:3px;padding:2px 5px;border-radius:999px;background:#6db5ff20;color:#9ed0ff;font-size:6px}
+.pitcherRuleList{display:grid;gap:6px;margin:10px 0}
+.pitcherRuleItem{padding:8px 9px;border-radius:10px;background:#ffffff08;border:1px solid #ffffff12;font-size:9px;color:#ffffffb0}
+.pitcherRuleItem b{color:#ffe09a}
+.pitcherSelectModal{max-width:620px;height:min(89dvh,780px);display:flex;flex-direction:column}
+.pitcherTimer{
+ display:flex;align-items:center;justify-content:center;gap:8px;margin:8px 0;padding:9px;border-radius:13px;
+ background:#2c170df0;border:1px solid #f3c76d42
+}
+.pitcherTimer b{font-size:25px;color:#ffd371}.pitcherTimer span{font-size:9px;color:#ffffff8f}
+.pitcherGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;overflow:auto;min-height:0;flex:1}
+.pitcherChoice{
+ position:relative;padding:6px!important;border-radius:13px!important;background:#ffffff09!important;border:1px solid #ffffff14!important;
+ color:#fff!important;text-align:left!important;min-height:142px
+}
+.pitcherChoice.selected{border-color:#f0c76288!important;box-shadow:inset 0 0 0 1px #f0c76255!important}
+.pitcherChoice.used{opacity:.33;filter:grayscale(.65)}
+.pitcherChoice img{width:100%;height:72px;object-fit:cover;border-radius:8px}
+.pitcherChoice b{display:block;margin-top:4px;font-size:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pitcherChoice small{display:block;margin-top:2px;font-size:6.5px;color:#ffffff70}
+.pitcherChoice .pitcherDefense{margin-top:3px;color:#9ed7ff;font-size:8px;font-weight:1000}
+.pitcherConfirmBar{display:grid;grid-template-columns:1fr auto;gap:7px;margin-top:8px}
+.pitcherConfirmBar button{min-height:40px}
+.pitcherAutoText{align-self:center;font-size:7px;color:#ffffff68}
+@media(max-width:520px){
+ .lineupEditorModal{height:calc(100dvh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px) - 6px);max-height:none}
+ .starterGrid,.pitcherGrid{gap:5px}
+ .lineupPlayerSlot{min-height:118px}.lineupPlayerSlot img{height:60px}
+ .benchGrid .lineupPlayerSlot{min-height:102px}
+ .cheerDeckSlot{min-height:190px}.cheerDeckSlot img{height:100px}
+}
+@media(max-width:360px){
+ .deckTab{font-size:8px!important;padding-left:1px!important;padding-right:1px!important}
+ .lineupPlayerSlot{min-height:110px;padding:4px!important}.lineupPlayerSlot img{height:54px}
+ .lineupPlayerSlot .slotBody b{font-size:8px}.lineupPlayerSlot .slotBody small,.lineupPlayerSlot .slotStats{font-size:6px}
+}
+
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style id="v121-ios-final">
 @media(max-width:520px){
@@ -1043,7 +1153,7 @@ html,body{min-height:100%;min-height:100dvh}
     <div class="gameModeTwin">
      <button id="gameModeCpu" class="gameModeCard gameModeSmall" type="button">
       <div class="gameModeIcon">🤖</div>
-      <div class="gameModeText"><b>打電腦</b><span>自由練習</span><small>測試你的排組</small></div>
+      <div class="gameModeText"><b>打電腦</b><span>自由練習</span><small>三局制・每局指定投手</small></div>
      </button>
      <button id="gameModeRoom" class="gameModeCard gameModeSmall" type="button">
       <div class="gameModeIcon">👥</div>
@@ -1057,14 +1167,14 @@ html,body{min-height:100%;min-height:100dvh}
      <div class="gameModeText">
       <div class="rankedTitleLine"><b>排位賽</b><em>RANKED</em></div>
       <span>與其他玩家競爭排名</span>
-      <small>段位　未定級　｜　積分 --</small>
+      <small>三局制　｜　段位 未定級　｜　積分 --</small>
      </div>
      <div class="gameModeArrow">›</div>
     </button>
 
     <button id="gameLineupSettings" class="gameLineupSettings" type="button">
      <span class="lineupGear">⚙️</span>
-     <span class="lineupText"><b>排組設定</b><small>球員編隊・守備配置・應援卡</small></span>
+     <span class="lineupText"><b>排組設定</b><small id="gameLineupSummary">牌組 1｜先發 0/9・替補 0/3・應援 0/2</small></span>
      <span class="lineupArrow">›</span>
     </button>
    </main>
@@ -1352,7 +1462,8 @@ function openGamePrep(){
  const lobby=document.querySelector('.lobbyWrap'),prep=$('gamePrepScreen');if(!prep)return;
  GAME_PREP_ACTIVE=true;if(lobby)lobby.hidden=true;prep.hidden=false;
  const pn=$('gamePrepPlayerName');if(pn)pn.textContent=PLAYER?.gameName||PLAYER?.game_name||'';
- if(stadiumAudioEnabled()){unlockStadiumAudio();startPreparationMusicSource()}syncStadiumAudioState()
+ if(stadiumAudioEnabled()){unlockStadiumAudio();startPreparationMusicSource()}syncStadiumAudioState();
+ loadV124Lineups(false).then(updateGameLineupSummary).catch(()=>updateGameLineupSummary())
 }
 function closeGamePrep(){
  const lobby=document.querySelector('.lobbyWrap'),prep=$('gamePrepScreen');
@@ -1364,19 +1475,214 @@ function showGameModeComingSoon(title,icon,detail='此模式正在開發中。')
  $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal gameModeComingModal"><div class="modalHead"><h2>${esc(icon)} ${esc(title)}</h2><button class="small" id="closeGameModeComing">✕</button></div><div class="gameModeComingHero"><div class="comingIcon">${esc(icon)}</div><h3>${esc(title)}</h3><p>${esc(detail)}<br>目前先保留在遊戲首頁，之後會直接從這裡進入。</p></div><button id="gameModeComingOk" class="admin" style="width:100%">知道了</button></div></div>`;
  $('closeGameModeComing').onclick=$('gameModeComingOk').onclick=()=>$('modal').innerHTML=''
 }
-function showLineupSettings(){
- gameModeButtonSfx();
- $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal lineupModal"><div class="modalHead"><div><h2 style="margin:0">⚙️ 排組設定</h2><div class="sub">所有對戰前配置集中在這裡</div></div><button class="small" id="closeLineupSettings">✕</button></div><div class="lineupChoiceGrid"><button class="lineupChoice" data-lineup-item="player"><span class="lineupChoiceIcon">⚾</span><span><b>球員編隊</b><small>先發球員、投手、守備位置與打序</small></span><span class="lineupChoiceArrow">›</span></button><button class="lineupChoice" data-lineup-item="cheer"><span class="lineupChoiceIcon">📣</span><span><b>應援卡設定</b><small>選擇對戰時攜帶的應援團卡</small></span><span class="lineupChoiceArrow">›</span></button></div><div class="notice" style="margin-top:12px">v1.24 先完成排組設定入口，實際編隊功能後續加入。</div></div></div>`;
- $('closeLineupSettings').onclick=()=>$('modal').innerHTML='';
- document.querySelectorAll('[data-lineup-item]').forEach(btn=>btn.onclick=()=>showGameModeComingSoon(btn.dataset.lineupItem==='cheer'?'應援卡設定':'球員編隊',btn.dataset.lineupItem==='cheer'?'📣':'⚾','排組功能將在後續版本接上實際對戰資料。'))
+function emptyV124Deck(){return{starters:[],bench:[],cheerCardIds:[]}}
+function normalizeV124Deck(raw){
+ const starters=[],bench=[],cheerCardIds=[],used=new Set();
+ for(const v of Array.isArray(raw?.starters)?raw.starters:[]){const id=String(v||'').trim();if(!id||used.has(id))continue;used.add(id);starters.push(id);if(starters.length>=LINEUP_STARTER_LIMIT)break}
+ for(const v of Array.isArray(raw?.bench)?raw.bench:[]){const id=String(v||'').trim();if(!id||used.has(id))continue;used.add(id);bench.push(id);if(bench.length>=LINEUP_BENCH_LIMIT)break}
+ for(const v of Array.isArray(raw?.cheerCardIds)?raw.cheerCardIds:[]){const id=String(v||'').trim();if(!id||cheerCardIds.includes(id))continue;cheerCardIds.push(id);if(cheerCardIds.length>=LINEUP_CHEER_LIMIT)break}
+ return{starters,bench,cheerCardIds}
 }
+function normalizeV124Decks(raw){const a=Array.isArray(raw)?raw:[];return Array.from({length:LINEUP_DECK_COUNT},(_,i)=>normalizeV124Deck(a[i]))}
+function cloneV124Decks(raw){return normalizeV124Decks(JSON.parse(JSON.stringify(raw||[])))}
+function lineupNormalCardOwned(c){return !!c&&owned.includes(c.id)}
+function lineupAllPlayerCards(){
+ const map=new Map();
+ for(const c of CARDS)if(lineupNormalCardOwned(c))map.set(String(c.id),c);
+ for(const c of UR_OWNED_CARDS)map.set(String(c.id),c);
+ return [...map.values()]
+}
+function lineupPlayerCardById(id){return CARDS.find(c=>String(c.id)===String(id))||UR_OWNED_CARDS.find(c=>String(c.id)===String(id))||null}
+function lineupCheerCardById(id){return CHEER_CARDS.find(c=>String(c.id)===String(id))||null}
+function lineupAttackValue(c){if(!c)return 0;if(c.rarity==='UR'&&!c.position)return Math.round(Number(c.power)||0);return cardAttackValue(c)}
+function lineupDefenseValue(c){if(!c)return 0;if(c.rarity==='UR'&&!c.position)return Math.round(Number(c.power)||0);return cardDefenseValue(c)}
+function lineupCoeffText(c){if(!c)return'';return c.rarity==='UR'&&!c.position?'UR：進攻 ×1.00｜防守 ×1.00':positionCoefficientText(c.position)}
+function lineupPositionText(c){if(!c)return'';return c.rarity==='UR'&&!c.position?'UR特殊':normalizeCardPosition(c.position)}
+function lineupDeckCounts(deck){const d=normalizeV124Deck(deck);return{starters:d.starters.length,bench:d.bench.length,cheer:d.cheerCardIds.length}}
+function lineupDeckPower(deck){
+ const d=normalizeV124Deck(deck);let attack=0,defense=0;
+ for(const id of [...d.starters,...d.bench]){const c=lineupPlayerCardById(id);attack+=lineupAttackValue(c);defense+=lineupDefenseValue(c)}
+ return{attack,defense}
+}
+function lineupDeckComplete(deck){const c=lineupDeckCounts(deck);return c.starters===9&&c.bench===3&&c.cheer===2}
+function lineupCacheKey(){return 'cp_lineup_v124_cache'}
+function cacheV124Lineups(){storage.setItem(lineupCacheKey(),JSON.stringify({decks:LINEUP_DECKS,activeDeck:LINEUP_ACTIVE_DECK}))}
+function updateGameLineupSummary(){
+ const el=$('gameLineupSummary');if(!el)return;const deck=LINEUP_DECKS[Math.max(0,LINEUP_ACTIVE_DECK-1)]||emptyV124Deck(),c=lineupDeckCounts(deck);
+ el.textContent=`牌組 ${LINEUP_ACTIVE_DECK}｜先發 ${c.starters}/9・替補 ${c.bench}/3・應援 ${c.cheer}/2`
+}
+async function localV124LineupApi(action,payload={}){
+ let state=safeJSON('cp_local_lineup_v124',{decks:Array.from({length:5},()=>emptyV124Deck()),activeDeck:1});
+ state={decks:normalizeV124Decks(state?.decks),activeDeck:Math.max(1,Math.min(5,Number(state?.activeDeck)||1))};
+ if(action==='get')return state;
+ if(action==='save_deck'){const i=Math.max(1,Math.min(5,Number(payload.deckIndex)||1));state.decks[i-1]=normalizeV124Deck(payload.deck);storage.setItem('cp_local_lineup_v124',JSON.stringify(state));return{ok:true,...state}}
+ if(action==='set_active'){state.activeDeck=Math.max(1,Math.min(5,Number(payload.activeDeck)||1));storage.setItem('cp_local_lineup_v124',JSON.stringify(state));return{ok:true,...state}}
+ if(action==='save_all'){state.decks=normalizeV124Decks(payload.decks);state.activeDeck=Math.max(1,Math.min(5,Number(payload.activeDeck)||1));storage.setItem('cp_local_lineup_v124',JSON.stringify(state));return{ok:true,...state}}
+ throw new Error('Unknown lineup action')
+}
+async function v124LineupApi(action,payload={}){
+ if(IS_LOCAL_TEST)return localV124LineupApi(action,payload);
+ if(!PLAYER_TOKEN)throw new Error('玩家尚未登入');
+ const res=await fetch(LINEUP_API,{method:'POST',headers:{'Content-Type':'application/json','x-player-token':PLAYER_TOKEN},body:JSON.stringify({action,...payload})});
+ let data={};try{data=await res.json()}catch(_e){}
+ if(!res.ok){const err=new Error(data.error||('排組 API 錯誤 '+res.status));err.status=res.status;throw err}
+ return data
+}
+async function loadV124Lineups(force=false){
+ if(LINEUP_LOADED&&!force){updateGameLineupSummary();return}
+ try{
+  const data=await v124LineupApi('get');LINEUP_DECKS=normalizeV124Decks(data.decks);LINEUP_ACTIVE_DECK=Math.max(1,Math.min(5,Number(data.activeDeck)||1));LINEUP_EDIT_DECK=LINEUP_ACTIVE_DECK;LINEUP_LOADED=true;cacheV124Lineups();updateGameLineupSummary()
+ }catch(e){
+  const cached=safeJSON(lineupCacheKey(),null);
+  if(cached){LINEUP_DECKS=normalizeV124Decks(cached.decks);LINEUP_ACTIVE_DECK=Math.max(1,Math.min(5,Number(cached.activeDeck)||1));LINEUP_EDIT_DECK=LINEUP_ACTIVE_DECK;LINEUP_LOADED=true;updateGameLineupSummary();return}
+  throw e
+ }
+}
+function v124CurrentDraft(){if(!LINEUP_DRAFTS)LINEUP_DRAFTS=cloneV124Decks(LINEUP_DECKS);return LINEUP_DRAFTS[LINEUP_EDIT_DECK-1]}
+function v124MarkDirty(){LINEUP_DIRTY.add(LINEUP_EDIT_DECK)}
+function v124UsedPlace(cardId,deck=v124CurrentDraft()){
+ const s=deck.starters.indexOf(cardId);if(s>=0)return`先發 ${s+1}`;
+ const b=deck.bench.indexOf(cardId);if(b>=0)return`替補 ${b+1}`;
+ return''
+}
+function v124SetPlayerSlot(kind,index,cardId){
+ const d=v124CurrentDraft(),id=String(cardId||'');
+ d.starters=d.starters.filter(x=>x!==id);d.bench=d.bench.filter(x=>x!==id);
+ if(kind==='starter'){
+  const arr=[...d.starters];while(arr.length<=index)arr.push('');arr[index]=id;d.starters=arr.filter(Boolean).slice(0,9)
+ }else{
+  const arr=[...d.bench];while(arr.length<=index)arr.push('');arr[index]=id;d.bench=arr.filter(Boolean).slice(0,3)
+ }
+ LINEUP_DRAFTS[LINEUP_EDIT_DECK-1]=normalizeV124Deck(d);v124MarkDirty();showLineupSettings(LINEUP_EDIT_DECK,'players',false)
+}
+function v124ClearPlayerSlot(kind,index){
+ const d=v124CurrentDraft();
+ if(kind==='starter')d.starters.splice(index,1);else d.bench.splice(index,1);
+ LINEUP_DRAFTS[LINEUP_EDIT_DECK-1]=normalizeV124Deck(d);v124MarkDirty();showLineupSettings(LINEUP_EDIT_DECK,'players',false)
+}
+function v124SetCheerSlot(index,cardId){
+ const d=v124CurrentDraft(),id=String(cardId||'');let arr=[...d.cheerCardIds];arr=arr.filter(x=>x!==id);while(arr.length<=index)arr.push('');arr[index]=id;d.cheerCardIds=arr.filter(Boolean).slice(0,2);
+ LINEUP_DRAFTS[LINEUP_EDIT_DECK-1]=normalizeV124Deck(d);v124MarkDirty();showLineupSettings(LINEUP_EDIT_DECK,'cheer',false)
+}
+function v124ClearCheerSlot(index){const d=v124CurrentDraft();d.cheerCardIds.splice(index,1);LINEUP_DRAFTS[LINEUP_EDIT_DECK-1]=normalizeV124Deck(d);v124MarkDirty();showLineupSettings(LINEUP_EDIT_DECK,'cheer',false)}
+function v124AutoBuild(){
+ const cards=lineupAllPlayerCards().sort((a,b)=>{
+  const score=c=>lineupAttackValue(c)*.55+lineupDefenseValue(c)*.45;
+  return score(b)-score(a)||(Number(b.power)||0)-(Number(a.power)||0)
+ });
+ const d=emptyV124Deck();d.starters=cards.slice(0,9).map(c=>c.id);d.bench=cards.slice(9,12).map(c=>c.id);
+ d.cheerCardIds=CHEER_CARDS.filter(c=>owned.includes(c.id)&&c.isActive!==false).sort((a,b)=>(Number(b.effectValue)||0)-(Number(a.effectValue)||0)).slice(0,2).map(c=>c.id);
+ LINEUP_DRAFTS[LINEUP_EDIT_DECK-1]=normalizeV124Deck(d);v124MarkDirty();showLineupSettings(LINEUP_EDIT_DECK,LINEUP_TAB,false)
+}
+function v124ClearDeck(){LINEUP_DRAFTS[LINEUP_EDIT_DECK-1]=emptyV124Deck();v124MarkDirty();showLineupSettings(LINEUP_EDIT_DECK,LINEUP_TAB,false)}
+function v124PlayerSlotHtml(kind,index,id){
+ const c=lineupPlayerCardById(id),no=kind==='starter'?index+1:`R${index+1}`;
+ if(!c)return`<button class="lineupPlayerSlot empty" data-lineup-player-slot="${kind},${index}"><span class="lineupSlotNo">${no}</span><span><span class="lineupEmptyPlus">＋</span><span class="lineupEmptyText">${kind==='starter'?'選擇先發':'選擇替補'}</span></span></button>`;
+ return`<button class="lineupPlayerSlot" data-lineup-player-slot="${kind},${index}"><span class="lineupSlotNo">${no}</span><img src="${esc(c.image||PLACE)}" onerror="this.src='${PLACE}'"><span class="slotBody"><b>${esc(c.rarity)}｜${esc(c.name)}</b><small>${esc(lineupPositionText(c))}<br>${esc(lineupCoeffText(c))}</small><span class="slotStats"><span>攻 ${lineupAttackValue(c)}</span><span>守 ${lineupDefenseValue(c)}</span></span></span></button>`
+}
+function v124CheerSlotHtml(index,id){
+ const c=lineupCheerCardById(id);
+ if(!c)return`<button class="cheerDeckSlot empty" data-lineup-cheer-slot="${index}"><div><span class="cheerDeckNo">應援 ${index+1}</span><div style="font-size:29px;margin:12px 0 5px">📣</div><b>＋ 選擇應援團卡</b></div></button>`;
+ return`<button class="cheerDeckSlot" data-lineup-cheer-slot="${index}"><span class="cheerDeckNo">應援 ${index+1}</span><img src="${esc(c.image||PLACE)}" onerror="this.src='${PLACE}'"><b>${esc(c.name)}</b><small>${esc(cheerEffectSummary(c))}</small></button>`
+}
+function v124PlayersTabHtml(){
+ const d=v124CurrentDraft();
+ return`<div class="lineupEditorActions"><button id="v124AutoBuild" class="admin">✨ 自動排組</button><button id="v124ClearDeck">🗑️ 清空此牌組</button></div>
+ <div class="lineupSectionHead"><b>⚾ 先發打線</b><small>1～9 棒｜不限制守備位置</small></div>
+ <div class="starterGrid">${Array.from({length:9},(_,i)=>v124PlayerSlotHtml('starter',i,d.starters[i]||'')).join('')}</div>
+ <div class="lineupSectionHead"><b>🪑 替補</b><small>最多 3 張</small></div>
+ <div class="benchGrid">${Array.from({length:3},(_,i)=>v124PlayerSlotHtml('bench',i,d.bench[i]||'')).join('')}</div>
+ <div class="lineupRuleBox"><b>三局制投手規則：</b>打電腦與排位賽每個守備半局開始前，從 9 名先發中指定 1 人投球；三局必須使用不同球員。選擇時間 30 秒，逾時會自動選擇尚未投過且防守值最高的先發。投手身分不會改變原本打擊棒次。</div>`
+}
+function v124CheerTabHtml(){
+ const d=v124CurrentDraft(),usable=CHEER_CARDS.filter(c=>owned.includes(c.id)&&c.isActive!==false).length;
+ return`<div class="lineupRuleBox"><b>應援團卡：</b>每個牌組最多攜帶 2 張。五個牌組可以重複使用同一張應援卡，但同一個牌組內不能重複攜帶。</div><div class="cheerDeckGrid">${v124CheerSlotHtml(0,d.cheerCardIds[0]||'')}${v124CheerSlotHtml(1,d.cheerCardIds[1]||'')}</div><div class="lineupSectionHead"><b>目前可用</b><small>已擁有且啟用 ${usable} 張</small></div>`
+}
+async function saveV124CurrentDeck(useAfter=false){
+ const btn=$('v124SaveDeck'),useBtn=$('v124SaveUse'),notice=$('v124LineupNotice'),idx=LINEUP_EDIT_DECK,d=normalizeV124Deck(v124CurrentDraft());
+ if(btn)btn.disabled=true;if(useBtn)useBtn.disabled=true;if(notice)notice.textContent=useAfter?'儲存並切換使用牌組中…':'儲存中…';
+ try{
+  const data=await v124LineupApi('save_deck',{deckIndex:idx,deck:d});
+  LINEUP_DECKS=normalizeV124Decks(data.decks);LINEUP_ACTIVE_DECK=Math.max(1,Math.min(5,Number(data.activeDeck)||LINEUP_ACTIVE_DECK));LINEUP_DRAFTS=cloneV124Decks(LINEUP_DECKS);LINEUP_DIRTY.delete(idx);
+  if(useAfter){
+   const active=await v124LineupApi('set_active',{activeDeck:idx});LINEUP_ACTIVE_DECK=Math.max(1,Math.min(5,Number(active.activeDeck)||idx));LINEUP_DECKS=normalizeV124Decks(active.decks||LINEUP_DECKS);LINEUP_DRAFTS=cloneV124Decks(LINEUP_DECKS)
+  }
+  cacheV124Lineups();updateGameLineupSummary();showLineupSettings(idx,LINEUP_TAB,false);
+  setTimeout(()=>{const n=$('v124LineupNotice');if(n)n.textContent=useAfter?'✅ 已儲存並設為使用中':'✅ 牌組已儲存'},0)
+ }catch(e){if(notice)notice.textContent='❌ '+(e.message||e);if(btn)btn.disabled=false;if(useBtn)useBtn.disabled=false}
+}
+async function showLineupSettings(deckIndex=LINEUP_EDIT_DECK,tab=LINEUP_TAB,reload=true){
+ if(reload)gameModeButtonSfx();LINEUP_TAB=tab==='cheer'?'cheer':'players';
+ if(!LINEUP_LOADED){
+  $('modal').innerHTML='<div class="modalBackdrop"><div class="modal lineupEditorModal"><div class="notice">讀取 5 個牌組中…</div></div></div>';
+  try{await loadV124Lineups(false)}catch(e){$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal"><div class="modalHead"><h2>⚙️ 排組設定</h2><button class="small" id="v124LineupLoadClose">✕</button></div><div class="notice">❌ ${esc(e.message||e)}</div></div></div>`;$('v124LineupLoadClose').onclick=()=>$('modal').innerHTML='';return}
+ }
+ if(!LINEUP_DRAFTS)LINEUP_DRAFTS=cloneV124Decks(LINEUP_DECKS);
+ LINEUP_EDIT_DECK=Math.max(1,Math.min(5,Number(deckIndex)||1));
+ const d=v124CurrentDraft(),counts=lineupDeckCounts(d),power=lineupDeckPower(d),body=LINEUP_TAB==='players'?v124PlayersTabHtml():v124CheerTabHtml();
+ $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal lineupEditorModal">
+  <div class="modalHead"><div><h2 style="margin:0">⚙️ 排組設定</h2><div class="sub">每位玩家可保存 5 組｜9 先發・3 替補・2 應援</div></div><button class="small" id="closeV124Lineup">✕</button></div>
+  <div class="deckTabs">${Array.from({length:5},(_,i)=>{const n=i+1;return`<button class="deckTab ${n===LINEUP_EDIT_DECK?'active ':''}${n===LINEUP_ACTIVE_DECK?'using ':''}${LINEUP_DIRTY.has(n)?'dirty':''}" data-v124-deck="${n}">牌組 ${n}</button>`}).join('')}</div>
+  <div class="deckStatusBar"><div class="deckStatus"><small>先發</small><b>${counts.starters}/9</b></div><div class="deckStatus"><small>替補</small><b>${counts.bench}/3</b></div><div class="deckStatus"><small>應援</small><b>${counts.cheer}/2</b></div><div class="deckStatus"><small>狀態</small><b>${lineupDeckComplete(d)?'完整':'編輯中'}</b></div></div>
+  <div class="lineupSubTabs"><button class="lineupSubTab ${LINEUP_TAB==='players'?'active':''}" data-v124-tab="players">⚾ 球員 12 張</button><button class="lineupSubTab ${LINEUP_TAB==='cheer'?'active':''}" data-v124-tab="cheer">📣 應援 2 張</button></div>
+  <div class="lineupEditorBody">${body}<div class="lineupSectionHead"><b>牌組總值</b><small>含先發＋替補</small></div><div class="deckStatusBar"><div class="deckStatus" style="grid-column:span 2"><small>總進攻</small><b>${power.attack.toLocaleString()}</b></div><div class="deckStatus" style="grid-column:span 2"><small>總防守</small><b>${power.defense.toLocaleString()}</b></div></div></div>
+  <div class="lineupSaveBar"><div id="v124LineupNotice" class="lineupSaveNotice">${LINEUP_ACTIVE_DECK===LINEUP_EDIT_DECK?'✅ 此牌組目前使用中':'切換牌組不會自動儲存，請按下方按鈕'}</div><button id="v124SaveDeck">💾 儲存牌組 ${LINEUP_EDIT_DECK}</button><button id="v124SaveUse" class="admin">${LINEUP_ACTIVE_DECK===LINEUP_EDIT_DECK?'✅ 儲存目前牌組':'▶ 儲存並使用'}</button></div>
+ </div></div>`;
+ $('closeV124Lineup').onclick=()=>{LINEUP_DRAFTS=null;LINEUP_DIRTY.clear();$('modal').innerHTML=''};
+ document.querySelectorAll('[data-v124-deck]').forEach(b=>b.onclick=()=>showLineupSettings(Number(b.dataset.v124Deck)||1,LINEUP_TAB,false));
+ document.querySelectorAll('[data-v124-tab]').forEach(b=>b.onclick=()=>showLineupSettings(LINEUP_EDIT_DECK,b.dataset.v124Tab,false));
+ document.querySelectorAll('[data-lineup-player-slot]').forEach(b=>b.onclick=()=>{const [kind,i]=b.dataset.lineupPlayerSlot.split(',');showV124PlayerPicker(kind,Number(i)||0)});
+ document.querySelectorAll('[data-lineup-cheer-slot]').forEach(b=>b.onclick=()=>showV124CheerPicker(Number(b.dataset.lineupCheerSlot)||0));
+ if($('v124AutoBuild'))$('v124AutoBuild').onclick=v124AutoBuild;if($('v124ClearDeck'))$('v124ClearDeck').onclick=v124ClearDeck;
+ $('v124SaveDeck').onclick=()=>saveV124CurrentDeck(false);$('v124SaveUse').onclick=()=>saveV124CurrentDeck(LINEUP_ACTIVE_DECK!==LINEUP_EDIT_DECK)
+}
+function showV124PlayerPicker(kind,index){
+ gameModeButtonSfx();const d=v124CurrentDraft(),current=(kind==='starter'?d.starters:d.bench)[index]||'',cards=lineupAllPlayerCards().sort((a,b)=>(Number(b.power)||0)-(Number(a.power)||0));
+ $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal lineupPickerModal"><div class="modalHead"><div><h2 style="margin:0">${kind==='starter'?`先發第 ${index+1} 棒`:`替補 ${index+1}`}</h2><div class="sub">不限守備位置｜同一牌組內不會重複</div></div><button class="small" id="v124PickerBack">← 返回</button></div><div class="lineupPickerTools"><input id="v124PlayerSearch" class="cardNameSearch" placeholder="搜尋球員名字"><button id="v124PlayerClear">清空此格</button></div><div class="lineupPickerList">${cards.length?cards.map(c=>{const used=v124UsedPlace(c.id,d);return`<button class="lineupPickerCard ${c.id===current?'lineupPickerSelected':''}" data-v124-pick-player="${esc(c.id)}" data-name="${esc(String(c.name||'').toLowerCase())}"><img src="${esc(c.image||PLACE)}" onerror="this.src='${PLACE}'"><span><b>${esc(c.rarity)}｜${esc(c.name)}</b><small>${esc(lineupPositionText(c))}｜傷害 ${Number(c.power)||0}<br>${esc(lineupCoeffText(c))}</small>${used?`<span class="lineupUsedTag">目前：${esc(used)}</span>`:''}</span><span class="lineupPickerStats"><b>攻 ${lineupAttackValue(c)}</b><small>守 ${lineupDefenseValue(c)}</small></span></button>`}).join(''):'<div class="lineupEmptyHint">目前沒有已擁有的球員卡。</div>'}</div></div></div>`;
+ $('v124PickerBack').onclick=()=>showLineupSettings(LINEUP_EDIT_DECK,'players',false);$('v124PlayerClear').onclick=()=>v124ClearPlayerSlot(kind,index);
+ document.querySelectorAll('[data-v124-pick-player]').forEach(b=>b.onclick=()=>v124SetPlayerSlot(kind,index,b.dataset.v124PickPlayer));
+ $('v124PlayerSearch').oninput=e=>{const q=String(e.target.value||'').trim().toLowerCase();document.querySelectorAll('[data-v124-pick-player]').forEach(b=>b.hidden=!!q&&!String(b.dataset.name||'').includes(q))}
+}
+function showV124CheerPicker(index){
+ gameModeButtonSfx();const d=v124CurrentDraft(),current=d.cheerCardIds[index]||'',cards=CHEER_CARDS.filter(c=>owned.includes(c.id)&&c.isActive!==false);
+ $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal lineupPickerModal"><div class="modalHead"><div><h2 style="margin:0">📣 應援 ${index+1}</h2><div class="sub">選擇這個牌組攜帶的應援團卡</div></div><button class="small" id="v124CheerBack">← 返回</button></div><div class="lineupPickerTools"><input id="v124CheerSearch" class="cardNameSearch" placeholder="搜尋應援卡名字"><button id="v124CheerClear">清空此格</button></div><div class="lineupPickerList">${cards.length?cards.map(c=>`<button class="lineupPickerCard ${c.id===current?'lineupPickerSelected':''}" data-v124-pick-cheer="${esc(c.id)}" data-name="${esc(String(c.name||'').toLowerCase())}"><img src="${esc(c.image||PLACE)}" onerror="this.src='${PLACE}'"><span><b>${esc(c.name)}</b><small>${esc(cheerEffectSummary(c))}</small></span><span class="lineupPickerStats"><b>+${Number(c.effectValue)||0}%</b><small>消耗 ${Number(c.cheerCost)||0}</small></span></button>`).join(''):'<div class="lineupEmptyHint">目前沒有已擁有且啟用中的應援卡。</div>'}</div></div></div>`;
+ $('v124CheerBack').onclick=()=>showLineupSettings(LINEUP_EDIT_DECK,'cheer',false);$('v124CheerClear').onclick=()=>v124ClearCheerSlot(index);
+ document.querySelectorAll('[data-v124-pick-cheer]').forEach(b=>b.onclick=()=>v124SetCheerSlot(index,b.dataset.v124PickCheer));
+ $('v124CheerSearch').oninput=e=>{const q=String(e.target.value||'').trim().toLowerCase();document.querySelectorAll('[data-v124-pick-cheer]').forEach(b=>b.hidden=!!q&&!String(b.dataset.name||'').includes(q))}
+}
+function showThreeInningModeInfo(title,icon,detail){
+ gameModeButtonSfx();
+ $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal gameModeComingModal"><div class="modalHead"><h2>${esc(icon)} ${esc(title)}</h2><button class="small" id="closeThreeInningInfo">✕</button></div><div class="gameModeComingHero"><div class="comingIcon">${esc(icon)}</div><h3>${esc(title)}</h3><p>${esc(detail)}</p></div><div class="pitcherRuleList"><div class="pitcherRuleItem"><b>⚾ 三局制</b>｜比賽共進行 3 局。</div><div class="pitcherRuleItem"><b>🧢 每局指定投手</b>｜每個守備半局開始時，從 9 名先發中選 1 人投球。</div><div class="pitcherRuleItem"><b>🚫 不得重複</b>｜三局必須使用 3 名不同先發球員。</div><div class="pitcherRuleItem"><b>⏱️ 30 秒</b>｜逾時未確認，系統自動選尚未投過且防守值最高的球員。</div></div><div class="notice">目前對戰本體仍在開發中；投手選擇規則與 30 秒倒數元件已先寫入 v1.24。</div><button id="threeInningInfoOk" class="admin" style="width:100%;margin-top:8px">知道了</button></div></div>`;
+ $('closeThreeInningInfo').onclick=$('threeInningInfoOk').onclick=()=>$('modal').innerHTML=''
+}
+function clearPitcherSelectionTimer(){clearTimeout(PITCHER_SELECTION_TIMER);clearInterval(PITCHER_SELECTION_INTERVAL);PITCHER_SELECTION_TIMER=0;PITCHER_SELECTION_INTERVAL=0}
+function autoSelectPitcherFromDeck(deck,usedPitcherIds=[]){
+ const used=new Set((usedPitcherIds||[]).map(String)),available=normalizeV124Deck(deck).starters.map(lineupPlayerCardById).filter(c=>c&&!used.has(String(c.id)));
+ available.sort((a,b)=>lineupDefenseValue(b)-lineupDefenseValue(a)||(Number(b.power)||0)-(Number(a.power)||0));return available[0]||null
+}
+function openPitcherSelection(inning=1,usedPitcherIds=[],onConfirm=null){
+ clearPitcherSelectionTimer();const deck=LINEUP_DECKS[LINEUP_ACTIVE_DECK-1]||emptyV124Deck(),used=new Set((usedPitcherIds||[]).map(String)),starters=normalizeV124Deck(deck).starters.map(lineupPlayerCardById).filter(Boolean);
+ if(starters.length<9){$('modal').innerHTML='<div class="modalBackdrop"><div class="modal"><div class="modalHead"><h2>🧢 選擇投手</h2><button class="small" id="pitcherIncompleteClose">✕</button></div><div class="notice">目前使用牌組的先發不足 9 人，無法開始三局制比賽。</div></div></div>';$('pitcherIncompleteClose').onclick=()=>$('modal').innerHTML='';return}
+ const available=starters.filter(c=>!used.has(String(c.id)));if(!available.length)return;
+ let selected='',remain=30,finished=false;
+ const finish=(card,auto=false)=>{if(finished||!card)return;finished=true;clearPitcherSelectionTimer();$('modal').innerHTML='';if(typeof onConfirm==='function')onConfirm(card,{inning,auto,usedPitcherIds:[...used]})};
+ const render=()=>{$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal pitcherSelectModal"><div class="modalHead"><div><h2 style="margin:0">🧢 第 ${Number(inning)||1} 局投手</h2><div class="sub">從 9 名先發中指定｜本場投過者不可重複</div></div><button class="small" id="pitcherSelectClose">✕</button></div><div class="pitcherTimer"><b id="pitcherCountdown">${remain}</b><span>秒內確認投手</span></div><div class="pitcherGrid">${starters.map((c,i)=>{const isUsed=used.has(String(c.id));return`<button class="pitcherChoice ${isUsed?'used ':''}${selected===String(c.id)?'selected':''}" data-pitcher-choice="${esc(c.id)}" ${isUsed?'disabled':''}><img src="${esc(c.image||PLACE)}" onerror="this.src='${PLACE}'"><b>${i+1}棒｜${esc(c.name)}</b><small>${esc(lineupPositionText(c))}｜${esc(lineupCoeffText(c))}</small><div class="pitcherDefense">防守 ${lineupDefenseValue(c)}</div></button>`}).join('')}</div><div class="pitcherConfirmBar"><div class="pitcherAutoText">逾時：自動選擇尚未投過且防守值最高者</div><button id="confirmPitcher" class="admin" ${selected?'':'disabled'}>確認投手</button></div></div></div>`;
+  $('pitcherSelectClose').onclick=()=>{clearPitcherSelectionTimer();$('modal').innerHTML=''};
+  document.querySelectorAll('[data-pitcher-choice]').forEach(b=>b.onclick=()=>{selected=b.dataset.pitcherChoice;render()});
+  $('confirmPitcher').onclick=()=>{const c=starters.find(x=>String(x.id)===selected);finish(c,false)}
+ };
+ render();
+ PITCHER_SELECTION_INTERVAL=setInterval(()=>{remain=Math.max(0,remain-1);const el=$('pitcherCountdown');if(el)el.textContent=String(remain);if(remain<=0){clearInterval(PITCHER_SELECTION_INTERVAL);const c=autoSelectPitcherFromDeck(deck,[...used]);finish(c,true)}},1000);
+ PITCHER_SELECTION_TIMER=setTimeout(()=>{if(!finished){const c=autoSelectPitcherFromDeck(deck,[...used]);finish(c,true)}},30500)
+}
+
 function bindGamePrepPage(){
  const stage=$('gameModeStage'),cpu=$('gameModeCpu'),room=$('gameModeRoom'),ranked=$('gameModeRanked'),lineup=$('gameLineupSettings');
  if(stage)stage.onclick=()=>showGameModeComingSoon('關卡','🗺️','挑戰不同球隊並推進賽季進度。');
- if(cpu)cpu.onclick=()=>showGameModeComingSoon('打電腦','🤖','用目前排組和電腦進行自由練習。');
+ if(cpu)cpu.onclick=()=>showThreeInningModeInfo('打電腦','🤖','使用目前牌組與電腦進行三局制練習對戰。');
  if(room)room.onclick=()=>showGameModeComingSoon('房間','👥','建立房間或輸入房號，與好友進行對戰。');
- if(ranked)ranked.onclick=()=>showGameModeComingSoon('排位賽','🏆','與其他玩家競爭積分與賽季排名。');
- if(lineup)lineup.onclick=showLineupSettings
+ if(ranked)ranked.onclick=()=>showThreeInningModeInfo('排位賽','🏆','使用目前牌組進行三局制競技，爭取積分與賽季排名。');
+ if(lineup)lineup.onclick=()=>showLineupSettings(LINEUP_ACTIVE_DECK,'players',true)
 }
 async function requestGameEntry(){
  if(!PLAYER_TOKEN&&!IS_LOCAL_TEST)return;
@@ -1405,6 +1711,7 @@ async function loadOwnedURCards(){if(!PLAYER_TOKEN){UR_OWNED_CARDS=[];return []}
 function upsertOwnedURCard(card){if(!card)return;const c=normalizeURCard(card),i=UR_OWNED_CARDS.findIndex(x=>x.id===c.id);if(i>=0)UR_OWNED_CARDS[i]={...UR_OWNED_CARDS[i],...c,count:Math.max(Number(UR_OWNED_CARDS[i].count)||1,Number(c.count)||1)};else UR_OWNED_CARDS.push(c);cacheOwnedUR()}
 
 const PLAYER_API=SUPABASE_URL+'/functions/v1/game-player';
+const LINEUP_API=SUPABASE_URL+'/functions/v1/game-lineup';
 const GIFT_API=SUPABASE_URL+'/functions/v1/game-gift';
 const MESSAGE_API=SUPABASE_URL+'/functions/v1/game-message';
 let PLAYER_TOKEN=storage.getItem('cp_player_token')||'';
@@ -1415,6 +1722,10 @@ const STADIUM_AUDIO_KEY='cp_stadium_audio_enabled';
 const DRAW_SFX_KEY='cp_draw_sfx_enabled';
 let STADIUM_AUDIO={ctx:null,source:null,gain:null,filter:null,started:false,building:false,prepSource:null,prepGain:null,prepBuilding:false};
 let GAME_PREP_ACTIVE=false;
+const LINEUP_DECK_COUNT=5,LINEUP_STARTER_LIMIT=9,LINEUP_BENCH_LIMIT=3,LINEUP_CHEER_LIMIT=2;
+let LINEUP_DECKS=Array.from({length:LINEUP_DECK_COUNT},()=>({starters:[],bench:[],cheerCardIds:[]}));
+let LINEUP_DRAFTS=null,LINEUP_ACTIVE_DECK=1,LINEUP_EDIT_DECK=1,LINEUP_LOADED=false,LINEUP_DIRTY=new Set(),LINEUP_TAB='players';
+let PITCHER_SELECTION_TIMER=0,PITCHER_SELECTION_INTERVAL=0;
 let dmChannel=null,dmCurrentFriendId='',dmCurrentFriendName='';
 let DM_UNREAD_TOTAL=0,DM_BADGE_TIMER=0,DM_LIST_TIMER=0,DM_CHAT_TIMER=0;
 function getDeviceId(){let id=storage.getItem('cp_device_id');if(!id){id=(crypto.randomUUID?crypto.randomUUID():'device_'+Date.now()+'_'+Math.random().toString(36).slice(2));storage.setItem('cp_device_id',id)}return id}
@@ -1662,7 +1973,7 @@ async function restorePlayerSession(){if(!PLAYER_TOKEN){renderAuthGate('login');
 function queuePlayerProgressSave(){if(!PLAYER_READY||!PLAYER_TOKEN)return;clearTimeout(PLAYER_SYNC_TIMER);PLAYER_SYNC_TIMER=setTimeout(()=>{PLAYER_SYNC_TIMER=0;flushPlayerProgress().catch(()=>{})},650)}
 async function flushPlayerProgress(){if(!PLAYER_READY||!PLAYER_TOKEN||PLAYER_SYNC_BUSY)return;PLAYER_SYNC_BUSY=true;const progress=currentProgressPayload();cachePlayerProgress();try{await playerApi('save_progress',{progress})}finally{PLAYER_SYNC_BUSY=false}}
 function startHeartbeat(){clearInterval(HEARTBEAT_TIMER);if(!PLAYER_TOKEN)return;const beat=()=>{if(document.visibilityState!=='visible')return;playerApi('heartbeat').catch(()=>{});refreshFriendRequestBadge();refreshPrivateMessageBadge();if(!PLAYER_SYNC_BUSY&&!PLAYER_SYNC_TIMER)giftApi('sync_gifts').then(d=>{if(d?.progress)applyPlayerProgress(d.progress)}).catch(()=>{})};beat();HEARTBEAT_TIMER=setInterval(beat,60000)}
-async function logoutPlayer(){$('modal').innerHTML='';try{await flushPlayerProgress()}catch(e){}try{await playerApi('logout')}catch(e){}clearInterval(HEARTBEAT_TIMER);PLAYER_TOKEN='';PLAYER=null;PLAYER_READY=false;updateFriendRequestBadge(0);updateDmUnreadBadge(0);clearDmTimers();syncStadiumAudioState();storage.removeItem('cp_player_token');storage.removeItem('cp_player_cache');storage.removeItem('cp_player_progress_cache');const mini=$('playerMiniName');if(mini)mini.textContent='';gems=1000;owned=[];cardCounts={};pityByPool={permanent:0};UR_OWNED_CARDS=[];storage.removeItem('cp_ur_owned_cache');renderGems();renderAuthGate('login','已登出')}
+async function logoutPlayer(){$('modal').innerHTML='';try{await flushPlayerProgress()}catch(e){}try{await playerApi('logout')}catch(e){}clearInterval(HEARTBEAT_TIMER);PLAYER_TOKEN='';PLAYER=null;PLAYER_READY=false;updateFriendRequestBadge(0);updateDmUnreadBadge(0);clearDmTimers();syncStadiumAudioState();storage.removeItem('cp_player_token');storage.removeItem('cp_player_cache');storage.removeItem('cp_player_progress_cache');const mini=$('playerMiniName');if(mini)mini.textContent='';gems=1000;owned=[];cardCounts={};pityByPool={permanent:0};UR_OWNED_CARDS=[];LINEUP_DECKS=Array.from({length:5},()=>emptyV124Deck());LINEUP_DRAFTS=null;LINEUP_ACTIVE_DECK=1;LINEUP_EDIT_DECK=1;LINEUP_LOADED=false;LINEUP_DIRTY.clear();storage.removeItem('cp_ur_owned_cache');storage.removeItem(lineupCacheKey());clearPitcherSelectionTimer();renderGems();renderAuthGate('login','已登出')}
 function openSettings(){const modal=$('modal');modal.innerHTML=`<div class="modalBackdrop"><div class="modal settingsModal"><div class="modalHead"><div><h2 style="margin:0">⚙️ 設定</h2><div class="sub">遊戲與帳號設定</div></div><button class="small" id="settingsClose">✕</button></div><div class="settingsHero"><b>🎵 輕快大廳音樂</b><div class="sub" style="margin-top:4px">原創的輕快棒球遊戲風格配樂，會持續循環播放。</div></div><div class="settingsRow"><div class="settingsRowText"><b>背景音樂</b><small>音量已加強；關閉後不會播放大廳音樂。</small></div><label class="settingsSwitch"><input id="stadiumSoundToggle" type="checkbox" ${stadiumAudioEnabled()?'checked':''}><span></span></label></div><div class="settingsRow"><div class="settingsRowText"><b>抽卡音效</b><small>輪盤啟動、每張翻卡、卡牌拖曳、稀有度中獎與 UR 爆閃皆有獨立音效。</small></div><label class="settingsSwitch"><input id="drawSfxToggle" type="checkbox" ${drawSfxEnabled()?'checked':''}><span></span></label></div><button id="openAccountFromSettings" class="settingsSubBtn"><span><strong>👤 帳號資料維護</strong><small>修改遊戲名稱、密碼與登出帳號</small></span><span class="settingsArrow">›</span></button></div></div>`;$('settingsClose').onclick=()=>modal.innerHTML='';$('stadiumSoundToggle').onchange=e=>setStadiumAudioEnabled(!!e.target.checked);$('drawSfxToggle').onchange=e=>setDrawSfxEnabled(!!e.target.checked);$('openAccountFromSettings').onclick=openAccountMaintenance}
 async function openAccountMaintenance(){
  if(!PLAYER)return;
