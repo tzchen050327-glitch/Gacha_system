@@ -1,4 +1,4 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#5f3519"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"><title>棒球抽卡對戰｜PWA 雲端版</title><style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:linear-gradient(160deg,#10152d,#241348);color:#fff;min-height:100vh}.wrap{max-width:780px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}h1{margin:5px 0;font-size:30px}.sub{opacity:.7}.currency{background:#ffffff14;border:1px solid #ffffff20;border-radius:14px;padding:10px 14px;font-weight:700}.banner{margin-top:18px;border-radius:22px;padding:24px;background:linear-gradient(135deg,#3b237a,#b43c9a)}.banner h2{margin:0 0 6px}.rates{font-size:13px;opacity:.85}.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}button{border:0;border-radius:15px;padding:15px;font-size:17px;font-weight:800;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;background:#fff;color:#241348}.ten,.admin{background:#ffd84d}.small{padding:12px;font-size:15px;background:#ffffff18;color:#fff;border:1px solid #ffffff30}.notice{text-align:center;min-height:25px;color:#ffd84d;font-weight:700}.results{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.card{border-radius:18px;padding:12px;min-height:210px;background:#ffffff12;border:1px solid #ffffff20}.card img{width:100%;height:220px;object-fit:cover;border-radius:10px}.ssr{border-color:#ffd84d}.name{font-size:20px;font-weight:900}.modalBackdrop{position:fixed;inset:0;background:#000c;z-index:9999;display:flex;align-items:center;justify-content:center;padding:14px}.modal{width:min(800px,100%);max-height:92vh;overflow:auto;background:#17152b;border-radius:22px;padding:18px}.modalHead{display:flex;justify-content:space-between;align-items:center}.collection{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mini{padding:10px;border-radius:12px;background:#ffffff0b}.mini img{width:100%;height:170px;object-fit:cover;border-radius:10px}.locked{opacity:.4}.unknown{height:170px;display:flex;align-items:center;justify-content:center;font-size:50px}.adminList{display:grid;gap:12px}.editCard{display:grid;grid-template-columns:105px 1fr;gap:12px;padding:12px;background:#ffffff0a;border-radius:16px}.editCard>div:first-child{width:105px;height:140px;overflow:hidden}.editCard>div:first-child>img{display:block;width:105px;height:140px;object-fit:cover;border-radius:10px}.editCard>div:first-child>.unknown{width:105px;height:140px}.editFields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.editFields label{font-size:12px}.editFields input,.editFields select,.editFields textarea{display:block;width:100%;margin-top:4px;padding:9px;border-radius:9px;background:#100e20;color:#fff;border:1px solid #ffffff22}.editFields textarea{min-height:72px;resize:vertical}.editFields button{grid-column:1/-1}@media(max-width:520px){.collection{grid-template-columns:repeat(2,1fr)}.editCard{grid-template-columns:80px 1fr}.editCard>div:first-child{width:80px;height:110px}.editCard>div:first-child>img{width:80px;height:110px}.editCard>div:first-child>.unknown{width:80px;height:110px}.editFields{grid-template-columns:1fr}.results{grid-template-columns:1fr;display:none}}.drawOverlay{position:fixed;inset:0;z-index:20000;background:radial-gradient(circle at center,#3e2a7f 0%,#17152b 50%,#090814 100%);display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden}.drawOverlay.fadeOut{animation:drawFadeOut .38s ease forwards}.drawStage{position:relative;width:min(860px,100%);height:min(82vh,760px);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}.drawTitle{font-size:28px;font-weight:900;letter-spacing:.08em;text-shadow:0 4px 16px #0008}.drawSub{margin-top:8px;opacity:.85}.drawCore{position:relative;width:100%;height:360px;display:flex;align-items:center;justify-content:center}.drawBurst{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#fff8 0%,#ffe57e80 22%,#ffffff10 50%,transparent 72%);filter:blur(1px);animation:drawPulse 1.4s ease-in-out infinite}.drawPack{position:relative;width:210px;height:300px;border-radius:20px;background:linear-gradient(160deg,#182041,#472a9a 58%,#c63f95);box-shadow:0 18px 40px #0008;border:2px solid #ffffff44;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;animation:drawFloat 1.5s ease-in-out infinite}.drawPack::before{content:"";position:absolute;inset:10px;border-radius:16px;border:1px solid #ffffff30}.drawPack::after{content:"⚾";font-size:72px;filter:drop-shadow(0 6px 14px #0008)}.drawPack.opening{animation:drawOpen .72s ease forwards}.drawShine{position:absolute;width:110px;height:380px;background:linear-gradient(90deg,transparent,#ffffff80,transparent);transform:translateX(-260px) rotate(18deg);animation:drawShine 1.2s ease-in-out infinite}.drawRing{position:absolute;width:330px;height:330px;border-radius:50%;border:2px solid #ffffff24;animation:spinRing 10s linear infinite}.drawRing::before,.drawRing::after{content:"";position:absolute;inset:20px;border-radius:50%;border:1px dashed #ffd84d55}.drawMiniWrap{position:absolute;inset:0;pointer-events:none}.drawMini{position:absolute;width:82px;height:116px;border-radius:12px;background:linear-gradient(150deg,#ffffff22,#ffffff08);border:1px solid #ffffff22;box-shadow:0 10px 22px #0006}.drawMini::before{content:"";position:absolute;inset:8px;border-radius:8px;background:linear-gradient(150deg,#10152d,#5130a7 60%,#bf3f91)}.drawMini::after{content:"⚾";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px}.drawMini.fly{animation:miniFly 1.4s ease-in-out infinite}.drawFlash{position:absolute;inset:0;background:radial-gradient(circle,#ffffff 0%,#ffffffd0 10%,#ffe06570 24%,transparent 45%);opacity:0;pointer-events:none}.drawFlash.on{animation:flashPop .7s ease forwards}.drawRevealPanel{margin-top:18px;min-height:80px;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center}.drawRevealRarity{font-size:34px;font-weight:900;letter-spacing:.12em;text-shadow:0 0 18px #ffd84d88}.drawRevealName{font-size:20px;font-weight:800}.drawRevealMulti{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;width:min(560px,100%);margin-top:6px}.drawRevealBadge{padding:12px 8px;border-radius:14px;background:#ffffff12;border:1px solid #ffffff1f;opacity:0;transform:translateY(10px) scale(.96)}.drawRevealBadge.show{animation:badgeIn .38s ease forwards}.drawSkip{margin-top:18px;padding:10px 18px;border-radius:999px;border:1px solid #ffffff33;background:#ffffff10;color:#fff;font-weight:800;cursor:pointer}.drawRarity-SSR{color:#ffd84d}.drawRarity-SR{color:#ff9fe2}.drawRarity-R{color:#8fd2ff}.drawRarity-N{color:#ffffff}.animLock{pointer-events:none;opacity:.78}@keyframes drawFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}@keyframes drawPulse{0%,100%{transform:scale(.92);opacity:.55}50%{transform:scale(1.08);opacity:1}}@keyframes drawOpen{0%{transform:scale(1) rotateY(0)}35%{transform:scale(1.06) rotateY(-8deg)}100%{transform:scale(1.24) rotateY(12deg);opacity:0}}@keyframes drawFadeOut{to{opacity:0;transform:scale(1.03)}}@keyframes drawShine{0%{transform:translateX(-280px) rotate(18deg)}100%{transform:translateX(280px) rotate(18deg)}}@keyframes spinRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes miniFly{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.04)}}@keyframes flashPop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}@keyframes badgeIn{to{opacity:1;transform:translateY(0) scale(1)}}@media(max-width:700px){.drawTitle{font-size:24px}.drawCore{height:300px}.drawPack{width:170px;height:245px}.drawMini{width:58px;height:82px}.drawRevealMulti{grid-template-columns:repeat(2,1fr)}}
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover"><meta name="theme-color" content="#5f3519"><link rel="manifest" href="./manifest.webmanifest"><link rel="icon" href="./icon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="./icon-192.png"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="black"><title>棒球抽卡對戰｜PWA 雲端版</title><style>*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif;background:linear-gradient(160deg,#10152d,#241348);color:#fff;min-height:100vh}.wrap{max-width:780px;margin:auto;padding:18px}.top{display:flex;justify-content:space-between;align-items:center;gap:10px}h1{margin:5px 0;font-size:30px}.sub{opacity:.7}.currency{background:#ffffff14;border:1px solid #ffffff20;border-radius:14px;padding:10px 14px;font-weight:700}.banner{margin-top:18px;border-radius:22px;padding:24px;background:linear-gradient(135deg,#3b237a,#b43c9a)}.banner h2{margin:0 0 6px}.rates{font-size:13px;opacity:.85}.actions{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:15px 0}button{border:0;border-radius:15px;padding:15px;font-size:17px;font-weight:800;cursor:pointer;touch-action:manipulation;-webkit-tap-highlight-color:transparent;background:#fff;color:#241348}.ten,.admin{background:#ffd84d}.small{padding:12px;font-size:15px;background:#ffffff18;color:#fff;border:1px solid #ffffff30}.notice{text-align:center;min-height:25px;color:#ffd84d;font-weight:700}.results{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.card{border-radius:18px;padding:12px;min-height:210px;background:#ffffff12;border:1px solid #ffffff20}.card img{width:100%;height:220px;object-fit:cover;border-radius:10px}.ssr{border-color:#ffd84d}.name{font-size:20px;font-weight:900}.modalBackdrop{position:fixed;inset:0;background:#000c;z-index:9999;display:flex;align-items:center;justify-content:center;padding:14px}.modal{width:min(800px,100%);max-height:92vh;overflow:auto;background:#17152b;border-radius:22px;padding:18px}.modalHead{display:flex;justify-content:space-between;align-items:center}.collection{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.mini{padding:10px;border-radius:12px;background:#ffffff0b}.mini img{width:100%;height:170px;object-fit:cover;border-radius:10px}.locked{opacity:.4}.unknown{height:170px;display:flex;align-items:center;justify-content:center;font-size:50px}.adminList{display:grid;gap:12px}.editCard{display:grid;grid-template-columns:105px 1fr;gap:12px;padding:12px;background:#ffffff0a;border-radius:16px}.editCard>div:first-child{width:105px;height:140px;overflow:hidden}.editCard>div:first-child>img{display:block;width:105px;height:140px;object-fit:cover;border-radius:10px}.editCard>div:first-child>.unknown{width:105px;height:140px}.editFields{display:grid;grid-template-columns:1fr 1fr;gap:8px}.editFields label{font-size:12px}.editFields input,.editFields select,.editFields textarea{display:block;width:100%;margin-top:4px;padding:9px;border-radius:9px;background:#100e20;color:#fff;border:1px solid #ffffff22}.editFields textarea{min-height:72px;resize:vertical}.editFields button{grid-column:1/-1}@media(max-width:520px){.collection{grid-template-columns:repeat(2,1fr)}.editCard{grid-template-columns:80px 1fr}.editCard>div:first-child{width:80px;height:110px}.editCard>div:first-child>img{width:80px;height:110px}.editCard>div:first-child>.unknown{width:80px;height:110px}.editFields{grid-template-columns:1fr}.results{grid-template-columns:1fr;display:none}}.drawOverlay{position:fixed;inset:0;z-index:20000;background:radial-gradient(circle at center,#3e2a7f 0%,#17152b 50%,#090814 100%);display:flex;align-items:center;justify-content:center;padding:20px;overflow:hidden}.drawOverlay.fadeOut{animation:drawFadeOut .38s ease forwards}.drawStage{position:relative;width:min(860px,100%);height:min(82vh,760px);display:flex;align-items:center;justify-content:center;flex-direction:column;text-align:center}.drawTitle{font-size:28px;font-weight:900;letter-spacing:.08em;text-shadow:0 4px 16px #0008}.drawSub{margin-top:8px;opacity:.85}.drawCore{position:relative;width:100%;height:360px;display:flex;align-items:center;justify-content:center}.drawBurst{position:absolute;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,#fff8 0%,#ffe57e80 22%,#ffffff10 50%,transparent 72%);filter:blur(1px);animation:drawPulse 1.4s ease-in-out infinite}.drawPack{position:relative;width:210px;height:300px;border-radius:20px;background:linear-gradient(160deg,#182041,#472a9a 58%,#c63f95);box-shadow:0 18px 40px #0008;border:2px solid #ffffff44;display:flex;align-items:center;justify-content:center;transform-style:preserve-3d;animation:drawFloat 1.5s ease-in-out infinite}.drawPack::before{content:"";position:absolute;inset:10px;border-radius:16px;border:1px solid #ffffff30}.drawPack::after{content:"⚾";font-size:72px;filter:drop-shadow(0 6px 14px #0008)}.drawPack.opening{animation:drawOpen .72s ease forwards}.drawShine{position:absolute;width:110px;height:380px;background:linear-gradient(90deg,transparent,#ffffff80,transparent);transform:translateX(-260px) rotate(18deg);animation:drawShine 1.2s ease-in-out infinite}.drawRing{position:absolute;width:330px;height:330px;border-radius:50%;border:2px solid #ffffff24;animation:spinRing 10s linear infinite}.drawRing::before,.drawRing::after{content:"";position:absolute;inset:20px;border-radius:50%;border:1px dashed #ffd84d55}.drawMiniWrap{position:absolute;inset:0;pointer-events:none}.drawMini{position:absolute;width:82px;height:116px;border-radius:12px;background:linear-gradient(150deg,#ffffff22,#ffffff08);border:1px solid #ffffff22;box-shadow:0 10px 22px #0006}.drawMini::before{content:"";position:absolute;inset:8px;border-radius:8px;background:linear-gradient(150deg,#10152d,#5130a7 60%,#bf3f91)}.drawMini::after{content:"⚾";position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:28px}.drawMini.fly{animation:miniFly 1.4s ease-in-out infinite}.drawFlash{position:absolute;inset:0;background:radial-gradient(circle,#ffffff 0%,#ffffffd0 10%,#ffe06570 24%,transparent 45%);opacity:0;pointer-events:none}.drawFlash.on{animation:flashPop .7s ease forwards}.drawRevealPanel{margin-top:18px;min-height:80px;display:flex;flex-direction:column;gap:8px;align-items:center;justify-content:center}.drawRevealRarity{font-size:34px;font-weight:900;letter-spacing:.12em;text-shadow:0 0 18px #ffd84d88}.drawRevealName{font-size:20px;font-weight:800}.drawRevealMulti{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;width:min(560px,100%);margin-top:6px}.drawRevealBadge{padding:12px 8px;border-radius:14px;background:#ffffff12;border:1px solid #ffffff1f;opacity:0;transform:translateY(10px) scale(.96)}.drawRevealBadge.show{animation:badgeIn .38s ease forwards}.drawSkip{margin-top:18px;padding:10px 18px;border-radius:999px;border:1px solid #ffffff33;background:#ffffff10;color:#fff;font-weight:800;cursor:pointer}.drawRarity-SSR{color:#ffd84d}.drawRarity-SR{color:#ff9fe2}.drawRarity-R{color:#8fd2ff}.drawRarity-N{color:#ffffff}.animLock{pointer-events:none;opacity:.78}@keyframes drawFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-12px)}}@keyframes drawPulse{0%,100%{transform:scale(.92);opacity:.55}50%{transform:scale(1.08);opacity:1}}@keyframes drawOpen{0%{transform:scale(1) rotateY(0)}35%{transform:scale(1.06) rotateY(-8deg)}100%{transform:scale(1.24) rotateY(12deg);opacity:0}}@keyframes drawFadeOut{to{opacity:0;transform:scale(1.03)}}@keyframes drawShine{0%{transform:translateX(-280px) rotate(18deg)}100%{transform:translateX(280px) rotate(18deg)}}@keyframes spinRing{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}@keyframes miniFly{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.04)}}@keyframes flashPop{0%{opacity:0}18%{opacity:1}100%{opacity:0}}@keyframes badgeIn{to{opacity:1;transform:translateY(0) scale(1)}}@media(max-width:700px){.drawTitle{font-size:24px}.drawCore{height:300px}.drawPack{width:170px;height:245px}.drawMini{width:58px;height:82px}.drawRevealMulti{grid-template-columns:repeat(2,1fr)}}
 .drawOverlay{position:fixed;inset:0;z-index:20000;background:radial-gradient(circle at center,#31185c 0%,#151226 48%,#07060d 100%);display:flex;align-items:center;justify-content:center;padding:18px;overflow:hidden}.drawOverlay.fadeOut{animation:drawFadeOut .32s ease forwards}
 .drawOverlay.drawHandoffWaiting .drawStage{filter:saturate(.8) brightness(.88)}
 .drawOverlay.drawHandoffWaiting .drawActionRow button{pointer-events:none;opacity:.55}
@@ -233,7 +233,7 @@ body{background:radial-gradient(circle at top,#2a1a55 0%,#14162d 36%,#080a14 100
 
 
 
-/* v1.20：木製棒球大廳、好友通知、設定與球場環境音 */
+/* v1.21：木製棒球大廳、好友通知、設定與球場環境音 */
 .lobbyWrap{max-width:780px;padding:12px 12px 26px}
 .lobbyWood{position:relative;overflow:hidden;border-radius:26px;padding:16px 14px 22px;border:1px solid #d9a85b66;box-shadow:0 24px 70px #0009, inset 0 0 0 1px #fff1;background:
  linear-gradient(180deg,#0003,#0006),
@@ -263,7 +263,7 @@ body{background:radial-gradient(circle at top,#2a1a55 0%,#14162d 36%,#080a14 100
 
 
 
-/* v1.20：9:16 主視覺大廳 + 登入同主視覺 + 好友私訊 */
+/* v1.21：9:16 主視覺大廳 + 登入同主視覺 + 好友私訊 */
 html,body{height:100%;overflow:hidden}
 body{
  display:flex;align-items:center;justify-content:center;
@@ -378,7 +378,7 @@ body::before{
 
 
 
-/* v1.20 修正版：私訊列表 / 未讀 / 輕快 BGM */
+/* v1.21 修正版：私訊列表 / 未讀 / 輕快 BGM */
 .dmUnreadBadge{position:absolute;left:-6px;top:-7px;min-width:24px;height:24px;padding:0 6px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:#ff3150;color:#fff;border:2px solid #fff;font-size:11px;font-weight:1000;box-shadow:0 4px 10px #0008;z-index:4}.dmUnreadBadge[hidden]{display:none!important}
 .chatListModal{max-width:500px;max-height:min(88dvh,760px);display:flex;flex-direction:column}.chatListHeadActions{display:flex;gap:6px}.chatListSummary{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 12px;margin:10px 0;border-radius:13px;background:#ffffff08;border:1px solid #ffffff13}.chatListSummary strong{color:#ffd84d}.chatList{display:grid;gap:8px;overflow:auto;min-height:180px;max-height:min(58dvh,500px);padding:2px}.chatListRow{position:relative;display:grid;grid-template-columns:44px 1fr auto;gap:10px;align-items:center;padding:10px 11px;border-radius:14px;background:#ffffff09;border:1px solid #ffffff14;cursor:pointer;touch-action:manipulation}.chatListRow:active{transform:translateY(1px)}.chatAvatar{width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:linear-gradient(180deg,#2c6f9e,#183d5b);border:1px solid #8fe4ff45;font-size:22px;box-shadow:0 5px 12px #0005}.chatListMain{min-width:0}.chatListName{display:flex;align-items:center;gap:7px;font-weight:950}.chatListPreview{margin-top:4px;font-size:11px;color:#ffffff83;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.chatListMeta{text-align:right;min-width:42px}.chatListTime{font-size:9px;color:#ffffff5f}.chatUnread{display:inline-flex;align-items:center;justify-content:center;margin-top:5px;min-width:22px;height:22px;padding:0 6px;border-radius:999px;background:#ff3150;color:#fff;font-size:10px;font-weight:1000}.chatListEmpty{padding:28px 12px;text-align:center;color:#ffffff66}.chatListHint{margin-top:8px;text-align:center;font-size:10px;color:#ffffff5d}.friendManageBack{background:#1a4268!important;color:#e7f8ff!important;border:1px solid #78d6ff42!important}.dmBackBtn{background:#1a4268!important;color:#e7f8ff!important;border:1px solid #78d6ff42!important}
 .dmModal .modalHead{flex:0 0 auto}.dmMessages{max-height:none;min-height:0;flex:1}.dmModal{height:min(82dvh,680px)}
@@ -386,7 +386,7 @@ body::before{
 
 
 
-/* v1.20 UI tweak: top header + dock buttons */
+/* v1.21 UI tweak: top header + dock buttons */
 .lobbyBrandRow{display:block!important;padding:4px 2px 8px!important}
 .lobbyTopInfo{display:grid;gap:6px}
 .lobbyTitleRow{display:grid;grid-template-columns:1fr auto;align-items:start;gap:10px}
@@ -415,14 +415,14 @@ body::before{
 }
 
 
-/* v1.20 私訊訊息框高度修正 */
+/* v1.21 私訊訊息框高度修正 */
 .dmMessages{align-content:start!important;grid-auto-rows:max-content!important}
 .dmRow{align-self:start!important;align-items:flex-start!important;min-height:0!important}
 .dmBubble{height:auto!important;min-height:0!important;align-self:flex-start!important}
 
 
 
-/* v1.20：僅修正手機聊天室上下安全高度（不改主頁） */
+/* v1.21：僅修正手機聊天室上下安全高度（不改主頁） */
 @media (max-width:520px){
   .dmModal,
   .chatListModal,
@@ -462,7 +462,7 @@ body::before{
 }
 
 
-/* v1.20：手機私人聊天室訊息泡泡高度強制依文字內容 */
+/* v1.21：手機私人聊天室訊息泡泡高度強制依文字內容 */
 .dmMessages{
   display:flex!important;
   flex-direction:column!important;
@@ -515,7 +515,7 @@ body::before{
 
 
 
-/* v1.20：隱藏 UR 系統 / 銀曜演出 */
+/* v1.21：隱藏 UR 系統 / 銀曜演出 */
 .drawRarity-UR{color:#f7fbff;text-shadow:0 0 8px #fff,0 0 18px #cbd6e7,0 0 34px #8fa0b8}
 .drawStage.effect-UR .drawAura{background:radial-gradient(circle,#ffffffee 0%,#dce5f2aa 19%,#9da9ba55 38%,transparent 70%);filter:blur(3px)}
 .drawStage.effect-UR .drawFlipScene{box-shadow:0 0 0 2px #fff,0 0 30px #fff,0 0 78px #b9c7d9}
@@ -547,7 +547,228 @@ body::before{
 @keyframes urCardRise{0%{opacity:0;transform:translateY(26px) scale(.88)}100%{opacity:1;transform:translateY(0) scale(1)}}
 @media(max-width:520px){.urActionGrid{grid-template-columns:1fr}.urCardGrid{grid-template-columns:1fr}.urEditorGrid{grid-template-columns:1fr}.urEditorFull{grid-column:auto}.urShowcaseRarity{font-size:36px}}
 
-</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script></head><body><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow"><h1>⚾ 棒球抽卡對戰</h1><button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定">⚙️</button></div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section class="homePoolCarousel lobbyPoolCarousel" aria-label="卡池輪播"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div></section><div id="notice" class="notice lobbyNotice"></div><div class="lobbyMenuGrid"><button id="collection" class="lobbyMenuBtn"><span class="lobbyIcon">📖</span><span>我的圖鑑</span></button><button id="drawMenu" class="lobbyMenuBtn"><span class="lobbyIcon">🎴</span><span>抽獎系統</span></button><button id="daily" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>每日登入<br>+1500 鑽</span></button><button id="giftBtn" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>贈送</span></button></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button"><span class="battleBall">⚾</span><span>對戰</span><small>COMING SOON</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div></div></div><div id="modal"></div><div id="authGate" class="authGate"></div><div class="appVersion" id="appVersion">v1.20</div><script>
+
+/* v1.21：管理員球員卡圖鑑式編輯 + iOS 安全區 */
+:root{
+ --safe-top:env(safe-area-inset-top,0px);
+ --safe-bottom:env(safe-area-inset-bottom,0px);
+ --safe-left:env(safe-area-inset-left,0px);
+ --safe-right:env(safe-area-inset-right,0px);
+}
+html,body{min-height:100%;min-height:100dvh}
+@supports(padding:max(0px)){
+ .modalBackdrop,.drawOverlay,.authGate,.urShowcaseOverlay,.playerInfoBackdrop,.bondStatusBackdrop{
+  padding-top:max(10px,calc(var(--safe-top) + 8px))!important;
+  padding-bottom:max(10px,calc(var(--safe-bottom) + 8px))!important;
+  padding-left:max(10px,calc(var(--safe-left) + 8px))!important;
+  padding-right:max(10px,calc(var(--safe-right) + 8px))!important;
+ }
+}
+.modal{max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 20px)}
+.drawStage{max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 20px)!important}
+.wrap.lobbyWrap{
+ height:min(calc(100dvh - var(--safe-top) - var(--safe-bottom)),calc(100vw*16/9));
+ margin-top:var(--safe-top);
+ margin-bottom:var(--safe-bottom);
+}
+.appVersion{bottom:calc(8px + var(--safe-bottom))!important}
+
+.adminCardManagerModal{
+ width:min(620px,100%);
+ height:min(94dvh,780px);
+ max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 20px)!important;
+ display:flex;
+ flex-direction:column;
+ overflow:hidden!important;
+}
+.adminCardManagerModal>.modalHead{flex:0 0 auto}
+.adminCardManagerTopActions{display:flex;gap:7px;margin-top:7px}
+.adminCardManagerTopActions button{flex:1;padding:10px!important;font-size:13px!important}
+.adminCardRarityTabs{flex:0 0 auto;margin:8px 0 7px!important}
+.adminCardManagerNotice{
+ flex:0 0 auto;
+ min-height:18px;
+ margin:0 0 5px;
+ font-size:11px;
+}
+.adminCardGallery{flex:1;min-height:0;display:flex;flex-direction:column;overflow:hidden}
+.adminCardRail{
+ flex:1;
+ min-height:0;
+ display:flex;
+ gap:12px;
+ overflow-x:auto;
+ scroll-snap-type:x mandatory;
+ scroll-behavior:smooth;
+ -webkit-overflow-scrolling:touch;
+ scrollbar-width:none;
+ overscroll-behavior-x:contain;
+ padding:3px 6% 6px;
+}
+.adminCardRail::-webkit-scrollbar{display:none}
+.adminCardEditorSlide{
+ flex:0 0 92%;
+ height:100%;
+ min-height:0;
+ overflow-y:auto;
+ overscroll-behavior-y:contain;
+ scroll-snap-align:center;
+ scroll-snap-stop:always;
+ border-radius:18px;
+ border:1px solid #ffffff25;
+ background:linear-gradient(180deg,#f4e7bd 0,#fff6d7 31%,#191716 31%,#0c0c0d 100%);
+ box-shadow:0 12px 28px #0007;
+ color:#fff;
+}
+.adminCardEditorSlide.rarity-SSR{border-color:#ffd84d88}
+.adminCardEditorSlide.rarity-SR{border-color:#b46cff88}
+.adminCardEditorSlide.rarity-R{border-color:#65a9ff77}
+.adminCardEditorSlide.rarity-N{border-color:#ffffff44}
+.adminCardSlideTitle{
+ position:sticky;
+ top:0;
+ z-index:4;
+ padding:8px 10px;
+ background:#080808f2;
+ backdrop-filter:blur(7px);
+ text-align:center;
+ font-size:15px;
+ font-weight:950;
+ white-space:nowrap;
+ overflow:hidden;
+ text-overflow:ellipsis;
+ border-bottom:1px solid #ffffff14;
+}
+.adminCardSlideHero{
+ position:relative;
+ height:clamp(150px,27dvh,210px);
+ padding:8px 14px;
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ background:linear-gradient(180deg,#fffdf4,#f1d98a);
+}
+.adminCardSlideHero img{
+ display:block;
+ height:100%;
+ max-width:100%;
+ aspect-ratio:3/4;
+ object-fit:cover;
+ border-radius:10px;
+ border:1.2mm solid #fff;
+ box-shadow:0 8px 18px #0005;
+ background:#ddd;
+}
+.adminCardSlideHero.rarity-SSR img{border-color:#ffd84d}
+.adminCardSlideHero.rarity-SR img{border-color:#a855f7}
+.adminCardSlideHero.rarity-R img{border-color:#3b82f6}
+.adminCardSlideHero .unknown{
+ height:100%;
+ aspect-ratio:3/4;
+ width:auto;
+ max-width:75%;
+ border-radius:10px;
+ background:linear-gradient(145deg,#25263a,#11111a);
+ display:flex;
+ align-items:center;
+ justify-content:center;
+ font-size:48px;
+ color:#ffffff70;
+ border:2px solid #ffffff44;
+}
+.adminCardSlideFields{
+ display:grid;
+ grid-template-columns:1fr 1fr;
+ gap:7px;
+ padding:9px 10px 3px;
+ background:#111214;
+}
+.adminCardSlideFields label{font-size:10px;color:#ffffffbb;min-width:0}
+.adminCardSlideFields input,.adminCardSlideFields select,.adminCardSlideFields textarea{
+ display:block;
+ width:100%;
+ margin-top:4px;
+ padding:8px 9px;
+ border-radius:9px;
+ background:#090b10;
+ color:#fff;
+ border:1px solid #ffffff22;
+ font-size:12px;
+}
+.adminCardSlideFields textarea{min-height:62px;resize:vertical}
+.adminCardSlideFull{grid-column:1/-1}
+.adminCardImageLabel{grid-column:1/-1}
+.adminCardSlideFields .cardPoolChooser{grid-column:1/-1;margin-top:2px}
+.adminCardSlideFields .cardPoolOptions{max-height:116px;overflow:auto}
+.adminCardSlideActions{
+ position:sticky;
+ bottom:0;
+ z-index:5;
+ display:grid;
+ grid-template-columns:1fr auto;
+ gap:7px;
+ padding:8px 10px 10px;
+ background:linear-gradient(180deg,#111214e8,#090a0df8 35%);
+ border-top:1px solid #ffffff13;
+}
+.adminCardSlideActions button{padding:10px!important;font-size:12px!important}
+.adminCardSlideNotice{
+ grid-column:1/-1;
+ min-height:14px;
+ margin:0;
+ text-align:center;
+ color:#ffd84d;
+ font-size:10px;
+ font-weight:850;
+}
+.adminCardManagerNav{flex:0 0 auto;display:flex;justify-content:center;align-items:center;gap:10px;padding-top:4px}
+.adminCardManagerNav button{
+ width:38px;height:34px;padding:0!important;border-radius:999px!important;
+ background:#ffffff14!important;color:#fff!important;border:1px solid #ffffff2b!important
+}
+.adminCardManagerPage{min-width:70px;text-align:center;font-size:11px;color:#ffffffbb;font-weight:900}
+.adminCardEmpty{
+ margin:auto;
+ padding:26px 16px;
+ text-align:center;
+ color:#ffffff88;
+ border:1px dashed #ffffff2b;
+ border-radius:15px;
+ width:88%;
+}
+.adminNewCardModal{max-width:560px}
+.adminNewCardModal .adminCardEditorSlide{width:100%;height:auto;max-height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 80px);flex:none}
+@media(max-width:520px){
+ .wrap.lobbyWrap{
+  width:100vw!important;
+  height:calc(100dvh - var(--safe-top) - var(--safe-bottom))!important;
+  margin-top:var(--safe-top)!important;
+  margin-bottom:var(--safe-bottom)!important;
+ }
+ .adminCardManagerModal{height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 12px);padding:9px;border-radius:16px}
+ .adminCardManagerModal .modalHead h2{font-size:19px;margin:0}
+ .adminCardManagerModal .modalHead .sub{font-size:10px}
+ .adminCardRarityTabs{min-height:38px!important}
+ .adminCardRarityTabs .collectionRarityTab{padding:6px 3px!important}
+ .adminCardRarityTabs .collectionRarityTab.active{font-size:13px!important}
+ .adminCardRail{padding:2px 4% 5px;gap:9px}
+ .adminCardEditorSlide{flex-basis:94%}
+ .adminCardSlideHero{height:clamp(140px,25dvh,185px)}
+ .adminCardSlideFields{grid-template-columns:1fr 1fr;padding:8px}
+ .adminCardSlideFields input,.adminCardSlideFields select,.adminCardSlideFields textarea{font-size:11px;padding:7px}
+ .adminCardSlideActions{padding:7px 8px 9px}
+}
+
+</style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<style id="v121-ios-final">
+@media(max-width:520px){
+ .drawOverlay{padding-top:calc(8px + var(--safe-top))!important;padding-bottom:calc(8px + var(--safe-bottom))!important}
+ .drawStage{height:calc(100dvh - var(--safe-top) - var(--safe-bottom) - 16px)!important;max-height:none!important}
+ .authGate{padding-top:calc(14px + var(--safe-top))!important;padding-bottom:calc(14px + var(--safe-bottom))!important}
+ .modalBackdrop{padding-top:calc(6px + var(--safe-top))!important;padding-bottom:calc(6px + var(--safe-bottom))!important}
+}
+</style>
+</head><body><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow"><h1>⚾ 棒球抽卡對戰</h1><button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定">⚙️</button></div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section class="homePoolCarousel lobbyPoolCarousel" aria-label="卡池輪播"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div></section><div id="notice" class="notice lobbyNotice"></div><div class="lobbyMenuGrid"><button id="collection" class="lobbyMenuBtn"><span class="lobbyIcon">📖</span><span>我的圖鑑</span></button><button id="drawMenu" class="lobbyMenuBtn"><span class="lobbyIcon">🎴</span><span>抽獎系統</span></button><button id="daily" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>每日登入<br>+1500 鑽</span></button><button id="giftBtn" class="lobbyMenuBtn"><span class="lobbyIcon">🎁</span><span>贈送</span></button></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button"><span class="battleBall">⚾</span><span>對戰</span><small>COMING SOON</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div></div></div><div id="modal"></div><div id="authGate" class="authGate"></div><div class="appVersion" id="appVersion">v1.21</div><script>
 const storage=(()=>{const memory={};try{const ls=window.localStorage;const t="__cp_test__";ls.setItem(t,"1");ls.removeItem(t);return{getItem:k=>ls.getItem(k),setItem:(k,v)=>ls.setItem(k,String(v)),removeItem:k=>ls.removeItem(k)}}catch(e){return{getItem:k=>Object.prototype.hasOwnProperty.call(memory,k)?memory[k]:null,setItem:(k,v)=>{memory[k]=String(v)},removeItem:k=>{delete memory[k]}}}})();
 const cardDB=(()=>{let dbPromise;function open(){if(!('indexedDB' in window))return Promise.reject(new Error('IndexedDB unavailable'));if(dbPromise)return dbPromise;dbPromise=new Promise((resolve,reject)=>{const req=indexedDB.open('cp_cardgame_test_db',1);req.onupgradeneeded=()=>{const db=req.result;if(!db.objectStoreNames.contains('cards'))db.createObjectStore('cards',{keyPath:'id'})};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error||new Error('無法開啟卡牌資料庫'))});return dbPromise}async function get(){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('cards','readonly'),st=tx.objectStore('cards'),req=st.get('all');req.onsuccess=()=>resolve(req.result?.data||null);req.onerror=()=>reject(req.error)})}async function set(cards){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('cards','readwrite');tx.objectStore('cards').put({id:'all',data:cards});tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error||new Error('卡牌儲存失敗'))})}async function clear(){const db=await open();return new Promise((resolve,reject)=>{const tx=db.transaction('cards','readwrite');tx.objectStore('cards').clear();tx.oncomplete=()=>resolve();tx.onerror=()=>reject(tx.error)})}return{get,set,clear}})();
 const uid=()=>crypto.randomUUID?crypto.randomUUID():'card_'+Date.now().toString(36)+'_'+Math.random().toString(36).slice(2);
@@ -1364,7 +1585,18 @@ function openImageCropper(file){
 }
 async function handleImageFileSelection(i){
  const input=$('editImageFile_'+i),file=input?.files?.[0];if(!file)return;
- try{const blob=await openImageCropper(file);if(!blob){input.value='';return}pendingCardImages.set(i,blob);const old=pendingCardPreviewUrls.get(i);if(old)URL.revokeObjectURL(old);const url=URL.createObjectURL(blob);pendingCardPreviewUrls.set(i,url);const preview=document.querySelector('.adminEditorPreview');if(preview)preview.innerHTML=`<img src="${url}" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`;const n=$('adminNotice');if(n)n.textContent='🖼️ 圖片已裁切，按「儲存卡牌」才會正式保存'}catch(e){input.value='';const n=$('adminNotice');if(n)n.textContent='❌ '+(e.message||e)}
+ try{
+  const blob=await openImageCropper(file);if(!blob){input.value='';return}
+  pendingCardImages.set(i,blob);
+  const old=pendingCardPreviewUrls.get(i);if(old)URL.revokeObjectURL(old);
+  const url=URL.createObjectURL(blob);pendingCardPreviewUrls.set(i,url);
+  const preview=$('adminEditorPreview_'+i)||document.querySelector('.adminEditorPreview');
+  if(preview)preview.innerHTML=`<img src="${url}" style="width:100%;height:100%;object-fit:cover;border-radius:10px">`;
+  const n=$('adminNotice_'+i)||$('adminNotice');if(n)n.textContent='🖼️ 圖片已裁切，按「儲存」才會正式保存'
+ }catch(e){
+  input.value='';
+  const n=$('adminNotice_'+i)||$('adminNotice');if(n)n.textContent='❌ '+(e.message||e)
+ }
 }
 async function getUploadedImageData(i){
  let blob=pendingCardImages.get(i)||null;
@@ -1390,9 +1622,34 @@ async function adminLogin(){
  if(!IS_LOCAL_TEST){if(await currentURAdmin()){showURAdmin();return}if(await currentAdmin()){showAdmin();return}}
  const modal=$('modal');modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:430px"><div class="modalHead"><div><h2>🔐 管理權限登入</h2><div class="sub">輸入管理密碼</div></div><button class="small" id="adminClose">✕</button></div><label style="display:block;margin-top:10px">管理密碼<input id="adminPassword" type="password" autocomplete="current-password" style="display:block;width:100%;margin-top:6px;padding:12px;border-radius:10px;background:#100e20;color:#fff;border:1px solid #ffffff22"></label><button id="adminLogin" class="admin" style="width:100%;margin-top:14px">登入</button><div id="adminError" class="notice"></div></div></div>`;$('adminClose').onclick=()=>modal.innerHTML='';const enter=async()=>{const password=$('adminPassword').value;if(!password){$('adminError').textContent='❌ 請輸入管理密碼';return}$('adminLogin').disabled=true;$('adminError').textContent='驗證中…';try{const u=await urApi('login',{password});UR_ADMIN_TOKEN=u.token||'';if(!UR_ADMIN_TOKEN)throw new Error('未取得最高權限');sessionStorage.setItem('cp_ur_admin_token',UR_ADMIN_TOKEN);showURAdmin();return}catch(urErr){if(IS_LOCAL_TEST){showAdmin();return}try{const data=await adminApi('login',{password});adminToken=data.token||'';if(!adminToken)throw new Error('未取得管理員權限');sessionStorage.setItem('cp_admin_token',adminToken);showAdmin();return}catch(adminErr){$('adminError').textContent='❌ 管理密碼錯誤';$('adminLogin').disabled=false}}};$('adminLogin').onclick=enter;$('adminPassword').onkeydown=e=>{if(e.key==='Enter')enter()};$('adminPassword').focus()
 }
-function adminCardTileHtml(c,i){const preview=c.image||'';return `<button class="adminCardTile openCardEdit" data-i="${i}">${preview?`<img src="${esc(preview)}" onerror="this.style.display='none'">`:'<div class="unknown">🖼️</div>'}<b>${esc(c.rarity)}｜${esc(c.name||'未命名卡牌')}</b><small>${esc(c.team||'未設定球隊')}｜${esc(normalizeCardPosition(c.position))}　⚔️${esc(c.power||0)}</small></button>`}
-function adminCardPoolOptions(c){const selected=cardPoolIds(c.id)[0]||'';const src=ADMIN_POOLS.length?ADMIN_POOLS:POOLS;if(!src.length)return '<div class="sub" style="margin-top:7px">目前沒有可設定的卡池</div>';return `<div class="cardPoolOptions">${src.map(p=>`<label class="cardPoolOption"><input class="cardPoolCheck" name="cardPoolPick" type="radio" value="${esc(p.id)}" ${selected===p.id?'checked':''}><span>${esc(p.name)}${p.isActive===false?'<i>已關閉</i>':''}</span></label>`).join('')}</div>`}
-function adminCardEditorHtml(c,i,isNew=false){const preview=c.image||'';const key=String(i);return `<div class="adminEditor"><div class="modalHead"><div><h3>${isNew?'➕ 新增球員卡':'✏️ 編輯球員卡'}</h3><div class="sub">${isNew?'尚未建立｜按「儲存卡牌」後才會正式新增':'第 '+(Number(i)+1)+' 張'}</div></div><button class="small" id="backCardList">← 返回</button></div><div class="adminEditorTop"><div class="adminEditorPreview">${preview?`<img src="${esc(preview)}" onerror="this.style.display='none'">`:'<div class="unknown">🖼️</div>'}</div><div><b>${esc(c.rarity)}｜${esc(c.name||'未命名卡牌')}</b><div class="sub" style="margin-top:6px">${esc(c.team||'未設定球隊')}　⚔️${esc(c.power||0)}</div></div></div><div class="editFields"><label style="grid-column:1/-1">卡牌圖片<input id="editImageFile_${key}" type="file" accept="image/*"></label><label>名字<input id="name_${key}" value="${esc(c.name)}"></label><label>種類<input id="type_${key}" value="${esc(c.type)}"></label><label>守備位置<select id="position_${key}">${positionOptionsHtml(c.position)}</select><small id="positionCoeff_${key}" class="sub" style="display:block;margin-top:4px">${esc(positionCoefficientText(c.position))}</small></label><label>所屬球隊<input id="team_${key}" value="${esc(c.team)}"></label><label>稀有度<select id="rarity_${key}"><option ${c.rarity==='SSR'?'selected':''}>SSR</option><option ${c.rarity==='SR'?'selected':''}>SR</option><option ${c.rarity==='R'?'selected':''}>R</option><option ${c.rarity==='N'?'selected':''}>N</option></select></label><label>傷害 <small id="powerRange_${key}" class="sub">允許 ${esc(cardPowerRangeText(c.rarity))}</small><input id="power_${key}" type="number" min="${cardPowerRange(c.rarity)?.min??0}" max="${cardPowerRange(c.rarity)?.max??999999}" step="1" value="${normalizeCardPowerValue(c.rarity,c.power)}"></label><label style="grid-column:1/-1">介紹<textarea id="description_${key}">${esc(c.description)}</textarea></label><div class="cardPoolChooser"><div class="cardPoolChooserTitle"><span>🎰 所屬卡池</span><small>僅能選擇 1 個</small></div>${adminCardPoolOptions(c)}</div></div><div class="adminToolbar"><button class="admin" id="saveCurrentCard">💾 儲存卡牌</button>${isNew?'':'<button class="small" id="deleteCurrentCard">🗑️ 刪除卡牌</button>'}</div><div id="adminNotice" class="notice"></div></div>`}
+function adminCardPoolOptions(c,key=''){
+ const selected=cardPoolIds(c.id)[0]||'',src=ADMIN_POOLS.length?ADMIN_POOLS:POOLS,group='cardPoolPick_'+String(key);
+ if(!src.length)return '<div class="sub" style="margin-top:7px">目前沒有可設定的卡池</div>';
+ return `<div class="cardPoolOptions">${src.map(p=>`<label class="cardPoolOption"><input class="cardPoolCheck" name="${esc(group)}" type="radio" value="${esc(p.id)}" ${selected===p.id?'checked':''}><span>${esc(p.name)}${p.isActive===false?'<i>已關閉</i>':''}</span></label>`).join('')}</div>`
+}
+function adminCardEditorSlideHtml(c,i,isNew=false){
+ const preview=c.image||'',key=String(i),rarity=String(c.rarity||'N');
+ return `<section class="adminCardEditorSlide rarity-${esc(rarity)}" data-card-id="${esc(c.id)}" data-card-index="${esc(key)}">
+  <div class="adminCardSlideTitle">${isNew?'➕ 新增球員卡':esc(rarity)+'｜'+esc(c.name||'未命名球員')}</div>
+  <div id="adminEditorPreview_${esc(key)}" class="adminCardSlideHero rarity-${esc(rarity)}">${preview?`<img src="${esc(preview)}" onerror="this.style.display='none'">`:'<div class="unknown">🖼️</div>'}</div>
+  <div class="adminCardSlideFields">
+   <label class="adminCardImageLabel">卡牌圖片<input id="editImageFile_${esc(key)}" type="file" accept="image/*"></label>
+   <label>名字<input id="name_${esc(key)}" value="${esc(c.name||'')}"></label>
+   <label>種類<input id="type_${esc(key)}" value="${esc(c.type||'')}"></label>
+   <label>守備位置<select id="position_${esc(key)}">${positionOptionsHtml(c.position)}</select><small id="positionCoeff_${esc(key)}" class="sub" style="display:block;margin-top:4px">${esc(positionCoefficientText(c.position))}</small></label>
+   <label>所屬球隊<input id="team_${esc(key)}" value="${esc(c.team||'')}"></label>
+   <label>稀有度<select id="rarity_${esc(key)}"><option ${rarity==='SSR'?'selected':''}>SSR</option><option ${rarity==='SR'?'selected':''}>SR</option><option ${rarity==='R'?'selected':''}>R</option><option ${rarity==='N'?'selected':''}>N</option></select></label>
+   <label>傷害 <small id="powerRange_${esc(key)}" class="sub">允許 ${esc(cardPowerRangeText(rarity))}</small><input id="power_${esc(key)}" type="number" min="${cardPowerRange(rarity)?.min??0}" max="${cardPowerRange(rarity)?.max??999999}" step="1" value="${normalizeCardPowerValue(rarity,c.power)}"></label>
+   <label class="adminCardSlideFull">介紹<textarea id="description_${esc(key)}">${esc(c.description||'')}</textarea></label>
+   <div class="cardPoolChooser"><div class="cardPoolChooserTitle"><span>🎰 所屬卡池</span><small>僅能選擇 1 個</small></div>${adminCardPoolOptions(c,key)}</div>
+  </div>
+  <div class="adminCardSlideActions">
+   <button class="admin saveSwipeCard" data-save-card="${esc(key)}">💾 ${isNew?'建立球員卡':'儲存'}</button>
+   ${isNew?'':'<button class="small deleteSwipeCard" data-delete-card="'+esc(key)+'">🗑️</button>'}
+   <div id="adminNotice_${esc(key)}" class="adminCardSlideNotice"></div>
+  </div>
+ </section>`
+}
 function bindCardPositionRule(key){
  const el=$('position_'+key),hint=$('positionCoeff_'+key);if(!el)return;
  const apply=()=>{el.value=normalizeCardPosition(el.value);if(hint)hint.textContent=positionCoefficientText(el.value)};
@@ -1410,24 +1667,89 @@ function bindCardPowerRange(key){
    if(hint)hint.textContent='允許 '+range.min+'-'+range.max;
   }else{
    powerEl.removeAttribute('min');powerEl.removeAttribute('max');powerEl.step='1';
-   if(hint)hint.textContent='未限制';
+   if(hint)hint.textContent='未限制'
   }
  };
  rarityEl.onchange=apply;apply()
 }
 async function saveCard(i){
- if(!CARDS[i])return;const poolId=document.querySelector('.cardPoolCheck:checked')?.value||'',notice=$('adminNotice');if(!poolId){if(notice)notice.textContent='❌ 請選擇 1 個所屬卡池';return}
- const name=$('name_'+i).value.trim();if(!name){if(notice)notice.textContent='❌ 請輸入球員名字';return}
- const rarity=$('rarity_'+i).value,powerCheck=validateCardPower(rarity,$('power_'+i).value);if(!powerCheck.ok){if(notice)notice.textContent='❌ '+powerCheck.message;return}
- try{if(notice)notice.textContent='儲存中…';const uploadedImage=await getUploadedImageData(i);const card={...CARDS[i],name,type:$('type_'+i).value.trim(),position:normalizeCardPosition($('position_'+i)?.value),team:$('team_'+i).value.trim(),rarity,power:powerCheck.value,image:uploadedImage||CARDS[i].image||'',description:$('description_'+i).value};await cloudSaveCard(card,i,poolId);CARDS[i]=card;ADMIN_POOLS=ADMIN_POOLS.map(p=>{const ids=new Set(p.cardIds||[]);if(p.id===poolId)ids.add(card.id);else ids.delete(card.id);return{...p,cardIds:[...ids]}});syncVisiblePoolsFromAdmin();await cardDB.set(CARDS);clearPendingCardImage(i);showCardManager();setTimeout(()=>{const n=$('adminNotice');if(n)n.textContent=IS_LOCAL_TEST?'✅ 卡牌已儲存並關閉編輯頁':'✅ 卡牌已儲存並關閉編輯頁'},0)}catch(e){if(notice)notice.textContent='❌ '+(e.message||e)}
+ if(!CARDS[i])return;
+ const key=String(i),notice=$('adminNotice_'+key)||$('adminNotice'),oldRarity=CARDS[i].rarity;
+ const poolId=document.querySelector('input[name="cardPoolPick_'+key+'"]:checked')?.value||'';
+ if(!poolId){if(notice)notice.textContent='❌ 請選擇 1 個所屬卡池';return}
+ const name=$('name_'+key)?.value.trim()||'';if(!name){if(notice)notice.textContent='❌ 請輸入球員名字';return}
+ const rarity=$('rarity_'+key)?.value||'N',powerCheck=validateCardPower(rarity,$('power_'+key)?.value);
+ if(!powerCheck.ok){if(notice)notice.textContent='❌ '+powerCheck.message;return}
+ const oldId=CARDS[i].id;
+ try{
+  if(notice)notice.textContent='儲存中…';
+  const uploadedImage=await getUploadedImageData(i);
+  const card={...CARDS[i],name,type:$('type_'+key)?.value.trim()||'',position:normalizeCardPosition($('position_'+key)?.value),team:$('team_'+key)?.value.trim()||'',rarity,power:powerCheck.value,image:uploadedImage||CARDS[i].image||'',description:$('description_'+key)?.value||''};
+  await cloudSaveCard(card,i,poolId);
+  CARDS[i]=card;
+  ADMIN_POOLS=ADMIN_POOLS.map(p=>{const ids=new Set(p.cardIds||[]);if(p.id===poolId)ids.add(card.id);else ids.delete(card.id);return{...p,cardIds:[...ids]}});
+  syncVisiblePoolsFromAdmin();await cardDB.set(CARDS);save();
+
+  /* 稀有度沒變時不重畫管理頁，真正停留在同一張卡、同一滑動位置。 */
+  if(card.rarity===oldRarity){
+   const slide=document.querySelector(`.adminCardEditorSlide[data-card-id="${CSS.escape(oldId)}"]`);
+   const title=slide?.querySelector('.adminCardSlideTitle');if(title)title.textContent=card.rarity+'｜'+(card.name||'未命名球員');
+   const hero=$('adminEditorPreview_'+key);
+   if(hero&&uploadedImage)hero.innerHTML=`<img src="${esc(card.image)}" onerror="this.style.display='none'">`;
+   clearPendingCardImage(i);
+   if(notice)notice.textContent='✅ 已儲存，可直接繼續左右滑動';
+   return
+  }
+
+  /* 若修改了稀有度，該卡會移到新的分類，因此切到新分類並定位同一張卡。 */
+  clearPendingCardImage(i);
+  await showCardManager(card.rarity,oldId,'✅ 已儲存，卡牌已移到 '+card.rarity+' 分類')
+ }catch(e){if(notice)notice.textContent='❌ '+(e.message||e)}
+}
+async function deleteCardFromManager(i,rarity){
+ if(!CARDS[i]||!confirm('確定要刪除這張卡牌嗎？'))return;
+ const removedId=CARDS[i].id;
+ try{
+  await cloudDeleteCard(removedId);
+  CARDS.splice(i,1);owned=owned.filter(id=>id!==removedId);delete cardCounts[removedId];
+  BONDS=BONDS.map(b=>({...b,cardIds:(b.cardIds||[]).filter(id=>id!==removedId)})).filter(b=>(b.cardIds||[]).length>0);
+  ADMIN_POOLS=ADMIN_POOLS.map(p=>({...p,cardIds:(p.cardIds||[]).filter(id=>id!==removedId)}));
+  syncVisiblePoolsFromAdmin();await cardDB.set(CARDS);save();
+  await showCardManager(rarity,'','✅ 卡牌已刪除')
+ }catch(e){
+  const n=$('adminCardManagerNotice');if(n)n.textContent='❌ '+(e.message||e)
+ }
 }
 async function saveNewCard(){
- if(!NEW_CARD_DRAFT)return;const poolId=document.querySelector('.cardPoolCheck:checked')?.value||'',notice=$('adminNotice');if(!poolId){if(notice)notice.textContent='❌ 請選擇 1 個所屬卡池';return}
+ if(!NEW_CARD_DRAFT)return;
+ const key='new',notice=$('adminNotice_new');
+ const poolId=document.querySelector('input[name="cardPoolPick_new"]:checked')?.value||'';
+ if(!poolId){if(notice)notice.textContent='❌ 請選擇 1 個所屬卡池';return}
  const name=$('name_new')?.value.trim()||'';if(!name){if(notice)notice.textContent='❌ 請輸入球員名字';return}
- const rarity=$('rarity_new')?.value||'N',powerCheck=validateCardPower(rarity,$('power_new')?.value);if(!powerCheck.ok){if(notice)notice.textContent='❌ '+powerCheck.message;return}
- try{if(notice)notice.textContent='建立中…';const uploadedImage=await getUploadedImageData('new');const card={...NEW_CARD_DRAFT,name,type:$('type_new')?.value.trim()||'',position:normalizeCardPosition($('position_new')?.value),team:$('team_new')?.value.trim()||'',rarity,power:powerCheck.value,image:uploadedImage||NEW_CARD_DRAFT.image||'',description:$('description_new')?.value||''};const newIndex=CARDS.length;await cloudSaveCard(card,newIndex,poolId);CARDS.push(card);ADMIN_POOLS=ADMIN_POOLS.map(p=>{const ids=new Set(p.cardIds||[]);if(p.id===poolId)ids.add(card.id);else ids.delete(card.id);return{...p,cardIds:[...ids]}});syncVisiblePoolsFromAdmin();await cardDB.set(CARDS);save();clearPendingCardImage('new');NEW_CARD_DRAFT=null;showCardManager();setTimeout(()=>{const n=$('adminNotice');if(n)n.textContent='✅ 新球員卡已建立並關閉編輯頁'},0)}catch(e){if(notice)notice.textContent='❌ '+(e.message||e)}
+ const rarity=$('rarity_new')?.value||'N',powerCheck=validateCardPower(rarity,$('power_new')?.value);
+ if(!powerCheck.ok){if(notice)notice.textContent='❌ '+powerCheck.message;return}
+ try{
+  if(notice)notice.textContent='建立中…';
+  const uploadedImage=await getUploadedImageData('new');
+  const card={...NEW_CARD_DRAFT,name,type:$('type_new')?.value.trim()||'',position:normalizeCardPosition($('position_new')?.value),team:$('team_new')?.value.trim()||'',rarity,power:powerCheck.value,image:uploadedImage||NEW_CARD_DRAFT.image||'',description:$('description_new')?.value||''};
+  const newIndex=CARDS.length;
+  await cloudSaveCard(card,newIndex,poolId);
+  CARDS.push(card);
+  ADMIN_POOLS=ADMIN_POOLS.map(p=>{const ids=new Set(p.cardIds||[]);if(p.id===poolId)ids.add(card.id);else ids.delete(card.id);return{...p,cardIds:[...ids]}});
+  syncVisiblePoolsFromAdmin();await cardDB.set(CARDS);save();clearPendingCardImage('new');NEW_CARD_DRAFT=null;
+  await showCardManager(card.rarity,card.id,'✅ 新球員卡已建立')
+ }catch(e){if(notice)notice.textContent='❌ '+(e.message||e)}
 }
-async function showNewCardEditor(){try{await loadAdminPools()}catch(e){}NEW_CARD_DRAFT={id:uid(),name:'',rarity:'N',power:501,type:'',position:'投手',team:'',description:'',image:''};const modal=$('modal');modal.innerHTML=`<div class="modalBackdrop"><div class="modal">${adminCardEditorHtml(NEW_CARD_DRAFT,'new',true)}</div></div>`;$('backCardList').onclick=()=>{clearPendingCardImage('new');NEW_CARD_DRAFT=null;showCardManager()};$('saveCurrentCard').onclick=saveNewCard;const imageInput=$('editImageFile_new');if(imageInput)imageInput.onchange=()=>handleImageFileSelection('new');bindCardPowerRange('new');bindCardPositionRule('new')}
+async function showNewCardEditor(){
+ try{await loadAdminPools()}catch(e){}
+ NEW_CARD_DRAFT={id:uid(),name:'',rarity:'N',power:501,type:'',position:'投手',team:'',description:'',image:''};
+ const modal=$('modal');
+ modal.innerHTML=`<div class="modalBackdrop"><div class="modal adminNewCardModal"><div class="modalHead"><div><h2 style="margin:0">➕ 新增球員卡</h2><div class="sub">採用球員圖鑑式卡面｜建立後直接回到該稀有度</div></div><button class="small" id="backCardList">← 返回</button></div>${adminCardEditorSlideHtml(NEW_CARD_DRAFT,'new',true)}</div></div>`;
+ $('backCardList').onclick=()=>{clearPendingCardImage('new');NEW_CARD_DRAFT=null;showCardManager('N')};
+ const imageInput=$('editImageFile_new');if(imageInput)imageInput.onchange=()=>handleImageFileSelection('new');
+ bindCardPowerRange('new');bindCardPositionRule('new');
+ const saveBtn=document.querySelector('[data-save-card="new"]');if(saveBtn)saveBtn.onclick=saveNewCard
+}
 async function showAdmin(){try{await loadAdminPools()}catch(e){}const modal=$('modal');modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:560px"><div class="modalHead"><div><h2>🛠️ 管理員後台</h2><div class="sub">選擇要管理的項目</div>${IS_LOCAL_TEST?'<div class="localModeBadge">🧪 單機隔離模式｜免密碼｜不連雲端</div>':''}</div><button class="small" id="adminExit">✕</button></div><div class="adminHomeGrid"><button id="manageCards" class="adminHomeBtn admin"><span>🎴</span>球員卡管理<small>共 ${CARDS.length} 張</small></button><button id="manageBonds" class="adminHomeBtn admin"><span>🔗</span>羈絆管理<small>共 ${BONDS.length} 組</small></button><button id="managePools" class="adminHomeBtn admin"><span>🎰</span>卡池管理<small>卡池設定</small></button><button id="managePlayers" class="adminHomeBtn admin"><span>👤</span>玩家帳號<small>查看所有帳號</small></button></div><div class="adminToolbar"><button id="adminSimTen" class="small">🎬 模擬10連抽</button><button id="infiniteGems" class="small">💎 獲得無限寶石</button><button id="adminLogout" class="small">🚪 登出管理員</button></div><div id="adminNotice" class="notice"></div></div></div>`;$('adminExit').onclick=()=>modal.innerHTML='';$('manageCards').onclick=()=>showCardManager();$('manageBonds').onclick=()=>showBondManager();$('managePools').onclick=()=>showPoolManager();$('managePlayers').onclick=()=>showPlayerAccountsAdmin();$('adminSimTen').onclick=runBasicAdminTenSimulation;$('infiniteGems').onclick=()=>{gems=Number.MAX_SAFE_INTEGER;save();$('adminNotice').textContent='💎 已獲得無限寶石！'};$('adminLogout').onclick=()=>{adminToken='';sessionStorage.removeItem('cp_admin_token');ADMIN_POOLS=[];modal.innerHTML='';$('notice').textContent='已登出管理員'}}
 function poolPickerHtml(pool){const selected=new Set(pool.cardIds||[]);return CARDS.map(c=>`<label class="poolPick"><input class="poolCardCheck" type="checkbox" value="${esc(c.id)}" ${selected.has(c.id)?'checked':''}>${c.image?`<img src="${esc(c.image)}" onerror="this.style.display='none'">`:''}<span><b>${esc(c.name||'未命名')}</b><br><small>${esc(c.rarity)}｜${esc(c.team||'')}</small></span></label>`).join('')}
 function bindPoolRateTotal(prefix='poolRate'){
@@ -1448,7 +1770,46 @@ async function showPoolManager(editId=null){
  $('savePool').onclick=async()=>{const name=$('poolName').value.trim(),rates={SSR:Number($('poolRateSSR').value),SR:Number($('poolRateSR').value),R:Number($('poolRateR').value),N:Number($('poolRateN').value)},total=Object.values(rates).reduce((a,b)=>a+b,0),isActive=$('poolActive').checked;if(!name)return $('poolNotice').textContent='❌ 請輸入卡池名稱';if(name.length>40)return $('poolNotice').textContent='❌ 卡池名稱最多 40 個字';if(Object.values(rates).some(n=>!Number.isFinite(n)||n<0))return $('poolNotice').textContent='❌ 機率不能小於 0';if(Math.abs(total-100)>=.001)return $('poolNotice').textContent='❌ 四種稀有度機率合計必須為 100%';const selectedCards=CARDS.filter(c=>(p.cardIds||[]).includes(c.id));if(isActive&&!selectedCards.length)return $('poolNotice').textContent='❌ 此卡池沒有球員，無法開放抽取';if(isActive){for(const rarity of ['SSR','SR','R','N'])if(rates[rarity]>0&&!selectedCards.some(c=>c.rarity===rarity))return $('poolNotice').textContent='❌ '+rarity+' 機率大於 0，但卡池內沒有 '+rarity+' 球員'}const updated={...p,name,rates,isActive};$('savePool').disabled=true;$('poolNotice').textContent='儲存中…';try{await cloudSavePool(updated);const i=ADMIN_POOLS.findIndex(x=>x.id===p.id);if(i>=0)ADMIN_POOLS[i]=updated;syncVisiblePoolsFromAdmin();await loadAdminPools(true);showPoolManager(p.id);setTimeout(()=>{const n=$('poolNotice');if(n)n.textContent=isActive?'✅ 卡池已開放並儲存':'✅ 卡池已關閉；前端不會顯示'},0)}catch(e){$('poolNotice').textContent='❌ '+(e.message||e);$('savePool').disabled=false}};
  $('deletePool').onclick=async()=>{if(!confirm(`確定要永久刪除「${p.name}」嗎？\n\n刪除後前端不會顯示，該卡池的球員關聯也會一起移除。`))return;try{$('poolNotice').textContent='刪除中…';await cloudDeletePool(p.id);ADMIN_POOLS=ADMIN_POOLS.filter(x=>x.id!==p.id);syncVisiblePoolsFromAdmin();showPoolManager()}catch(e){$('poolNotice').textContent='❌ '+(e.message||e)}};return}
  const cardsByPool=p=>CARDS.filter(c=>(p.cardIds||[]).includes(c.id)).length;modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:560px"><div class="modalHead"><div><h2>🎰 卡池管理</h2><div class="sub">可以新增卡池；關閉的卡池只會在管理員後台看得到</div></div><button class="small" id="backAdmin">← 後台</button></div><div class="adminToolbar"><button class="admin" id="addPool">➕ 新增卡池</button></div><div class="poolAdminGrid">${ADMIN_POOLS.length?ADMIN_POOLS.map(p=>`<button class="poolAdminTile" data-pool-edit="${esc(p.id)}"><b>${esc(p.name)}</b><small>${rateText(p)}<br>${cardsByPool(p)} 張球員</small><span class="poolAdminStatus ${p.isActive!==false?'open':'closed'}">${p.isActive!==false?'開放抽取':'已關閉'}</span></button>`).join(''):'<div class="notice" style="grid-column:1/-1">目前沒有卡池</div>'}</div></div></div>`;$('backAdmin').onclick=showAdmin;$('addPool').onclick=showNewPoolEditor;document.querySelectorAll('[data-pool-edit]').forEach(b=>b.onclick=()=>showPoolManager(b.dataset.poolEdit))}
-async function showCardManager(editIndex=null){const modal=$('modal');try{await loadAdminPools()}catch(e){}if(Number.isInteger(editIndex)&&CARDS[editIndex]){modal.innerHTML=`<div class="modalBackdrop"><div class="modal">${adminCardEditorHtml(CARDS[editIndex],editIndex)}</div></div>`;$('backCardList').onclick=()=>{clearPendingCardImage(editIndex);showCardManager()};$('saveCurrentCard').onclick=()=>saveCard(editIndex);const imageInput=$('editImageFile_'+editIndex);if(imageInput)imageInput.onchange=()=>handleImageFileSelection(editIndex);bindCardPowerRange(editIndex);bindCardPositionRule(editIndex);$('deleteCurrentCard').onclick=async()=>{if(!confirm('確定要刪除這張卡牌嗎？'))return;const removedId=CARDS[editIndex].id;await cloudDeleteCard(removedId);CARDS.splice(editIndex,1);owned=owned.filter(id=>id!==removedId);delete cardCounts[removedId];BONDS=BONDS.map(b=>({...b,cardIds:(b.cardIds||[]).filter(id=>id!==removedId)})).filter(b=>(b.cardIds||[]).length>0);ADMIN_POOLS=ADMIN_POOLS.map(p=>({...p,cardIds:(p.cardIds||[]).filter(id=>id!==removedId)}));syncVisiblePoolsFromAdmin();await cardDB.set(CARDS);save();showCardManager()};return}modal.innerHTML=`<div class="modalBackdrop"><div class="modal"><div class="modalHead"><div><h2>🎴 球員卡管理</h2><div class="sub">每位球員只能屬於 1 個卡池｜共 ${CARDS.length} 張</div></div><button class="small" id="backAdmin">← 後台</button></div><div class="adminToolbar"><button id="addCard" class="admin">➕ 新增球員卡</button></div><div id="adminNotice" class="notice"></div><div class="adminCardGrid">${CARDS.map(adminCardTileHtml).join('')}</div></div></div>`;$('backAdmin').onclick=showAdmin;$('addCard').onclick=()=>showNewCardEditor();document.querySelectorAll('.openCardEdit').forEach(b=>b.onclick=()=>showCardManager(Number(b.dataset.i)))}
+async function showCardManager(rarity='SSR',focusCardId='',message=''){
+ const modal=$('modal');try{await loadAdminPools()}catch(e){}
+ const rarities=['SSR','SR','R','N'];if(!rarities.includes(rarity))rarity='SSR';
+ const counts=Object.fromEntries(rarities.map(r=>[r,CARDS.filter(c=>c.rarity===r).length]));
+ const items=CARDS.map((c,i)=>({c,i})).filter(x=>x.c.rarity===rarity);
+ modal.innerHTML=`<div class="modalBackdrop"><div class="modal adminCardManagerModal">
+  <div class="modalHead"><div><h2 style="margin:0">🎴 球員卡管理</h2><div class="sub">依稀有度分類｜直接修改｜儲存後停留原卡，可繼續左右滑動</div></div><button class="small" id="backAdmin">← 後台</button></div>
+  <div class="adminCardManagerTopActions"><button id="addCard" class="admin">➕ 新增球員卡</button></div>
+  <div class="collectionRarityTabs adminCardRarityTabs">${rarities.map(r=>`<button class="collectionRarityTab adminCardRarityTab${r===rarity?' active':''}" data-admin-rarity="${r}" data-rarity="${r}"><b>${r}</b><span class="tabDetail">${counts[r]} 張</span></button>`).join('')}</div>
+  <div id="adminCardManagerNotice" class="notice adminCardManagerNotice">${esc(message||'')}</div>
+  <div class="adminCardGallery">${items.length?`<div id="adminCardRail" class="adminCardRail">${items.map(x=>adminCardEditorSlideHtml(x.c,x.i,false)).join('')}</div>`:`<div class="adminCardEmpty">目前沒有 ${esc(rarity)} 球員卡。<br>可以按上方「新增球員卡」建立。</div>`}</div>
+  <div class="adminCardManagerNav"><button id="adminCardPrev">‹</button><div id="adminCardPage" class="adminCardManagerPage">${items.length?'1 / '+items.length:'0 / 0'}</div><button id="adminCardNext">›</button></div>
+ </div></div>`;
+ $('backAdmin').onclick=showAdmin;$('addCard').onclick=showNewCardEditor;
+ document.querySelectorAll('.adminCardRarityTab').forEach(b=>b.onclick=()=>showCardManager(b.dataset.adminRarity||'SSR'));
+ for(const {i} of items){
+  const imageInput=$('editImageFile_'+i);if(imageInput)imageInput.onchange=()=>handleImageFileSelection(i);
+  bindCardPowerRange(i);bindCardPositionRule(i);
+  const saveBtn=document.querySelector(`[data-save-card="${i}"]`);if(saveBtn)saveBtn.onclick=()=>saveCard(i);
+  const delBtn=document.querySelector(`[data-delete-card="${i}"]`);if(delBtn)delBtn.onclick=()=>deleteCardFromManager(i,rarity)
+ }
+ const rail=$('adminCardRail'),page=$('adminCardPage'),prev=$('adminCardPrev'),next=$('adminCardNext');
+ const slides=rail?[...rail.querySelectorAll('.adminCardEditorSlide')]:[];
+ let currentIndex=0,raf=0;
+ const updatePage=()=>{
+  if(!rail||!slides.length){if(page)page.textContent='0 / 0';if(prev)prev.disabled=true;if(next)next.disabled=true;return}
+  const center=rail.scrollLeft+rail.clientWidth/2;
+  let best=0,bestDist=Infinity;
+  slides.forEach((s,i)=>{const c=s.offsetLeft+s.offsetWidth/2,d=Math.abs(c-center);if(d<bestDist){bestDist=d;best=i}});
+  currentIndex=best;if(page)page.textContent=(currentIndex+1)+' / '+slides.length;
+  if(prev)prev.disabled=currentIndex<=0;if(next)next.disabled=currentIndex>=slides.length-1
+ };
+ if(rail){
+  rail.addEventListener('scroll',()=>{cancelAnimationFrame(raf);raf=requestAnimationFrame(updatePage)},{passive:true});
+  prev.onclick=()=>slides[Math.max(0,currentIndex-1)]?.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  next.onclick=()=>slides[Math.min(slides.length-1,currentIndex+1)]?.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+  const focus=focusCardId?slides.find(s=>s.dataset.cardId===focusCardId):null;
+  requestAnimationFrame(()=>{(focus||slides[0])?.scrollIntoView({behavior:'auto',inline:'center',block:'nearest'});requestAnimationFrame(updatePage)})
+ }else{if(prev)prev.disabled=true;if(next)next.disabled=true}
+}
 function bondCardPickerHtml(selected=[]){return CARDS.map((c,i)=>`<label class="bondPick"><input class="bondCardCheck" type="checkbox" value="${esc(c.id)}" ${selected.includes(c.id)?'checked':''}>${c.image?`<img src="${esc(c.image)}" onerror="this.style.display='none'">`:''}<span>${esc(c.name||'未命名卡牌')}<br><small>${esc(c.rarity)}｜${esc(c.team||'')}</small></span></label>`).join('')}
 function showBondManager(editIndex=null){const modal=$('modal');if(Number.isInteger(editIndex)&&BONDS[editIndex]){const b=BONDS[editIndex];modal.innerHTML=`<div class="modalBackdrop"><div class="modal"><div class="modalHead"><div><h2>🔗 編輯羈絆</h2><div class="sub">選擇會觸發羈絆的球員卡</div></div><button class="small" id="backBondList">← 返回</button></div>${bondFormHtml(b)}<div class="adminToolbar"><button id="saveBond" class="admin">💾 儲存羈絆</button><button id="deleteBond" class="small">🗑️ 刪除羈絆</button></div><div id="bondNotice" class="notice"></div></div></div>`;$('backBondList').onclick=()=>showBondManager();$('saveBond').onclick=()=>saveBondFromForm(editIndex);bindBondBonusUI();$('deleteBond').onclick=async()=>{if(!confirm('確定刪除這組羈絆嗎？'))return;const id=BONDS[editIndex].id;try{await cloudDeleteBond(id);BONDS.splice(editIndex,1);save();showBondManager()}catch(e){$('bondNotice').textContent='❌ '+(e.message||e)}};return}modal.innerHTML=`<div class="modalBackdrop"><div class="modal"><div class="modalHead"><div><h2>🔗 羈絆管理</h2><div class="sub">共 ${BONDS.length} 組羈絆</div></div><button class="small" id="backAdmin">← 後台</button></div><div class="adminToolbar"><button id="addBond" class="admin">➕ 新增羈絆</button></div><div class="bondList">${BONDS.length?BONDS.map((b,i)=>bondItemHtml(b,i)).join(''):'<div class="notice">目前還沒有羈絆。</div>'}</div></div></div>`;$('backAdmin').onclick=showAdmin;$('addBond').onclick=()=>showBondEditorNew();document.querySelectorAll('.editBond').forEach(b=>b.onclick=()=>showBondManager(Number(b.dataset.i)))}
 function normalizeBondBonus(b={}){if(b.bonusType==='multiplier')return{bonusType:'multiplier',bonusValue:Number(b.bonusValue)||1};if(b.bonusType==='value')return{bonusType:'value',bonusValue:Number(b.bonusValue)||0};if(Number.isFinite(Number(b.powerBonus)))return{bonusType:'value',bonusValue:Number(b.powerBonus)||0};return{bonusType:'value',bonusValue:0}}
@@ -1467,7 +1828,7 @@ async function initializeGame(){
  }
  if(!POOLS.some(p=>p.id===ACTIVE_POOL_ID))ACTIVE_POOL_ID=POOLS[0]?.id||'';
  owned=owned.filter(id=>CARDS.some(c=>c.id===id));save();renderGems();renderPoolBanner();updatePlayerNameUI();
- $('collection').onclick=()=>showCollection('default','SSR');$('drawMenu').onclick=showDrawMenu;$('lobbyChat').onclick=openLobbyChat;$('friendsBtn').onclick=openChatList;$('giftBtn').onclick=openGiftPage;$('settingsBtn').onclick=openSettings;/* v1.20 對戰入口暫不綁定功能 */
+ $('collection').onclick=()=>showCollection('default','SSR');$('drawMenu').onclick=showDrawMenu;$('lobbyChat').onclick=openLobbyChat;$('friendsBtn').onclick=openChatList;$('giftBtn').onclick=openGiftPage;$('settingsBtn').onclick=openSettings;/* v1.21 對戰入口暫不綁定功能 */
  let versionTapCount=0,versionTapTimer=0;const versionEl=$('appVersion');if(versionEl)versionEl.onclick=()=>{versionTapCount++;clearTimeout(versionTapTimer);versionTapTimer=setTimeout(()=>{versionTapCount=0},2000);if(versionTapCount>=5){versionTapCount=0;clearTimeout(versionTapTimer);adminLogin()}};
  $('daily').onclick=()=>{if(storage.getItem('test_daily_day')===day()){$('notice').textContent='⏰ 今天已領取，晚上12點後重置';return}gems+=1500;storage.setItem('test_daily_day',day());save();$('notice').textContent='🎁 +1500 鑽！'};
  startHeartbeat();clearInterval(DM_BADGE_TIMER);DM_BADGE_TIMER=setInterval(()=>{if(PLAYER_TOKEN&&document.visibilityState==='visible')refreshPrivateMessageBadge()},12000);refreshPrivateMessageBadge();
