@@ -1056,13 +1056,14 @@ html,body{min-height:100%;min-height:100dvh}
 .benchGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:6px}
 .benchGrid .lineupPlayerSlot{min-height:128px}.benchGrid .lineupPlayerSlot img{height:72px}
 .cheerDeckGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+/* v1.48 應援團卡尺寸調整：放大卡面，保留卡名下方功能說明 */
 .cheerDeckSlot{
  min-height:205px;padding:7px!important;border-radius:15px!important;background:linear-gradient(145deg,#272033,#11141c)!important;
  border:1px solid #caa7ff2e!important;color:#fff!important;text-align:left!important;overflow:hidden
 }
 .cheerDeckSlot.empty{display:grid;place-items:center;text-align:center;color:#ffffff62}
-.cheerDeckSlot img{width:100%;height:112px;object-fit:cover;border-radius:10px;display:block}
-.cheerDeckSlot b{display:block;margin-top:6px;font-size:10px}.cheerDeckSlot small{display:block;margin-top:3px;font-size:7px;color:#ffffff73;line-height:1.4}
+.cheerDeckSlot img{width:100%;height:156px;object-fit:cover;border-radius:11px;display:block}
+.cheerDeckSlot b{display:block;margin-top:7px;font-size:11px}.cheerDeckSlot small{display:block;margin-top:4px;font-size:7.5px;color:#ffffff88;line-height:1.45}
 .cheerDeckNo{display:inline-block;margin-bottom:5px;padding:3px 6px;border-radius:999px;background:#a27de72b;color:#dfccff;font-size:7px;font-weight:1000}
 .lineupRuleBox{
  margin-top:9px;padding:8px 10px;border-radius:11px;background:#f2c85b0c;border:1px solid #f2c85b1f;
@@ -1111,7 +1112,7 @@ html,body{min-height:100%;min-height:100dvh}
  .starterGrid,.pitcherGrid{gap:5px}
  .lineupPlayerSlot{min-height:138px}.lineupPlayerSlot img{height:82px}
  .benchGrid .lineupPlayerSlot{min-height:124px}
- .cheerDeckSlot{min-height:190px}.cheerDeckSlot img{height:100px}
+ .cheerDeckSlot{min-height:232px}.cheerDeckSlot img{height:138px}
 }
 @media(max-width:360px){
  .deckTab{font-size:8px!important;padding-left:1px!important;padding-right:1px!important}
@@ -3311,42 +3312,17 @@ input,textarea,[contenteditable="true"]{
   height:48px!important;
   flex:0 0 48px!important;
 }
-.v145InstallBtn{
-  display:flex!important;
-  flex-direction:column;
-  gap:0;
-  font-size:16px!important;
-  background:linear-gradient(180deg,#5f431fee,#2f1c0dee)!important;
-}
-.v145InstallBtn[hidden]{display:none!important}
-.v145InstallIcon{font-size:18px;line-height:16px}
-.v145InstallBtn small{
-  display:block;
-  font-size:6px;
-  line-height:8px;
-  margin-top:2px;
-  color:#ffe5a3;
-  letter-spacing:.05em;
-  font-weight:900;
-}
-.v145InstallBtn.v145InstallReady{
-  border-color:#ffe09599!important;
-  box-shadow:0 6px 14px #0006,0 0 0 1px #ffdd7f26,inset 0 1px 0 #fff2!important;
-}
-.v145InstallHelp{max-width:430px!important}
-.v145InstallHelp .v145InstallSteps{
-  display:grid;gap:9px;margin-top:12px;
-}
-.v145InstallHelp .v145InstallStep{
-  display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start;
-  padding:10px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff0e;
-}
-.v145InstallHelp .v145InstallStep b{
-  width:25px;height:25px;border-radius:50%;display:grid;place-items:center;
-  background:#d6aa4b;color:#2a1708;font-size:10px;
-}
+
+
+
+
+
+
+
+
+
 .v145InstallHelp .v145InstallStep span{font-size:9px;line-height:1.55}
-.v145InstallHelp .v145InstallNote{margin-top:9px;font-size:7px;color:#ffffff72;line-height:1.55}
+
 
 @keyframes v145LogoShine{
   0%,68%{transform:translateX(-135%)}
@@ -3366,7 +3342,7 @@ input,textarea,[contenteditable="true"]{
   .v145LogoSeam{left:35px;bottom:-7px}
   .v145TopTools{gap:5px}
   .v145TopTools .topSettingsBtn{width:43px!important;height:43px!important;flex-basis:43px!important}
-  .v145InstallIcon{font-size:16px}
+  
 }
 @media(max-width:385px){
   .lobbyTitleRow{padding-right:86px!important}
@@ -3465,20 +3441,6 @@ input,textarea,[contenteditable="true"]{
 @media(prefers-reduced-motion:reduce){.v146CheerSide.ready{animation:none}}
 </style>
 
-
-<style id="v147-pwa-fix">
-.v147InstallStatus{
-  margin-top:10px;padding:9px 10px;border-radius:11px;
-  background:#d9a83b12;border:1px solid #e6bd5d2d;
-  color:#ffe2a2;font-size:7px;line-height:1.55
-}
-.v145InstallBtn[data-install-state="ready"]{
-  border-color:#ffe095b8!important;
-  box-shadow:0 0 16px #ffc65c45,0 6px 14px #0006!important
-}
-.v145InstallBtn:disabled{opacity:.72!important;cursor:wait!important}
-</style>
-
 </head><body><div id="appViewport" class="appViewport"><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow">
   <h1 class="v145LobbyLogo" aria-label="棒球抽卡對戰">
     <span class="v145LogoBall" aria-hidden="true">⚾</span>
@@ -3486,13 +3448,9 @@ input,textarea,[contenteditable="true"]{
     <span class="v145LogoSeam" aria-hidden="true"></span>
   </h1>
   <div class="v145TopTools">
-    <button id="installPwaBtn" class="topSettingsBtn v145InstallBtn" type="button" aria-label="安裝 APP" title="安裝 APP">
-      <span class="v145InstallIcon">⬇</span>
-      <small>安裝</small>
-    </button>
     <button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定" title="設定">⚙️</button>
   </div>
-</div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion">v1.47</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
+</div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion">v1.48</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
  <div class="gamePrepWood">
   <button id="gamePrepBack" class="gamePrepBack" type="button">← 返回大廳</button>
   <div class="gamePrepContent">
@@ -5883,7 +5841,7 @@ function pick(forceSRPlus=false,hiddenReserve=0){
  const rates=cfg.rates||{},reserve=Math.max(0,Math.min(.04,Number(hiddenReserve)||0)),total=Math.max(.001,100-reserve),r=Math.random()*total,a=Math.max(0,Number(rates.SSR)||0),b=a+Math.max(0,Number(rates.SR)||0),c=b+Math.max(0,Number(rates.R)||0);let rarity=r<a?'SSR':r<b?'SR':r<c?'R':'N';let pool=availablePool([rarity],cfg);if(!pool.length)pool=all;const card=randomFrom(pool);if(card?.rarity==='SSR')setPity(0);return card
 }
 function resultCardHtml(c){const player=c?.kind!=='cheer',extra=player?cardExtraText(c):'';return `<div class="card ${esc(String(c.rarity).toLowerCase())}"><img src="${esc(c.image||PLACE)}" onerror="this.src='${PLACE}'">${player&&extra?`<div class="countBadge">${esc(extra)}</div>`:c?.kind==='cheer'?`<div class="countBadge">x${countOfCard(c.id)}</div>`:''}<div>${esc(c.rarity)}${player?`｜Lv.${cardLevel(c)}`:''}</div><div class="name">${esc(c.name||'未命名卡牌')}</div><div>${esc(c.type||'未分類')}${c.team?' ｜ '+esc(c.team):''}　⚔️${esc(player?cardEffectivePower(c):(c.power||0))}</div>${c.description?`<div class="sub">${esc(c.description)}</div>`:''}</div>`}
-function setDrawButtonsDisabled(disabled){['collection','drawMenu','daily','lobbyChat','friendsBtn','giftBtn','installPwaBtn','settingsBtn','battleBtn'].forEach(id=>{const el=$(id);if(!el)return;el.disabled=!!disabled;el.classList.toggle('animLock',!!disabled)})}
+function setDrawButtonsDisabled(disabled){['collection','drawMenu','daily','lobbyChat','friendsBtn','giftBtn','settingsBtn','battleBtn'].forEach(id=>{const el=$(id);if(!el)return;el.disabled=!!disabled;el.classList.toggle('animLock',!!disabled)})}
 function rarityClass(r){return `drawRarity-${String(r||'N').toUpperCase()}`}
 function rarityFxClass(r){return r==='UR'?'effect-UR':r==='SSR'?'effect-SSR':r==='SR'?'effect-SR':''}
 function buildMiniCards(n){const count=n===10?10:7,wide=window.innerWidth>700,radius=wide?(n===10?152:128):(n===10?108:96),halfW=wide?43:(n===10?17:22.5),halfH=wide?61:(n===10?24:32);let html='';for(let i=0;i<count;i++){const angle=(Math.PI*2/count)*i-Math.PI/2,x=Math.cos(angle)*radius,y=Math.sin(angle)*radius,rotate=(i-(count/2))*8;html+=`<div class="drawMini" style="left:calc(50% + ${x}px - ${halfW}px);top:calc(50% + ${y}px - ${halfH}px);animation-delay:${(i%5)*.12}s;transform:rotate(${rotate}deg)"></div>`}return html}
@@ -6681,9 +6639,9 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 async function v143SetupServiceWorker(){
  if(!('serviceWorker' in navigator))return;
  try{
-  const reg=await navigator.serviceWorker.register('./sw.js?v=147',{scope:'./',updateViaCache:'none'});
+  const reg=await navigator.serviceWorker.register('./sw.js?v=148',{scope:'./',updateViaCache:'none'});
   reg.update().catch(()=>{})
- }catch(e){console.warn('v1.47 service worker setup failed',e)}
+ }catch(e){console.warn('v1.48 service worker setup failed',e)}
 }
 window.addEventListener('load',()=>v143SetupServiceWorker())
 
@@ -6718,136 +6676,5 @@ window.addEventListener('load',()=>v143SetupServiceWorker())
 })();
 
 
-/* ===================== v1.47：PWA 安裝 / 啟動模式判斷 ===================== */
-let V147_INSTALL_PROMPT=null;
-let V147_INSTALL_WAITERS=[];
-
-function v147HasPwaLaunchMarker(){
-  try{
-    const url=new URL(location.href);
-    if(url.searchParams.get('pwa')==='1'){
-      sessionStorage.setItem('cp_v147_pwa_context','1');
-      return true
-    }
-    return sessionStorage.getItem('cp_v147_pwa_context')==='1'
-  }catch(_e){return false}
-}
-function v147IsStandalone(){
-  return !!(
-    v147HasPwaLaunchMarker() ||
-    window.matchMedia?.('(display-mode: standalone)').matches ||
-    window.matchMedia?.('(display-mode: fullscreen)').matches ||
-    window.navigator.standalone === true
-  )
-}
-function v147IsIOS(){
-  const ua=navigator.userAgent||'';
-  return /iPad|iPhone|iPod/.test(ua)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1)
-}
-function v147IsSafari(){
-  const ua=navigator.userAgent||'';
-  return /Safari/i.test(ua)&&!/Chrome|CriOS|Edg|OPR|Firefox|FxiOS/i.test(ua)
-}
-function v147IsChromium(){
-  return /Chrome|CriOS|Edg|Chromium/i.test(navigator.userAgent||'')
-}
-function v147UpdateInstallButton(){
-  const btn=$('installPwaBtn');if(!btn)return;
-  const standalone=v147IsStandalone();
-  btn.hidden=standalone;
-  btn.classList.toggle('v145InstallReady',!standalone&&!!V147_INSTALL_PROMPT);
-  btn.dataset.installState=standalone?'standalone':V147_INSTALL_PROMPT?'ready':'manual';
-  btn.setAttribute('aria-label',standalone?'已在 APP 中':'安裝 APP');
-  btn.title=standalone?'':'安裝 APP'
-}
-function v147ResolveInstallWaiters(ev){
-  const arr=V147_INSTALL_WAITERS.splice(0);
-  arr.forEach(fn=>{try{fn(ev)}catch(_e){}})
-}
-function v147WaitForPrompt(ms=1600){
-  if(V147_INSTALL_PROMPT)return Promise.resolve(V147_INSTALL_PROMPT);
-  return new Promise(resolve=>{
-    let done=false;
-    const finish=ev=>{if(done)return;done=true;clearTimeout(timer);resolve(ev||null)};
-    const timer=setTimeout(()=>finish(null),ms);
-    V147_INSTALL_WAITERS.push(finish)
-  })
-}
-function v147InstallGuideHtml(reason=''){
-  const ios=v147IsIOS(),safari=v147IsSafari(),chromium=v147IsChromium();
-  let desc='',steps=[];
-  if(ios){
-    desc=safari?'iPhone / iPad 請使用 Safari 的「加入主畫面」。':'iPhone / iPad 建議改用 Safari 安裝。';
-    steps=safari
-      ?[['1','點 Safari 的「分享」按鈕。'],['2','往下找到「加入主畫面」。'],['3','確認名稱後按「加入」。']]
-      :[['1','用 Safari 開啟目前網址。'],['2','點 Safari 的「分享」按鈕。'],['3','選擇「加入主畫面」後按「加入」。']]
-  }else if(chromium){
-    desc='目前瀏覽器尚未提供一鍵安裝視窗，可從瀏覽器選單安裝。';
-    steps=[['1','確認目前是用 Chrome / Edge 開啟網站。'],['2','點右上角 ⋮ 選單。'],['3','選擇「安裝應用程式」或「加入主畫面」。']]
-  }else{
-    desc='目前瀏覽器沒有提供可直接呼叫的安裝視窗。';
-    steps=[['1','打開瀏覽器選單。'],['2','尋找「安裝」、「加入主畫面」或類似項目。'],['3','若沒有此選項，改用 Chrome / Edge / Safari。']]
-  }
-  return`<div class="modalBackdrop"><div class="modal v145InstallHelp">
-    <div class="modalHead"><div><h2 style="margin:0">⬇ 安裝棒球抽卡對戰</h2><div class="sub">${esc(desc)}</div></div><button class="small" id="v147InstallClose">關閉</button></div>
-    ${reason?`<div class="v147InstallStatus">${esc(reason)}</div>`:''}
-    <div class="v145InstallSteps">${steps.map(s=>`<div class="v145InstallStep"><b>${s[0]}</b><span>${esc(s[1])}</span></div>`).join('')}</div>
-    <div class="v145InstallNote">安裝完成後，請從主畫面 / 應用程式圖示開啟。APP 模式內不會再顯示「安裝」按鈕。</div>
-  </div></div>`
-}
-function v147OpenInstallHelp(reason=''){
-  $('modal').innerHTML=v147InstallGuideHtml(reason);
-  const close=$('v147InstallClose');if(close)close.onclick=()=>{$('modal').innerHTML=''}
-}
-async function v147HandleInstallClick(){
-  if(v147IsStandalone()){v147UpdateInstallButton();return}
-  let prompt=V147_INSTALL_PROMPT;
-  if(!prompt){
-    const btn=$('installPwaBtn');
-    if(btn){btn.disabled=true;const s=btn.querySelector('small');if(s)s.textContent='準備'}
-    prompt=await v147WaitForPrompt(1600);
-    if(btn){btn.disabled=false;const s=btn.querySelector('small');if(s)s.textContent='安裝'}
-  }
-  if(prompt){
-    try{
-      V147_INSTALL_PROMPT=null;
-      await prompt.prompt();
-      const choice=await prompt.userChoice;
-      if(choice?.outcome==='accepted'){
-        v147UpdateInstallButton();
-        return
-      }
-      v147OpenInstallHelp('你剛剛取消了安裝；需要時可以再按一次。')
-    }catch(e){
-      console.warn('v1.47 PWA install prompt failed',e);
-      v147OpenInstallHelp('瀏覽器沒有成功開啟安裝視窗，請改用下方方式安裝。')
-    }
-    v147UpdateInstallButton();
-    return
-  }
-  v147OpenInstallHelp('瀏覽器目前沒有提供一鍵安裝視窗。')
-}
-function v147InitPwaInstall(){
-  const btn=$('installPwaBtn');if(btn&&!btn.dataset.v147Bound){
-    btn.dataset.v147Bound='1';
-    btn.addEventListener('click',v147HandleInstallClick)
-  }
-  v147UpdateInstallButton()
-}
-window.addEventListener('beforeinstallprompt',e=>{
-  e.preventDefault();
-  V147_INSTALL_PROMPT=e;
-  v147ResolveInstallWaiters(e);
-  v147UpdateInstallButton()
-});
-window.addEventListener('appinstalled',()=>{
-  V147_INSTALL_PROMPT=null;
-  v147ResolveInstallWaiters(null);
-  v147UpdateInstallButton()
-});
-window.matchMedia?.('(display-mode: standalone)').addEventListener?.('change',v147UpdateInstallButton);
-window.addEventListener('pageshow',v147UpdateInstallButton);
-document.addEventListener('visibilitychange',()=>{if(!document.hidden)v147UpdateInstallButton()});
-v147InitPwaInstall();
-
+/* v1.48：頁面自製安裝按鈕已移除；PWA 安裝改由瀏覽器原生 UI 處理。 */
 </script></body></html>
