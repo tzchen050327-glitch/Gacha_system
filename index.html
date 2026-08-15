@@ -3226,7 +3226,174 @@ input,textarea,[contenteditable="true"]{
 @media(max-width:520px){.v144DetailSplit{grid-template-columns:1fr}.v144DetailModal{padding:12px!important}.v143HeroFallback{font-size:60px!important}}
 </style>
 
-</head><body><div id="appViewport" class="appViewport"><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow"><h1>⚾ 棒球抽卡對戰</h1><button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定">⚙️</button></div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion">v1.44</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
+
+<style id="v145-patch">
+/* ===================== v1.45：大廳 Logo + PWA 安裝按鈕 ===================== */
+.lobbyTitleRow{
+  position:relative!important;
+  display:block!important;
+  min-height:58px;
+  padding-right:108px;
+}
+.v145LobbyLogo{
+  position:relative;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  margin:0!important;
+  max-width:100%;
+  white-space:nowrap;
+  line-height:1!important;
+  isolation:isolate;
+}
+.v145LogoBall{
+  position:relative;
+  z-index:2;
+  display:inline-grid;
+  place-items:center;
+  width:35px;height:35px;
+  flex:0 0 35px;
+  border-radius:50%;
+  font-size:24px;
+  filter:drop-shadow(0 4px 7px #0008);
+  animation:v145LogoBallFloat 3.2s ease-in-out infinite;
+}
+.v145LogoText{
+  position:relative;
+  z-index:2;
+  display:inline-block;
+  font-weight:1000;
+  letter-spacing:.085em;
+  background:linear-gradient(180deg,#fff8dc 0%,#f6d889 34%,#fff0b8 51%,#b87a2d 100%);
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+  -webkit-text-stroke:.55px #4a260d;
+  text-shadow:
+    0 1px 0 #fff4,
+    0 3px 0 #5b2d0d,
+    0 6px 10px #0009,
+    0 0 16px #e8b14b33;
+}
+.v145LogoText::after{
+  content:"";
+  position:absolute;
+  inset:-3px -5px;
+  background:linear-gradient(110deg,transparent 0 37%,#fff9 46%,transparent 55% 100%);
+  mix-blend-mode:screen;
+  transform:translateX(-135%);
+  animation:v145LogoShine 6.5s ease-in-out infinite;
+  pointer-events:none;
+}
+.v145LogoSeam{
+  position:absolute;
+  left:41px;right:3px;bottom:-8px;
+  height:5px;
+  border-radius:999px;
+  background:
+    linear-gradient(90deg,transparent,#d79b42 12% 88%,transparent),
+    repeating-linear-gradient(115deg,transparent 0 9px,#fff5 10px 11px,transparent 12px 18px);
+  box-shadow:0 2px 4px #0005,0 0 7px #d79b4238;
+  opacity:.82;
+  z-index:1;
+}
+.v145TopTools{
+  position:absolute;
+  right:0;
+  top:0;
+  display:flex;
+  align-items:center;
+  gap:6px;
+  z-index:6;
+}
+.v145TopTools .topSettingsBtn{
+  width:48px!important;
+  height:48px!important;
+  flex:0 0 48px!important;
+}
+.v145InstallBtn{
+  display:flex!important;
+  flex-direction:column;
+  gap:0;
+  font-size:16px!important;
+  background:linear-gradient(180deg,#5f431fee,#2f1c0dee)!important;
+}
+.v145InstallBtn[hidden]{display:none!important}
+.v145InstallIcon{font-size:18px;line-height:16px}
+.v145InstallBtn small{
+  display:block;
+  font-size:6px;
+  line-height:8px;
+  margin-top:2px;
+  color:#ffe5a3;
+  letter-spacing:.05em;
+  font-weight:900;
+}
+.v145InstallBtn.v145InstallReady{
+  border-color:#ffe09599!important;
+  box-shadow:0 6px 14px #0006,0 0 0 1px #ffdd7f26,inset 0 1px 0 #fff2!important;
+}
+.v145InstallHelp{max-width:430px!important}
+.v145InstallHelp .v145InstallSteps{
+  display:grid;gap:9px;margin-top:12px;
+}
+.v145InstallHelp .v145InstallStep{
+  display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:start;
+  padding:10px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff0e;
+}
+.v145InstallHelp .v145InstallStep b{
+  width:25px;height:25px;border-radius:50%;display:grid;place-items:center;
+  background:#d6aa4b;color:#2a1708;font-size:10px;
+}
+.v145InstallHelp .v145InstallStep span{font-size:9px;line-height:1.55}
+.v145InstallHelp .v145InstallNote{margin-top:9px;font-size:7px;color:#ffffff72;line-height:1.55}
+
+@keyframes v145LogoShine{
+  0%,68%{transform:translateX(-135%)}
+  82%{transform:translateX(135%)}
+  100%{transform:translateX(135%)}
+}
+@keyframes v145LogoBallFloat{
+  0%,100%{transform:translateY(0) rotate(-3deg)}
+  50%{transform:translateY(-2px) rotate(3deg)}
+}
+
+@media(max-width:520px){
+  .lobbyTitleRow{min-height:52px;padding-right:96px!important}
+  .v145LobbyLogo{gap:5px}
+  .v145LogoBall{width:30px;height:30px;flex-basis:30px;font-size:20px}
+  .v145LogoText{font-size:24px!important;letter-spacing:.055em}
+  .v145LogoSeam{left:35px;bottom:-7px}
+  .v145TopTools{gap:5px}
+  .v145TopTools .topSettingsBtn{width:43px!important;height:43px!important;flex-basis:43px!important}
+  .v145InstallIcon{font-size:16px}
+}
+@media(max-width:385px){
+  .lobbyTitleRow{padding-right:86px!important}
+  .v145LogoText{font-size:21px!important;letter-spacing:.035em}
+  .v145LogoBall{width:27px;height:27px;flex-basis:27px;font-size:18px}
+  .v145LogoSeam{left:31px}
+  .v145TopTools .topSettingsBtn{width:39px!important;height:39px!important;flex-basis:39px!important}
+}
+@media(prefers-reduced-motion:reduce){
+  .v145LogoBall,.v145LogoText::after{animation:none!important}
+}
+</style>
+
+</head><body><div id="appViewport" class="appViewport"><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow">
+  <h1 class="v145LobbyLogo" aria-label="棒球抽卡對戰">
+    <span class="v145LogoBall" aria-hidden="true">⚾</span>
+    <span class="v145LogoText">棒球抽卡對戰</span>
+    <span class="v145LogoSeam" aria-hidden="true"></span>
+  </h1>
+  <div class="v145TopTools">
+    <button id="installPwaBtn" class="topSettingsBtn v145InstallBtn" type="button" aria-label="安裝 APP" title="安裝 APP" hidden>
+      <span class="v145InstallIcon">⬇</span>
+      <small>安裝</small>
+    </button>
+    <button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定" title="設定">⚙️</button>
+  </div>
+</div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion">v1.45</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
  <div class="gamePrepWood">
   <button id="gamePrepBack" class="gamePrepBack" type="button">← 返回大廳</button>
   <div class="gamePrepContent">
@@ -5390,7 +5557,7 @@ function pick(forceSRPlus=false,hiddenReserve=0){
  const rates=cfg.rates||{},reserve=Math.max(0,Math.min(.04,Number(hiddenReserve)||0)),total=Math.max(.001,100-reserve),r=Math.random()*total,a=Math.max(0,Number(rates.SSR)||0),b=a+Math.max(0,Number(rates.SR)||0),c=b+Math.max(0,Number(rates.R)||0);let rarity=r<a?'SSR':r<b?'SR':r<c?'R':'N';let pool=availablePool([rarity],cfg);if(!pool.length)pool=all;const card=randomFrom(pool);if(card?.rarity==='SSR')setPity(0);return card
 }
 function resultCardHtml(c){const player=c?.kind!=='cheer',extra=player?cardExtraText(c):'';return `<div class="card ${esc(String(c.rarity).toLowerCase())}"><img src="${esc(c.image||PLACE)}" onerror="this.src='${PLACE}'">${player&&extra?`<div class="countBadge">${esc(extra)}</div>`:c?.kind==='cheer'?`<div class="countBadge">x${countOfCard(c.id)}</div>`:''}<div>${esc(c.rarity)}${player?`｜Lv.${cardLevel(c)}`:''}</div><div class="name">${esc(c.name||'未命名卡牌')}</div><div>${esc(c.type||'未分類')}${c.team?' ｜ '+esc(c.team):''}　⚔️${esc(player?cardEffectivePower(c):(c.power||0))}</div>${c.description?`<div class="sub">${esc(c.description)}</div>`:''}</div>`}
-function setDrawButtonsDisabled(disabled){['collection','drawMenu','daily','lobbyChat','friendsBtn','giftBtn','settingsBtn','battleBtn'].forEach(id=>{const el=$(id);if(!el)return;el.disabled=!!disabled;el.classList.toggle('animLock',!!disabled)})}
+function setDrawButtonsDisabled(disabled){['collection','drawMenu','daily','lobbyChat','friendsBtn','giftBtn','installPwaBtn','settingsBtn','battleBtn'].forEach(id=>{const el=$(id);if(!el)return;el.disabled=!!disabled;el.classList.toggle('animLock',!!disabled)})}
 function rarityClass(r){return `drawRarity-${String(r||'N').toUpperCase()}`}
 function rarityFxClass(r){return r==='UR'?'effect-UR':r==='SSR'?'effect-SSR':r==='SR'?'effect-SR':''}
 function buildMiniCards(n){const count=n===10?10:7,wide=window.innerWidth>700,radius=wide?(n===10?152:128):(n===10?108:96),halfW=wide?43:(n===10?17:22.5),halfH=wide?61:(n===10?24:32);let html='';for(let i=0;i<count;i++){const angle=(Math.PI*2/count)*i-Math.PI/2,x=Math.cos(angle)*radius,y=Math.sin(angle)*radius,rotate=(i-(count/2))*8;html+=`<div class="drawMini" style="left:calc(50% + ${x}px - ${halfW}px);top:calc(50% + ${y}px - ${halfH}px);animation-delay:${(i%5)*.12}s;transform:rotate(${rotate}deg)"></div>`}return html}
@@ -6177,7 +6344,7 @@ async function initializeGame(){
  }
  if(!isActiveGachaId(ACTIVE_POOL_ID))ACTIVE_POOL_ID=allGachaEntries()[0]?.id||'';
  owned=owned.filter(id=>CARDS.some(c=>c.id===id)||CHEER_CARDS.some(c=>c.id===id));save();renderGems();renderPoolBanner();updatePlayerNameUI();
- $('collection').onclick=()=>showCollection('default','全部','','','全部');v143BindPoolBannerTap();$('lobbyChat').onclick=openLobbyChat;$('friendsBtn').onclick=openChatList;$('giftBtn').onclick=openGiftPage;$('dailyWheel').onclick=showDailyWheel;$('settingsBtn').onclick=openSettings;$('battleMainBtn').onclick=requestGameEntry;if($('gamePrepBack'))$('gamePrepBack').onclick=()=>{gameModeButtonSfx();closeGamePrep()};bindGamePrepPage();
+ v145InitPwaInstall();$('collection').onclick=()=>showCollection('default','全部','','','全部');v143BindPoolBannerTap();$('lobbyChat').onclick=openLobbyChat;$('friendsBtn').onclick=openChatList;$('giftBtn').onclick=openGiftPage;$('dailyWheel').onclick=showDailyWheel;$('settingsBtn').onclick=openSettings;$('battleMainBtn').onclick=requestGameEntry;if($('gamePrepBack'))$('gamePrepBack').onclick=()=>{gameModeButtonSfx();closeGamePrep()};bindGamePrepPage();
  let versionTapCount=0,versionTapTimer=0;const versionEl=$('appVersion');if(versionEl)versionEl.onclick=()=>{versionTapCount++;clearTimeout(versionTapTimer);versionTapTimer=setTimeout(()=>{versionTapCount=0},2000);if(versionTapCount>=5){versionTapCount=0;clearTimeout(versionTapTimer);adminLogin()}};
  $('daily').onclick=()=>{if(storage.getItem('test_daily_day')===day()){$('notice').textContent='⏰ 今天已領取，晚上12點後重置';v143UpdateDailyLoginState();return}gems+=1500;storage.setItem('test_daily_day',day());save();$('notice').textContent='🎁 +1500 鑽！';v143UpdateDailyLoginState()};v143UpdateDailyLoginState();renderLobbyHero();v143BindParallax();refreshDailyWheelBadge();
  startHeartbeat();clearInterval(DM_BADGE_TIMER);DM_BADGE_TIMER=setInterval(()=>{if(PLAYER_TOKEN&&document.visibilityState==='visible')refreshPrivateMessageBadge()},12000);refreshPrivateMessageBadge();
@@ -6188,9 +6355,9 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 async function v143SetupServiceWorker(){
  if(!('serviceWorker' in navigator))return;
  try{
-  const reg=await navigator.serviceWorker.register('./sw.js?v=144',{scope:'./',updateViaCache:'none'});
+  const reg=await navigator.serviceWorker.register('./sw.js?v=145',{scope:'./',updateViaCache:'none'});
   reg.update().catch(()=>{})
- }catch(e){console.warn('v1.44 service worker setup failed',e)}
+ }catch(e){console.warn('v1.45 service worker setup failed',e)}
 }
 window.addEventListener('load',()=>v143SetupServiceWorker())
 
@@ -6223,5 +6390,88 @@ window.addEventListener('load',()=>v143SetupServiceWorker())
     });
   });
 })();
+
+
+/* ===================== v1.45：瀏覽器模式顯示 PWA 安裝按鈕 ===================== */
+let V145_INSTALL_PROMPT=null;
+
+function v145IsStandalone(){
+  return !!(
+    window.matchMedia?.('(display-mode: standalone)').matches ||
+    window.navigator.standalone === true ||
+    document.referrer.startsWith('android-app://')
+  );
+}
+function v145IsIOS(){
+  const ua=navigator.userAgent||'';
+  const iOS=/iPad|iPhone|iPod/.test(ua);
+  const iPadOS=navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1;
+  return iOS||iPadOS;
+}
+function v145IsSafari(){
+  const ua=navigator.userAgent||'';
+  return /Safari/i.test(ua)&&!/Chrome|CriOS|Edg|OPR|Firefox|FxiOS/i.test(ua);
+}
+function v145UpdateInstallButton(){
+  const btn=$('installPwaBtn');if(!btn)return;
+  const browserMode=!v145IsStandalone();
+  btn.hidden=!browserMode;
+  btn.classList.toggle('v145InstallReady',!!V145_INSTALL_PROMPT);
+  btn.setAttribute('aria-label',V145_INSTALL_PROMPT?'安裝 APP':'安裝 APP 說明');
+  btn.title=V145_INSTALL_PROMPT?'安裝 APP':'安裝 APP';
+}
+function v145OpenInstallHelp(){
+  const ios=v145IsIOS(),safari=v145IsSafari();
+  const steps=ios
+    ?[
+      ['1',safari?'點 Safari 下方的「分享」按鈕。':'請先用 Safari 開啟這個網站。'],
+      ['2',safari?'往下找到「加入主畫面」。':'再點 Safari 的「分享」按鈕。'],
+      ['3',safari?'確認名稱後按「加入」。':'選擇「加入主畫面」，再按「加入」。']
+     ]
+    :[
+      ['1','打開瀏覽器選單（通常是右上角 ⋮ 或安裝圖示）。'],
+      ['2','選擇「安裝應用程式」、「安裝 APP」或「加入主畫面」。'],
+      ['3','完成後從主畫面開啟，即會進入 PWA 模式。']
+     ];
+  $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v145InstallHelp">
+    <div class="modalHead"><div><h2 style="margin:0">⬇ 安裝棒球抽卡對戰</h2><div class="sub">${ios?'iPhone / iPad':'瀏覽器安裝說明'}</div></div><button class="small" id="v145InstallClose">關閉</button></div>
+    <div class="v145InstallSteps">${steps.map(s=>`<div class="v145InstallStep"><b>${s[0]}</b><span>${esc(s[1])}</span></div>`).join('')}</div>
+    <div class="v145InstallNote">安裝完成並從主畫面開啟後，「安裝」按鈕會自動消失。</div>
+  </div></div>`;
+  $('v145InstallClose').onclick=()=>{$('modal').innerHTML=''}
+}
+async function v145HandleInstallClick(){
+  if(v145IsStandalone()){v145UpdateInstallButton();return}
+  if(V145_INSTALL_PROMPT){
+    const prompt=V145_INSTALL_PROMPT;
+    V145_INSTALL_PROMPT=null;
+    v145UpdateInstallButton();
+    try{
+      await prompt.prompt();
+      await prompt.userChoice;
+    }catch(e){console.warn('v1.45 PWA install prompt failed',e)}
+    v145UpdateInstallButton();
+    return
+  }
+  v145OpenInstallHelp()
+}
+function v145InitPwaInstall(){
+  const btn=$('installPwaBtn');if(btn&&!btn.dataset.bound){
+    btn.dataset.bound='1';
+    btn.addEventListener('click',v145HandleInstallClick);
+  }
+  v145UpdateInstallButton();
+}
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  V145_INSTALL_PROMPT=e;
+  v145UpdateInstallButton();
+});
+window.addEventListener('appinstalled',()=>{
+  V145_INSTALL_PROMPT=null;
+  v145UpdateInstallButton();
+});
+window.matchMedia?.('(display-mode: standalone)').addEventListener?.('change',v145UpdateInstallButton);
+document.addEventListener('visibilitychange',()=>{if(!document.hidden)v145UpdateInstallButton()});
 
 </script></body></html>
