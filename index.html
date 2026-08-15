@@ -3146,7 +3146,87 @@ input,textarea,[contenteditable="true"]{
  .v143HeroLayer{transition:none!important}.v143WheelDisc{transition-duration:1s!important}
 }
 </style>
-</head><body><div id="appViewport" class="appViewport"><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow"><h1>⚾ 棒球抽卡對戰</h1><button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定">⚙️</button></div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">FEATURED PLAYER</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">選擇卡池，主視覺會跟著切換</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion">v1.43</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
+
+<style id="v144-patch">
+/* ===== v1.44：卡池名稱驅動主視覺，不使用球員卡當背景 ===== */
+.v143Hero,.homePoolSlide{
+ --v144-c1:#1c70a5;--v144-c2:#07111b;--v144-glow:#8edcff;--v144-accent:#ffe09b;
+}
+.v144Theme-cheer{--v144-c1:#d94b9d;--v144-c2:#35124a;--v144-glow:#ff9ee0;--v144-accent:#fff0a8}
+.v144Theme-taiwan{--v144-c1:#174d9c;--v144-c2:#7d171d;--v144-glow:#dbe8ff;--v144-accent:#fff}
+.v144Theme-allstar{--v144-c1:#6c35a5;--v144-c2:#2b1739;--v144-glow:#ffd86f;--v144-accent:#ffe29a}
+.v144Theme-championship{--v144-c1:#8a5c12;--v144-c2:#160d08;--v144-glow:#ffcf52;--v144-accent:#fff1a9}
+.v144Theme-legend{--v144-c1:#5d6775;--v144-c2:#050607;--v144-glow:#eaf4ff;--v144-accent:#f9df83}
+.v144Theme-retro{--v144-c1:#8a5a32;--v144-c2:#2d2219;--v144-glow:#f2d6a5;--v144-accent:#f6ddb1}
+.v144Theme-summer{--v144-c1:#198bc7;--v144-c2:#0e5477;--v144-glow:#fff29a;--v144-accent:#fff4a8}
+.v144Theme-winter{--v144-c1:#5d8dad;--v144-c2:#152b45;--v144-glow:#dff8ff;--v144-accent:#eefcff}
+.v144Theme-rookie{--v144-c1:#2c8a62;--v144-c2:#0c2d24;--v144-glow:#96ffd0;--v144-accent:#dfffb7}
+.v144Theme-stadium{--v144-c1:#196b96;--v144-c2:#061018;--v144-glow:#9be5ff;--v144-accent:#ffe3a3}
+
+.v143HeroBg{
+ background:
+ radial-gradient(ellipse at 50% 92%,color-mix(in srgb,var(--v144-c1) 55%,transparent) 0 15%,transparent 48%),
+ linear-gradient(155deg,var(--v144-c1),var(--v144-c2) 58%,#03070b)!important;
+ filter:saturate(1.08) brightness(.72)!important;
+}
+.v143HeroBg::before{
+ content:"";position:absolute;left:10%;right:10%;bottom:7%;height:42%;
+ background:
+ linear-gradient(155deg,transparent 49%,#ffffff17 50% 51%,transparent 52%) 0 0/50% 100%,
+ linear-gradient(205deg,transparent 49%,#ffffff12 50% 51%,transparent 52%) 100% 0/50% 100%;
+ clip-path:polygon(50% 0,100% 100%,0 100%);opacity:.9
+}
+.v143HeroBg::after{
+ content:"";position:absolute;left:-10%;right:-10%;top:5%;height:42%;
+ background:
+ radial-gradient(circle at 13% 20%,var(--v144-glow) 0 1%,transparent 2.5%),
+ radial-gradient(circle at 87% 20%,var(--v144-glow) 0 1%,transparent 2.5%),
+ linear-gradient(90deg,transparent 12%,#ffffff24 13% 13.5%,transparent 14% 86%,#ffffff24 87% 87.5%,transparent 88%);
+ filter:blur(.2px);opacity:.75
+}
+.v143HeroSubject img{display:none!important}
+.v143HeroFallback{
+ display:grid!important;width:68%!important;aspect-ratio:1!important;border-radius:50%!important;
+ font-size:72px!important;background:radial-gradient(circle at 50% 45%,color-mix(in srgb,var(--v144-glow) 26%,transparent),transparent 66%)!important;
+ border:1px solid color-mix(in srgb,var(--v144-accent) 34%,transparent);
+ box-shadow:0 0 55px color-mix(in srgb,var(--v144-glow) 24%,transparent),inset 0 0 24px #fff1;
+ text-shadow:0 10px 22px #0009;filter:drop-shadow(0 12px 18px #0008)
+}
+.v143HeroLights i{background:radial-gradient(circle,var(--v144-accent) 0 2%,color-mix(in srgb,var(--v144-glow) 35%,transparent) 8%,transparent 65%)!important}
+.v143HeroHaze{background:radial-gradient(ellipse at center,color-mix(in srgb,var(--v144-glow) 23%,transparent),transparent 66%)!important}
+.v143HeroParticles i{background:var(--v144-accent)!important;box-shadow:0 0 8px var(--v144-glow)!important}
+.v143HeroCopy small{color:var(--v144-accent)!important}
+
+.v143DrawBanner .homePoolSlide{
+ background:
+ radial-gradient(circle at 82% 24%,color-mix(in srgb,var(--v144-glow) 28%,transparent),transparent 30%),
+ linear-gradient(125deg,var(--v144-c1),var(--v144-c2) 72%)!important;
+}
+.v143DrawBanner .homePoolSlide::after{
+ content:"";position:absolute;right:3%;top:8%;width:34%;aspect-ratio:1;border-radius:50%;
+ border:1px solid color-mix(in srgb,var(--v144-accent) 35%,transparent);
+ box-shadow:0 0 28px color-mix(in srgb,var(--v144-glow) 24%,transparent),inset 0 0 28px #fff1;
+ background:repeating-radial-gradient(circle,#ffffff0a 0 2px,transparent 3px 10px);z-index:0
+}
+.v143DrawBanner .homePoolSlide::before{background:linear-gradient(90deg,#05080de8 0 48%,#05080d6b 76%,transparent)!important}
+.v143PoolArt{display:none!important}
+
+/* ===== v1.44：排位戰績可進入完整對戰詳情 ===== */
+.v144HistoryButton{width:100%;color:#fff!important;text-align:left!important;font:inherit!important;cursor:pointer!important}
+.v144HistoryButton:hover{border-color:#e7c55f55!important;background:#ffffff0a!important}
+.v144HistoryButton>strong{display:flex;flex-direction:column;align-items:flex-end;gap:2px}
+.v144HistoryButton>strong small{font-size:5px;color:#ffffff5c;font-weight:800}
+.v144DetailModal{max-width:720px!important}
+.v144DetailFinal{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;margin:10px 0;padding:12px;border-radius:14px;background:linear-gradient(135deg,#ffffff08,#d6ac3c10);border:1px solid #e7c75d28;text-align:center}
+.v144DetailFinal span small,.v144DetailFinal span b,.v144DetailFinal span strong{display:block}.v144DetailFinal span small{font-size:6px;color:#ffffff6b}.v144DetailFinal span b{font-size:10px;margin-top:2px}.v144DetailFinal span strong{font-size:26px;color:#ffe08b}.v144DetailFinal em{font-style:normal;font-size:7px;letter-spacing:.18em;color:#ffffff55}
+.v144DetailSplit{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:8px}
+.v144DetailPlayers{padding:9px;border-radius:12px;background:#ffffff05;border:1px solid #ffffff0d;min-width:0}.v144DetailPlayers h3,.v144PlayLog h3{margin:0 0 7px;font-size:10px}.v144DetailPlayer,.v144PlayRow{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:7px;align-items:center;padding:6px 2px;border-top:1px solid #ffffff0b}.v144DetailPlayer span,.v144PlayRow span{min-width:0}.v144DetailPlayer b,.v144DetailPlayer small,.v144PlayRow b,.v144PlayRow small{display:block}.v144DetailPlayer b,.v144PlayRow b{font-size:7px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.v144DetailPlayer small,.v144PlayRow small{font-size:5.5px;color:#ffffff64;margin-top:2px}.v144DetailPlayer strong{font-size:8px;text-align:right}.v144DetailPlayer strong small{white-space:nowrap}
+.v144PlayLog{margin-top:9px;padding:9px;border-radius:12px;background:#070b11;border:1px solid #ffffff0e}.v144PlayLog h3{display:flex;justify-content:space-between}.v144PlayLog h3 small{font-size:6px;color:#ffffff60}.v144PlayRow strong{font-size:7px;color:#ffe29b;text-align:right;white-space:nowrap}.v144PlayRow strong small{color:#8dffb8}
+.v144NoDetail{padding:22px 12px;text-align:center;border-radius:13px;background:#ffffff05;margin-top:10px}.v144NoDetail b,.v144NoDetail span{display:block}.v144NoDetail b{font-size:13px}.v144NoDetail span{font-size:7px;color:#ffffff6b;margin-top:7px;line-height:1.6}
+@media(max-width:520px){.v144DetailSplit{grid-template-columns:1fr}.v144DetailModal{padding:12px!important}.v143HeroFallback{font-size:60px!important}}
+</style>
+
+</head><body><div id="appViewport" class="appViewport"><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow"><h1>⚾ 棒球抽卡對戰</h1><button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定">⚙️</button></div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion">v1.44</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
  <div class="gamePrepWood">
   <button id="gamePrepBack" class="gamePrepBack" type="button">← 返回大廳</button>
   <div class="gamePrepContent">
@@ -3374,20 +3454,44 @@ function v143FeaturedForEntry(entry){
  const rank={SSR:4,SR:3,R:2,N:1};
  return cards.slice().sort((a,b)=>(rank[String(b.rarity)]||0)-(rank[String(a.rarity)]||0)||(Number(b.power)||0)-(Number(a.power)||0))[0]||null
 }
-function v143PoolArt(entry){
- const c=v143FeaturedForEntry(entry);return c?.image||''
+function v144PoolTheme(entry){
+ const raw=String(entry?.name||'').toLowerCase();
+ if(entry?.kind==='cheer'||/(應援|啦啦|cheer|support|女孩|女神)/i.test(raw))return'cheer';
+ if(/(中華|台灣|臺灣|國家|世界|wbc|taiwan|national)/i.test(raw))return'taiwan';
+ if(/(明星|全明星|all.?star|star)/i.test(raw))return'allstar';
+ if(/(總冠軍|冠軍|季後|台灣大賽|臺灣大賽|champion|playoff)/i.test(raw))return'championship';
+ if(/(ur|傳奇|神|王者|至尊|極限|限定|legend|myth)/i.test(raw))return'legend';
+ if(/(復古|經典|元年|懷舊|retro|classic)/i.test(raw))return'retro';
+ if(/(夏|海|沙灘|summer|ocean)/i.test(raw))return'summer';
+ if(/(冬|雪|聖誕|christmas|winter)/i.test(raw))return'winter';
+ if(/(新人|新秀|菜鳥|rookie)/i.test(raw))return'rookie';
+ return'stadium'
+}
+function v144ThemeSpec(theme){
+ return{
+  cheer:{icon:'📣',label:'CHEER STAGE',desc:'應援燈海・舞台節奏・球場熱度'},
+  taiwan:{icon:'🇹🇼',label:'NATIONAL PRIDE',desc:'國家隊氣勢・紅白藍燈光・國際賽氛圍'},
+  allstar:{icon:'⭐',label:'ALL-STAR NIGHT',desc:'明星舞台・聚光燈・金紫霓虹'},
+  championship:{icon:'🏆',label:'CHAMPIONSHIP',desc:'季後賽壓迫感・冠軍金光・決戰球場'},
+  legend:{icon:'✦',label:'LEGEND',desc:'黑金銀曜・稀有能量・傳奇氣場'},
+  retro:{icon:'⚾',label:'CLASSIC BASEBALL',desc:'復古球場・紙張顆粒・經典棒球色調'},
+  summer:{icon:'☀️',label:'SUMMER BALL',desc:'夏日球場・天空光影・清爽高彩度'},
+  winter:{icon:'❄️',label:'WINTER GAME',desc:'冷色球場・雪光・冬季限定氛圍'},
+  rookie:{icon:'🌱',label:'ROOKIE RISE',desc:'新秀登場・清新綠光・成長感'},
+  stadium:{icon:'🏟️',label:'BALLPARK NIGHT',desc:'夜間球場・照明塔・比賽主視覺'}
+ }[theme]||{icon:'🏟️',label:'BALLPARK NIGHT',desc:'夜間球場・照明塔・比賽主視覺'}
 }
 function renderLobbyHero(){
  const hero=$('lobbyHero');if(!hero)return;
- const entry=currentGachaEntry(),card=v143FeaturedForEntry(entry),img=$('v143HeroImage'),fallback=hero.querySelector('.v143HeroFallback'),bg=hero.querySelector('.v143HeroBg');
+ const entry=currentGachaEntry(),theme=v144PoolTheme(entry),spec=v144ThemeSpec(theme),img=$('v143HeroImage'),fallback=hero.querySelector('.v143HeroFallback'),bg=hero.querySelector('.v143HeroBg');
  const name=$('v143HeroName'),eyebrow=$('v143HeroEyebrow'),meta=$('v143HeroMeta');
- const image=card?.image||'';
- if(img){if(image){img.src=image;img.style.display='block';img.onerror=()=>{img.style.display='none';if(fallback)fallback.style.display='grid'}}else img.style.display='none'}
- if(fallback)fallback.style.display=image?'none':'grid';
- if(bg)bg.style.backgroundImage=image?`linear-gradient(180deg,#06111a22,#05080fd9),url("${String(image).replace(/"/g,'%22')}")`:'radial-gradient(circle at 50% 35%,#387ca33b,transparent 42%),linear-gradient(180deg,#0b1922,#05080d)';
- if(name)name.textContent=card?.name||entry?.name||'棒球抽卡對戰';
- if(eyebrow)eyebrow.textContent=entry?.kind==='cheer'?'SUPPORT FEATURE':(card?.rarity?`${card.rarity} FEATURED PLAYER`:'FEATURED PLAYER');
- if(meta)meta.textContent=entry?.kind==='cheer'?`${entry?.name||'應援團卡'}｜每日戰術支援`:`${entry?.name||'目前卡池'}${card?.team?`｜${card.team}`:''}`;
+ [...hero.classList].filter(c=>c.startsWith('v144Theme-')).forEach(c=>hero.classList.remove(c));hero.classList.add('v144Theme-'+theme);
+ if(img){img.removeAttribute('src');img.style.display='none'}
+ if(fallback){fallback.style.display='grid';fallback.textContent=spec.icon}
+ if(bg)bg.style.backgroundImage='';
+ if(name)name.textContent=entry?.name||'棒球抽卡對戰';
+ if(eyebrow)eyebrow.textContent=spec.label;
+ if(meta)meta.textContent=spec.desc;
  const particles=hero.querySelector('.v143HeroParticles');if(particles&&!particles.dataset.ready){particles.dataset.ready='1';particles.innerHTML=Array.from({length:18},(_,i)=>`<i style="--x:${(i*37)%96}%;--y:${(i*53)%88}%;--delay:${(i%7)*-.7}s;--size:${2+(i%3)}px"></i>`).join('')}
 }
 function v143BindParallax(){
@@ -3413,12 +3517,12 @@ function renderPoolBanner(){
  if(!entries.length){ACTIVE_POOL_ID='';rail.innerHTML='<div class="homePoolSlide empty"><div><b>目前沒有開放中的卡池</b><div class="homePoolHint">請等待管理員重新開放卡池</div></div></div>';if(dots)dots.innerHTML='';renderLobbyHero();return}
  if(!entries.some(p=>p.id===ACTIVE_POOL_ID))ACTIVE_POOL_ID=entries[0].id;
  rail.innerHTML=entries.map(p=>{
-  const art=v143PoolArt(p),artHtml=art?`<div class="v143PoolArt"><img src="${esc(art)}" alt=""></div>`:'';
+  const theme=v144PoolTheme(p),spec=v144ThemeSpec(theme),themeClass=`v144Theme-${theme}`;
   if(p.kind==='cheer'){
    const count=activeCheerCards().length;
-   return `<article class="homePoolSlide ${poolThemeClass(p.id)}" data-home-pool="${esc(p.id)}">${artHtml}<div class="v143PoolText"><div class="homePoolEyebrow">SUPPORT GACHA</div><div class="homePoolTitle">📣 ${esc(p.name)}</div><div class="homePoolMeta">${count} 張應援卡｜點擊進入抽獎</div></div></article>`
+   return `<article class="homePoolSlide ${poolThemeClass(p.id)} ${themeClass}" data-home-pool="${esc(p.id)}"><div class="v143PoolText"><div class="homePoolEyebrow">${esc(spec.label)}</div><div class="homePoolTitle">${esc(spec.icon)} ${esc(p.name)}</div><div class="homePoolMeta">${count} 張應援卡｜點擊進入抽獎</div></div></article>`
   }
-  return `<article class="homePoolSlide ${poolThemeClass(p.id)}" data-home-pool="${esc(p.id)}">${artHtml}<div class="v143PoolText"><div class="homePoolEyebrow">GACHA POOL</div><div class="homePoolTitle">⚾ ${esc(p.name)}</div><div class="homePoolMeta">${esc(rateText(p))}｜${getPoolCards(p).length} 張球員</div></div></article>`
+  return `<article class="homePoolSlide ${poolThemeClass(p.id)} ${themeClass}" data-home-pool="${esc(p.id)}"><div class="v143PoolText"><div class="homePoolEyebrow">${esc(spec.label)}</div><div class="homePoolTitle">${esc(spec.icon)} ${esc(p.name)}</div><div class="homePoolMeta">${esc(rateText(p))}｜${getPoolCards(p).length} 張球員</div></div></article>`
  }).join('');
  const slides=[...rail.querySelectorAll('[data-home-pool]')];
  const paintDots=()=>{if(!dots)return;dots.innerHTML=slides.map(el=>`<span class="homePoolDot ${el.dataset.homePool===ACTIVE_POOL_ID?'active':''}"></span>`).join('')};paintDots();
@@ -3788,7 +3892,38 @@ function v135RankRangeByElapsed(sec){if(sec<10)return 50;if(sec<20)return 100;if
 function v135HistoryRow(x,defense=false){
  const win=defense?x.attacker_result==='loss':x.attacker_result==='win',loss=defense?x.attacker_result==='win':x.attacker_result==='loss',delta=defense?Number(x.defender_delta)||0:Number(x.attacker_delta)||0,legacy=!!x?.metadata?.legacy;
  const score=legacy?'舊版紀錄｜比分未保存':`${Number(x.attacker_score)||0}：${Number(x.defender_score)||0}`,rp=legacy?'舊版':`${delta>0?'+':''}${delta} RP`;
- return`<div class="v135HistoryRow ${legacy?'v136LegacyHistory':''}"><span class="v135HistoryResult ${win?'win':loss?'loss':'draw'}">${defense?(win?'防守成功':'防守失敗'):(win?'勝':'敗')}</span><span><b>${esc(x.opponent_name||'玩家')}</b><small>${score}｜${new Date(x.created_at).toLocaleString()}</small></span><strong class="${delta>0?'plus':delta<0?'minus':''}">${rp}</strong></div>`
+ return`<button type="button" class="v135HistoryRow v144HistoryButton ${legacy?'v136LegacyHistory':''}" data-v144-match-detail="${esc(x.match_id||'')}" data-v144-history-tab="${defense?'defense':'offense'}"><span class="v135HistoryResult ${win?'win':loss?'loss':'draw'}">${defense?(win?'防守成功':'防守失敗'):(win?'勝':'敗')}</span><span><b>${esc(x.opponent_name||'玩家')}</b><small>${score}｜${new Date(x.created_at).toLocaleString()}</small></span><strong class="${delta>0?'plus':delta<0?'minus':''}">${rp}<small>查看 ›</small></strong></button>`
+}
+function v144ResultLabel(r){return({BB:'保送',K:'三振',GO:'滾地出局',FO:'飛球出局',LO:'平飛出局',DP:'雙殺',SF:'高飛犧牲打',SFOUT:'本壘觸殺','1B':'一壘安打','2B':'二壘安打','3B':'三壘安打',HR:'全壘打'})[String(r)]||String(r||'-')}
+function v144StrategyLabel(v){return({contact:'穩健打擊',power:'強攻',patience:'選球',challenge:'正面對決',breaking:'變化球引誘',nibble:'閃躲投球'})[String(v)]||String(v||'-')}
+function v144DetailScoreboard(d){
+ const a=d.attacker||{},b=d.defender||{},first=a.side==='first'?a:b,second=a.side==='first'?b:a,ai=first.team_stats?.innings||[],bi=second.team_stats?.innings||[],max=Math.max(3,Number(d.finished_inning)||3,ai.length,bi.length);
+ const th=Array.from({length:max},(_,i)=>`<th>${i+1}</th>`).join('');
+ const row=(t,label)=>{const inn=t.team_stats?.innings||[],played=t.team_stats?.played||[];return`<tr><td>${label}｜${esc(t.name||'玩家')}</td>${Array.from({length:max},(_,i)=>`<td>${played[i]?Number(inn[i])||0:'-'}</td>`).join('')}<td class="total">${Number(t.score)||0}</td><td>${Number(t.team_stats?.H)||0}</td><td>${Number(t.team_stats?.E)||0}</td></tr>`};
+ return`<div class="v129ScoreboardScroll"><table class="v128Scoreboard"><thead><tr><th>TEAM</th>${th}<th>R</th><th>H</th><th>E</th></tr></thead><tbody>${row(first,'先攻')}${row(second,'後攻')}</tbody></table></div>`
+}
+function v144DetailTeamStats(t){
+ const s=t?.team_stats||{};return`<div class="v128TeamStatCard"><b>${esc(t?.name||'玩家')}</b><div class="v128StatRows"><span class="v128StatCell"><small>1B</small><b>${Number(s.singles)||0}</b></span><span class="v128StatCell"><small>2B</small><b>${Number(s.doubles)||0}</b></span><span class="v128StatCell"><small>3B</small><b>${Number(s.triples)||0}</b></span><span class="v128StatCell"><small>HR</small><b>${Number(s.HR)||0}</b></span><span class="v128StatCell"><small>BB</small><b>${Number(s.BB)||0}</b></span><span class="v128StatCell"><small>K</small><b>${Number(s.K)||0}</b></span><span class="v128StatCell"><small>SF</small><b>${Number(s.SF)||0}</b></span><span class="v128StatCell"><small>DP</small><b>${Number(s.DP)||0}</b></span><span class="v128StatCell"><small>LOB</small><b>${Number(s.LOB)||0}</b></span></div></div>`
+}
+function v144DetailPlayers(t){
+ const stats=t?.batter_stats||{},lineup=Array.isArray(t?.lineup)?t.lineup:[];return`<div class="v144DetailPlayers"><h3>${esc(t?.name||'玩家')}｜球員成績</h3>${lineup.map((c,i)=>{const x=stats[String(c.id)]||{};return`<div class="v144DetailPlayer"><span><b>${i+1}｜${esc(c.name||'球員')}</b><small>${esc(c.rarity||'')}・${esc(c.position||'')}｜戰力 ${Number(c.power)||0}</small></span><strong>${Number(x.H)||0}-${Number(x.AB)||0}<small>HR ${Number(x.HR)||0}｜BB ${Number(x.BB)||0}｜K ${Number(x.K)||0}｜RBI ${Number(x.RBI)||0}</small></strong></div>`}).join('')||'<div class="notice">無球員資料</div>'}</div>`
+}
+async function showV144RankedDetail(matchId,returnTab='offense'){
+ if(!matchId)return;
+ $('modal').innerHTML='<div class="modalBackdrop"><div class="modal v144DetailModal"><div class="notice">讀取對戰戰報中…</div></div></div>';
+ try{
+  const res=await matchDetailApi('get',{matchId});
+  if(!res?.available||!res?.detail){$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v144DetailModal"><div class="modalHead"><h2>📋 對戰詳情</h2><button class="small" id="v144DetailBack">← 戰績</button></div><div class="v144NoDetail"><b>這場沒有保存完整戰報</b><span>v1.44 以前的紀錄，或當時戰報保存失敗，只能保留原本的比分與 RP 摘要。</span></div></div></div>`;$('v144DetailBack').onclick=()=>showV135RankedHub(returnTab);return}
+  const d=res.detail,a=d.attacker||{},b=d.defender||{},plays=Array.isArray(d.plays)?d.plays:[];
+  $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v144DetailModal"><div class="modalHead"><div><h2 style="margin:0">📋 排位對戰詳情</h2><div class="sub">${esc(a.name||'進攻方')} vs ${esc(b.name||'防守方')}｜${new Date(res.created_at||Date.now()).toLocaleString()}</div></div><button class="small" id="v144DetailBack">← 戰績</button></div>
+   <div class="v144DetailFinal"><span><small>進攻方</small><b>${esc(a.name||'玩家')}</b><strong>${Number(a.score)||0}</strong></span><em>FINAL</em><span><small>防守方</small><b>${esc(b.name||'玩家')}</b><strong>${Number(b.score)||0}</strong></span></div>
+   ${v144DetailScoreboard(d)}
+   <div class="v128TeamStats">${v144DetailTeamStats(a)}${v144DetailTeamStats(b)}</div>
+   <div class="v144DetailSplit">${v144DetailPlayers(a)}${v144DetailPlayers(b)}</div>
+   <div class="v144PlayLog"><h3>逐打席紀錄 <small>${plays.length} PA</small></h3>${plays.length?plays.map((p,i)=>`<div class="v144PlayRow"><span><b>${Number(p.inning)||1}局${p.half==='bottom'?'下':'上'}｜${esc(p.batter||'打者')}</b><small>vs ${esc(p.pitcher||'投手')}｜${esc(v144StrategyLabel(p.bat_strategy))} / ${esc(v144StrategyLabel(p.pitch_strategy))}</small></span><strong>${esc(v144ResultLabel(p.result))}${Number(p.runs)>0?`<small>+${Number(p.runs)}分</small>`:''}</strong></div>`).join(''):'<div class="notice">沒有逐打席資料。</div>'}</div>
+  </div></div>`;
+  $('v144DetailBack').onclick=()=>showV135RankedHub(returnTab)
+ }catch(e){$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v144DetailModal"><div class="modalHead"><h2>📋 對戰詳情</h2><button class="small" id="v144DetailBack">← 戰績</button></div><div class="notice">❌ ${esc(e.message||e)}</div></div></div>`;$('v144DetailBack').onclick=()=>showV135RankedHub(returnTab)}
 }
 async function showV135RankedHub(tab='offense'){
  gameModeButtonSfx();V135_RANKED_SEARCH_CANCEL=true;
@@ -3806,6 +3941,7 @@ async function showV135RankedHub(tab='offense'){
   $('v135RankedClose').onclick=()=>$('modal').innerHTML='';
   $('v135DefenseDeck').onchange=async e=>{try{await matchApi('set_defense_deck',{deck:Number(e.target.value)||1})}catch(er){alert(er.message||er)}};
   document.querySelectorAll('[data-v135-history]').forEach(b=>b.onclick=()=>showV135RankedHub(b.dataset.v135History));
+  document.querySelectorAll('[data-v144-match-detail]').forEach(b=>b.onclick=()=>showV144RankedDetail(b.dataset.v144MatchDetail||'',b.dataset.v144HistoryTab||tab));
   $('v135StartRanked').onclick=startV135RankedSearch
  }catch(e){$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal"><div class="modalHead"><h2>🏆 排位賽</h2><button class="small" id="v135RankFail">✕</button></div><div class="notice v136VisibleError">❌ ${esc(e.message||e)}${v142ErrorDetailHtml(e)}${e?.network?`<small class="v137NetHint">目前是連線層錯誤；若有診斷碼／HTTP 狀態則代表伺服器已回覆。</small>`:''}</div><div class="v136ErrorActions"><button id="v136RankRetry" class="admin">重新讀取</button><button id="v136RankBack">返回</button></div></div></div>`;$('v135RankFail').onclick=$('v136RankBack').onclick=()=>$('modal').innerHTML='';$('v136RankRetry').onclick=()=>showV135RankedHub(tab)}
 }
@@ -3922,6 +4058,18 @@ function v142ErrorDetailHtml(e){
  if(e?.code)bits.push(`診斷碼 ${esc(String(e.code))}`);
  if(e?.status)bits.push(`HTTP ${Number(e.status)}`);
  return bits.length?`<small class="v142Diag">${bits.join('｜')}</small>`:''
+}
+async function matchDetailApi(action,payload={}){
+ if(IS_LOCAL_TEST){
+  if(action==='save'){storage.setItem('cp_v144_match_detail_'+String(payload.matchId||''),JSON.stringify(payload.detail||{}));return{ok:true}}
+  if(action==='get'){const d=safeJSON('cp_v144_match_detail_'+String(payload.matchId||''),null);return{ok:true,available:!!d,detail:d||null}}
+ }
+ if(!PLAYER_TOKEN)throw new Error('玩家尚未登入');
+ const headers={'Content-Type':'application/json','x-player-token':PLAYER_TOKEN};let res;
+ try{res=await fetch(MATCH_DETAIL_API,{method:'POST',headers,body:JSON.stringify({action,...payload})})}catch(e){const err=new Error('戰報服務連線失敗');err.network=true;throw err}
+ let data={};try{data=await res.json()}catch(_e){}
+ if(!res.ok){const err=new Error(data.error||('戰報 API 錯誤 '+res.status));err.status=res.status;throw err}
+ return data
 }
 async function matchApi(action,payload={}){
  if(IS_LOCAL_TEST){
@@ -4067,10 +4215,12 @@ function beginV127Battle(setup){
    opponent:{innings:[],played:[],H:0,E:0,singles:0,doubles:0,triples:0,HR:0,BB:0,K:0,SF:0,DP:0,LOB:0}
   },
   batterStats:{player:{},opponent:{}},lobRecordedKey:'',
+  paLog:[],
   aiTelemetry:{batting:{all:{}},pitching:{all:{}},pitcher_usage:{},substitutions:{}},
   opponentAiProfile:setup.opponent?.ai_profile||null,
   opponentBench:(setup.opponent?.bench||[]).map(v127NormBattleCard).filter(Boolean),opponentBenchUsed:[],opponentSubbedOut:[],
   opponentOriginalStarterIds:o.map(c=>c.id),
+  opponentOriginalStarters:o.map(c=>({...c})),
   baseRunAnim:null,scoreFxToken:0,
   roomAuthority:setup.room_authority===true,roomPASeq:0,roomChoices:{},roomResolvingSeq:-1,
   roomSettings:setup.room_settings||null,pendingRoomPitchers:{},pitcherSelecting:false,pitcherSelectionKey:'',
@@ -4249,14 +4399,13 @@ function v127CpuPitchStrategy(s){
 }
 function v127StrategyProbabilities(batter,pitcher,fieldAvg,batStrategy,pitchStrategy){
  const p={...v125PlateProbabilities(lineupAttackValue(batter),lineupDefenseValue(pitcher),fieldAvg)};
- if(batStrategy==='contact'){p.strikeout*=.82;p.hitInPlay*=1.06;p.homeRunShare*=.72;p.walk*=.96}
- else if(batStrategy==='power'){p.strikeout*=1.22;p.hitInPlay*=.95;p.homeRunShare*=1.32;p.walk*=.95}
- else if(batStrategy==='patience'){p.walk*=1.38;p.strikeout*=1.06;p.hitInPlay*=.93;p.homeRunShare*=.90}
- if(pitchStrategy==='breaking'){p.strikeout*=1.15;p.hitInPlay*=1.04;p.homeRunShare*=1.10;p.walk*=1.04}
- else if(pitchStrategy==='nibble'){p.walk*=1.40;p.hitInPlay*=.90;p.strikeout*=.90;p.homeRunShare*=.92}
+ if(batStrategy==='contact'){p.strikeout*=.82;p.hitRate*=1.06;p.homeRunShare*=.72;p.walk*=.96}
+ else if(batStrategy==='power'){p.strikeout*=1.22;p.hitRate*=.95;p.homeRunShare*=1.32;p.walk*=.95}
+ else if(batStrategy==='patience'){p.walk*=1.38;p.strikeout*=1.06;p.hitRate*=.93;p.homeRunShare*=.90}
+ if(pitchStrategy==='breaking'){p.strikeout*=1.15;p.hitRate*=1.04;p.homeRunShare*=1.10;p.walk*=1.04}
+ else if(pitchStrategy==='nibble'){p.walk*=1.40;p.hitRate*=.90;p.strikeout*=.90;p.homeRunShare*=.92}
  p.walk=v125Clamp(p.walk,.025,.18);p.strikeout=v125Clamp(p.strikeout,.05,.40);
- if(p.walk+p.strikeout>.58){const scale=.58/(p.walk+p.strikeout);p.walk*=scale;p.strikeout*=scale}
- p.inPlay=1-p.walk-p.strikeout;p.hitInPlay=v125Clamp(p.hitInPlay,.18,.52);p.homeRunShare=v125Clamp(p.homeRunShare,.04,.35);
+ p.hitRate=v125Clamp(p.hitRate,.10,.60);p.hitInPlay=p.hitRate;p.inPlay=1-p.walk;p.homeRunShare=v125Clamp(p.homeRunShare,.04,.35);
  const remain=1-p.homeRunShare,base=.62+.20+.03;p.singleShare=remain*(.62/base);p.doubleShare=remain*(.20/base);p.tripleShare=remain*(.03/base);
  return p
 }
@@ -4277,7 +4426,9 @@ function v129SacFlyResolution(s,depth){
 }
 function v127ResolvePA(batter,pitcher,fieldAvg,batStrategy,pitchStrategy,s){
  const p=v127StrategyProbabilities(batter,pitcher,fieldAvg,batStrategy,pitchStrategy),r=Math.random();let result,meta={};
- if(r<p.walk)result='BB';else if(r<p.walk+p.strikeout)result='K';else if(Math.random()>=p.hitInPlay)result=v128OutType(batStrategy);else{const h=Math.random();result=h<p.singleShare?'1B':h<p.singleShare+p.doubleShare?'2B':h<p.singleShare+p.doubleShare+p.tripleShare?'3B':'HR'}
+ if(r<p.walk)result='BB';
+ else if(Math.random()<p.hitRate){const h=Math.random();result=h<p.singleShare?'1B':h<p.singleShare+p.doubleShare?'2B':h<p.singleShare+p.doubleShare+p.tripleShare?'3B':'HR'}
+ else{const kAmongOuts=v125Clamp(p.strikeout/Math.max(.001,1-p.hitRate),0,.85);result=Math.random()<kAmongOuts?'K':v128OutType(batStrategy)}
  // 一壘有人、0 或 1 出局、內野滾地球：固定雙殺
  if(result==='GO'&&s.bases[0]&&s.outs<2)result='DP';
  // 外野飛球有三壘跑者時，依飛球深度判定是否 Tag Up / 高飛犧牲打
@@ -4302,6 +4453,20 @@ function v128RecordPA(s,batter,result,runs){
  if(result!=='BB'&&result!=='SF')line.AB++;if(hit)line.H++;if(result==='HR')line.HR++;if(result==='BB')line.BB++;if(result==='K')line.K++;if(result==='SF'){line.SF++;t.SF++}line.RBI+=Math.max(0,Number(runs)||0);
  if(hit){t.H++;if(result==='1B')t.singles++;if(result==='2B')t.doubles++;if(result==='3B')t.triples++;if(result==='HR')t.HR++}
  if(result==='BB')t.BB++;if(result==='K')t.K++;if(result==='DP')t.DP++
+}
+function v144RecordPA(s,batter,pitcher,result,runs,batStrategy,pitchStrategy){
+ if(!s)return;s.paLog||(s.paLog=[]);
+ s.paLog.push({inning:Number(s.inning)||1,half:s.half==='bottom'?'bottom':'top',batting:v127BattingTeam(s)==='player'?'attacker':'defender',batter:String(batter?.name||''),pitcher:String(pitcher?.name||''),result:String(result||''),runs:Math.max(0,Number(runs)||0),bat_strategy:String(batStrategy||''),pitch_strategy:String(pitchStrategy||'')});
+ if(s.paLog.length>300)s.paLog.splice(0,s.paLog.length-300)
+}
+function v144DetailCard(c){return c?{id:String(c.id||''),name:String(c.name||''),rarity:String(c.rarity||''),power:Number(c.power)||0,position:String(c.position||''),team:String(c.team||'')}:null}
+function v144UniqueCards(...groups){const out=[],seen=new Set();for(const g of groups)for(const c of(Array.isArray(g)?g:[])){const x=v144DetailCard(c);if(!x||!x.id||seen.has(x.id))continue;seen.add(x.id);out.push(x)}return out}
+function v144BattleDetail(s){
+ const otherSide=s.playerSide==='first'?'second':'first';
+ return{version:1,finished_inning:Number(s.inning)||1,regulation_innings:v135RegulationInnings(s),
+  attacker:{name:String(s.playerName||'玩家'),side:s.playerSide,score:Number(s.playerScore)||0,team_stats:s.teamStats?.player||{},batter_stats:s.batterStats?.player||{},lineup:v144UniqueCards(s.playerOriginalStarters,s.playerCards)},
+  defender:{name:String(s.opponentName||'對手'),side:otherSide,score:Number(s.opponentScore)||0,team_stats:s.teamStats?.opponent||{},batter_stats:s.batterStats?.opponent||{},lineup:v144UniqueCards(s.opponentOriginalStarters,s.opponentCards)},
+  plays:Array.isArray(s.paLog)?s.paLog.slice(-300):[]}
 }
 function v128RecordLOB(s){
  const team=v127BattingTeam(s),key=`${s.inning}-${s.half}-${team}`;if(s.lobRecordedKey===key)return;
@@ -4415,7 +4580,7 @@ async function v127HandleAction(strategy,auto=false){
  }
  if(['1B','2B','3B','HR'].includes(resolved.result))playV127BattleSfx(resolved.result==='HR'?'hr':'contact');else if(resolved.result==='K')playV127BattleSfx('strikeout');else if(resolved.result==='BB')playV127BattleSfx('walk');else if(resolved.result==='DP')playV127BattleSfx('doubleplay');else playV127BattleSfx('out');
  await v128PlayOutcomeAnimation(resolved.result,s.animations);
- const beforeBases=[...s.bases],runs=v127ApplyResult(s,batter,resolved.result);v135QueueBaseAnimation(s,resolved.result,beforeBases,runs);v127RenderBattle();
+ const beforeBases=[...s.bases],runs=v127ApplyResult(s,batter,resolved.result);v144RecordPA(s,batter,pitcher,resolved.result,runs,batStrategy,pitchStrategy);v135QueueBaseAnimation(s,resolved.result,beforeBases,runs);v127RenderBattle();
  if(runs>0&&resolved.result!=='HR')playV127BattleSfx('run');if(runs>0){await v127Wait(s.animations?260:20);await v135PlayScoreEffect(runs,resolved.result)}
  const depthText=resolved.flyDepth?({shallow:'淺外野',medium:'中深外野',deep:'深遠外野',wall:'全壘打牆前'})[resolved.flyDepth]||'外野':'';
  s.lastResult={result:resolved.result,detail:runs?`${batter.name}｜${depthText?depthText+'｜':''}本打席 ${runs} 分`:`${batter.name} vs ${pitcher.name}${depthText?'｜'+depthText:''}`};
@@ -4467,10 +4632,10 @@ function v128PlayerLinesHtml(s){
 async function v127FinishGame(){
  const s=V127_BATTLE;if(!s||s.finished)return;s.finished=true;s.busy=true;V127_BATTLE_BUSY=false;v128ClearActionTimer();v127ClearTimers();
  const result=s.forcedPlayerWin?'win':s.playerScore>s.opponentScore?'win':s.playerScore<s.opponentScore?'loss':'draw';let reward=0,server=null,settlementError='';
- const finishPayload={matchId:s.matchId,result,playerScore:s.playerScore,opponentScore:s.opponentScore,telemetry:s.aiTelemetry};
+ const finishPayload={matchId:s.matchId,result,playerScore:s.playerScore,opponentScore:s.opponentScore,telemetry:s.aiTelemetry,battleDetail:v144BattleDetail(s)};
  try{
   if(s.mode==='room'){if(s.roomAuthority&&ROOM_SESSION?.id)await roomApi('finish',{roomId:ROOM_SESSION.id});server={room:true}}
-  else{server=await matchApi('finish_match',finishPayload);reward=Number(server?.reward_gems)||0;if(server?.progress)applyPlayerProgress(server.progress)}
+  else{server=await matchApi('finish_match',finishPayload);reward=Number(server?.reward_gems)||0;if(server?.progress)applyPlayerProgress(server.progress);if(s.mode==='ranked'){try{await matchDetailApi('save',{matchId:s.matchId,detail:finishPayload.battleDetail})}catch(detailErr){console.warn('v1.44 ranked detail save failed',detailErr)}}}
  }catch(e){settlementError=String(e?.message||e);s.v136SettlementError=settlementError;s.v136FinishPayload=finishPayload}
  playV127BattleSfx(result==='win'?'win':result==='loss'?'lose':'draw');
  const root=v127BattleRoot(),title=result==='win'?'勝利！':result==='loss'?'比賽結束':'平手',forcedNote=s.forcedPlayerWin?'<div class="v129ExtraNote">第 5 局結束仍平手，依電腦對戰規則判定玩家獲勝。</div>':(s.inning>3?`<div class="v129ExtraNote">延長賽｜比賽於第 ${s.inning} 局結束</div>`:'');
@@ -4483,17 +4648,19 @@ async function v127FinishGame(){
 function v125Clamp(v,min,max){return Math.max(min,Math.min(max,v))}
 function v125PlateProbabilities(batterAttack,pitcherDefense,fieldDefenseAvg){
  const A=Math.max(1,Number(batterAttack)||1),P=Math.max(1,Number(pitcherDefense)||1),F=Math.max(1,Number(fieldDefenseAvg)||1);
- const X=(A-P)/(A+P),walk=v125Clamp(.08+.04*X,.04,.12),strikeout=v125Clamp(.20-.16*X,.08,.32),inPlay=Math.max(0,1-walk-strikeout);
- const D=.35*P+.65*F,Y=(A-D)/(A+D),hitInPlay=v125Clamp(.35+.18*Y,.22,.48);
+ const X=(A-P)/(A+P),walk=v125Clamp(.08+.04*X,.04,.12),strikeout=v125Clamp(.20-.16*X,.08,.32);
+ const D=.35*P+.65*F,Y=(A-D)/(A+D),hitRate=v125Clamp(.35+.28*Y,.10,.60);
  const hrShare=v125Clamp(.15+.12*X,.06,.27),remaining=Math.max(.001,1-hrShare),base=.62+.20+.03;
- return{X,walk,strikeout,inPlay,hitInPlay,singleShare:remaining*(.62/base),doubleShare:remaining*(.20/base),tripleShare:remaining*(.03/base),homeRunShare:hrShare}
+ return{X,Y,D,walk,strikeout,inPlay:1-walk,hitRate,hitInPlay:hitRate,singleShare:remaining*(.62/base),doubleShare:remaining*(.20/base),tripleShare:remaining*(.03/base),homeRunShare:hrShare}
 }
 function resolvePlateAppearanceV125(batterAttack,pitcherDefense,fieldDefenseAvg,randomFn=Math.random){
  const p=v125PlateProbabilities(batterAttack,pitcherDefense,fieldDefenseAvg),r=randomFn();
  if(r<p.walk)return{result:'BB',probabilities:p};
- if(r<p.walk+p.strikeout)return{result:'K',probabilities:p};
- if(randomFn()>=p.hitInPlay)return{result:'OUT',probabilities:p};
- const h=randomFn();if(h<p.singleShare)return{result:'1B',probabilities:p};if(h<p.singleShare+p.doubleShare)return{result:'2B',probabilities:p};if(h<p.singleShare+p.doubleShare+p.tripleShare)return{result:'3B',probabilities:p};return{result:'HR',probabilities:p}
+ if(randomFn()<p.hitRate){
+  const h=randomFn();if(h<p.singleShare)return{result:'1B',probabilities:p};if(h<p.singleShare+p.doubleShare)return{result:'2B',probabilities:p};if(h<p.singleShare+p.doubleShare+p.tripleShare)return{result:'3B',probabilities:p};return{result:'HR',probabilities:p}
+ }
+ const kAmongOuts=v125Clamp(p.strikeout/Math.max(.001,1-p.hitRate),0,.85);
+ return{result:randomFn()<kAmongOuts?'K':'OUT',probabilities:p}
 }
 
 let ROOM_SESSION=null,ROOM_CHANNEL=null,ROOM_POLL_TIMER=0,ROOM_LOCAL_STREAM=null,ROOM_PC=null,ROOM_REMOTE_AUDIO=null,ROOM_VOICE_ON=false;
@@ -4665,6 +4832,7 @@ const ROOM_API=SUPABASE_URL+'/functions/v1/game-room';
 const GIFT_API=SUPABASE_URL+'/functions/v1/game-gift';
 const MESSAGE_API=SUPABASE_URL+'/functions/v1/game-message';
 const DAILY_API=SUPABASE_URL+'/functions/v1/game-daily';
+const MATCH_DETAIL_API=SUPABASE_URL+'/functions/v1/game-match-detail';
 let PLAYER_TOKEN=storage.getItem('cp_player_token')||'';
 let PLAYER=null;try{PLAYER=JSON.parse(storage.getItem('cp_player_cache')||'null')}catch(_e){PLAYER=null}
 let PLAYER_READY=false,PLAYER_SYNC_TIMER=0,PLAYER_SYNC_BUSY=false,HEARTBEAT_TIMER=0,GAME_INITIALIZED=false;
@@ -6020,9 +6188,9 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 async function v143SetupServiceWorker(){
  if(!('serviceWorker' in navigator))return;
  try{
-  const reg=await navigator.serviceWorker.register('./sw.js?v=143',{scope:'./',updateViaCache:'none'});
+  const reg=await navigator.serviceWorker.register('./sw.js?v=144',{scope:'./',updateViaCache:'none'});
   reg.update().catch(()=>{})
- }catch(e){console.warn('v1.43 service worker setup failed',e)}
+ }catch(e){console.warn('v1.44 service worker setup failed',e)}
 }
 window.addEventListener('load',()=>v143SetupServiceWorker())
 
