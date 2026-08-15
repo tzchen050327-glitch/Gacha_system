@@ -6344,7 +6344,7 @@ async function initializeGame(){
  }
  if(!isActiveGachaId(ACTIVE_POOL_ID))ACTIVE_POOL_ID=allGachaEntries()[0]?.id||'';
  owned=owned.filter(id=>CARDS.some(c=>c.id===id)||CHEER_CARDS.some(c=>c.id===id));save();renderGems();renderPoolBanner();updatePlayerNameUI();
- v145InitPwaInstall();$('collection').onclick=()=>showCollection('default','全部','','','全部');v143BindPoolBannerTap();$('lobbyChat').onclick=openLobbyChat;$('friendsBtn').onclick=openChatList;$('giftBtn').onclick=openGiftPage;$('dailyWheel').onclick=showDailyWheel;$('settingsBtn').onclick=openSettings;$('battleMainBtn').onclick=requestGameEntry;if($('gamePrepBack'))$('gamePrepBack').onclick=()=>{gameModeButtonSfx();closeGamePrep()};bindGamePrepPage();
+ $('collection').onclick=()=>showCollection('default','全部','','','全部');v143BindPoolBannerTap();$('lobbyChat').onclick=openLobbyChat;$('friendsBtn').onclick=openChatList;$('giftBtn').onclick=openGiftPage;$('dailyWheel').onclick=showDailyWheel;$('settingsBtn').onclick=openSettings;$('battleMainBtn').onclick=requestGameEntry;if($('gamePrepBack'))$('gamePrepBack').onclick=()=>{gameModeButtonSfx();closeGamePrep()};bindGamePrepPage();
  let versionTapCount=0,versionTapTimer=0;const versionEl=$('appVersion');if(versionEl)versionEl.onclick=()=>{versionTapCount++;clearTimeout(versionTapTimer);versionTapTimer=setTimeout(()=>{versionTapCount=0},2000);if(versionTapCount>=5){versionTapCount=0;clearTimeout(versionTapTimer);adminLogin()}};
  $('daily').onclick=()=>{if(storage.getItem('test_daily_day')===day()){$('notice').textContent='⏰ 今天已領取，晚上12點後重置';v143UpdateDailyLoginState();return}gems+=1500;storage.setItem('test_daily_day',day());save();$('notice').textContent='🎁 +1500 鑽！';v143UpdateDailyLoginState()};v143UpdateDailyLoginState();renderLobbyHero();v143BindParallax();refreshDailyWheelBadge();
  startHeartbeat();clearInterval(DM_BADGE_TIMER);DM_BADGE_TIMER=setInterval(()=>{if(PLAYER_TOKEN&&document.visibilityState==='visible')refreshPrivateMessageBadge()},12000);refreshPrivateMessageBadge();
@@ -6462,6 +6462,8 @@ function v145InitPwaInstall(){
   }
   v145UpdateInstallButton();
 }
+// v1.45 hotfix：所有 let / 函式完成初始化後才啟用安裝按鈕
+v145InitPwaInstall();
 window.addEventListener('beforeinstallprompt',e=>{
   e.preventDefault();
   V145_INSTALL_PROMPT=e;
