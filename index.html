@@ -3380,6 +3380,68 @@ input,textarea,[contenteditable="true"]{
 }
 </style>
 
+
+<style id="v145-ranked-hotfix">
+/* v1.45 same-version：排位榜 + 排位搜尋加速 */
+.v145RankTabs{grid-template-columns:repeat(3,1fr)!important}
+.v145RankTabs button{font-size:7.5px!important;padding:8px 3px!important}
+.v145LeaderboardPanel{margin-top:7px}
+.v145LeaderboardHead{
+ display:flex;align-items:center;justify-content:space-between;gap:10px;
+ padding:10px 11px;border-radius:13px;
+ background:linear-gradient(135deg,#d8ad3a18,#ffffff05);
+ border:1px solid #e6c45f2d
+}
+.v145LeaderboardHead span b,.v145LeaderboardHead span small,.v145LeaderboardHead>strong small{display:block}
+.v145LeaderboardHead span b{font-size:11px}
+.v145LeaderboardHead span small{margin-top:3px;font-size:6.5px;color:#ffffff68;line-height:1.45}
+.v145LeaderboardHead>strong{text-align:right;font-size:15px;color:#ffe290}
+.v145LeaderboardHead>strong small{font-size:5.5px;color:#ffffff60;margin-top:1px}
+.v145LeaderboardPlacement{
+ margin-top:6px;padding:8px 9px;border-radius:10px;
+ background:#8cc8ff0b;border:1px solid #8cc8ff20;
+ color:#b9daf4;font-size:7px;line-height:1.5
+}
+.v145LeaderboardList{
+ display:grid;gap:5px;margin-top:6px;max-height:260px;overflow:auto;padding-right:2px
+}
+.v145LeaderboardRow{
+ display:grid;grid-template-columns:40px minmax(0,1fr) auto;gap:8px;align-items:center;
+ padding:8px 9px;border-radius:11px;background:#ffffff07;border:1px solid #ffffff0f
+}
+.v145LeaderboardRow.self{
+ background:linear-gradient(90deg,#dcb13b1c,#ffffff08);
+ border-color:#e7c55f55;
+ box-shadow:inset 3px 0 0 #e7c55f
+}
+.v145LeaderboardRank{
+ display:grid;place-items:center;min-height:30px;font-size:11px;font-weight:1000;color:#ffe18b
+}
+.v145LeaderboardPlayer{min-width:0}
+.v145LeaderboardPlayer b,.v145LeaderboardPlayer small{display:block}
+.v145LeaderboardPlayer b{
+ font-size:8.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis
+}
+.v145LeaderboardPlayer b em{
+ display:inline-block;margin-left:4px;padding:1px 4px;border-radius:999px;
+ background:#e1b443;color:#211704;font-size:5px;font-style:normal
+}
+.v145LeaderboardPlayer small{margin-top:2px;font-size:5.5px;color:#ffffff63;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.v145LeaderboardRow>strong{text-align:right;font-size:11px;color:#ffe39a}
+.v145LeaderboardRow>strong small{display:block;font-size:5px;color:#ffffff5b}
+.v145LeaderboardPinned{
+ position:sticky;bottom:0;margin-top:7px;padding-top:7px;
+ background:linear-gradient(180deg,transparent,#090d13 20%)
+}
+.v145LeaderboardPinned>small{display:block;margin:0 0 4px 3px;font-size:6px;color:#ffffff6b}
+@media(max-width:390px){
+ .v145LeaderboardRow{grid-template-columns:34px minmax(0,1fr) auto;padding:7px 6px;gap:6px}
+ .v145LeaderboardRank{font-size:9px}
+ .v145LeaderboardPlayer b{font-size:7.5px}
+ .v145LeaderboardPlayer small{font-size:5px}
+}
+</style>
+
 </head><body><div id="appViewport" class="appViewport"><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow">
   <h1 class="v145LobbyLogo" aria-label="棒球抽卡對戰">
     <span class="v145LogoBall" aria-hidden="true">⚾</span>
@@ -3387,7 +3449,7 @@ input,textarea,[contenteditable="true"]{
     <span class="v145LogoSeam" aria-hidden="true"></span>
   </h1>
   <div class="v145TopTools">
-    <button id="installPwaBtn" class="topSettingsBtn v145InstallBtn" type="button" aria-label="安裝 APP" title="安裝 APP" hidden>
+    <button id="installPwaBtn" class="topSettingsBtn v145InstallBtn" type="button" aria-label="安裝 APP" title="安裝 APP">
       <span class="v145InstallIcon">⬇</span>
       <small>安裝</small>
     </button>
@@ -4055,11 +4117,30 @@ function showV124CheerPicker(index){
 const V135_RANK_RANGES=[50,100,150,250,400,600,800,1000];
 let V135_RANKED_SEARCH_CANCEL=false;
 function v135RankName(rating,placements=5){rating=Number(rating)||0;if(Number(placements)<5)return'未定級';if(rating<800)return'新秀';if(rating<1100)return'二軍';if(rating<1400)return'一軍';if(rating<1700)return'一軍主力';if(rating<2000)return'明星球員';if(rating<2300)return'傳奇球員';return'傳奇老將'}
-function v135RankRangeByElapsed(sec){if(sec<10)return 50;if(sec<20)return 100;if(sec<30)return 150;if(sec<45)return 250;if(sec<60)return 400;if(sec<70)return 600;if(sec<80)return 800;return 1000}
+function v135RankRangeByElapsed(sec){return Math.min(1000,50+Math.floor(Math.max(0,Number(sec)||0)/3)*50)}
 function v135HistoryRow(x,defense=false){
  const win=defense?x.attacker_result==='loss':x.attacker_result==='win',loss=defense?x.attacker_result==='win':x.attacker_result==='loss',delta=defense?Number(x.defender_delta)||0:Number(x.attacker_delta)||0,legacy=!!x?.metadata?.legacy;
  const score=legacy?'舊版紀錄｜比分未保存':`${Number(x.attacker_score)||0}：${Number(x.defender_score)||0}`,rp=legacy?'舊版':`${delta>0?'+':''}${delta} RP`;
  return`<button type="button" class="v135HistoryRow v144HistoryButton ${legacy?'v136LegacyHistory':''}" data-v144-match-detail="${esc(x.match_id||'')}" data-v144-history-tab="${defense?'defense':'offense'}"><span class="v135HistoryResult ${win?'win':loss?'loss':'draw'}">${defense?(win?'防守成功':'防守失敗'):(win?'勝':'敗')}</span><span><b>${esc(x.opponent_name||'玩家')}</b><small>${score}｜${new Date(x.created_at).toLocaleString()}</small></span><strong class="${delta>0?'plus':delta<0?'minus':''}">${rp}<small>查看 ›</small></strong></button>`
+}
+function v145LeaderboardRow(x){
+ const rank=Number(x?.rank)||0,medal=rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':`#${rank||'-'}`;
+ return`<div class="v145LeaderboardRow ${x?.is_self?'self':''}">
+   <span class="v145LeaderboardRank">${medal}</span>
+   <span class="v145LeaderboardPlayer"><b>${esc(x?.game_name||'玩家')}${x?.is_self?' <em>你</em>':''}</b><small>${esc(x?.rank_tier||'未定級')}｜${Number(x?.wins)||0}勝 ${Number(x?.losses)||0}敗｜最高連勝 ${Number(x?.best_win_streak)||0}</small></span>
+   <strong>${Number(x?.rating)||1000}<small>RP</small></strong>
+ </div>`
+}
+function v145LeaderboardHtml(board,placements){
+ const list=Array.isArray(board?.leaderboard)?board.leaderboard:[],self=board?.self||null;
+ const selfInTop=!!self&&list.some(x=>String(x?.player_id||'')===String(self?.player_id||''));
+ const count=board?.qualified_count==null?(list.length>=100?'100+':list.length):Number(board.qualified_count)||0;
+ return`<div class="v145LeaderboardPanel">
+   <div class="v145LeaderboardHead"><span><b>🏆 排位榜</b><small>完成 5 場定位賽後才會進入正式排行榜</small></span><strong>${count}<small>已定級玩家</small></strong></div>
+   ${Number(placements)<5?`<div class="v145LeaderboardPlacement">你目前尚未定級｜完成 ${5-Number(placements)} 場定位賽後才會顯示正式名次。</div>`:''}
+   <div class="v145LeaderboardList">${list.length?list.map(v145LeaderboardRow).join(''):'<div class="notice">目前還沒有完成定位賽的玩家。</div>'}</div>
+   ${self&&Number(self.rank)>0&&!selfInTop?`<div class="v145LeaderboardPinned"><small>你的實際排名</small>${v145LeaderboardRow(self)}</div>`:''}
+ </div>`
 }
 function v144ResultLabel(r){return({BB:'保送',K:'三振',GO:'滾地出局',FO:'飛球出局',LO:'平飛出局',DP:'雙殺',SF:'高飛犧牲打',SFOUT:'本壘觸殺','1B':'一壘安打','2B':'二壘安打','3B':'三壘安打',HR:'全壘打'})[String(r)]||String(r||'-')}
 function v144StrategyLabel(v){return({contact:'穩健打擊',power:'強攻',patience:'選球',challenge:'正面對決',breaking:'變化球引誘',nibble:'閃躲投球'})[String(v)]||String(v||'-')}
@@ -4096,14 +4177,16 @@ async function showV135RankedHub(tab='offense'){
  gameModeButtonSfx();V135_RANKED_SEARCH_CANCEL=true;
  $('modal').innerHTML='<div class="modalBackdrop"><div class="modal v135RankedModal"><div class="notice">讀取排位資料中…</div></div></div>';
  try{
-  await loadV124Lineups(false);const d=await matchApi('ranked_status'),s=d.stats||{},hist=d.history||{},defDeck=Math.max(1,Math.min(5,Number(d.defense_deck)||1)),placements=Number(s.placement_games)||0;
+  await loadV124Lineups(false);
+  const [d,board]=await Promise.all([matchApi('ranked_status'),tab==='leaderboard'?rankedLeaderboardApi():Promise.resolve(null)]);
+  const s=d.stats||{},hist=d.history||{},defDeck=Math.max(1,Math.min(5,Number(d.defense_deck)||1)),placements=Number(s.placement_games)||0;
   const rows=tab==='defense'?(hist.defense||[]):(hist.offense||[]);
   $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v135RankedModal"><div class="modalHead"><div><h2 style="margin:0">🏆 排位賽</h2><div class="sub">非同步 PvP｜真實玩家牌組＋AI 模擬本人打法</div></div><button class="small" id="v135RankedClose">✕</button></div>
    <div class="v135RankHero"><div><small>${placements<5?`定級賽 ${placements}/5`:'目前牌位'}</small><b>${esc(s.rank_tier||v135RankName(s.rating,placements))}</b><strong>${Number(s.rating)||1000} RP</strong></div><div class="v135RankStats"><span>進攻 ${Number(s.wins)||0}勝 ${Number(s.losses)||0}敗</span><span>防守 ${Number(s.defense_wins)||0}勝 ${Number(s.defense_losses)||0}敗</span><span>連勝 ${Number(s.win_streak)||0}｜最高 ${Number(s.best_win_streak)||0}</span></div></div>
    <div class="v135DefenseDeck"><label>🛡 防守牌組<select id="v135DefenseDeck">${LINEUP_DECKS.map((d,i)=>`<option value="${i+1}" ${i+1===defDeck?'selected':''} ${normalizeV124Deck(d).starters.length===9?'':'disabled'}>牌組 ${i+1}${normalizeV124Deck(d).starters.length===9?'':'（先發不足）'}</option>`).join('')}</select></label><small>其他玩家搜尋到你時，系統抓此牌組快照；防守成功加 RP，失敗不扣。</small></div>
-   <button id="v135StartRanked" class="admin v135RankSearchBtn">🔎 搜尋排位對手｜從 ±50 RP 開始</button>
-   <div class="v135HistoryTabs"><button class="${tab==='offense'?'active':''}" data-v135-history="offense">進攻紀錄</button><button class="${tab==='defense'?'active':''}" data-v135-history="defense">防守紀錄</button></div>
-   <div class="v135HistoryList">${rows.length?rows.map(x=>v135HistoryRow(x,tab==='defense')).join(''):'<div class="notice">目前沒有紀錄。</div>'}</div>
+   <button id="v135StartRanked" class="admin v135RankSearchBtn">🔎 搜尋排位對手｜每 3 秒擴大 50 RP</button>
+   <div class="v135HistoryTabs v145RankTabs"><button class="${tab==='offense'?'active':''}" data-v135-history="offense">進攻紀錄</button><button class="${tab==='defense'?'active':''}" data-v135-history="defense">防守紀錄</button><button class="${tab==='leaderboard'?'active':''}" data-v135-history="leaderboard">🏆 排位榜</button></div>
+   ${tab==='leaderboard'?v145LeaderboardHtml(board,placements):`<div class="v135HistoryList">${rows.length?rows.map(x=>v135HistoryRow(x,tab==='defense')).join(''):'<div class="notice">目前沒有紀錄。</div>'}</div>`}
   </div></div>`;
   $('v135RankedClose').onclick=()=>$('modal').innerHTML='';
   $('v135DefenseDeck').onchange=async e=>{try{await matchApi('set_defense_deck',{deck:Number(e.target.value)||1})}catch(er){alert(er.message||er)}};
@@ -4117,14 +4200,14 @@ async function startV135RankedSearch(){
  try{await loadV124Lineups(false)}catch(e){alert(e.message||e);return}
  if(!v126ReadyDeckIndexes().length){showLineupSettings(LINEUP_ACTIVE_DECK,'players',true);return}
  const started=Date.now();
- $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v135SearchingModal"><div class="modalHead"><div><h2>🔎 搜尋排位對手</h2><div class="sub">優先配對最接近你的 RP</div></div><button class="small" id="v135SearchCancel">取消</button></div><div class="v135Radar"><i></i><span>⚾</span></div><div id="v135SearchRange" class="v135SearchRange">搜尋 ±50 RP</div><div id="v135SearchTime" class="sub" style="text-align:center">0 秒</div></div></div>`;
+ $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v135SearchingModal"><div class="modalHead"><div><h2>🔎 搜尋排位對手</h2><div class="sub">從 ±50 RP 開始｜每 3 秒擴大 50 RP</div></div><button class="small" id="v135SearchCancel">取消</button></div><div class="v135Radar"><i></i><span>⚾</span></div><div id="v135SearchRange" class="v135SearchRange">搜尋 ±50 RP</div><div id="v135SearchTime" class="sub" style="text-align:center">0 秒</div></div></div>`;
  $('v135SearchCancel').onclick=()=>{V135_RANKED_SEARCH_CANCEL=true;$('modal').innerHTML=''};
  let lastRange=0;
  while(!V135_RANKED_SEARCH_CANCEL){
   const sec=Math.floor((Date.now()-started)/1000),range=v135RankRangeByElapsed(sec);
   if($('v135SearchRange'))$('v135SearchRange').textContent=`搜尋 ±${range} RP`;
   if($('v135SearchTime'))$('v135SearchTime').textContent=`${sec} 秒`;
-  if(range!==lastRange||sec%4===0){
+  if(range!==lastRange){
    lastRange=range;
    try{
     const setup=await matchApi('prepare_ranked',{range});
@@ -4132,7 +4215,7 @@ async function startV135RankedSearch(){
     V125_MATCH_SETUP={...setup,mode:'ranked'};showV126CombinedPrep(V125_MATCH_SETUP);return
    }catch(e){if(Number(e.status)!==404){alert(e.message||e);showV135RankedHub();return}}
   }
-  if(sec>=90){if($('v135SearchRange'))$('v135SearchRange').textContent='目前找不到適合的對手';await v127Wait(1400);showV135RankedHub();return}
+  if(sec>=60){if($('v135SearchRange'))$('v135SearchRange').textContent='目前找不到適合的對手';await v127Wait(1400);showV135RankedHub();return}
   await v127Wait(1000)
  }
 }
@@ -4236,6 +4319,19 @@ async function matchDetailApi(action,payload={}){
  try{res=await fetch(MATCH_DETAIL_API,{method:'POST',headers,body:JSON.stringify({action,...payload})})}catch(e){const err=new Error('戰報服務連線失敗');err.network=true;throw err}
  let data={};try{data=await res.json()}catch(_e){}
  if(!res.ok){const err=new Error(data.error||('戰報 API 錯誤 '+res.status));err.status=res.status;throw err}
+ return data
+}
+async function rankedLeaderboardApi(){
+ if(IS_LOCAL_TEST){
+  const rating=1000,placements=5;
+  return{ok:true,leaderboard:[{rank:1,player_id:'local',game_name:PLAYER_GAME_NAME||'本機玩家',rating,rank_tier:v135RankName(rating,placements),wins:5,losses:2,win_rate:71.4,best_win_streak:3,placement_games:5,is_self:true}],self:{rank:1,player_id:'local',game_name:PLAYER_GAME_NAME||'本機玩家',rating,rank_tier:v135RankName(rating,placements),wins:5,losses:2,win_rate:71.4,best_win_streak:3,placement_games:5,is_self:true},qualified_count:1}
+ }
+ if(!PLAYER_TOKEN)throw new Error('玩家尚未登入');
+ const headers={'Content-Type':'application/json','x-player-token':PLAYER_TOKEN};let res;
+ try{res=await fetch(RANKED_LEADERBOARD_API,{method:'POST',headers,body:'{}'})}
+ catch(e){const err=new Error('排位榜服務連線失敗');err.network=true;throw err}
+ let data={};try{data=await res.json()}catch(_e){}
+ if(!res.ok){const err=new Error(data.error||('排位榜 API 錯誤 '+res.status));err.status=res.status;throw err}
  return data
 }
 async function matchApi(action,payload={}){
@@ -5000,6 +5096,7 @@ const GIFT_API=SUPABASE_URL+'/functions/v1/game-gift';
 const MESSAGE_API=SUPABASE_URL+'/functions/v1/game-message';
 const DAILY_API=SUPABASE_URL+'/functions/v1/game-daily';
 const MATCH_DETAIL_API=SUPABASE_URL+'/functions/v1/game-match-detail';
+const RANKED_LEADERBOARD_API=SUPABASE_URL+'/functions/v1/game-ranked-leaderboard';
 let PLAYER_TOKEN=storage.getItem('cp_player_token')||'';
 let PLAYER=null;try{PLAYER=JSON.parse(storage.getItem('cp_player_cache')||'null')}catch(_e){PLAYER=null}
 let PLAYER_READY=false,PLAYER_SYNC_TIMER=0,PLAYER_SYNC_BUSY=false,HEARTBEAT_TIMER=0,GAME_INITIALIZED=false;
@@ -6396,10 +6493,10 @@ window.addEventListener('load',()=>v143SetupServiceWorker())
 let V145_INSTALL_PROMPT=null;
 
 function v145IsStandalone(){
+  // v1.45 hotfix：只用真正的顯示模式判斷，避免一般瀏覽器被 referrer 誤判成 PWA
   return !!(
     window.matchMedia?.('(display-mode: standalone)').matches ||
-    window.navigator.standalone === true ||
-    document.referrer.startsWith('android-app://')
+    window.navigator.standalone === true
   );
 }
 function v145IsIOS(){
