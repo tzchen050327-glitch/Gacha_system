@@ -7357,18 +7357,18 @@ async function v207PlayRewardSequence(rewards=[],title='獲得獎勵'){
 function v208MailHasRewards(m){return Array.isArray(m?.attachments)&&m.attachments.length>0}
 function v208MailNeedsAttention(m){return v208MailHasRewards(m)?!m?.claimed_at:!m?.read_at}
 function v207RenderMailbox(mails=[],message=''){
- const modal=$('modal'),unclaimed=mails.filter(m=>v208MailHasRewards(m)&&!m.claimed_at).length,claimAllHtml=unclaimed?'<button id="v207ClaimAll" class="small">全部領取</button>':'';
- modal.innerHTML=`<div class="modalBackdrop"><div class="modal v207MailModal"><div class="modalHead"><div><h2 style="margin:0">✉️ 信箱</h2><div class="sub">系統通知、獎勵與附件</div></div><button class="small" id="v207MailClose">✕</button></div><div class="v207MailTop"><small id="v207MailMessage">${message?esc(message):(unclaimed?`未領取 ${unclaimed} 封`:'沒有待領取附件')}</small>${claimAllHtml}</div><div class="v207MailList">${mails.length?mails.map(m=>{const rewards=v208MailHasRewards(m),open=rewards&&!m.claimed_at;return`<article class="v207MailCard ${open?'unclaimed':''}"><div class="v207MailHead"><b>${esc(m.title||'系統信件')}</b><time>${esc(v207MailTime(m.created_at))}</time></div><div class="v207MailBody">${esc(m.body||'')}</div>${rewards?`<div class="v207MailAttach">${m.attachments.map(v207MailAttachmentHtml).join('')}</div>`:'<div class="sub" style="margin-top:8px">系統通知</div>'}${open?`<button class="v207MailClaim admin" data-v207-claim="${esc(m.id)}">領取附件</button>`:''}</article>`}).join(''):'<div class="v207MailEmpty">目前沒有信件。</div>'}</div></div></div>`;
+ const modal=$('modal'),unclaimed=mails.filter(m=>v208MailHasRewards(m)&&!m.claimed_at).length;
+ modal.innerHTML=`<div class="modalBackdrop"><div class="modal v207MailModal"><div class="modalHead"><div><h2 style="margin:0">✉️ 信箱</h2><div class="sub">系統通知、獎勵與附件</div></div><button class="small" id="v207MailClose">✕</button></div><div class="v207MailTop"><small id="v207MailMessage">${message?esc(message):(unclaimed?`未領取 ${unclaimed} 封`:'沒有待領取附件')}</small><button id="v207ClaimAll" class="small">全部領取</button></div><div class="v207MailList">${mails.length?mails.map(m=>{const rewards=v208MailHasRewards(m),open=rewards&&!m.claimed_at;return`<article class="v207MailCard ${open?'unclaimed':''}"><div class="v207MailHead"><b>${esc(m.title||'系統信件')}</b><time>${esc(v207MailTime(m.created_at))}</time></div><div class="v207MailBody">${esc(m.body||'')}</div>${rewards?`<div class="v207MailAttach">${m.attachments.map(v207MailAttachmentHtml).join('')}</div>`:'<div class="sub" style="margin-top:8px">系統通知</div>'}${open?`<button class="v207MailClaim admin" data-v207-claim="${esc(m.id)}">領取附件</button>`:''}</article>`}).join(''):'<div class="v207MailEmpty">目前沒有信件。</div>'}</div></div></div>`;
  $('v207MailClose').onclick=()=>modal.innerHTML='';
  document.querySelectorAll('[data-v207-claim]').forEach(btn=>btn.onclick=async()=>{
   const mail=mails.find(m=>String(m.id)===String(btn.dataset.v207Claim));const rewards=Array.isArray(mail?.attachments)?mail.attachments:[];btn.disabled=true;
   try{const d=await v207EconomyApi('claim_mail',{mailId:btn.dataset.v207Claim});if(d?.progress)applyPlayerProgress(d.progress);await v207RefreshMailboxBadge();modal.innerHTML='';await v207PlayRewardSequence(rewards,mail?.title||'獲得獎勵');await openV207Mailbox()}
   catch(e){alert(e.message||e);btn.disabled=false}
  });
- const claimAllBtn=$('v207ClaimAll');if(claimAllBtn)claimAllBtn.onclick=async()=>{
+ $('v207ClaimAll').onclick=async()=>{
   const pending=mails.filter(m=>v208MailHasRewards(m)&&!m.claimed_at),msg=$('v207MailMessage');
   if(!pending.length){if(msg)msg.textContent='無可領取的物品';return}
-  const b=claimAllBtn,rewards=pending.flatMap(m=>Array.isArray(m.attachments)?m.attachments:[]);b.disabled=true;
+  const b=$('v207ClaimAll'),rewards=pending.flatMap(m=>Array.isArray(m.attachments)?m.attachments:[]);b.disabled=true;
   try{const d=await v207EconomyApi('claim_all_mail');if(d?.progress)applyPlayerProgress(d.progress);await v207RefreshMailboxBadge();if(Number(d?.claimed)>0){modal.innerHTML='';await v207PlayRewardSequence(rewards,'全部領取');await openV207Mailbox()}else{if(msg)msg.textContent='無可領取的物品';b.disabled=false}}
   catch(e){alert(e.message||e);b.disabled=false}
  }
