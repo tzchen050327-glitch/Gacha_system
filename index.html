@@ -3769,7 +3769,7 @@ input,textarea,[contenteditable="true"]{
 </style>
 
 <style id="v210-adversity-patch">
-/* ===== v2.13：SP 專屬圖片顯示修正版 ===== */
+/* ===== v2.14：SP 專屬圖片顯示修正版＋應援團圖片改讀後端三樣式 ===== */
 .v210AdversityEntry{
  position:relative;display:grid;grid-template-columns:54px 1fr auto;align-items:center;gap:10px;
  width:100%;margin-top:10px;padding:12px!important;text-align:left!important;border-radius:16px!important;
@@ -3856,7 +3856,7 @@ input,textarea,[contenteditable="true"]{
     <button id="mailboxBtn" class="topSettingsBtn v207MailboxBtn" type="button" aria-label="信箱" title="信箱">✉️<i id="mailboxDot" class="v207MailboxDot" hidden></i></button>
     <button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定" title="設定">⚙️</button>
   </div>
-</div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span><em id="lobbyReplyDot" class="lobbyReplyDot" hidden></em></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion">v2.13</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
+</div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span><em id="lobbyReplyDot" class="lobbyReplyDot" hidden></em></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion">v2.14</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
  <div class="gamePrepWood">
   <button id="gamePrepBack" class="gamePrepBack" type="button">← 返回大廳</button>
   <div class="gamePrepContent">
@@ -3941,6 +3941,37 @@ function defaultPositionImage(position,rarity=''){
  if(rr&&bucket[rr])return bucket[rr];
  for(const key of V210_ASSET_RARITIES){if(bucket[key])return bucket[key]}
  return ''
+}
+const CHEER_IMAGE_PRESET_META=Object.freeze({
+ CHEER_A:'樣式 A｜熱血應援指揮',
+ CHEER_B:'樣式 B｜黃金戰鼓旗海',
+ CHEER_C:'樣式 C｜耀眼啦啦隊舞台'
+});
+const CHEER_IMAGE_PRESET_ORDER=Object.freeze(['CHEER_A','CHEER_B','CHEER_C']);
+function cheerImageChoiceLabel(choice){return CHEER_IMAGE_PRESET_META[choice]||'未指定圖片'}
+function cheerImageSrc(choice){
+ const bucket=V210_POSITION_ART_ASSETS?.['應援團'];
+ return String(bucket?.[String(choice||'').trim()]||'')
+}
+function randomCheerImageChoice(){
+ const available=CHEER_IMAGE_PRESET_ORDER.filter(key=>cheerImageSrc(key));
+ const pool=available.length?available:CHEER_IMAGE_PRESET_ORDER;
+ return pool[Math.floor(Math.random()*pool.length)]||'CHEER_A'
+}
+function normalizeCheerImageChoice(value){
+ const raw=String(value||'').trim();
+ if(!raw)return '';
+ if(CHEER_IMAGE_PRESET_META[raw])return raw;
+ const token=raw.replace(/^cheer_preset:/,'');
+ if(CHEER_IMAGE_PRESET_META[token])return token;
+ const matched=CHEER_IMAGE_PRESET_ORDER.find(key=>cheerImageSrc(key)===raw);
+ return matched||''
+}
+function resolveCheerImage(value){
+ const raw=String(value||'').trim();
+ const matched=normalizeCheerImageChoice(raw);
+ if(matched)return cheerImageSrc(matched);
+ return raw
 }
 const DEFAULT_CHEER_IMAGE='';
 function v207SpImage(){const own=(typeof CARDS!=='undefined'&&Array.isArray(CARDS))?CARDS.find(c=>String(c?.id||'')===V207_SP_CARD_ID):null;return String(own?.image||own?.image_url||defaultPositionImage('投手','SSR')||defaultPositionImage('投手','SR')||defaultPositionImage('投手','R')||defaultPositionImage('投手','N')||'')}
@@ -4063,9 +4094,12 @@ let CHEER_ADMIN_CARDS=[];
 let CHEER_ADMIN_POOL={id:CHEER_POOL_ID,name:'應援團卡',isActive:false};
 let CHEER_EDIT_IMAGE_BLOB=null,CHEER_EDIT_ORIGINAL_BLOB=null,CHEER_EDIT_IMAGE_PREVIEW='';
 function normalizeCheerCard(r){
+ const storedImage=String(r?.image_url??r?.image??'').trim();
+ const imageChoice=normalizeCheerImageChoice(r?.image_choice??r?.imageChoice??storedImage)||randomCheerImageChoice();
+ const image=resolveCheerImage(storedImage)||cheerImageSrc(imageChoice)||DEFAULT_CHEER_IMAGE;
  return{
   id:String(r?.id||''),kind:'cheer',rarity:'應援',name:String(r?.name||''),
-  image:DEFAULT_CHEER_IMAGE,originalImage:'',triggerType:r?.trigger_type??r?.triggerType??'losing',
+  image,originalImage:'',imageChoice,triggerType:r?.trigger_type??r?.triggerType??'losing',
   targetType:r?.target_type??r?.targetType??'next_batter',
   targetPosition:r?.target_position??r?.targetPosition??null,
   effectType:r?.effect_type??r?.effectType??'attack_multiplier',
@@ -4288,7 +4322,7 @@ function localCheerAdminApi(action,payload={}){
  if(action==='save_pool'){const active=payload.isActive===true;if(active&&!cards.some(c=>c.isActive!==false))return Promise.reject(new Error('至少要有 1 張啟用中的應援團卡才能開放卡池'));pool={id:CHEER_POOL_ID,name:payload.name||'應援團卡',isActive:active};storage.setItem('cp_local_cheer_pool',JSON.stringify(pool));return Promise.resolve({ok:true,pool:{id:'default',name:pool.name,is_active:pool.isActive}})}
  if(action==='save_card'){
   const id=payload.id||('cheer_'+uid()),old=cards.find(c=>c.id===id);
-  const c=normalizeCheerCard({id,name:payload.name,image_url:payload.imageUrl||(old?.image||''),image_original_url:payload.originalImageUrl||(old?.originalImage||old?.image||payload.imageUrl||''),trigger_type:payload.triggerType,target_type:payload.targetType,target_position:payload.targetPosition||null,effect_type:payload.effectType,effect_value:payload.effectValue,duration_type:payload.durationType,max_uses_per_match:payload.maxUsesPerMatch,cheer_cost:payload.cheerCost,is_active:payload.isActive!==false,sort_order:old?.sortOrder??cards.length});
+  const pickedImage=cheerImageSrc(payload.imageAssetKey)||payload.imageUrl||(old?.image||'');const c=normalizeCheerCard({id,name:payload.name,image_url:pickedImage,image_original_url:pickedImage||old?.originalImage||old?.image||'',trigger_type:payload.triggerType,target_type:payload.targetType,target_position:payload.targetPosition||null,effect_type:payload.effectType,effect_value:payload.effectValue,duration_type:payload.durationType,max_uses_per_match:payload.maxUsesPerMatch,cheer_cost:payload.cheerCost,is_active:payload.isActive!==false,sort_order:old?.sortOrder??cards.length});
   if(old)Object.assign(old,c);else cards.push(c);storage.setItem('cp_local_cheer_cards',JSON.stringify(cards));return Promise.resolve({ok:true,card:{...c,image_url:c.image}})
  }
  if(action==='delete_card'){cards=cards.filter(c=>c.id!==payload.id);storage.setItem('cp_local_cheer_cards',JSON.stringify(cards));return Promise.resolve({ok:true})}
@@ -7418,7 +7452,7 @@ function adminCardEditorSlideHtml(c,i,isNew=false){
  return `<section class="adminCardEditorSlide v132AdminHalfCard rarity-${esc(rarity)}" data-card-id="${esc(c.id)}" data-card-index="${esc(key)}">
   <div class="v132AdminImageHalf"><div class="adminCardSlideTitle">${isNew?'➕ 新增球員卡':esc(rarity)+'｜'+esc(c.name||'未命名球員')}</div><div id="adminEditorPreview_${esc(key)}" class="adminCardSlideHero rarity-${esc(rarity)}">${preview?`<img src="${esc(preview)}" onerror="this.style.display='none'">`:'<div class="unknown"></div>'}</div></div>
   <div class="v132AdminInfoHalf">${isNew?'':`<button class="v132AdminInfoBtn" data-v132-admin-info="${esc(key)}">📋 球員資訊</button>`}<div class="adminCardSlideFields">
-   <div class="sub adminCardSlideFull" style="padding:7px 9px;border:1px solid #ffffff12;border-radius:9px">圖片依「守備位置」自動套用；目前只有投手與捕手有做圖，其餘守位會先顯示空白。</div>
+   <div class="sub adminCardSlideFull" style="padding:7px 9px;border:1px solid #ffffff12;border-radius:9px">圖片依「守備位置」自動套用；未製作對應圖時才會顯示空白。</div>
    <label>名字<input id="name_${esc(key)}" value="${esc(c.name||'')}"></label>
    <label>種類<input id="type_${esc(key)}" value="${esc(c.type||'')}"></label>
    <label>守備位置<select id="position_${esc(key)}">${positionOptionsHtml(c.position)}</select><small id="positionCoeff_${esc(key)}" class="sub" style="display:block;margin-top:4px">${esc(positionCoefficientText(c.position,c.rarity))}</small></label>
@@ -7549,6 +7583,21 @@ async function showCheerAdmin(message=''){
  $('cheerPoolSave').onclick=async()=>{const btn=$('cheerPoolSave'),notice=$('cheerAdminNotice');btn.disabled=true;notice.textContent='儲存中…';try{const data=await cheerAdminApi('save_pool',{name:'應援團卡',isActive:$('cheerPoolActive').checked});CHEER_ADMIN_POOL=cheerPoolFromRow(data.pool);syncCheerPublicFromAdmin();showCheerAdmin(CHEER_ADMIN_POOL.isActive?'✅ 應援團卡池已開放':'✅ 應援團卡池已關閉')}catch(e){notice.textContent='❌ '+(e.message||e);btn.disabled=false}};
  document.querySelectorAll('[data-cheer-edit]').forEach(b=>b.onclick=()=>showCheerEditor(b.dataset.cheerEdit||''))
 }
+
+function cheerImagePresetOptionsHtml(current=''){
+ const choice=normalizeCheerImageChoice(current)||CHEER_IMAGE_PRESET_ORDER[0];
+ return CHEER_IMAGE_PRESET_ORDER.map(id=>`<option value="${id}" ${id===choice?'selected':''}>${esc(cheerImageChoiceLabel(id))}</option>`).join('')
+}
+function bindCheerImagePicker(initialChoice=''){
+ const select=$('cheerImagePreset'),preview=$('cheerImagePreview'),hint=$('cheerImagePresetHint');
+ const update=()=>{
+  const choice=normalizeCheerImageChoice(select?.value||initialChoice)||CHEER_IMAGE_PRESET_ORDER[0];
+  if(preview)preview.innerHTML=`<img src="${esc(cheerImageSrc(choice))}" alt="${esc(cheerImageChoiceLabel(choice))}">`;
+  if(hint)hint.textContent='目前使用：'+cheerImageChoiceLabel(choice)
+ };
+ if(select)select.oninput=update;
+ update()
+}
 function bindCheerEditorPreview(){
  const update=()=>{const draft={triggerType:$('cheerTrigger')?.value,targetType:$('cheerTarget')?.value,targetPosition:$('cheerTargetPosition')?.value,effectType:$('cheerEffect')?.value,effectValue:Number($('cheerEffectValue')?.value)||0,durationType:$('cheerDuration')?.value,maxUsesPerMatch:1,cheerCost:Number($('cheerCost')?.value)||0};const pos=$('cheerTargetPositionWrap');if(pos)pos.style.display=draft.targetType==='position'?'block':'none';const preview=$('cheerEffectPreview');if(preview)preview.textContent=cheerEffectSummary(draft)};
  ['cheerTrigger','cheerTarget','cheerTargetPosition','cheerEffect','cheerEffectValue','cheerDuration','cheerCost'].forEach(id=>{const el=$(id);if(el)el.oninput=update});update()
@@ -7564,9 +7613,10 @@ async function showCheerEditor(cardId=''){
  const card=CHEER_ADMIN_CARDS.find(c=>c.id===cardId)||null;
  const c=card||normalizeCheerCard({id:'',name:'',trigger_type:'losing',target_type:'next_batter',effect_type:'attack_multiplier',effect_value:5,duration_type:'one_plate_appearance',max_uses_per_match:1,cheer_cost:5,is_active:true});
  const modal=$('modal');
- modal.innerHTML=`<div class="modalBackdrop"><div class="modal cheerAdminModal"><div class="modalHead"><div><h2 style="margin:0">${card?'✎ 編輯應援團卡':'＋ 新增應援團卡'}</h2><div class="sub">應援團圖片已固定為專屬設計，不再上傳真人照片。</div></div><button class="small" id="cheerEditBack">← 返回</button></div><div class="cheerPreviewRow"><div id="cheerImagePreview" class="cheerPreview"><img src="${esc(DEFAULT_CHEER_IMAGE)}"></div><div class="sub">固定使用「應援團」專屬圖片。<br>新增與編輯卡片都只調整名稱與效果。</div></div><div class="cheerEditorGrid"><label class="cheerEditorFull">名字<input id="cheerName" maxlength="40" value="${esc(c.name)}"></label><label>觸發條件<select id="cheerTrigger">${cheerOptionHtml(CHEER_TRIGGER_OPTIONS,c.triggerType)}</select></label><label>影響對象<select id="cheerTarget">${cheerOptionHtml(CHEER_TARGET_OPTIONS,c.targetType)}</select></label><label id="cheerTargetPositionWrap" style="${c.targetType==='position'?'':'display:none'}">指定位置<select id="cheerTargetPosition">${positionOptionsHtml(c.targetPosition||'投手')}</select></label><label>效果種類<select id="cheerEffect">${cheerOptionHtml(CHEER_EFFECT_OPTIONS,c.effectType)}</select></label><label>效果數值 %<input id="cheerEffectValue" type="number" min="1" max="10" step="0.5" value="${esc(c.effectValue)}"></label><label>持續時間<select id="cheerDuration">${cheerOptionHtml(CHEER_DURATION_OPTIONS,c.durationType)}</select></label><label>應援值消耗<input id="cheerCost" type="number" min="0" max="10" step="1" value="${esc(c.cheerCost)}"></label><label style="display:flex;align-items:center;gap:8px"><input id="cheerActive" type="checkbox" style="width:auto;margin:0" ${c.isActive!==false?'checked':''}> 啟用於應援團卡池</label></div><div id="cheerEffectPreview" class="cheerEffectPreview"></div><div class="adminToolbar"><button id="cheerSaveCard" class="admin">💾 儲存應援團卡</button>${card?'<button id="cheerDeleteCard" class="small poolDanger">🗑️ 刪除</button>':''}</div><div id="cheerEditNotice" class="notice"></div></div></div>`;
- $('cheerEditBack').onclick=()=>showCheerAdmin();bindCheerEditorPreview();
- $('cheerSaveCard').onclick=async()=>{const btn=$('cheerSaveCard'),notice=$('cheerEditNotice'),name=$('cheerName').value.trim(),value=Number($('cheerEffectValue').value),cost=Math.floor(Number($('cheerCost').value));if(!name)return notice.textContent='❌ 請輸入名字';if(!Number.isFinite(value)||value<1||value>10)return notice.textContent='❌ 效果數值限制 1%～10%';if(!Number.isFinite(cost)||cost<0||cost>10)return notice.textContent='❌ 應援值消耗必須是 0～10';btn.disabled=true;notice.textContent='儲存中…';try{const targetType=$('cheerTarget').value,targetPosition=targetType==='position'?$('cheerTargetPosition').value:null;await cheerAdminApi('save_card',{id:card?.id||'',name,imageUrl:'',originalImageUrl:'',triggerType:$('cheerTrigger').value,targetType,targetPosition,effectType:$('cheerEffect').value,effectValue:value,durationType:$('cheerDuration').value,maxUsesPerMatch:1,cheerCost:cost,isActive:$('cheerActive').checked});await refreshCheerAdmin();syncCheerPublicFromAdmin();showCheerAdmin('✅ 應援團卡已儲存')}catch(e){notice.textContent='❌ '+(e.message||e);btn.disabled=false}};
+ const initialCheerImageChoice=normalizeCheerImageChoice(c.imageChoice||c.image)||randomCheerImageChoice();
+ modal.innerHTML=`<div class="modalBackdrop"><div class="modal cheerAdminModal"><div class="modalHead"><div><h2 style="margin:0">${card?'✎ 編輯應援團卡':'＋ 新增應援團卡'}</h2><div class="sub">應援團圖片由後端 3 種固定樣式提供，不再提供上傳照片。</div></div><button class="small" id="cheerEditBack">← 返回</button></div><div class="cheerPreviewRow"><div id="cheerImagePreview" class="cheerPreview"><img src="${esc(cheerImageSrc(initialCheerImageChoice))}"></div><div><div class="sub">新增時由後端自動隨機套用 1 張；管理員可手動改成另外 2 種樣式。</div><label style="display:block;margin-top:10px;font-size:12px;color:#ffffffc7">應援團圖片<select id="cheerImagePreset" style="display:block;width:100%;margin-top:6px">${cheerImagePresetOptionsHtml(initialCheerImageChoice)}</select></label><small id="cheerImagePresetHint" class="sub" style="display:block;margin-top:8px"></small></div></div><div class="cheerEditorGrid"><label class="cheerEditorFull">名字<input id="cheerName" maxlength="40" value="${esc(c.name)}"></label><label>觸發條件<select id="cheerTrigger">${cheerOptionHtml(CHEER_TRIGGER_OPTIONS,c.triggerType)}</select></label><label>影響對象<select id="cheerTarget">${cheerOptionHtml(CHEER_TARGET_OPTIONS,c.targetType)}</select></label><label id="cheerTargetPositionWrap" style="${c.targetType==='position'?'':'display:none'}">指定位置<select id="cheerTargetPosition">${positionOptionsHtml(c.targetPosition||'投手')}</select></label><label>效果種類<select id="cheerEffect">${cheerOptionHtml(CHEER_EFFECT_OPTIONS,c.effectType)}</select></label><label>效果數值 %<input id="cheerEffectValue" type="number" min="1" max="10" step="0.5" value="${esc(c.effectValue)}"></label><label>持續時間<select id="cheerDuration">${cheerOptionHtml(CHEER_DURATION_OPTIONS,c.durationType)}</select></label><label>應援值消耗<input id="cheerCost" type="number" min="0" max="10" step="1" value="${esc(c.cheerCost)}"></label><label style="display:flex;align-items:center;gap:8px"><input id="cheerActive" type="checkbox" style="width:auto;margin:0" ${c.isActive!==false?'checked':''}> 啟用於應援團卡池</label></div><div id="cheerEffectPreview" class="cheerEffectPreview"></div><div class="adminToolbar"><button id="cheerSaveCard" class="admin">💾 儲存應援團卡</button>${card?'<button id="cheerDeleteCard" class="small poolDanger">🗑️ 刪除</button>':''}</div><div id="cheerEditNotice" class="notice"></div></div></div>`;
+ $('cheerEditBack').onclick=()=>showCheerAdmin();bindCheerImagePicker(initialCheerImageChoice);bindCheerEditorPreview();
+ $('cheerSaveCard').onclick=async()=>{const btn=$('cheerSaveCard'),notice=$('cheerEditNotice'),name=$('cheerName').value.trim(),value=Number($('cheerEffectValue').value),cost=Math.floor(Number($('cheerCost').value));if(!name)return notice.textContent='❌ 請輸入名字';if(!Number.isFinite(value)||value<1||value>10)return notice.textContent='❌ 效果數值限制 1%～10%';if(!Number.isFinite(cost)||cost<0||cost>10)return notice.textContent='❌ 應援值消耗必須是 0～10';btn.disabled=true;notice.textContent='儲存中…';try{const targetType=$('cheerTarget').value,targetPosition=targetType==='position'?$('cheerTargetPosition').value:null,imageChoice=normalizeCheerImageChoice($('cheerImagePreset').value)||initialCheerImageChoice||randomCheerImageChoice();if(!cheerImageSrc(imageChoice))throw new Error('應援團圖片尚未從後端載入');await cheerAdminApi('save_card',{id:card?.id||'',name,imageAssetKey:imageChoice,triggerType:$('cheerTrigger').value,targetType,targetPosition,effectType:$('cheerEffect').value,effectValue:value,durationType:$('cheerDuration').value,maxUsesPerMatch:1,cheerCost:cost,isActive:$('cheerActive').checked});await refreshCheerAdmin();syncCheerPublicFromAdmin();showCheerAdmin('✅ 應援團卡已儲存')}catch(e){notice.textContent='❌ '+(e.message||e);btn.disabled=false}};
  if(card)$('cheerDeleteCard').onclick=async()=>{if(!confirm('確定刪除這張應援團卡嗎？'))return;try{await cheerAdminApi('delete_card',{id:card.id});await refreshCheerAdmin();syncCheerPublicFromAdmin();showCheerAdmin('✅ 應援團卡已刪除')}catch(e){$('cheerEditNotice').textContent='❌ '+(e.message||e)}}
 }
 
