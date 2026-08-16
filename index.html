@@ -3070,6 +3070,8 @@ input,textarea,[contenteditable="true"]{
 .v207DrawHeadRight{display:flex;align-items:center;gap:8px}.v207DrawTicketCount{padding:7px 10px;border-radius:999px;background:#10162a;border:1px solid #78a8ff55;color:#c8dcff;font-size:12px;font-weight:900;white-space:nowrap}.v207TicketSingle{background:linear-gradient(180deg,#80b6ff,#4f70d7)!important;color:#fff!important;box-shadow:0 0 18px #6191ff33!important}.v207DrawInlineNotice{min-height:16px;margin-top:6px;text-align:center;font-size:11px;color:#b8d0ff}
 .v207MailModal{max-width:560px!important}.v207MailTop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 12px}.v207MailTop small{color:#ffffff99}.v207MailList{display:grid;gap:10px}.v207MailCard{padding:14px;border-radius:16px;background:#ffffff0b;border:1px solid #ffffff1c}.v207MailCard.unclaimed{border-color:#e5bb5666;box-shadow:inset 3px 0 #d8aa43}.v207MailHead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.v207MailHead b{font-size:17px}.v207MailHead time{font-size:11px;color:#ffffff77;white-space:nowrap}.v207MailBody{margin-top:7px;color:#ffffffbd;font-size:13px;line-height:1.55}.v207MailAttach{display:grid;gap:6px;margin-top:10px}.v207MailItem{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:11px;background:#0004;border:1px solid #ffffff12}.v207MailItem img{width:42px;height:56px;object-fit:cover;border-radius:8px;border:1px solid #d8ad4f77}.v207MailItem span{flex:1;font-size:13px;font-weight:800}.v207MailItem em{font-style:normal;color:#ffe094;font-weight:900}.v207MailClaim{width:100%;margin-top:10px;padding:10px!important}.v207MailClaim.claimed{background:#ffffff10!important;color:#ffffff88!important}.v207MailEmpty{text-align:center;padding:28px 12px;color:#ffffff88}.v207SpEffectBadge{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:2px 7px;border-radius:999px;background:#110f0a;border:1px solid #d7aa4b88;color:#ffe69b;font-size:10px;font-weight:900}
 @media(max-width:520px){.v207TicketBox{align-items:stretch;flex-direction:column}.v207TicketBtn{width:100%}.v207MailHead{flex-direction:column}.v207MailHead time{white-space:normal}.v207DrawHeadRight{gap:5px}.v207DrawTicketCount{padding:6px 8px;font-size:10px}}
+
+.v207SsrPoolTab{border-color:#f2c94c88!important;background:linear-gradient(180deg,#2b2108,#0b0904)!important;color:#ffe69b!important}.v207SsrPoolTab.active{box-shadow:0 0 22px #e3b73b44!important;border-color:#ffe083!important}.v207SsrPoolPanel{border:1px solid #d9ae4d55!important;background:radial-gradient(circle at 20% 0,#7b5b1f26,transparent 38%),#ffffff08!important}.v207SsrPoolHero{display:flex;align-items:center;gap:14px}.v207SsrPoolHero h3{margin:0 0 5px!important}.v207SsrPoolSeal{width:72px;height:72px;flex:0 0 72px;border-radius:18px;display:grid;place-items:center;font-size:28px;font-weight:1000;letter-spacing:.08em;color:#231600;background:linear-gradient(135deg,#fff4bd,#d39b2b 55%,#fff0a0);box-shadow:0 0 24px #e2b74a55,inset 0 0 0 2px #fff5c688}.v207SsrPoolStats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}.v207SsrPoolStats span{padding:10px;border-radius:12px;background:#0004;border:1px solid #ffffff12;text-align:center;font-size:12px}.v207SsrPoolStats b{display:block;margin-top:3px;font-size:20px;color:#ffe18a}.v207SsrPoolActions{grid-template-columns:1fr!important}.v207SsrPoolActions button{background:linear-gradient(180deg,#fff1a4,#d8a42c)!important;color:#231705!important;box-shadow:0 8px 24px #d6a52b33!important}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style id="v121-ios-final">
@@ -6678,25 +6680,43 @@ async function openLobbyChat(){
   lobbyChatChannel=supa.channel('lobby-chat-'+senderId.slice(-8)).on('postgres_changes',{event:'INSERT',schema:'public',table:'lobby_messages'},payload=>appendLobbyMessage(payload.new,true)).subscribe(status=>{const s=$('chatStatus');if(s)s.textContent=status==='SUBSCRIBED'?'即時連線中':status==='CHANNEL_ERROR'?'聊天室連線異常':'連線中…'});
  }catch(e){const list=$('chatMessages');if(list)list.innerHTML='<div class="chatEmpty">聊天室讀取失敗</div>';$('chatStatus').textContent='連線失敗：'+(e.message||e)}
 }
-function showDrawMenu(){
- const modal=$('modal'),entries=allGachaEntries();
- if(!entries.length){modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:430px"><div class="modalHead"><div><h2 style="margin:0">🎴 抽獎系統</h2><div class="sub">目前沒有開放中的卡池</div></div><button class="small" id="drawClose">✕</button></div><div class="poolEmpty" style="margin-top:14px">管理員目前已關閉所有卡池，暫時無法抽取。</div></div></div>`;$('drawClose').onclick=()=>$('modal').innerHTML='';return}
+async function showDrawMenu(){
+ const modal=$('modal');
+ /* v2.07：SSR 必中券改成獨立獎池；開啟時先同步後端券數。 */
+ if(PLAYER_READY&&PLAYER_TOKEN){
+  try{const eco=await v207EconomyApi('mailbox_status');v207SyncEconomyState(eco)}catch(_e){}
+ }
+ const ticketEntry={id:'v207_ssr_ticket_pool',name:'SSR 必中獎池',kind:'ssr_ticket',isActive:true};
+ const entries=[...allGachaEntries(),ticketEntry];
  if(!entries.some(x=>x.id===ACTIVE_POOL_ID))ACTIVE_POOL_ID=entries[0].id;
- const current=currentGachaEntry();
- const tabs=entries.map(x=>`<button class="poolTab ${x.id===ACTIVE_POOL_ID?'active':''}" data-pool="${esc(x.id)}">${x.kind==='cheer'?'📣 ':'⚾ '}${esc(x.name)}<small>${x.kind==='cheer'?activeCheerCards().length:getPoolCards(x).length} 張</small></button>`).join('');
+ const current=ACTIVE_POOL_ID===ticketEntry.id?ticketEntry:currentGachaEntry();
+ const unownedSsr=CARDS.filter(c=>String(c?.rarity||'').toUpperCase()==='SSR'&&countOfCard(c.id)<1).length;
+ const tabs=entries.map(x=>{
+  const icon=x.kind==='cheer'?'📣 ':x.kind==='ssr_ticket'?'🎟️ ':'⚾ ';
+  const count=x.kind==='cheer'?activeCheerCards().length:x.kind==='ssr_ticket'?V207_SSR_TICKETS:getPoolCards(x).length;
+  const unit=x.kind==='ssr_ticket'?' 張券':' 張';
+  return `<button class="poolTab ${x.id===ACTIVE_POOL_ID?'active':''} ${x.kind==='ssr_ticket'?'v207SsrPoolTab':''}" data-pool="${esc(x.id)}">${icon}${esc(x.name)}<small>${count}${unit}</small></button>`
+ }).join('');
  let panel='';
- if(current?.kind==='cheer'){
+ if(current?.kind==='ssr_ticket'){
+  const hasTicket=V207_SSR_TICKETS>0,allOwned=unownedSsr===0;
+  panel=`<div class="poolPanel v207SsrPoolPanel"><div class="v207SsrPoolHero"><div class="v207SsrPoolSeal">SSR</div><div><h3>🎟️ SSR 必中獎池</h3><div class="poolRateLine">使用 1 張 SSR 必中券<br><b>必定獲得 1 張尚未擁有的 SSR 球員卡</b></div></div></div><div class="v207SsrPoolStats"><span>SSR 必中券 <b>${V207_SSR_TICKETS}</b></span><span>未擁有 SSR <b>${unownedSsr}</b></span></div>${allOwned?'<div class="poolEmpty">你目前已擁有全部 SSR，必中券不會被消耗。</div>':''}<div class="actions v207SsrPoolActions" style="margin-top:12px;margin-bottom:0"><button id="drawSingle" class="v207TicketSingle" ${hasTicket&&!allOwned?'':'disabled'}>🎟️ 使用 SSR 必中券 ×1</button></div><div class="v207DrawInlineNotice">${!hasTicket?'目前沒有 SSR 必中券':allOwned?'SSR 已全收集':'目前可抽到 '+unownedSsr+' 張尚未擁有 SSR'}</div></div>`;
+ }else if(current?.kind==='cheer'){
   const count=activeCheerCards().length;
   panel=`<div class="poolPanel"><h3>📣 ${esc(CHEER_POOL.name||'應援團卡')}</h3><div class="poolRateLine">所有啟用中的應援團卡等機率抽取<br>應援效果之後用於對戰支援，不直接取代球員戰力</div>${count?'':`<div class="poolEmpty">目前沒有啟用中的應援團卡，請等待管理員設定。</div>`}<div class="drawPoolSummary">目前卡池：${count} 張應援團卡</div><div class="actions" style="margin-top:12px;margin-bottom:0"><button id="drawSingle" ${count?'':'disabled'}>📣 單抽　💎100</button><button id="drawTen" class="ten" ${count?'':'disabled'}>🎉 十連　💎900</button></div></div>`
  }else{
   const p=POOLS.find(x=>x.id===current?.id)||currentPool(),count=getPoolCards(p).length;
   panel=`<div class="poolPanel"><h3>${esc(p.name)}</h3><div class="poolRateLine">${esc(rateText(p))}<br>300 抽 SSR 保底｜十連至少 1 張 SR+</div>${count?'':`<div class="poolEmpty">此卡池目前還沒有設定球員，請到管理員後台 → 球員卡管理設定所屬卡池。</div>`}<div class="drawPoolSummary">目前卡池：${count} 張球員｜保底 ${getPity()} / 300</div><div class="actions" style="margin-top:12px;margin-bottom:0"><button id="drawSingle" ${count?'':'disabled'}>🎴 單抽　💎100</button><button id="drawTen" class="ten" ${count?'':'disabled'}>🔥 十連　💎900</button></div></div>`
  }
- modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:460px"><div class="modalHead"><div><h2 style="margin:0">🎴 抽獎系統</h2><div class="sub">選擇要抽的卡池</div></div><button class="small" id="drawClose">✕</button></div><div class="poolTabs">${tabs}</div>${panel}</div></div>`;
- $('drawClose').onclick=()=>$('modal').innerHTML='';
+ modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:500px"><div class="modalHead"><div><h2 style="margin:0">🎴 抽獎系統</h2><div class="sub">選擇要抽的卡池</div></div><div class="v207DrawHeadRight"><span class="v207DrawTicketCount">SSR 必中券：${V207_SSR_TICKETS}</span><button class="small" id="drawClose">✕</button></div></div><div class="poolTabs">${tabs}</div>${panel}</div></div>`;
+ $('drawClose').onclick=()=>($('modal').innerHTML='');
  document.querySelectorAll('.poolTab').forEach(b=>b.onclick=()=>{ACTIVE_POOL_ID=b.dataset.pool||entries[0]?.id||'';save();showDrawMenu()});
- $('drawSingle').onclick=async()=>{$('modal').innerHTML='';if(current?.kind==='cheer')await drawCheer(1);else await draw(1)};
- $('drawTen').onclick=async()=>{$('modal').innerHTML='';if(current?.kind==='cheer')await drawCheer(10);else await draw(10)}
+ const single=$('drawSingle');if(single)single.onclick=async()=>{
+  if(current?.kind==='ssr_ticket'){await v207UseSsrTicket();return}
+  if(current?.kind==='cheer'){$('modal').innerHTML='';await drawCheer(1);return}
+  $('modal').innerHTML='';await draw(1)
+ };
+ const ten=$('drawTen');if(ten)ten.onclick=async()=>{$('modal').innerHTML='';if(current?.kind==='cheer')await drawCheer(10);else await draw(10)}
 }
 function day(){const d=new Date(),p=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())}
 const pendingCardImages=new Map();
@@ -7255,36 +7275,6 @@ async function v207UseSsrTicket(){
   $('notice').textContent='🎟️ SSR 必中券獲得：'+(card.name||'SSR 球員');await v207RefreshMailboxBadge()
  }catch(e){if(note)note.textContent='❌ '+(e.message||e);else $('notice').textContent='❌ '+(e.message||e)}finally{const b=$('v207SsrTicketDraw')||$('drawSingle');if(b)b.disabled=false}
 }
-
-/* v2.07 抽卡選單：有 SSR 必中券時直接取代一般單抽；右上固定顯示券數 */
-showDrawMenu=async function(){
- const modal=$('modal');
- /* 每次開啟抽卡頁都以伺服器資產為準，避免舊快取把 SSR 必中券顯示成 0。 */
- if(PLAYER_READY&&PLAYER_TOKEN){
-  try{const eco=await v207EconomyApi('mailbox_status');v207SyncEconomyState(eco)}catch(_e){}
- }
- const entries=allGachaEntries();
- if(!entries.length){modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:430px"><div class="modalHead"><div><h2 style="margin:0">🎴 抽獎系統</h2><div class="sub">目前沒有開放中的卡池</div></div><div class="v207DrawHeadRight"><span class="v207DrawTicketCount">SSR 必中券：${V207_SSR_TICKETS}</span><button class="small" id="drawClose">✕</button></div></div><div class="poolEmpty" style="margin-top:14px">管理員目前已關閉所有卡池，暫時無法抽取。</div></div></div>`;$('drawClose').onclick=()=>$('modal').innerHTML='';return}
- if(!entries.some(x=>x.id===ACTIVE_POOL_ID))ACTIVE_POOL_ID=entries[0].id;
- const current=currentGachaEntry(),tabs=entries.map(x=>`<button class="poolTab ${x.id===ACTIVE_POOL_ID?'active':''}" data-pool="${esc(x.id)}">${x.kind==='cheer'?'📣 ':'⚾ '}${esc(x.name)}<small>${x.kind==='cheer'?activeCheerCards().length:getPoolCards(x).length} 張</small></button>`).join('');let panel='';
- if(current?.kind==='cheer'){
-  const count=activeCheerCards().length;
-  panel=`<div class="poolPanel"><h3>📣 ${esc(CHEER_POOL.name||'應援團卡')}</h3><div class="poolRateLine">所有啟用中的應援團卡等機率抽取<br>應援效果之後用於對戰支援，不直接取代球員戰力</div>${count?'':`<div class="poolEmpty">目前沒有啟用中的應援團卡，請等待管理員設定。</div>`}<div class="drawPoolSummary">目前卡池：${count} 張應援團卡</div><div class="actions" style="margin-top:12px;margin-bottom:0"><button id="drawSingle" ${count?'':'disabled'}>📣 單抽　💎100</button><button id="drawTen" class="ten" ${count?'':'disabled'}>🎉 十連　💎900</button></div></div>`
- }else{
-  const p=POOLS.find(x=>x.id===current?.id)||currentPool(),count=getPoolCards(p).length,hasTicket=V207_SSR_TICKETS>0;
-  const singleLabel=hasTicket?'🎟️ SSR 必中券':'🎴 單抽　💎100';
-  panel=`<div class="poolPanel"><h3>${esc(p.name)}</h3><div class="poolRateLine">${esc(rateText(p))}<br>300 抽 SSR 保底｜十連至少 1 張 SR+</div>${count?'':`<div class="poolEmpty">此卡池目前還沒有設定球員，請到管理員後台 → 球員卡管理設定所屬卡池。</div>`}<div class="drawPoolSummary">目前卡池：${count} 張球員｜保底 ${getPity()} / 300</div><div class="actions" style="margin-top:12px;margin-bottom:0"><button id="drawSingle" class="${hasTicket?'v207TicketSingle':''}" ${count?'':'disabled'}>${singleLabel}</button><button id="drawTen" class="ten" ${count?'':'disabled'}>🔥 十連　💎900</button></div><div id="v207TicketNotice" class="v207DrawInlineNotice">${hasTicket?'必中券將獲得 1 張尚未擁有的 SSR':''}</div></div>`
- }
- modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:460px"><div class="modalHead"><div><h2 style="margin:0">🎴 抽獎系統</h2><div class="sub">選擇要抽的卡池</div></div><div class="v207DrawHeadRight"><span class="v207DrawTicketCount">SSR 必中券：${V207_SSR_TICKETS}</span><button class="small" id="drawClose">✕</button></div></div><div class="poolTabs">${tabs}</div>${panel}</div></div>`;
- $('drawClose').onclick=()=>$('modal').innerHTML='';
- document.querySelectorAll('.poolTab').forEach(b=>b.onclick=()=>{ACTIVE_POOL_ID=b.dataset.pool||entries[0]?.id||'';save();showDrawMenu()});
- $('drawSingle').onclick=async()=>{
-  if(current?.kind==='cheer'){$('modal').innerHTML='';await drawCheer(1);return}
-  if(V207_SSR_TICKETS>0){await v207UseSsrTicket();return}
-  $('modal').innerHTML='';await draw(1)
- };
- $('drawTen').onclick=async()=>{$('modal').innerHTML='';if(current?.kind==='cheer')await drawCheer(10);else await draw(10)};
-};
 
 /* 每次重新載入雲端卡片後確保 SP 固定使用黑金剪影。 */
 const v207LoadCloudContentBase=loadCloudContent;
