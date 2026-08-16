@@ -3856,7 +3856,7 @@ function v207ApplyLegendSuppression(p,pitcher){
  out.v207LegendCloser=true;out.v208LegendCloser=true;out.v208LegendHitFactor=1/3;out.v208LegendWalkFactor=.5;out.v208LegendLongFactor=.5;out.v208LegendHrFactor=.5;
  return out
 }
-function v207EnsureSpCard(){const i=CARDS.findIndex(c=>String(c?.id||'')===V207_SP_CARD_ID);const fixed={id:V207_SP_CARD_ID,name:'傳奇終結者',rarity:'SP',power:2500,type:'特殊投手',position:'投手',team:'傳奇',description:'SP 特殊卡｜攻擊 0｜防守 2500。擔任投手時，對手保送率 ×0.5、總安打率 ×1/3、長打（2B/3B）率 ×0.5、全壘打率 ×0.5。自己打擊時必定無法上壘，只會形成三振、滾地或飛球出局。不佔 SSR / UR 限制；每個牌組最多 1 張 SP。',image:V207_SP_IMAGE,originalImage:V207_SP_IMAGE};if(i<0)CARDS.push(fixed);else CARDS[i]={...CARDS[i],...fixed};return CARDS.find(c=>String(c?.id||'')===V207_SP_CARD_ID)}
+function v207EnsureSpCard(){const i=CARDS.findIndex(c=>String(c?.id||'')===V207_SP_CARD_ID);const fixed={id:V207_SP_CARD_ID,name:'傳奇終結者',rarity:'SP',power:2500,type:'特殊投手',position:'投手',team:'傳奇',description:'SP 特殊卡｜攻擊 0｜防守 2500。擔任投手時，對手保送率 ×0.5、總安打率 ×1/3、長打（2B/3B/HR）率 ×0.5，其中 HR 率 ×0.5。自己打擊時必定無法上壘，只會形成三振、滾地或飛球出局。不佔 SSR / UR 限制；每個牌組最多 1 張 SP。',image:V207_SP_IMAGE,originalImage:V207_SP_IMAGE};if(i<0)CARDS.push(fixed);else CARDS[i]={...CARDS[i],...fixed};return CARDS.find(c=>String(c?.id||'')===V207_SP_CARD_ID)}
 
 const CARD_POSITION_RULES=Object.freeze({
  '投手':{attack:.55,defense:1.15},
@@ -3900,14 +3900,14 @@ function v208PitcherDefensePower(rawDefense,pitcher){
  return v208IsStandardPitcherBoost(pitcher)?Math.max(1,Math.round(raw*1.20)):raw
 }
 function v208ApplyStandardPitcherLongSuppression(p,batter){
- // v2.09：N/R/SR/SSR「守位＝投手」的卡，長打懲罰屬於該卡自己打擊時，不再壓低對手長打。
+ // v2.09：N/R/SR/SSR「守位＝投手」的卡，自己打擊時整體長打（2B/3B/HR）率 ×0.5；不影響對手。
  if(!p||!v208IsStandardPitcherBoost(batter))return p;
  const out={...p},s0=Math.max(0,Number(out.singleShare)||0),d0=Math.max(0,Number(out.doubleShare)||0),t0=Math.max(0,Number(out.tripleShare)||0),h0=Math.max(0,Number(out.homeRunShare)||0),total=s0+d0+t0+h0;
  if(total<=0)return out;
  const sn=s0/total,dn=d0/total,tn=t0/total,hn=h0/total;
- // 2B / 3B 的最終占比各減半；被削掉的長打轉為一壘安打，總安打率與 HR 不因此改變。
- out.doubleShare=dn*.5;out.tripleShare=tn*.5;out.homeRunShare=hn;out.singleShare=sn+dn*.5+tn*.5;
- out.v209StandardPitcherBattingPenalty=true;out.v209StandardPitcherLongFactor=.5;
+ // 2B / 3B / HR 的最終占比全部減半；被削掉的長打轉為一壘安打，因此總安打率維持不變。
+ out.doubleShare=dn*.5;out.tripleShare=tn*.5;out.homeRunShare=hn*.5;out.singleShare=sn+dn*.5+tn*.5+hn*.5;
+ out.v209StandardPitcherBattingPenalty=true;out.v209StandardPitcherLongFactor=.5;out.v209StandardPitcherHrFactor=.5;
  return out
 }
 function positionCoefficientText(position,rarity=''){const rr=String(rarity||'').toUpperCase();if(rr==='UR')return '進攻 ×1.00｜防守 ×1.00';if(rr==='SP')return 'SP：攻擊固定 0｜防守固定 2500';const r=CARD_POSITION_RULES[normalizeCardPosition(position)];return `進攻 ×${r.attack.toFixed(2)}｜防守 ×${r.defense.toFixed(2)}`}
@@ -5236,14 +5236,14 @@ function v203NormalPlateProbability(s=V127_BATTLE){
  const kAmongOuts=v125Clamp((Number(p.strikeout)||0)/Math.max(.001,1-hitGivenNoWalk),0,.85);
  const strikeout=(1-walk)*(1-hitGivenNoWalk)*kAmongOuts;
  const doubleShare=Math.max(0,Number(p.doubleShare)||0),tripleShare=Math.max(0,Number(p.tripleShare)||0),hrShare=Math.max(0,Number(p.homeRunShare)||0);
- const extraShare=doubleShare+tripleShare;
+ const extraShare=doubleShare+tripleShare+hrShare;
  const extraBaseHit=hit*Math.max(0,Math.min(1,extraShare));
  const homeRun=hit*Math.max(0,Math.min(1,hrShare));
  return{strikeout,walk,hit,extraBaseHit,homeRun}
 }
 function v203PlateProbabilityHtml(s=V127_BATTLE){
  const p=v203NormalPlateProbability(s);if(!p)return'';
- return`<div class="v203PaProbSide left" title="正常打擊 × 正常投球基準"><span class="v203PaProbItem">三振 <b>${v203FmtProbability(p.strikeout)}</b></span><span class="v203PaProbItem">保送 <b>${v203FmtProbability(p.walk)}</b></span></div><div class="v203PaProbSide right" title="正常打擊 × 正常投球基準"><span class="v203PaProbItem">長打 <b>${v203FmtProbability(p.extraBaseHit)}</b></span><span class="v203PaProbItem">全打 <b>${v203FmtProbability(p.homeRun)}</b></span></div><div class="v203PaHitProb" title="正常打擊 × 正常投球基準">安打 <b>${v203FmtProbability(p.hit)}</b></div>`
+ return`<div class="v203PaProbSide left" title="正常打擊 × 正常投球基準"><span class="v203PaProbItem">三振 <b>${v203FmtProbability(p.strikeout)}</b></span><span class="v203PaProbItem">保送 <b>${v203FmtProbability(p.walk)}</b></span></div><div class="v203PaProbSide right" title="正常打擊 × 正常投球基準"><span class="v203PaProbItem" title="2B＋3B＋HR">長打 <b>${v203FmtProbability(p.extraBaseHit)}</b></span><span class="v203PaProbItem" title="HR">HR <b>${v203FmtProbability(p.homeRun)}</b></span></div><div class="v203PaHitProb" title="正常打擊 × 正常投球基準">安打 <b>${v203FmtProbability(p.hit)}</b></div>`
 }
 function v209SpEffectHtml(s=V127_BATTLE){
  const pitcher=v127CurrentPitcher(s),batter=v127CurrentBatter(s);
@@ -5846,7 +5846,7 @@ function v206GeneralRulesHtml(){
   <div class="v206RuleGroup"><h3>⚾ 基本比賽</h3><p><b>一般模式以 3 局制為主。</b>每半局 3 出局攻守交換；3 局打完平手會進入延長賽。房間對戰可另外設定局數與是否開啟延長賽。</p><p>再見分成立時比賽立即結束。安打、保送、雙殺、高飛犧牲打等結果會依目前壘況推進與計分。</p></div>
   <div class="v206RuleGroup"><h3>🃏 牌組與換人</h3><p>一般牌組由 <b>9 名先發＋最多 3 名替補＋最多 2 張應援卡</b>組成。替補上場後，被換下的球員不能再回到場上；替補球員也能成為投手。</p><p>每個牌組最多 1 張 UR，SSR＋UR 合計最多 3 張。</p></div>
   <div class="v206RuleGroup"><h3>🧢 投手規則</h3><p>每個守備半局開始時有 <b>30 秒</b>選擇投手，場上 9 人都具投球資格。本輪已登板者原則上不能重複登板；可用球員全部用完後才重新開放。</p><p>打席開始後仍可換投，但換投、替補與戰術選擇共用該打席的時間。</p></div>
-  <div class="v206RuleGroup"><h3>🎯 打席戰術</h3><p>每打席共用 <b>15 秒</b>。進攻可選穩健打擊、強攻、選球；守備可選正面對決、變化球引誘、閃躲投球。逾時會自動採用預設戰術。</p><p>不同戰術會調整三振、保送、安打與長打等機率；戰鬥畫面顯示的打席機率則是正常打擊 × 正常投球的基準值。</p><p><b>N 卡選球強化：</b>N 卡打者對 SR／SSR／UR 投手的基礎保送率分別為約 20%／18%／15%，且可突破一般 18% 保送上限；對傳奇終結者則維持正常公式。傳奇終結者登板時只可選正面對決或變化球引誘。</p><p><b>一般投手守位調整：</b>N／R／SR／SSR 中守位為「投手」的卡，實際擔任投手時投球壓制力 +20%；而該投手卡自己打擊時，長打（2B／3B）率在現有結果上再 ×0.5。UR／SP 不套用此一般投手調整。</p><p><b>SP｜傳奇終結者：</b>登板後對手保送率 ×0.5、總安打率 ×1/3、長打（2B/3B）率 ×0.5、全壘打率 ×0.5。自己打擊時上壘率固定 0%。每個牌組最多攜帶 1 張 SP。</p></div>
+  <div class="v206RuleGroup"><h3>🎯 打席戰術</h3><p>每打席共用 <b>15 秒</b>。進攻可選穩健打擊、強攻、選球；守備可選正面對決、變化球引誘、閃躲投球。逾時會自動採用預設戰術。</p><p>不同戰術會調整三振、保送、安打與長打等機率；戰鬥畫面顯示的打席機率則是正常打擊 × 正常投球的基準值。</p><p><b>N 卡選球強化：</b>N 卡打者對 SR／SSR／UR 投手的基礎保送率分別為約 20%／18%／15%，且可突破一般 18% 保送上限；對傳奇終結者則維持正常公式。傳奇終結者登板時只可選正面對決或變化球引誘。</p><p><b>一般投手守位調整：</b>N／R／SR／SSR 中守位為「投手」的卡，實際擔任投手時投球壓制力 +20%；而該投手卡自己打擊時，整體長打（2B／3B／HR）率在現有結果上再 ×0.5。戰鬥畫面的「長打」定義為 2B＋3B＋HR，「HR」則只顯示全壘打機率。UR／SP 不套用此一般投手調整。</p><p><b>SP｜傳奇終結者：</b>登板後對手保送率 ×0.5、總安打率 ×1/3、長打（2B/3B/HR）率 ×0.5，其中 HR 率 ×0.5。自己打擊時上壘率固定 0%。每個牌組最多攜帶 1 張 SP。</p></div>
   <div class="v206RuleGroup"><h3>📣 應援與關卡</h3><p>應援卡需要消耗應援值，並依卡片條件套用攻擊、防守、安打或長打等效果。</p><p>關卡模式使用系統提供的<b>關卡租借角色</b>與關卡專用數值，不帶入自己的球員卡等級；每關另有星星條件與首次通關獎勵。</p></div>
  </div>`
 }
