@@ -3066,8 +3066,9 @@ input,textarea,[contenteditable="true"]{
 .v207TicketBox{margin-top:12px;padding:13px;border-radius:15px;background:linear-gradient(135deg,#151b36,#10101b);border:1px solid #76a7ff55;display:flex;gap:10px;align-items:center;justify-content:space-between}
 .v207TicketBox>span{display:flex;flex-direction:column;gap:2px}.v207TicketBox b{font-size:15px}.v207TicketBox small{color:#b6cfff}.v207TicketBtn{padding:10px 13px!important;border-radius:12px!important;background:linear-gradient(180deg,#80b6ff,#4f70d7)!important;color:#fff!important;white-space:nowrap}.v207TicketBtn:disabled{opacity:.42;filter:grayscale(.5)}
 .v207TicketNotice{min-height:18px;margin-top:7px;text-align:center;font-size:12px;color:#aecdff}
+.v207DrawHeadRight{display:flex;align-items:center;gap:8px}.v207DrawTicketCount{padding:7px 10px;border-radius:999px;background:#10162a;border:1px solid #78a8ff55;color:#c8dcff;font-size:12px;font-weight:900;white-space:nowrap}.v207TicketSingle{background:linear-gradient(180deg,#80b6ff,#4f70d7)!important;color:#fff!important;box-shadow:0 0 18px #6191ff33!important}.v207DrawInlineNotice{min-height:16px;margin-top:6px;text-align:center;font-size:11px;color:#b8d0ff}
 .v207MailModal{max-width:560px!important}.v207MailTop{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:10px 0 12px}.v207MailTop small{color:#ffffff99}.v207MailList{display:grid;gap:10px}.v207MailCard{padding:14px;border-radius:16px;background:#ffffff0b;border:1px solid #ffffff1c}.v207MailCard.unclaimed{border-color:#e5bb5666;box-shadow:inset 3px 0 #d8aa43}.v207MailHead{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}.v207MailHead b{font-size:17px}.v207MailHead time{font-size:11px;color:#ffffff77;white-space:nowrap}.v207MailBody{margin-top:7px;color:#ffffffbd;font-size:13px;line-height:1.55}.v207MailAttach{display:grid;gap:6px;margin-top:10px}.v207MailItem{display:flex;align-items:center;gap:9px;padding:8px 9px;border-radius:11px;background:#0004;border:1px solid #ffffff12}.v207MailItem img{width:42px;height:56px;object-fit:cover;border-radius:8px;border:1px solid #d8ad4f77}.v207MailItem span{flex:1;font-size:13px;font-weight:800}.v207MailItem em{font-style:normal;color:#ffe094;font-weight:900}.v207MailClaim{width:100%;margin-top:10px;padding:10px!important}.v207MailClaim.claimed{background:#ffffff10!important;color:#ffffff88!important}.v207MailEmpty{text-align:center;padding:28px 12px;color:#ffffff88}.v207SpEffectBadge{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:2px 7px;border-radius:999px;background:#110f0a;border:1px solid #d7aa4b88;color:#ffe69b;font-size:10px;font-weight:900}
-@media(max-width:520px){.v207TicketBox{align-items:stretch;flex-direction:column}.v207TicketBtn{width:100%}.v207MailHead{flex-direction:column}.v207MailHead time{white-space:normal}}
+@media(max-width:520px){.v207TicketBox{align-items:stretch;flex-direction:column}.v207TicketBtn{width:100%}.v207MailHead{flex-direction:column}.v207MailHead time{white-space:normal}.v207DrawHeadRight{gap:5px}.v207DrawTicketCount{padding:6px 8px;font-size:10px}}
 </style><script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style id="v121-ios-final">
 @media(max-width:520px){
@@ -3639,6 +3640,43 @@ input,textarea,[contenteditable="true"]{
 .v206PlacementProgress{display:inline-block;margin-left:4px;padding:1px 4px;border-radius:999px;background:#78b8ff1c;border:1px solid #78b8ff35;color:#bfe0ff;font-style:normal;font-size:5px}
 @media(max-width:520px){.v206GameModeGrid{gap:6px!important}.v206ModeTwin{gap:6px!important}.v206ModeCard{padding:8px 9px!important}.v206ModeCard .gameModeIcon{font-size:24px!important;margin-bottom:3px!important}.v206ModeCard .gameModeText b{font-size:14px!important}.v206ModeCard .gameModeText span{font-size:8px!important}.v206ModeCard .gameModeText small{font-size:6.3px!important}.v206LineupSettings{min-height:66px!important;padding:11px 13px!important}.v206LineupSettings .lineupText b{font-size:16px!important}}
 @media(max-height:650px){.v206GameModeGrid{gap:5px!important}.v206ModeCard{padding:6px 8px!important}.v206ModeCard .gameModeIcon{font-size:21px!important;margin-bottom:2px!important}.v206ModeCard .gameModeText b{font-size:13px!important}.v206ModeCard .gameModeText span{font-size:7px!important}.v206ModeCard .gameModeText small{font-size:5.8px!important}.v206LineupSettings{min-height:58px!important;padding:8px 11px!important}.v206LineupSettings .lineupGear{font-size:26px!important}}
+</style>
+
+<style id="v207RewardFxStyle">
+/* v2.07 領獎逐項特效 */
+.v207RewardOverlay{position:fixed;inset:0;z-index:26000;display:grid;place-items:center;padding:18px;background:radial-gradient(circle at 50% 42%,#15192be8,#04050af7 70%);overflow:hidden}
+.v207RewardStage{position:relative;width:min(430px,94vw);min-height:560px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;isolation:isolate}
+.v207RewardStage::before{content:"";position:absolute;inset:7% -12%;z-index:-3;border-radius:50%;filter:blur(14px);animation:v207AuraPulse 1.5s ease-in-out infinite}
+.v207RewardTitle{font-size:14px;letter-spacing:.18em;color:#ffffffaa;font-weight:900;margin-bottom:13px}
+.v207RewardVisual{position:relative;width:min(310px,76vw);height:330px;display:grid;place-items:center}
+.v207RewardName{margin-top:9px;font-size:26px;font-weight:1000;letter-spacing:.04em;text-shadow:0 4px 18px #000}
+.v207RewardAmount{margin-top:6px;font-size:42px;font-weight:1000;line-height:1}
+.v207RewardDesc{margin-top:10px;font-size:13px;color:#ffffffa8;min-height:20px}
+.v207RewardConfirm{margin-top:22px;min-width:180px;padding:13px 28px!important;background:#fff!important;color:#17120a!important;box-shadow:0 8px 28px #0009}
+.v207RewardParticles{position:absolute;inset:0;pointer-events:none;overflow:hidden}
+.v207RewardParticles i{position:absolute;left:50%;top:50%;width:6px;height:28px;border-radius:999px;transform-origin:50% 170px;animation:v207Particle 1.25s ease-out infinite}
+.v207RewardParticles i:nth-child(1){transform:rotate(0deg) translateY(-118px);animation-delay:.02s}.v207RewardParticles i:nth-child(2){transform:rotate(30deg) translateY(-118px);animation-delay:.11s}.v207RewardParticles i:nth-child(3){transform:rotate(60deg) translateY(-118px);animation-delay:.18s}.v207RewardParticles i:nth-child(4){transform:rotate(90deg) translateY(-118px);animation-delay:.06s}.v207RewardParticles i:nth-child(5){transform:rotate(120deg) translateY(-118px);animation-delay:.22s}.v207RewardParticles i:nth-child(6){transform:rotate(150deg) translateY(-118px);animation-delay:.13s}.v207RewardParticles i:nth-child(7){transform:rotate(180deg) translateY(-118px);animation-delay:.26s}.v207RewardParticles i:nth-child(8){transform:rotate(210deg) translateY(-118px);animation-delay:.08s}.v207RewardParticles i:nth-child(9){transform:rotate(240deg) translateY(-118px);animation-delay:.19s}.v207RewardParticles i:nth-child(10){transform:rotate(270deg) translateY(-118px);animation-delay:.03s}.v207RewardParticles i:nth-child(11){transform:rotate(300deg) translateY(-118px);animation-delay:.24s}.v207RewardParticles i:nth-child(12){transform:rotate(330deg) translateY(-118px);animation-delay:.15s}
+.v207RewardStage.card::before{background:radial-gradient(circle,#ffc9395c 0 22%,#a76a0d33 38%,transparent 70%)}
+.v207RewardStage.card .v207RewardParticles i{background:linear-gradient(#fff3b8,#d89e28)}
+.v207SpRewardCard{position:relative;width:248px;aspect-ratio:1/1;border-radius:22px;padding:7px;background:linear-gradient(135deg,#fff1a4,#8b5a14 22%,#16120a 46%,#d8ad4f 72%,#fff0a3);box-shadow:0 0 0 2px #050505,0 0 46px #efb83a99,0 28px 55px #000b;animation:v207CardEnter .65s cubic-bezier(.17,.8,.25,1) both}
+.v207SpRewardCard::after{content:"SP";position:absolute;right:12px;top:11px;padding:5px 8px;border-radius:9px;background:#090704dd;border:1px solid #e2b957;color:#ffe69b;font-size:15px;font-weight:1000;letter-spacing:.08em;box-shadow:0 0 16px #dba83d88}
+.v207SpRewardCard img{display:block;width:100%;height:100%;object-fit:cover;border-radius:16px;background:#050505}
+.v207RewardStage.gems::before{background:radial-gradient(circle,#7dd9ff66 0 18%,#1674e944 38%,transparent 72%)}
+.v207RewardStage.gems .v207RewardParticles i{background:linear-gradient(#ecfbff,#4bc6ff)}
+.v207Diamond{position:relative;width:150px;height:150px;transform:rotate(45deg);border-radius:28px 8px 28px 8px;background:linear-gradient(135deg,#efffff 0 16%,#76e4ff 17% 42%,#328cff 43% 72%,#c9fbff 73%);box-shadow:0 0 38px #61d8ffcc,0 0 90px #237eff88;animation:v207GemPop .72s cubic-bezier(.2,.9,.25,1) both}
+.v207Diamond::before,.v207Diamond::after{content:"";position:absolute;background:#ffffff66}.v207Diamond::before{left:15%;right:15%;top:48%;height:2px}.v207Diamond::after{top:15%;bottom:15%;left:48%;width:2px}
+.v207RewardStage.ticket::before{background:radial-gradient(circle,#ffda6e66 0 20%,#ff8f2440 40%,transparent 72%)}
+.v207RewardStage.ticket .v207RewardParticles i{background:linear-gradient(#fff1a9,#ff9b36)}
+.v207Ticket{position:relative;width:272px;height:150px;border-radius:20px;background:linear-gradient(135deg,#37170a,#a64c14 28%,#ffd86a 52%,#8d3610 76%,#2b1109);border:2px solid #ffd56d;box-shadow:0 0 42px #ffb13e99,0 24px 48px #000a;display:grid;place-items:center;overflow:hidden;animation:v207TicketEnter .7s cubic-bezier(.2,.85,.2,1) both}
+.v207Ticket::before{content:"";position:absolute;inset:-60% -20%;background:linear-gradient(100deg,transparent 38%,#fff9 50%,transparent 62%);animation:v207TicketShine 1.4s linear infinite}
+.v207Ticket b{position:relative;font-size:57px;letter-spacing:.08em;color:#fff1bd;text-shadow:0 2px 0 #6c2c0d,0 0 22px #fff2a5;font-weight:1000}.v207Ticket small{position:absolute;bottom:16px;font-size:11px;letter-spacing:.15em;color:#fff5d1;font-weight:900}
+@keyframes v207AuraPulse{0%,100%{transform:scale(.9);opacity:.55}50%{transform:scale(1.08);opacity:1}}
+@keyframes v207Particle{0%{opacity:0;scale:.4}25%{opacity:1}100%{opacity:0;translate:0 -95px;scale:1.2}}
+@keyframes v207CardEnter{0%{opacity:0;transform:scale(.55) rotateY(80deg) rotate(-6deg)}100%{opacity:1;transform:scale(1) rotateY(0) rotate(0)}}
+@keyframes v207GemPop{0%{opacity:0;transform:rotate(45deg) scale(.3)}65%{transform:rotate(45deg) scale(1.12)}100%{opacity:1;transform:rotate(45deg) scale(1)}}
+@keyframes v207TicketEnter{0%{opacity:0;transform:translateY(95px) rotateX(75deg) scale(.7)}100%{opacity:1;transform:translateY(0) rotateX(0) scale(1)}}
+@keyframes v207TicketShine{from{transform:translateX(-65%)}to{transform:translateX(65%)}}
+@media(max-width:460px){.v207RewardStage{min-height:510px}.v207RewardVisual{height:290px}.v207SpRewardCard{width:220px}.v207RewardName{font-size:23px}}
 </style>
 </head><body><div id="appViewport" class="appViewport"><div class="wrap lobbyWrap"><div class="lobbyWood"><div class="lobbyBrandRow"><div class="lobbyTopInfo"><div class="lobbyTitleRow">
   <h1 class="v145LobbyLogo" aria-label="棒球抽卡對戰">
@@ -7171,19 +7209,55 @@ function v207MailAttachmentHtml(a){
  return`<div class="v207MailItem">${pic||`<b style="font-size:24px;width:42px;text-align:center">${icon}</b>`}<span>${label}</span><em>×${amount}</em></div>`
 }
 function v207MailTime(ts){try{return new Intl.DateTimeFormat('zh-TW',{month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}).format(new Date(ts))}catch(_e){return''}}
+function v207RewardParticles(){return '<div class="v207RewardParticles">'+Array.from({length:12},()=>'<i></i>').join('')+'</div>'}
+function v207RewardMeta(a){
+ const kind=String(a?.kind||''),amount=Math.max(1,Number(a?.amount)||1);
+ if(kind==='card')return{kind:'card',name:String(a?.label||'SP｜傳奇終結者'),amount,desc:'SP 特殊球員卡',visual:`<div class="v207SpRewardCard"><img src="${esc(V207_SP_IMAGE)}"></div>`};
+ if(kind==='gems')return{kind:'gems',name:'獲得鑽石',amount,desc:'已加入帳號鑽石餘額',visual:'<div class="v207Diamond"></div>'};
+ if(kind==='ssr_ticket')return{kind:'ticket',name:'SSR 必中券',amount,desc:'必定獲得 1 張尚未擁有的 SSR',visual:'<div class="v207Ticket"><b>SSR</b><small>GUARANTEED TICKET</small></div>'};
+ return{kind:'ticket',name:String(a?.label||'獲得獎勵'),amount,desc:'',visual:'<div class="v207Ticket"><b>GET</b></div>'}
+}
+function v207ShowOneReward(a,index,total,title='獲得獎勵'){
+ return new Promise(resolve=>{
+  const old=document.querySelector('.v207RewardOverlay');if(old)old.remove();
+  const meta=v207RewardMeta(a),overlay=document.createElement('div');overlay.className='v207RewardOverlay';
+  const amountId='v207RewardAmount_'+Date.now()+'_'+Math.random().toString(36).slice(2);
+  overlay.innerHTML=`<div class="v207RewardStage ${meta.kind}">${v207RewardParticles()}<div class="v207RewardTitle">${esc(title)}　${index+1} / ${total}</div><div class="v207RewardVisual">${meta.visual}</div><div class="v207RewardName">${esc(meta.name)}</div><div class="v207RewardAmount" id="${amountId}">×${meta.kind==='gems'?0:meta.amount}</div><div class="v207RewardDesc">${esc(meta.desc)}</div><button class="v207RewardConfirm">確定</button></div>`;
+  document.body.appendChild(overlay);
+  if(meta.kind==='gems'){
+   const el=document.getElementById(amountId),target=meta.amount,start=performance.now(),duration=850;
+   const tick=now=>{if(!el||!document.body.contains(el))return;const t=Math.min(1,(now-start)/duration),ease=1-Math.pow(1-t,3);el.textContent='×'+Math.round(target*ease).toLocaleString('zh-TW');if(t<1)requestAnimationFrame(tick)};requestAnimationFrame(tick)
+  }
+  overlay.querySelector('.v207RewardConfirm').onclick=()=>{overlay.remove();resolve()}
+ })
+}
+async function v207PlayRewardSequence(rewards=[],title='獲得獎勵'){
+ const list=(Array.isArray(rewards)?rewards:[]).filter(Boolean);for(let i=0;i<list.length;i++)await v207ShowOneReward(list[i],i,list.length,title)
+}
 function v207RenderMailbox(mails=[],message=''){
  const modal=$('modal'),unclaimed=mails.filter(m=>!m.claimed_at).length;
- modal.innerHTML=`<div class="modalBackdrop"><div class="modal v207MailModal"><div class="modalHead"><div><h2 style="margin:0">✉️ 信箱</h2><div class="sub">系統獎勵與附件</div></div><button class="small" id="v207MailClose">✕</button></div><div class="v207MailTop"><small>${message?esc(message):`未領取 ${unclaimed} 封`}</small><button id="v207ClaimAll" class="small" ${unclaimed?'':'disabled'}>全部領取</button></div><div class="v207MailList">${mails.length?mails.map(m=>`<article class="v207MailCard ${m.claimed_at?'':'unclaimed'}"><div class="v207MailHead"><b>${esc(m.title||'系統信件')}</b><time>${esc(v207MailTime(m.created_at))}</time></div><div class="v207MailBody">${esc(m.body||'')}</div><div class="v207MailAttach">${(Array.isArray(m.attachments)?m.attachments:[]).map(v207MailAttachmentHtml).join('')}</div><button class="v207MailClaim ${m.claimed_at?'claimed':'admin'}" data-v207-claim="${esc(m.id)}" ${m.claimed_at?'disabled':''}>${m.claimed_at?'已領取':'領取附件'}</button></article>`).join(''):'<div class="v207MailEmpty">目前沒有信件。</div>'}</div></div></div>`;
+ modal.innerHTML=`<div class="modalBackdrop"><div class="modal v207MailModal"><div class="modalHead"><div><h2 style="margin:0">✉️ 信箱</h2><div class="sub">系統獎勵與附件</div></div><button class="small" id="v207MailClose">✕</button></div><div class="v207MailTop"><small id="v207MailMessage">${message?esc(message):`未領取 ${unclaimed} 封`}</small><button id="v207ClaimAll" class="small">全部領取</button></div><div class="v207MailList">${mails.length?mails.map(m=>`<article class="v207MailCard ${m.claimed_at?'':'unclaimed'}"><div class="v207MailHead"><b>${esc(m.title||'系統信件')}</b><time>${esc(v207MailTime(m.created_at))}</time></div><div class="v207MailBody">${esc(m.body||'')}</div><div class="v207MailAttach">${(Array.isArray(m.attachments)?m.attachments:[]).map(v207MailAttachmentHtml).join('')}</div>${m.claimed_at?'':`<button class="v207MailClaim admin" data-v207-claim="${esc(m.id)}">領取附件</button>`}</article>`).join(''):'<div class="v207MailEmpty">目前沒有信件。</div>'}</div></div></div>`;
  $('v207MailClose').onclick=()=>modal.innerHTML='';
- document.querySelectorAll('[data-v207-claim]').forEach(btn=>btn.onclick=async()=>{btn.disabled=true;try{const d=await v207EconomyApi('claim_mail',{mailId:btn.dataset.v207Claim});if(d?.progress)applyPlayerProgress(d.progress);await v207RefreshMailboxBadge();await openV207Mailbox('✅ 附件已領取')}catch(e){alert(e.message||e);btn.disabled=false}});
- $('v207ClaimAll').onclick=async()=>{const b=$('v207ClaimAll');b.disabled=true;try{const d=await v207EconomyApi('claim_all_mail');if(d?.progress)applyPlayerProgress(d.progress);await v207RefreshMailboxBadge();await openV207Mailbox(Number(d?.claimed)>0?'✅ 已領取全部附件':'沒有可領取的附件')}catch(e){alert(e.message||e);b.disabled=false}}
+ document.querySelectorAll('[data-v207-claim]').forEach(btn=>btn.onclick=async()=>{
+  const mail=mails.find(m=>String(m.id)===String(btn.dataset.v207Claim));const rewards=Array.isArray(mail?.attachments)?mail.attachments:[];btn.disabled=true;
+  try{const d=await v207EconomyApi('claim_mail',{mailId:btn.dataset.v207Claim});if(d?.progress)applyPlayerProgress(d.progress);await v207RefreshMailboxBadge();modal.innerHTML='';await v207PlayRewardSequence(rewards,mail?.title||'獲得獎勵');await openV207Mailbox()}
+  catch(e){alert(e.message||e);btn.disabled=false}
+ });
+ $('v207ClaimAll').onclick=async()=>{
+  const pending=mails.filter(m=>!m.claimed_at),msg=$('v207MailMessage');
+  if(!pending.length){if(msg)msg.textContent='無可領取的物品';return}
+  const b=$('v207ClaimAll'),rewards=pending.flatMap(m=>Array.isArray(m.attachments)?m.attachments:[]);b.disabled=true;
+  try{const d=await v207EconomyApi('claim_all_mail');if(d?.progress)applyPlayerProgress(d.progress);await v207RefreshMailboxBadge();if(Number(d?.claimed)>0){modal.innerHTML='';await v207PlayRewardSequence(rewards,'全部領取');await openV207Mailbox()}else{if(msg)msg.textContent='無可領取的物品';b.disabled=false}}
+  catch(e){alert(e.message||e);b.disabled=false}
+ }
 }
+
 async function openV207Mailbox(message=''){
  const modal=$('modal');modal.innerHTML='<div class="modalBackdrop"><div class="modal v207MailModal"><div class="modalHead"><h2>✉️ 信箱</h2><button class="small" id="v207MailLoadingClose">✕</button></div><div class="notice">讀取信件中…</div></div></div>';$('v207MailLoadingClose').onclick=()=>modal.innerHTML='';
  try{const d=await v207EconomyApi('list_mail');if(d?.progress)applyPlayerProgress(d.progress);const mails=Array.isArray(d?.mails)?d.mails:[];const dot=$('mailboxDot');if(dot)dot.hidden=!mails.some(m=>!m.claimed_at);v207RenderMailbox(mails,message)}catch(e){modal.innerHTML=`<div class="modalBackdrop"><div class="modal v207MailModal"><div class="modalHead"><h2>✉️ 信箱</h2><button class="small" id="v207MailFailClose">✕</button></div><div class="notice">❌ ${esc(e.message||e)}</div></div></div>`;$('v207MailFailClose').onclick=()=>modal.innerHTML=''}
 }
 async function v207UseSsrTicket(){
- const btn=$('v207SsrTicketDraw'),note=$('v207TicketNotice');if(btn)btn.disabled=true;if(note)note.textContent='抽取未擁有的 SSR 中…';
+ const btn=$('v207SsrTicketDraw')||$('drawSingle'),note=$('v207TicketNotice');if(btn)btn.disabled=true;if(note)note.textContent='抽取未擁有的 SSR 中…';
  try{
   const d=await v207EconomyApi('use_ssr_ticket');
   if(d?.status==='all_owned'){if(note)note.textContent='✅ SSR 已全收集，必中券不會消耗';V207_SSR_TICKETS=Math.max(0,Number(d.ssr_tickets)||0);return}
@@ -7192,20 +7266,32 @@ async function v207UseSsrTicket(){
   const card=cardFromRow(d.card),newFlags=[true];$('modal').innerHTML='';
   await playDrawAnimation([card],newFlags,null,{title:'🎟️ SSR 必中券',noAgain:true});
   $('notice').textContent='🎟️ SSR 必中券獲得：'+(card.name||'SSR 球員');await v207RefreshMailboxBadge()
- }catch(e){if(note)note.textContent='❌ '+(e.message||e)}finally{const b=$('v207SsrTicketDraw');if(b)b.disabled=V207_SSR_TICKETS<=0}
+ }catch(e){if(note)note.textContent='❌ '+(e.message||e);else $('notice').textContent='❌ '+(e.message||e)}finally{const b=$('v207SsrTicketDraw')||$('drawSingle');if(b)b.disabled=false}
 }
 
-/* v2.07 抽卡選單：一般鑽石抽卡 + SSR 必中券（只出未擁有 SSR） */
+/* v2.07 抽卡選單：有 SSR 必中券時直接取代一般單抽；右上固定顯示券數 */
 showDrawMenu=function(){
  const modal=$('modal'),entries=allGachaEntries();
- if(!entries.length){modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:430px"><div class="modalHead"><div><h2 style="margin:0">🎴 抽獎系統</h2><div class="sub">目前沒有開放中的卡池</div></div><button class="small" id="drawClose">✕</button></div><div class="poolEmpty" style="margin-top:14px">管理員目前已關閉所有卡池，暫時無法抽取。</div></div></div>`;$('drawClose').onclick=()=>$('modal').innerHTML='';return}
+ if(!entries.length){modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:430px"><div class="modalHead"><div><h2 style="margin:0">🎴 抽獎系統</h2><div class="sub">目前沒有開放中的卡池</div></div><div class="v207DrawHeadRight"><span class="v207DrawTicketCount">SSR 必中券：${V207_SSR_TICKETS}</span><button class="small" id="drawClose">✕</button></div></div><div class="poolEmpty" style="margin-top:14px">管理員目前已關閉所有卡池，暫時無法抽取。</div></div></div>`;$('drawClose').onclick=()=>$('modal').innerHTML='';return}
  if(!entries.some(x=>x.id===ACTIVE_POOL_ID))ACTIVE_POOL_ID=entries[0].id;
  const current=currentGachaEntry(),tabs=entries.map(x=>`<button class="poolTab ${x.id===ACTIVE_POOL_ID?'active':''}" data-pool="${esc(x.id)}">${x.kind==='cheer'?'📣 ':'⚾ '}${esc(x.name)}<small>${x.kind==='cheer'?activeCheerCards().length:getPoolCards(x).length} 張</small></button>`).join('');let panel='';
- if(current?.kind==='cheer'){const count=activeCheerCards().length;panel=`<div class="poolPanel"><h3>📣 ${esc(CHEER_POOL.name||'應援團卡')}</h3><div class="poolRateLine">所有啟用中的應援團卡等機率抽取<br>應援效果之後用於對戰支援，不直接取代球員戰力</div>${count?'':`<div class="poolEmpty">目前沒有啟用中的應援團卡，請等待管理員設定。</div>`}<div class="drawPoolSummary">目前卡池：${count} 張應援團卡</div><div class="actions" style="margin-top:12px;margin-bottom:0"><button id="drawSingle" ${count?'':'disabled'}>📣 單抽　💎100</button><button id="drawTen" class="ten" ${count?'':'disabled'}>🎉 十連　💎900</button></div></div>`}
- else{const p=POOLS.find(x=>x.id===current?.id)||currentPool(),count=getPoolCards(p).length;panel=`<div class="poolPanel"><h3>${esc(p.name)}</h3><div class="poolRateLine">${esc(rateText(p))}<br>300 抽 SSR 保底｜十連至少 1 張 SR+</div>${count?'':`<div class="poolEmpty">此卡池目前還沒有設定球員，請到管理員後台 → 球員卡管理設定所屬卡池。</div>`}<div class="drawPoolSummary">目前卡池：${count} 張球員｜保底 ${getPity()} / 300</div><div class="actions" style="margin-top:12px;margin-bottom:0"><button id="drawSingle" ${count?'':'disabled'}>🎴 單抽　💎100</button><button id="drawTen" class="ten" ${count?'':'disabled'}>🔥 十連　💎900</button></div><div class="v207TicketBox"><span><b>🎟️ SSR 必中券 × ${V207_SSR_TICKETS}</b><small>必定獲得 1 張尚未擁有的 SSR</small></span><button id="v207SsrTicketDraw" class="v207TicketBtn" ${V207_SSR_TICKETS>0?'':'disabled'}>使用必中券</button></div><div id="v207TicketNotice" class="v207TicketNotice">${V207_SSR_TICKETS>0?'不會抽到重複 SSR':'目前沒有 SSR 必中券'}</div></div>`}
- modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:460px"><div class="modalHead"><div><h2 style="margin:0">🎴 抽獎系統</h2><div class="sub">選擇要抽的卡池</div></div><button class="small" id="drawClose">✕</button></div><div class="poolTabs">${tabs}</div>${panel}</div></div>`;
- $('drawClose').onclick=()=>$('modal').innerHTML='';document.querySelectorAll('.poolTab').forEach(b=>b.onclick=()=>{ACTIVE_POOL_ID=b.dataset.pool||entries[0]?.id||'';save();showDrawMenu()});
- $('drawSingle').onclick=async()=>{$('modal').innerHTML='';if(current?.kind==='cheer')await drawCheer(1);else await draw(1)};$('drawTen').onclick=async()=>{$('modal').innerHTML='';if(current?.kind==='cheer')await drawCheer(10);else await draw(10)};if($('v207SsrTicketDraw'))$('v207SsrTicketDraw').onclick=v207UseSsrTicket
+ if(current?.kind==='cheer'){
+  const count=activeCheerCards().length;
+  panel=`<div class="poolPanel"><h3>📣 ${esc(CHEER_POOL.name||'應援團卡')}</h3><div class="poolRateLine">所有啟用中的應援團卡等機率抽取<br>應援效果之後用於對戰支援，不直接取代球員戰力</div>${count?'':`<div class="poolEmpty">目前沒有啟用中的應援團卡，請等待管理員設定。</div>`}<div class="drawPoolSummary">目前卡池：${count} 張應援團卡</div><div class="actions" style="margin-top:12px;margin-bottom:0"><button id="drawSingle" ${count?'':'disabled'}>📣 單抽　💎100</button><button id="drawTen" class="ten" ${count?'':'disabled'}>🎉 十連　💎900</button></div></div>`
+ }else{
+  const p=POOLS.find(x=>x.id===current?.id)||currentPool(),count=getPoolCards(p).length,hasTicket=V207_SSR_TICKETS>0;
+  const singleLabel=hasTicket?'🎟️ SSR 必中券':'🎴 單抽　💎100';
+  panel=`<div class="poolPanel"><h3>${esc(p.name)}</h3><div class="poolRateLine">${esc(rateText(p))}<br>300 抽 SSR 保底｜十連至少 1 張 SR+</div>${count?'':`<div class="poolEmpty">此卡池目前還沒有設定球員，請到管理員後台 → 球員卡管理設定所屬卡池。</div>`}<div class="drawPoolSummary">目前卡池：${count} 張球員｜保底 ${getPity()} / 300</div><div class="actions" style="margin-top:12px;margin-bottom:0"><button id="drawSingle" class="${hasTicket?'v207TicketSingle':''}" ${count?'':'disabled'}>${singleLabel}</button><button id="drawTen" class="ten" ${count?'':'disabled'}>🔥 十連　💎900</button></div><div id="v207TicketNotice" class="v207DrawInlineNotice">${hasTicket?'必中券將獲得 1 張尚未擁有的 SSR':''}</div></div>`
+ }
+ modal.innerHTML=`<div class="modalBackdrop"><div class="modal" style="max-width:460px"><div class="modalHead"><div><h2 style="margin:0">🎴 抽獎系統</h2><div class="sub">選擇要抽的卡池</div></div><div class="v207DrawHeadRight"><span class="v207DrawTicketCount">SSR 必中券：${V207_SSR_TICKETS}</span><button class="small" id="drawClose">✕</button></div></div><div class="poolTabs">${tabs}</div>${panel}</div></div>`;
+ $('drawClose').onclick=()=>$('modal').innerHTML='';
+ document.querySelectorAll('.poolTab').forEach(b=>b.onclick=()=>{ACTIVE_POOL_ID=b.dataset.pool||entries[0]?.id||'';save();showDrawMenu()});
+ $('drawSingle').onclick=async()=>{
+  if(current?.kind==='cheer'){$('modal').innerHTML='';await drawCheer(1);return}
+  if(V207_SSR_TICKETS>0){await v207UseSsrTicket();return}
+  $('modal').innerHTML='';await draw(1)
+ };
+ $('drawTen').onclick=async()=>{$('modal').innerHTML='';if(current?.kind==='cheer')await drawCheer(10);else await draw(10)};
 };
 
 /* 每次重新載入雲端卡片後確保 SP 固定使用黑金剪影。 */
