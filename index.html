@@ -3416,7 +3416,7 @@ input,textarea,[contenteditable="true"]{
 }
 </style>
 <style id="v145-ranked-hotfix">
-/* v1.45 same-version：排位榜 + 排位搜尋加速 */
+/* v1.45 same-version：排位榜 + 排位搜尋加速；v2.09：排除最近 5 場進攻排位對手 */
 .v145RankTabs{grid-template-columns:repeat(3,1fr)!important}
 .v145RankTabs button{font-size:7.5px!important;padding:8px 3px!important}
 .v145LeaderboardPanel{margin-top:7px}
@@ -4550,7 +4550,7 @@ async function showV135RankedHub(tab='offense'){
   $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v135RankedModal"><div class="modalHead"><div><h2 style="margin:0">🏆 排位賽</h2><div class="sub">非同步 PvP｜真實玩家牌組＋AI 模擬本人打法</div></div><button class="small" id="v135RankedClose">✕</button></div>
    <div class="v135RankHero"><div><small>${placements<5?`定級賽 ${placements}/5`:'目前牌位'}</small><b>${esc(s.rank_tier||v135RankName(s.rating,placements))}</b><strong>${Number(s.rating)||1000} RP</strong></div><div class="v135RankStats"><span>進攻 ${Number(s.wins)||0}勝 ${Number(s.losses)||0}敗</span><span>防守 ${Number(s.defense_wins)||0}勝 ${Number(s.defense_losses)||0}敗</span><span>連勝 ${Number(s.win_streak)||0}｜最高 ${Number(s.best_win_streak)||0}</span></div></div>
    <div class="v135DefenseDeck"><label>🛡 防守牌組<select id="v135DefenseDeck">${LINEUP_DECKS.map((d,i)=>`<option value="${i+1}" ${i+1===defDeck?'selected':''} ${normalizeV124Deck(d).starters.length===9?'':'disabled'}>牌組 ${i+1}${normalizeV124Deck(d).starters.length===9?'':'（先發不足）'}</option>`).join('')}</select></label><small>其他玩家搜尋到你時，系統抓此牌組快照；防守成功加 RP，失敗不扣。</small></div>
-   <button id="v135StartRanked" class="admin v135RankSearchBtn">🔎 搜尋排位對手｜每 3 秒擴大 50 RP</button>
+   <button id="v135StartRanked" class="admin v135RankSearchBtn">🔎 搜尋排位對手｜最近 5 場對手不重複</button>
    <div class="v135HistoryTabs v145RankTabs"><button class="${tab==='offense'?'active':''}" data-v135-history="offense">進攻紀錄</button><button class="${tab==='defense'?'active':''}" data-v135-history="defense">防守紀錄</button></div>
    <div class="v135HistoryList">${rows.length?rows.map(x=>v135HistoryRow(x,tab==='defense')).join(''):'<div class="notice">目前沒有紀錄。</div>'}</div>
   </div></div>`;
@@ -4566,7 +4566,7 @@ async function startV135RankedSearch(){
  try{await loadV124Lineups(false)}catch(e){alert(e.message||e);return}
  if(!v126ReadyDeckIndexes().length){showLineupSettings(LINEUP_ACTIVE_DECK,'players',true);return}
  const started=Date.now();
- $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v135SearchingModal"><div class="modalHead"><div><h2>🔎 搜尋排位對手</h2><div class="sub">從 ±50 RP 開始｜每 3 秒擴大 50 RP</div></div><button class="small" id="v135SearchCancel">取消</button></div><div class="v135Radar"><i></i><span>⚾</span></div><div id="v135SearchRange" class="v135SearchRange">搜尋 ±50 RP</div><div id="v135SearchTime" class="sub" style="text-align:center">0 秒</div></div></div>`;
+ $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v135SearchingModal"><div class="modalHead"><div><h2>🔎 搜尋排位對手</h2><div class="sub">從 ±50 RP 開始｜每 3 秒擴大 50 RP｜排除最近 5 場對手</div></div><button class="small" id="v135SearchCancel">取消</button></div><div class="v135Radar"><i></i><span>⚾</span></div><div id="v135SearchRange" class="v135SearchRange">搜尋 ±50 RP</div><div id="v135SearchTime" class="sub" style="text-align:center">0 秒</div></div></div>`;
  $('v135SearchCancel').onclick=()=>{V135_RANKED_SEARCH_CANCEL=true;$('modal').innerHTML=''};
  let lastRange=0;
  while(!V135_RANKED_SEARCH_CANCEL){
@@ -5868,7 +5868,7 @@ function v206PlacementBoardHtml(board){
 function v206RankRulesHtml(){
  return`<div class="v206InfoScroll">
   <div class="v206RuleGroup"><h3>🏁 分段賽</h3><p>新帳號從 <b>1000 RP</b> 開始，前 5 場為分段賽。分段賽期間仍會即時增減 RP，完成第 5 場後依當下 RP 取得正式段位。</p><p>分段賽勝利約 <b>+40～+60 RP</b>，敗北約 <b>-30～-45 RP</b>；實際值會依雙方 RP 差距計算。</p></div>
-  <div class="v206RuleGroup"><h3>📈 正式排位 RP</h3><p>完成分段賽後，進攻勝利基礎約 <b>+15～+35 RP</b>，敗北約 <b>-12～-30 RP</b>。3／5／8 連勝起會再增加勝利 RP 獎勵。</p><p>搜尋對手從 ±50 RP 開始，每 3 秒擴大 50 RP，最多擴大到 ±1000 RP；會優先從 RP 接近且有完整防守牌組的玩家中配對。</p></div>
+  <div class="v206RuleGroup"><h3>📈 正式排位 RP</h3><p>完成分段賽後，進攻勝利基礎約 <b>+15～+35 RP</b>，敗北約 <b>-12～-30 RP</b>。3／5／8 連勝起會再增加勝利 RP 獎勵。</p><p>搜尋對手從 ±50 RP 開始，每 3 秒擴大 50 RP，最多擴大到 ±1000 RP；最近 5 場進攻排位已交手的對手會直接排除，再從 RP 接近且有完整防守牌組的玩家中配對。</p></div>
   <div class="v206RuleGroup"><h3>🛡 防守紀錄</h3><p>其他玩家挑戰你的防守牌組時，由系統使用你的牌組快照與 AI 打法。<b>防守成功可增加約 8～15 RP；防守失敗不扣 RP。</b></p><p>同一名進攻玩家在 6 小時內重複對你造成的防守成功，不會再次增加防守 RP。</p></div>
   <div class="v206RuleGroup"><h3>🎖 段位區間</h3><p>新秀：799 RP 以下<br>二軍：800～1099<br>一軍：1100～1399<br>一軍主力：1400～1699<br>明星球員：1700～1999<br>傳奇球員：2000～2299<br>傳奇老將：2300 RP 以上</p><p>晉升二軍／一軍／一軍主力時會取得 1 次段位保護；之後若一次敗北原本會掉出該段位，會先消耗保護並停在該段位底線。明星球員以上沒有段位保護。</p></div>
   <div class="v206RuleGroup"><h3>🏆 排行榜</h3><p><b>正式排行榜</b>只計完成 5 場分段賽的玩家；<b>分段賽排行榜</b>則列出所有帳號。兩者排序皆為 RP 高優先，再比較最高曾達 RP，最後用同分先後順序決定名次。</p></div>
