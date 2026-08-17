@@ -2964,12 +2964,12 @@ body{
 .v135RankSettlement{display:flex!important;flex-direction:column!important;gap:3px!important}.v135RankSettlement>b{font-size:22px!important;color:#ffe18b!important}.v135RankSettlement span{font-size:9px;color:#ffffff80}
 
 
-/* ===================== v1.43：自訂房間 / 即時語音 ===================== */
+/* ===================== v2.17：自訂房間 / 好友直邀 ===================== */
 .v135RoomHub,.v135RoomLobby{max-width:520px!important}.v135RoomSplit{display:grid;grid-template-columns:1fr 1fr;gap:9px}.v135RoomSplit>div{padding:11px;border-radius:13px;background:#ffffff06;border:1px solid #ffffff12}.v135RoomSplit h3{margin:0 0 8px}.v135RoomSplit label{display:block;margin-top:7px;font-size:8px}.v135RoomSplit select,.v135RoomSplit input{display:block;width:100%;margin-top:4px;padding:9px;border-radius:8px;background:#080c13;color:#fff;border:1px solid #ffffff20}.v135RoomSplit button{width:100%;margin-top:9px!important}.v135RoomCheck{display:flex!important;align-items:center;gap:6px}.v135RoomCheck input{width:auto!important;margin:0!important}
 .v135RoomCode{text-align:center;padding:11px;border-radius:13px;background:#d8aa3617;border:1px solid #e5c76331}.v135RoomCode small,.v135RoomCode b,.v135RoomCode span{display:block}.v135RoomCode b{font-size:31px;letter-spacing:.18em;color:#ffe489}.v135RoomCode span{font-size:7px;color:#ffffff62}
 .v135RoomPlayers{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}.v135RoomPlayers>div{padding:9px;border-radius:11px;background:#ffffff06;border:1px solid #ffffff12}.v135RoomPlayers>div.ready{border-color:#5ff09a55;background:#30d67712}.v135RoomPlayers small,.v135RoomPlayers b,.v135RoomPlayers span{display:block}.v135RoomPlayers small{font-size:6px;color:#ffffff5f}.v135RoomPlayers b{font-size:11px;margin-top:2px}.v135RoomPlayers span{font-size:7px;margin-top:4px;color:#ffffff78}
 .v135RoomControls{display:grid;grid-template-columns:1fr auto;gap:7px;margin-top:8px;align-items:end}.v135RoomControls label{font-size:8px}.v135RoomControls select{display:block;width:100%;margin-top:3px;padding:8px;border-radius:8px;background:#080c13;color:#fff;border:1px solid #ffffff20}.v135RoomControls button.ready{background:#2e9f6150!important;color:#b8ffd4!important}
-.v135VoiceBox{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:8px 0;padding:9px;border-radius:11px;background:#4aa1ff0c;border:1px solid #7abfff25}.v135VoiceBox b,.v135VoiceBox small{display:block}.v135VoiceBox small{margin-top:3px;font-size:6px;color:#ffffff6d}.v135VoiceBox button{font-size:8px!important}
+
 .v135RoomWaiting{text-align:center;font-size:48px;padding:30px}.v135RoomWaiting span{display:block;font-size:10px;margin-top:8px}
 @media(max-width:430px){.v135RoomSplit{grid-template-columns:1fr}}
 
@@ -3848,18 +3848,13 @@ input,textarea,[contenteditable="true"]{
 
 
 
-<style id="v216-broadcast-ui">
-/* ===== v2.16：主播／賽評播報 + 打席語音節奏 ===== */
-.v216BroadcastToggle{min-width:78px!important;border-color:#7ed7ff3d!important;background:#10283bd9!important;color:#cdeeff!important}
-.v216BroadcastToggle.on{background:linear-gradient(180deg,#1f566f,#123145)!important;border-color:#7edfff7a!important;color:#ecfbff!important;box-shadow:0 0 14px #54cfff22}
-.v216BroadcastToggle.on::before{content:"●";color:#6ff0a8;margin-right:4px;font-size:7px;vertical-align:1px}
-.v216BroadcastCaption{position:absolute;left:7px;right:7px;top:42px;z-index:15;pointer-events:none;display:flex;align-items:flex-start;gap:7px;padding:7px 9px;border-radius:10px;background:linear-gradient(90deg,#07111eea,#12273dea);border:1px solid #8bcfff3c;box-shadow:0 7px 24px #0009;animation:v216CaptionIn .18s ease both}
-.v216BroadcastCaption.analyst{background:linear-gradient(90deg,#17131fea,#30233dea);border-color:#d7b2ff3d}
-.v216BroadcastMic{flex:0 0 auto;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#ffffff12;font-size:12px}
-.v216BroadcastCopy{min-width:0}.v216BroadcastCopy b{display:block;font-size:7px;letter-spacing:.08em;color:#8ddcff}.v216BroadcastCaption.analyst .v216BroadcastCopy b{color:#dfbdff}.v216BroadcastCopy span{display:block;margin-top:2px;font-size:7.3px;line-height:1.45;color:#fff;white-space:normal}
-.v216BroadcastWaiting{color:#8edfff!important}.v216BroadcastWaiting b{color:#a9eaff!important}
-@keyframes v216CaptionIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:440px){.v216BroadcastToggle{min-width:66px!important;padding-left:7px!important;padding-right:7px!important;font-size:7px!important}.v216BroadcastCaption{top:38px}.v216BroadcastCopy span{font-size:6.8px}}
+<style id="v217-context-music-ui">
+/* ===== v2.17：情境音樂 + 房間好友直邀 ===== */
+.v217MusicMood{display:inline-flex;align-items:center;gap:4px;margin-left:6px;padding:3px 7px;border-radius:999px;background:#ffffff0c;border:1px solid #ffffff18;color:#d9e7f7;font-size:7px;font-weight:900;white-space:nowrap}
+.v217MusicMood.rally{color:#fff0a5;border-color:#ffd65b44;background:#ffd65b12}.v217MusicMood.danger{color:#ffb6b6;border-color:#ff6a6a44;background:#ff4a4a12}.v217MusicMood.clutch{color:#d8c7ff;border-color:#a985ff55;background:#7b53ff16}.v217MusicMood.victory{color:#bff5cc;border-color:#66e89455;background:#38c86a14}.v217MusicMood.defeat{color:#c4c9d3;border-color:#8b94a755;background:#68718412}
+.v217RoomInviteBar{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:8px 0;padding:9px;border-radius:11px;background:#ffd65b0c;border:1px solid #ffd65b28}.v217RoomInviteBar small{font-size:7px;color:#ffffff70;line-height:1.4}.v217RoomInviteBar button{font-size:8px!important;white-space:nowrap}
+.v217RoomInviteList{display:grid;gap:7px;margin-top:10px;max-height:52dvh;overflow:auto}.v217RoomInviteRow{display:flex;align-items:center;gap:8px;padding:9px 10px;border-radius:11px;background:#ffffff08;border:1px solid #ffffff12}.v217RoomInviteRow .name{font-weight:900;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.v217RoomInviteRow .state{font-size:7px;color:#ffffff65}.v217RoomInviteRow .state.online{color:#79efb5}.v217RoomInviteRow button{font-size:8px!important;padding:7px 9px!important}
+.v217DmRoomInvite{margin-top:7px;padding-top:7px;border-top:1px solid #ffffff15}.v217DmRoomInvite button{width:100%;font-size:9px!important;background:#2f6f4f!important;color:#d8ffe9!important;border-color:#6ee6a344!important}
 </style>
 
 <style id="v215-ui">
@@ -3921,7 +3916,7 @@ input,textarea,[contenteditable="true"]{
     <button id="mailboxBtn" class="topSettingsBtn v207MailboxBtn" type="button" aria-label="信箱" title="信箱">✉️<i id="mailboxDot" class="v207MailboxDot" hidden></i></button>
     <button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定" title="設定">⚙️</button>
   </div>
-</div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span><em id="lobbyReplyDot" class="lobbyReplyDot" hidden></em></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion" data-build="v216-broadcast-1">v2.16</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
+</div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span><em id="lobbyReplyDot" class="lobbyReplyDot" hidden></em></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion" data-build="v218-sandbox-history-replay-1">v2.18</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
  <div class="gamePrepWood">
   <button id="gamePrepBack" class="gamePrepBack" type="button">← 返回大廳</button>
   <div class="gamePrepContent">
@@ -3940,7 +3935,7 @@ input,textarea,[contenteditable="true"]{
      </button>
      <button id="gameModeRules" class="gameModeCard gameModeSmall v206ModeCard v206RulesCard" type="button">
       <div class="gameModeIcon">📘</div>
-      <div class="gameModeText"><b>遊戲規則</b><span>對戰玩法說明</span><small>局數・投手・戰術・替補・應援</small></div>
+      <div class="gameModeText"><b>規則 / 紀錄</b><span>遊戲規則・我的對戰</span><small>房間・關卡・電腦・排位・逐打席重播</small></div>
      </button>
     </div>
 
@@ -4617,7 +4612,7 @@ function v124PlayersTabHtml(){
  <div class="starterGrid">${Array.from({length:9},(_,i)=>v124PlayerSlotHtml('starter',i,d.starters[i]||'')).join('')}</div>
  <div class="lineupSectionHead"><b>🪑 替補</b><small>最多 3 張</small></div>
  <div class="benchGrid">${Array.from({length:3},(_,i)=>v124PlayerSlotHtml('bench',i,d.bench[i]||'')).join('')}</div>
- <div class="lineupRuleBox"><b>投手規則：</b>每個守備半局開始前，從目前場上 9 人指定投手；替補上場後也可投球。打席中可換投，已登板球員同一輪不可重複；排位賽若場上球員全數投過才重新全開。每打席的換投、替補與策略選擇共用 15 秒；若開啟主播／賽評播報，會等播報結束後才開始這 15 秒。</div>`
+ <div class="lineupRuleBox"><b>投手規則：</b>每個守備半局開始前，從目前場上 9 人指定投手；替補上場後也可投球。打席中可換投，已登板球員同一輪不可重複；排位賽若場上球員全數投過才重新全開。每打席的換投、替補與策略選擇共用 15 秒。</div>`
 }
 function v124CheerTabHtml(){
  const d=v124CurrentDraft(),usable=CHEER_CARDS.filter(c=>owned.includes(c.id)&&c.isActive!==false).length;
@@ -5017,66 +5012,7 @@ async function showV125MatchReady(setup){
  }
 }
 
-/* ===================== v2.16：主播／賽評語音播報 ===================== */
-let V216_SPEECH_TOKEN=0;
-const V216_BROADCAST_KEY='cp_v216_broadcast_enabled';
-function v216BroadcastEnabled(){try{return localStorage.getItem(V216_BROADCAST_KEY)==='1'}catch(_e){return false}}
-function v216SaveBroadcastEnabled(on){try{localStorage.setItem(V216_BROADCAST_KEY,on?'1':'0')}catch(_e){}}
-function v216CancelSpeech(){V216_SPEECH_TOKEN++;try{window.speechSynthesis?.cancel?.()}catch(_e){}}
-function v216PaKey(s=V127_BATTLE){if(!s)return'';return`${Number(s.inning)||1}:${String(s.half||'top')}:${Number(s.playerOrder)||0}:${Number(s.opponentOrder)||0}`}
-function v216BaseSituation(s){const b=Array.isArray(s?.bases)?s.bases:[];const on=[!!b[0],!!b[1],!!b[2]];if(on.every(Boolean))return'滿壘';if(on[1]&&on[2])return'二、三壘有人';if(on[0]&&on[2])return'一、三壘有人';if(on[0]&&on[1])return'一、二壘有人';if(on[2])return'三壘有人';if(on[1])return'二壘有人';if(on[0])return'一壘有人';return'壘上無人'}
-function v216OutWords(n){n=Math.max(0,Math.min(2,Number(n)||0));return n===0?'無人出局':n===1?'一人出局':'兩人出局'}
-function v216VoiceFor(role='anchor',lang='zh-TW'){
- try{
-  const voices=window.speechSynthesis?.getVoices?.()||[],want=String(lang||'zh-TW').toLowerCase(),root=want.split('-')[0];
-  let pool=voices.filter(v=>String(v.lang||'').toLowerCase()===want);if(!pool.length)pool=voices.filter(v=>String(v.lang||'').toLowerCase().startsWith(root));if(!pool.length)pool=voices;
-  if(!pool.length)return null;return role==='analyst'?(pool[1]||pool[0]):pool[0]
- }catch(_e){return null}
-}
-function v216SetCaption(s,role,text){if(!s)return;s.v216BroadcastCaption=text?{role,text}:null;if(V127_BATTLE===s&&!s.finished)v127RenderBattle()}
-function v216SpeakPart(s,text,role='anchor',lang='zh-TW',token=V216_SPEECH_TOKEN){
- return new Promise(resolve=>{
-  if(!text||token!==V216_SPEECH_TOKEN){resolve(false);return}
-  const synth=window.speechSynthesis;if(!synth||typeof window.SpeechSynthesisUtterance!=='function'){setTimeout(()=>resolve(false),240);return}
-  try{
-   v216SetCaption(s,role,text);
-   const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.voice=v216VoiceFor(role,lang);u.volume=1;u.rate=role==='analyst'?.98:1.08;u.pitch=role==='analyst'?.88:1.02;
-   let done=false;const finish=ok=>{if(done)return;done=true;resolve(ok)};u.onend=()=>finish(true);u.onerror=()=>finish(false);synth.speak(u);setTimeout(()=>finish(false),Math.max(4500,Math.min(12500,900+String(text).length*245)))
-  }catch(_e){resolve(false)}
- })
-}
-function v216BuildPaLines(s){
- const batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),batting=v127BattingTeam(s),order=((batting==='player'?Number(s.playerOrder):Number(s.opponentOrder))||0)%9+1;
- const half=s.half==='top'?'上半':'下半',base=v216BaseSituation(s),outs=v216OutWords(s.outs),score=`${s.playerName} ${Number(s.playerScore)||0} 比 ${Number(s.opponentScore)||0} ${s.opponentName}`;
- const anchor=`${Number(s.inning)||1}局${half}，${outs}，${base}。現在上場打擊，第${order}棒，${batter?.name||'打者'}。投手是，${pitcher?.name||'投手'}。`;
- const analyst=[];const diff=Math.abs((Number(s.playerScore)||0)-(Number(s.opponentScore)||0));
- if(v207IsLegendCloser(pitcher))analyst.push('這名終結者的壓制力非常強，打者要把握少數能攻擊的球。');
- else if(String(batter?.id||'')==='sp_adversity_commander')analyst.push('絕境指揮官站上打擊區，這種比分壓力下，他的價值會被放大。');
- else if(s.bases?.[1]||s.bases?.[2])analyst.push('現在是得點圈有人，這個打席只要一支安打，就可能直接改變比分。');
- else if(Number(s.outs)===2)analyst.push('兩人出局之後，這個半局能不能延續，就看這一個打席。');
- else if(Number(s.inning)>=3&&diff<=1)analyst.push(`目前比分很接近，${score}，這個打席的選擇會很關鍵。`);
- else if(Math.random()<.32)analyst.push('這組投打對決很有意思，第一個戰術選擇會直接影響這個打席。');
- return[{role:'anchor',text:anchor},...analyst.slice(0,1).map(text=>({role:'analyst',text}))]
-}
-async function v216RunPaBroadcast(s,key){
- if(!s||s!==V127_BATTLE||s.finished)return;const token=++V216_SPEECH_TOKEN;try{window.speechSynthesis?.cancel?.()}catch(_e){}
- const lines=v216BuildPaLines(s);for(const line of lines){if(token!==V216_SPEECH_TOKEN||s!==V127_BATTLE||s.finished||!v216BroadcastEnabled())break;await v216SpeakPart(s,line.text,line.role,'zh-TW',token);await v127Wait(90)}
- if(s!==V127_BATTLE||s.finished)return;s.v216AnnouncedKey=key;s.v216Broadcasting=false;s.v216BroadcastCaption=null;v127RenderBattle()
-}
-function v216BroadcastCaptionHtml(s=V127_BATTLE){const c=s?.v216BroadcastCaption;if(!c?.text)return'';return`<div class="v216BroadcastCaption ${c.role==='analyst'?'analyst':''}"><span class="v216BroadcastMic">${c.role==='analyst'?'🎧':'🎙️'}</span><span class="v216BroadcastCopy"><b>${c.role==='analyst'?'賽評':'主播'}</b><span>${esc(c.text)}</span></span></div>`}
-function v216ToggleBroadcast(s=V127_BATTLE){
- const on=!v216BroadcastEnabled();v216SaveBroadcastEnabled(on);v216CancelSpeech();v128ClearActionTimer();if(s){s.v216Broadcasting=false;s.v216BroadcastCaption=null;if(on&&!s.busy)s.v216AnnouncedKey='';else if(!on)s.v216AnnouncedKey=v216PaKey(s)}if(s&&!s.finished)v127RenderBattle();v215Toast?.(on?'主播／賽評播報已開啟':'主播／賽評播報已關閉')
-}
-function v216OutcomeCall(result,batter){
- if(!v216BroadcastEnabled())return;let text='',lang='zh-TW',role='anchor';
- if(result==='K'){text='STRIKE OUT!';lang='en-US'}
- else if(result==='BB'){text='BALL FOUR!';lang='en-US'}
- else if(result==='HR'){text=`HOME RUN! ${batter?.name||''}，這一球出去了！`;lang='zh-TW'}
- else if(['1B','2B','3B'].includes(result))text=`${batter?.name||'打者'}，擊出安打！`;
- else if(['GO','FO','LO','DP','SFOUT'].includes(result)){text='OUT!';lang='en-US'}
- if(!text)return;try{const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.voice=v216VoiceFor(role,lang);u.rate=lang.startsWith('en')?1.02:1.08;u.pitch=.98;u.volume=1;window.speechSynthesis?.speak?.(u)}catch(_e){}
-}
-
+/* ===================== v2.17：情境音樂 ===================== */
 function v127BattleRoot(){
  let root=$('v127BattleScreen');if(root)return root;
  root=document.createElement('div');root.id='v127BattleScreen';root.className='v127BattleScreen';root.hidden=true;
@@ -5091,7 +5027,7 @@ async function v127AbandonCurrentMatch(){
  try{return await matchApi('abandon_match',{matchId:id})}catch(e){console.error('abandon_match failed',e);throw e}
 }
 function v127ReturnToGameModes(){
- v216CancelSpeech();v127ClearTimers();BATTLE_ACTIVE=false;V127_BATTLE=null;V127_BATTLE_BUSY=false;V125_MATCH_SETUP=null;
+ v127ClearTimers();BATTLE_ACTIVE=false;V127_BATTLE=null;V127_BATTLE_BUSY=false;V125_MATCH_SETUP=null;
  const root=$('v127BattleScreen');if(root){root.classList.remove('v210AdversityBattle');root.hidden=true;root.innerHTML=''}
  syncStadiumAudioState()
 }
@@ -5161,7 +5097,6 @@ function beginV127Battle(setup){
   roomSettings:setup.room_settings||null,pendingRoomPitchers:{},pitcherSelecting:false,pitcherSelectionKey:'',
   v210Commander:{uses:0,active:false},v210OpponentCommander:{uses:0,active:false},
   cpuDifficulty:Number(setup.opponent?.difficulty_level)||Math.max(4,Math.min(7,Math.round((Number(setup.opponent?.rating)||1000)/300))),
-  v216Broadcasting:false,v216AnnouncedKey:'',v216BroadcastCaption:null,
  };
  if(setup.mode==='stage'&&setup.stage){v201ApplyStageScenario(V127_BATTLE,setup.stage)}
  playV127BattleSfx('playball');v127StartHalf()
@@ -5293,7 +5228,7 @@ function v150CancelTacticalOverlays(){
  const sub=$('v130SubOverlay'),pitch=$('v150PitchChangeOverlay');if(sub)sub.remove();if(pitch)pitch.remove()
 }
 function v128StartActionTimer(){
- const s=V127_BATTLE;if(!s||s.busy||s.finished||s.v216Broadcasting||V128_ACTION_INTERVAL)return;
+ const s=V127_BATTLE;if(!s||s.busy||s.finished||V128_ACTION_INTERVAL)return;
  if(!V128_ACTION_DEADLINE)V128_ACTION_DEADLINE=Date.now()+15000;
  const tick=()=>{
   const sec=v128ChoiceSeconds();
@@ -5304,8 +5239,8 @@ function v128StartActionTimer(){
  tick();V128_ACTION_INTERVAL=setInterval(tick,120)
 }
 function v127ActionHtml(){
- const s=V127_BATTLE,playerBat=v127BattingTeam(s)==='player',locked=!!s.v216Broadcasting,disabled=(s.busy||locked)?'disabled':'',remain=v128ChoiceSeconds(),sel=String(s.selectedStrategy||''),legendPitcher=!playerBat&&v207IsLegendCloser(v127CurrentPitcher(s));
- const timer=locked?`<span id="v128ActionTimer" class="v128ActionTimer v216BroadcastWaiting">🎙 <b>播報中</b></span>`:`<span id="v128ActionTimer" class="v128ActionTimer ${remain<=2?'urgent':''}">選擇 <b id="v128ActionSeconds">${remain}</b> 秒</span>`;
+ const s=V127_BATTLE,playerBat=v127BattingTeam(s)==='player',disabled=s.busy?'disabled':'',remain=v128ChoiceSeconds(),sel=String(s.selectedStrategy||''),legendPitcher=!playerBat&&v207IsLegendCloser(v127CurrentPitcher(s));
+ const timer=`<span id="v128ActionTimer" class="v128ActionTimer ${remain<=2?'urgent':''}">選擇 <b id="v128ActionSeconds">${remain}</b> 秒</span>`;
  if(playerBat)return`<div class="v127ActionHead"><b>打擊策略</b>${timer}</div><div class="v127ActionGrid"><button class="v127ActionBtn ${sel==='contact'?'selected':''}" data-v127-action="contact" ${disabled}><b>穩健打擊</b><small>較少三振・長打下降</small></button><button class="v127ActionBtn power ${sel==='power'?'selected':''}" data-v127-action="power" ${disabled}><b>強攻</b><small>長打提高・三振增加</small></button><button class="v127ActionBtn patience ${sel==='patience'?'selected':''}" data-v127-action="patience" ${disabled}><b>選球</b><small>保送提高・攻擊性下降</small></button></div>`;
  if(legendPitcher)return`<div class="v127ActionHead"><b>投球策略｜傳奇終結者</b>${timer}</div><div class="v127ActionGrid" style="grid-template-columns:repeat(2,1fr)"><button class="v127ActionBtn ${sel==='challenge'?'selected':''}" data-v127-action="challenge" ${disabled}><b>正面對決</b><small>標準攻守判定</small></button><button class="v127ActionBtn power ${sel==='breaking'?'selected':''}" data-v127-action="breaking" ${disabled}><b>變化球引誘</b><small>三振↑・被打中風險↑</small></button></div>`;
  return`<div class="v127ActionHead"><b>投球策略</b>${timer}</div><div class="v127ActionGrid"><button class="v127ActionBtn ${sel==='challenge'?'selected':''}" data-v127-action="challenge" ${disabled}><b>正面對決</b><small>標準攻守判定</small></button><button class="v127ActionBtn power ${sel==='breaking'?'selected':''}" data-v127-action="breaking" ${disabled}><b>變化球引誘</b><small>三振↑・被打中風險↑</small></button><button class="v127ActionBtn nibble ${sel==='nibble'?'selected':''}" data-v127-action="nibble" ${disabled}><b>閃躲投球</b><small>安打↓・四壞↑</small></button></div>`
@@ -5608,8 +5543,8 @@ function v209SpEffectHtml(s=V127_BATTLE){
 
 function v127RenderBattle(){
  const s=V127_BATTLE,root=v127BattleRoot();if(!s||s.finished)return;
+ v217UpdateBattleMusic(s);
  const batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),playerBat=v127BattingTeam(s)==='player';
- const v216Key=v216PaKey(s),v216NeedsBroadcast=v216BroadcastEnabled()&&!s.busy&&!s.pitcherSelecting&&!s.v216Broadcasting&&s.v216AnnouncedKey!==v216Key;if(v216NeedsBroadcast){s.v216Broadcasting=true;s.v216BroadcastCaption={role:'anchor',text:'準備播報本打席…'}}
  if(s.mode==='room'&&!pitcher){
   if(playerBat){root.hidden=false;root.innerHTML=`<div class="v127PitcherOverlay"><div class="v127PitcherHead"><div><h3>🧢 等待對手選擇投手</h3><small>對手有 30 秒選擇本局投手</small></div></div><div class="v135RoomWaiting">⚾<br><span>等待對手中…</span></div></div>`;return}
   if(s.pitcherSelecting)return;
@@ -5617,15 +5552,15 @@ function v127RenderBattle(){
  }
  const next=playerBat?s.playerCards[(s.playerOrder+1)%9]:s.opponentCards[(s.opponentOrder+1)%9],readyClass=!s.busy&&s.animations?'v128DuelReady':'';
  const firstTeam=v130SideTeam(s,'first'),secondTeam=v130SideTeam(s,'second'),battingTeam=v127BattingTeam(s);
- const subAvailable=!s.v216Broadcasting&&playerBat&&(s.playerBench||[]).some(c=>!s.playerBenchUsed.includes(c.id)),pitchChangeAvailable=!s.v216Broadcasting&&v150CanChangePitcher(s);
- root.hidden=false;root.innerHTML=`<div class="v127BattleTop"><div class="v127ScoreHead"><div class="v127InningBadge">${s.inning}局${s.half==='top'?'上':'下'}</div><div class="v127ScoreRows"><div class="v127ScoreRow"><span class="${battingTeam===firstTeam?'batting':''}">先攻｜${esc(v130TeamName(s,firstTeam))}</span><b>${v130TeamScore(s,firstTeam)}</b></div><div class="v127ScoreRow"><span class="${battingTeam===secondTeam?'batting':''}">後攻｜${esc(v130TeamName(s,secondTeam))}</span><b>${v130TeamScore(s,secondTeam)}</b></div></div><div class="v136BattleTopActions"><button id="v216BroadcastToggle" class="v127BattleAnimToggle v216BroadcastToggle ${v216BroadcastEnabled()?'on':''}">🎙 播報 ${v216BroadcastEnabled()?'ON':'OFF'}</button><button id="v127AnimToggle" class="v127BattleAnimToggle">動畫 ${s.animations?'ON':'OFF'}</button>${s.mode!=='room'?'<button id="v136BattleExit" class="v136BattleExit">退出</button>':''}</div></div><div class="v127CountStrip"><span class="v127CountGroup">B ${v127Dots(s.balls,3,'ball')}</span><span class="v127CountGroup">S ${v127Dots(s.strikes,2,'strike')}</span><span class="v127CountGroup">O ${v127Dots(s.outs,2,'out')}</span>${v127DiamondHtml(s.bases,s)}</div></div><div class="v127BattleBody"><div class="v149BattleMainGrid">${v149CheerPanelHtml(s)}<div class="v127DuelStage ${readyClass}">${v146BuffHtml(s)}${v216BroadcastCaptionHtml(s)}<div class="v127DuelLabels"><span class="v127RoleTag">${playerBat?'對方投手':'我方投手'}</span><span class="v127RoleTag">${playerBat?'我方打者':'對方打者'}</span></div>${v127CardHtml(pitcher,'pitcher')}${v209SpEffectHtml(s)}<div class="v127PitchLane"></div><div id="v127Ball" class="v127Ball"></div><div id="v128SwingArc" class="v128SwingArc"></div><div id="v128ImpactFlash" class="v128ImpactFlash"></div>${v127CardHtml(batter,'batter')}${v203PlateProbabilityHtml(s)}${!s.busy&&s.animations?'<div class="v128VsFlash">VS</div>':''}<div class="v127LastPlay">${esc(s.lastPlay||'')}</div><div class="v127NextBatter">下一棒：${esc(next?.name||'')}</div>${s.lastResult?`<div class="v127ResultBanner show ${v127ResultClass(s.lastResult.result)}"><b>${esc(v127ResultText(s.lastResult.result))}</b><small>${esc(s.lastResult.detail||'')}</small></div>`:''}</div></div><div class="v127ActionBox">${v127ActionHtml()}<div class="v127BattleStatus">${s.busy?(s.mode==='room'?'已選擇｜等待對手…':'對決進行中…'):(s.v216Broadcasting?'🎙 主播／賽評播報中｜播完才開始 15 秒倒數':(playerBat?'本打席共用 15 秒｜逾時自動穩健打擊':'本打席共用 15 秒｜逾時自動正面對決'))}</div><div class="v130BattleUtilityRow"><span>${s.playerBenchUsed.length}/${s.playerBench.length} 名替補已使用</span><div class="v150UtilityButtons"><button id="v150PitchChangeBtn" class="v150PitchChangeBtn" ${s.busy||!pitchChangeAvailable?'disabled':''}>🧢 換投</button><button id="v130SubBtn" class="v130SubBtn" ${s.busy||!subAvailable?'disabled':''}>🔄 替補／換人</button></div></div></div></div>`;
- $('v216BroadcastToggle').onclick=()=>v216ToggleBroadcast(s);$('v127AnimToggle').onclick=()=>{s.animations=!s.animations;v127RenderBattle()};if($('v136BattleExit'))$('v136BattleExit').onclick=v136ExitCurrentBattle;
+ const subAvailable=playerBat&&(s.playerBench||[]).some(c=>!s.playerBenchUsed.includes(c.id)),pitchChangeAvailable=v150CanChangePitcher(s);
+ root.hidden=false;root.innerHTML=`<div class="v127BattleTop"><div class="v127ScoreHead"><div class="v127InningBadge">${s.inning}局${s.half==='top'?'上':'下'}${v217MusicBadgeHtml(s)}</div><div class="v127ScoreRows"><div class="v127ScoreRow"><span class="${battingTeam===firstTeam?'batting':''}">先攻｜${esc(v130TeamName(s,firstTeam))}</span><b>${v130TeamScore(s,firstTeam)}</b></div><div class="v127ScoreRow"><span class="${battingTeam===secondTeam?'batting':''}">後攻｜${esc(v130TeamName(s,secondTeam))}</span><b>${v130TeamScore(s,secondTeam)}</b></div></div><div class="v136BattleTopActions"><button id="v127AnimToggle" class="v127BattleAnimToggle">動畫 ${s.animations?'ON':'OFF'}</button>${s.mode!=='room'?'<button id="v136BattleExit" class="v136BattleExit">退出</button>':''}</div></div><div class="v127CountStrip"><span class="v127CountGroup">B ${v127Dots(s.balls,3,'ball')}</span><span class="v127CountGroup">S ${v127Dots(s.strikes,2,'strike')}</span><span class="v127CountGroup">O ${v127Dots(s.outs,2,'out')}</span>${v127DiamondHtml(s.bases,s)}</div></div><div class="v127BattleBody"><div class="v149BattleMainGrid">${v149CheerPanelHtml(s)}<div class="v127DuelStage ${readyClass}">${v146BuffHtml(s)}<div class="v127DuelLabels"><span class="v127RoleTag">${playerBat?'對方投手':'我方投手'}</span><span class="v127RoleTag">${playerBat?'我方打者':'對方打者'}</span></div>${v127CardHtml(pitcher,'pitcher')}${v209SpEffectHtml(s)}<div class="v127PitchLane"></div><div id="v127Ball" class="v127Ball"></div><div id="v128SwingArc" class="v128SwingArc"></div><div id="v128ImpactFlash" class="v128ImpactFlash"></div>${v127CardHtml(batter,'batter')}${v203PlateProbabilityHtml(s)}${!s.busy&&s.animations?'<div class="v128VsFlash">VS</div>':''}<div class="v127LastPlay">${esc(s.lastPlay||'')}</div><div class="v127NextBatter">下一棒：${esc(next?.name||'')}</div>${s.lastResult?`<div class="v127ResultBanner show ${v127ResultClass(s.lastResult.result)}"><b>${esc(v127ResultText(s.lastResult.result))}</b><small>${esc(s.lastResult.detail||'')}</small></div>`:''}</div></div><div class="v127ActionBox">${v127ActionHtml()}<div class="v127BattleStatus">${s.busy?(s.mode==='room'?'已選擇｜等待對手…':'對決進行中…'):(playerBat?'本打席共用 15 秒｜逾時自動穩健打擊':'本打席共用 15 秒｜逾時自動正面對決')}</div><div class="v130BattleUtilityRow"><span>${s.playerBenchUsed.length}/${s.playerBench.length} 名替補已使用</span><div class="v150UtilityButtons"><button id="v150PitchChangeBtn" class="v150PitchChangeBtn" ${s.busy||!pitchChangeAvailable?'disabled':''}>🧢 換投</button><button id="v130SubBtn" class="v130SubBtn" ${s.busy||!subAvailable?'disabled':''}>🔄 替補／換人</button></div></div></div></div>`;
+ $('v127AnimToggle').onclick=()=>{s.animations=!s.animations;v127RenderBattle()};if($('v136BattleExit'))$('v136BattleExit').onclick=v136ExitCurrentBattle;
  document.querySelectorAll('[data-v127-action]').forEach(b=>b.onclick=()=>v127HandleAction(b.dataset.v127Action||'',false));
  document.querySelectorAll('[data-v146-cheer]').forEach(b=>b.onclick=()=>v146UsePlayerCheer(b.dataset.v146Cheer||''));
  if($('v210CommanderActivate'))$('v210CommanderActivate').onclick=v210ActivateCommander;
  if($('v130SubBtn'))$('v130SubBtn').onclick=()=>v130OpenSubstitute();
  if($('v150PitchChangeBtn'))$('v150PitchChangeBtn').onclick=()=>v150OpenPitchChange();
- if(v216NeedsBroadcast)setTimeout(()=>v216RunPaBroadcast(s,v216Key),0);else if(!s.busy&&!s.v216Broadcasting)setTimeout(v128StartActionTimer,0)
+ if(!s.busy)setTimeout(v128StartActionTimer,0)
 }
 
 
@@ -5654,7 +5589,7 @@ function v150PitchChangeState(s=V127_BATTLE){
  return{available,cycleReset,roster}
 }
 function v150CanChangePitcher(s=V127_BATTLE){
- if(!s||s.busy||s.finished||s.v216Broadcasting||s.pitcherSelecting||s.subOpen||s.pitchChangeOpen||v127BattingTeam(s)==='player')return false;
+ if(!s||s.busy||s.finished||s.pitcherSelecting||s.subOpen||s.pitchChangeOpen||v127BattingTeam(s)==='player')return false;
  return v150PitchChangeState(s).available.length>0
 }
 function v150ClosePitchChange(){
@@ -5682,7 +5617,7 @@ function v130CloseSubstitute(){
  const s=V127_BATTLE;if(!s)return;s.subOpen=false;const ov=$('v130SubOverlay');if(ov)ov.remove();if(!s.busy)v127RenderBattle()
 }
 function v130OpenSubstitute(){
- const s=V127_BATTLE;if(!s||s.busy||s.finished||s.v216Broadcasting||v127BattingTeam(s)!=='player')return;const bench=(s.playerBench||[]).filter(Boolean);if(!bench.length)return;
+ const s=V127_BATTLE;if(!s||s.busy||s.finished||v127BattingTeam(s)!=='player')return;const bench=(s.playerBench||[]).filter(Boolean);if(!bench.length)return;
  const used=new Set((s.playerBenchUsed||[]).map(String)),slot=v207NextPlayerBattingSlot(s),out=s.playerCards[slot];if(!out)return;s.subOpen=true;const root=v127BattleRoot(),old=$('v130SubOverlay');if(old)old.remove();const overlay=document.createElement('div');overlay.id='v130SubOverlay';overlay.className='v130SubOverlay';
  overlay.innerHTML=`<div class="v207QuickSubPanel"><div class="v130SubHead"><div><h3>🔄 本打席替補</h3><small>不用再選換下球員；點一張替補卡就直接接替目前打者。</small></div><div class="v150OverlayHeadTools"><span class="v150OverlayTimer">剩 <b id="v150SubSeconds">${v128ChoiceSeconds()}</b>s</span><button id="v130SubClose" class="small">✕</button></div></div><div class="v207QuickSubCurrent">目前打者｜第 ${slot+1} 棒 <b>${esc(out.name)}</b></div><div class="v207QuickSubBench">${bench.map((c,i)=>{const unavailable=used.has(String(c.id));return`<button class="v130SubCard ${unavailable?'disabled':''}" data-v130-quick-in="${esc(c.id)}" ${unavailable?'disabled':''}><img src="${esc(c.image||PLACE)}" onerror="this.src='${PLACE}'"><span><b>替補 ${i+1}｜${esc(c.name)}</b><small>${unavailable?'已使用':`攻 ${lineupAttackValue(c)}｜守 ${lineupDefenseValue(c)}｜點擊直接換上`}</small></span></button>`}).join('')}</div></div>`;
  root.appendChild(overlay);$('v130SubClose').onclick=v130CloseSubstitute;overlay.querySelectorAll('[data-v130-quick-in]').forEach(b=>b.onclick=()=>v130ApplySubstitute(slot,b.dataset.v130QuickIn||''))
@@ -5918,7 +5853,7 @@ async function v128PlayOutcomeAnimation(result,animations=true,meta={}){
  }
 }
 async function v127HandleAction(strategy,auto=false){
- const s=V127_BATTLE;if(!s||s.busy||s.finished||s.v216Broadcasting||s.subOpen||s.pitchChangeOpen)return;if(s.mode==='room')return v135HandleRoomAction(strategy,auto);
+ const s=V127_BATTLE;if(!s||s.busy||s.finished||s.subOpen||s.pitchChangeOpen)return;if(s.mode==='room')return v135HandleRoomAction(strategy,auto);
  v128ClearActionTimer();s.busy=true;s.selectedStrategy=String(strategy||'');V127_BATTLE_BUSY=true;
  const playerBat=v127BattingTeam(s)==='player';v135RecordTelemetry(playerBat?'bat':'pitch',String(strategy||''),s);
  const batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),batStrategy=playerBat?strategy:v127CpuBatStrategy(s),pitchStrategy=v208NormalizePitchStrategy(pitcher,playerBat?v127CpuPitchStrategy(s):strategy);
@@ -5932,7 +5867,6 @@ async function v127HandleAction(strategy,auto=false){
   if(['1B','2B','3B','HR'].includes(resolved.result)){const impact=$('v128ImpactFlash');if(impact){impact.classList.remove('show');void impact.offsetWidth;impact.classList.add('show')}}
  }
  if(['1B','2B','3B','HR'].includes(resolved.result))playV127BattleSfx(resolved.result==='HR'?'hr':'contact');else if(resolved.result==='K')playV127BattleSfx('strikeout');else if(resolved.result==='BB')playV127BattleSfx('walk');else if(resolved.result==='DP')playV127BattleSfx('doubleplay');else playV127BattleSfx('out');
- v216OutcomeCall(resolved.result,batter);
  await v128PlayOutcomeAnimation(resolved.result,s.animations,resolved);
  const beforeBases=[...s.bases],runs=v127ApplyResult(s,batter,resolved.result,resolved);v144RecordPA(s,batter,pitcher,resolved.result,runs,batStrategy,pitchStrategy);const runAnim=v135QueueBaseAnimation(s,resolved.result,beforeBases,runs,resolved);v127RenderBattle();
  if(runs>0&&resolved.result!=='HR')playV127BattleSfx('run');await runAnim;if(runs>0)await v135PlayScoreEffect(runs,resolved.result)
@@ -5986,7 +5920,7 @@ function v128PlayerLinesHtml(s){
 }
 async function v127FinishGame(){
  const s=V127_BATTLE;if(!s||s.finished)return;s.finished=true;s.busy=true;V127_BATTLE_BUSY=false;v128ClearActionTimer();v127ClearTimers();
- const result=s.forcedPlayerWin?'win':s.playerScore>s.opponentScore?'win':s.playerScore<s.opponentScore?'loss':'draw';if(s.mode==='stage')return v201FinishStageBattle(s,result);let reward=0,server=null,settlementError='';
+ const result=s.forcedPlayerWin?'win':s.playerScore>s.opponentScore?'win':s.playerScore<s.opponentScore?'loss':'draw';v217SetBattleMusic(result==='win'?'victory':result==='loss'?'defeat':'clutch');if(s.mode==='stage')return v201FinishStageBattle(s,result);let reward=0,server=null,settlementError='';
  const finishPayload={matchId:s.matchId,result,playerScore:s.playerScore,opponentScore:s.opponentScore,telemetry:s.aiTelemetry,battleDetail:v144BattleDetail(s)};
  try{
   if(s.mode==='room'){if(s.roomAuthority&&ROOM_SESSION?.id)await roomApi('finish',{roomId:ROOM_SESSION.id});server={room:true}}
@@ -6018,42 +5952,13 @@ function resolvePlateAppearanceV125(batterAttack,pitcherDefense,fieldDefenseAvg,
  return{result:randomFn()<kAmongOuts?'K':'OUT',probabilities:p}
 }
 
-let ROOM_SESSION=null,ROOM_CHANNEL=null,ROOM_POLL_TIMER=0,ROOM_LOCAL_STREAM=null,ROOM_PC=null,ROOM_REMOTE_AUDIO=null,ROOM_VOICE_ON=false;
+let ROOM_SESSION=null,ROOM_CHANNEL=null,ROOM_POLL_TIMER=0,V217_ROOM_INVITE_OPEN=false;
 function v135StopRoomPoll(){clearInterval(ROOM_POLL_TIMER);ROOM_POLL_TIMER=0}
 async function v135RoomBroadcast(event,payload={}){if(!ROOM_CHANNEL)return;try{await ROOM_CHANNEL.send({type:'broadcast',event,payload})}catch(_e){}}
-async function v135DisconnectVoice(){
- ROOM_VOICE_ON=false;if(ROOM_PC){try{ROOM_PC.close()}catch(_e){}ROOM_PC=null}if(ROOM_LOCAL_STREAM){ROOM_LOCAL_STREAM.getTracks().forEach(t=>t.stop());ROOM_LOCAL_STREAM=null}if(ROOM_REMOTE_AUDIO){ROOM_REMOTE_AUDIO.remove();ROOM_REMOTE_AUDIO=null}
-}
-async function v135CreatePeer(){
- if(ROOM_PC)return ROOM_PC;
- const pc=new RTCPeerConnection({iceServers:[{urls:'stun:stun.l.google.com:19302'},{urls:'stun:stun1.l.google.com:19302'}]});ROOM_PC=pc;
- if(ROOM_LOCAL_STREAM)ROOM_LOCAL_STREAM.getTracks().forEach(t=>pc.addTrack(t,ROOM_LOCAL_STREAM));
- pc.onicecandidate=e=>{if(e.candidate)v135RoomBroadcast('webrtc-ice',{player_id:PLAYER?.id,candidate:e.candidate})};
- pc.ontrack=e=>{if(!ROOM_REMOTE_AUDIO){ROOM_REMOTE_AUDIO=document.createElement('audio');ROOM_REMOTE_AUDIO.autoplay=true;ROOM_REMOTE_AUDIO.playsInline=true;ROOM_REMOTE_AUDIO.style.display='none';document.body.appendChild(ROOM_REMOTE_AUDIO)}ROOM_REMOTE_AUDIO.srcObject=e.streams[0]};
- pc.onconnectionstatechange=()=>{const el=$('v135VoiceState');if(el)el.textContent=pc.connectionState==='connected'?'🟢 語音已連線':pc.connectionState==='failed'?'🔴 語音連線失敗（目前未使用 TURN）':'🟡 '+pc.connectionState};
- return pc
-}
-async function v135EnableVoice(){
- try{
-  if(!ROOM_LOCAL_STREAM)ROOM_LOCAL_STREAM=await navigator.mediaDevices.getUserMedia({audio:true,video:false});
-  ROOM_VOICE_ON=true;const pc=await v135CreatePeer();
-  if(ROOM_SESSION?.role==='host'&&ROOM_SESSION?.guest){const offer=await pc.createOffer();await pc.setLocalDescription(offer);await v135RoomBroadcast('webrtc-offer',{player_id:PLAYER?.id,sdp:pc.localDescription})}
-  else await v135RoomBroadcast('voice-ready',{player_id:PLAYER?.id});
-  v135RenderRoomLobby(ROOM_SESSION)
- }catch(e){alert('無法開啟麥克風：'+(e.message||e))}
-}
-async function v135HandleVoiceEvent(event,p){
- if(!p||p.player_id===PLAYER?.id)return;
- if(event==='voice-ready'&&ROOM_SESSION?.role==='host'&&ROOM_VOICE_ON){const pc=await v135CreatePeer(),offer=await pc.createOffer();await pc.setLocalDescription(offer);await v135RoomBroadcast('webrtc-offer',{player_id:PLAYER?.id,sdp:pc.localDescription})}
- if(event==='webrtc-offer'&&ROOM_VOICE_ON){const pc=await v135CreatePeer();await pc.setRemoteDescription(p.sdp);const ans=await pc.createAnswer();await pc.setLocalDescription(ans);await v135RoomBroadcast('webrtc-answer',{player_id:PLAYER?.id,sdp:pc.localDescription})}
- if(event==='webrtc-answer'&&ROOM_PC&&!ROOM_PC.currentRemoteDescription)await ROOM_PC.setRemoteDescription(p.sdp);
- if(event==='webrtc-ice'&&p.candidate){const pc=await v135CreatePeer();try{await pc.addIceCandidate(p.candidate)}catch(_e){}}
-}
 async function v135ConnectRoomChannel(room){
  if(!supa||!room?.signaling_topic)return;
  if(ROOM_CHANNEL){try{await supa.removeChannel(ROOM_CHANNEL)}catch(_e){}}
  ROOM_CHANNEL=supa.channel(room.signaling_topic,{config:{broadcast:{self:true}}});
- ['voice-ready','webrtc-offer','webrtc-answer','webrtc-ice'].forEach(ev=>ROOM_CHANNEL.on('broadcast',{event:ev},m=>v135HandleVoiceEvent(ev,m.payload)));
  ROOM_CHANNEL.on('broadcast',{event:'room-refresh'},()=>v135RefreshRoomState());
  ROOM_CHANNEL.on('broadcast',{event:'room-start'},()=>v135RefreshRoomState(true));
  ROOM_CHANNEL.on('broadcast',{event:'room-pitcher'},m=>v135ReceiveRoomPitcher(m.payload));
@@ -6065,8 +5970,8 @@ async function v135ConnectRoomChannel(room){
  await ROOM_CHANNEL.subscribe()
 }
 async function showV135RoomHub(){
- gameModeButtonSfx();v135StopRoomPoll();
- $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v135RoomHub"><div class="modalHead"><div><h2 style="margin:0">👥 自訂房間</h2><div class="sub">真人即時對戰＋WebRTC 語音｜目前只用免費 STUN，不使用 TURN</div></div><button class="small" id="v135RoomHubClose">✕</button></div>
+ V217_ROOM_INVITE_OPEN=false;gameModeButtonSfx();v135StopRoomPoll();
+ $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v135RoomHub"><div class="modalHead"><div><h2 style="margin:0">👥 自訂房間</h2><div class="sub">真人即時好友對戰｜建立房間後可直接邀請好友</div></div><button class="small" id="v135RoomHubClose">✕</button></div>
  <div class="v135RoomSplit"><div><h3>建立房間</h3><label>局數<select id="v135RoomInnings"><option value="3">3 局</option><option value="5">5 局</option><option value="9">9 局</option></select></label><label class="v135RoomCheck"><input id="v135RoomExtra" type="checkbox" checked> 平手開啟延長賽</label><label class="v135RoomCheck"><input id="v135RoomLevels" type="checkbox" checked> 套用球員卡等級</label><label class="v135RoomCheck"><input id="v135RoomCheer" type="checkbox" checked> 允許應援卡</label><button id="v135CreateRoom" class="admin">建立房間</button></div>
  <div><h3>加入房間</h3><input id="v135JoinCode" inputmode="numeric" maxlength="6" placeholder="6 位房號"><button id="v135JoinRoom">加入</button></div></div><div id="v135RoomHubNotice" class="notice"></div></div></div>`;
  $('v135RoomHubClose').onclick=()=>$('modal').innerHTML='';
@@ -6074,26 +5979,39 @@ async function showV135RoomHub(){
  $('v135JoinRoom').onclick=async()=>{const n=$('v135RoomHubNotice'),code=$('v135JoinCode').value.trim();n.textContent='加入中…';try{const d=await roomApi('join',{code});await v135EnterRoom(d.room)}catch(e){n.textContent='❌ '+(e.message||e)}}
 }
 async function v135EnterRoom(room){
- ROOM_SESSION=room;await v135ConnectRoomChannel(room);v135RenderRoomLobby(room);v135StopRoomPoll();ROOM_POLL_TIMER=setInterval(()=>{if(ROOM_SESSION&&!BATTLE_ACTIVE)v135RefreshRoomState()},2200)
+ V217_ROOM_INVITE_OPEN=false;ROOM_SESSION=room;await v135ConnectRoomChannel(room);v135RenderRoomLobby(room);v135StopRoomPoll();ROOM_POLL_TIMER=setInterval(()=>{if(ROOM_SESSION&&!BATTLE_ACTIVE)v135RefreshRoomState()},2200)
 }
 async function v135RefreshRoomState(startIfReady=false){
- if(!ROOM_SESSION?.id)return;try{const d=await roomApi('state',{roomId:ROOM_SESSION.id});ROOM_SESSION=d.room;if(d.room?.status==='in_progress'&&d.room?.match_setup){v135StopRoomPoll();$('modal').innerHTML='';V125_MATCH_SETUP=d.room.match_setup;beginV127Battle(V125_MATCH_SETUP);return}if(!BATTLE_ACTIVE)v135RenderRoomLobby(d.room)}catch(_e){}
+ if(!ROOM_SESSION?.id)return;try{const d=await roomApi('state',{roomId:ROOM_SESSION.id});ROOM_SESSION=d.room;if(d.room?.status==='in_progress'&&d.room?.match_setup){v135StopRoomPoll();$('modal').innerHTML='';V125_MATCH_SETUP=d.room.match_setup;beginV127Battle(V125_MATCH_SETUP);return}if(!BATTLE_ACTIVE&&!V217_ROOM_INVITE_OPEN)v135RenderRoomLobby(d.room)}catch(_e){}
 }
 function v135RenderRoomLobby(room){
- if(!room||BATTLE_ACTIVE)return;ROOM_SESSION=room;const me=room.role==='host'?room.host:room.guest,other=room.role==='host'?room.guest:room.host,canStart=room.role==='host'&&room.host?.ready&&room.guest?.ready;
+ if(!room||BATTLE_ACTIVE)return;V217_ROOM_INVITE_OPEN=false;ROOM_SESSION=room;const me=room.role==='host'?room.host:room.guest,other=room.role==='host'?room.guest:room.host,canStart=room.role==='host'&&room.host?.ready&&room.guest?.ready;
  const startHtml=room.role==='host'?`<button id="v135RoomStart" class="admin" ${canStart?'':'disabled'}>PLAY BALL｜開始比賽</button>`:`<div class="notice">${room.status==='ready'?'雙方已準備，等待房主開始。':'等待雙方準備完成。'}</div>`;
  $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v135RoomLobby"><div class="modalHead"><div><h2 style="margin:0">👥 房間 ${esc(room.room_code)}</h2><div class="sub">${room.settings.innings} 局｜${room.settings.extra_innings?'延長賽 ON':'延長賽 OFF'}｜等級 ${room.settings.levels_enabled?'ON':'Lv.1'}｜應援 ${room.settings.cheer_enabled?'ON':'OFF'}</div></div><button class="small" id="v135LeaveRoom">離開</button></div>
- <div class="v135RoomCode"><small>房號</small><b>${esc(room.room_code)}</b><span>把這 6 位數給朋友</span></div>
+ <div class="v135RoomCode"><small>房號</small><b>${esc(room.room_code)}</b><span>好友也可以從私訊邀請直接加入</span></div>
+ ${room.role==='host'&&!room.guest?`<div class="v217RoomInviteBar"><small>不用複製房號，直接選好友送出房間邀請。</small><button id="v217RoomInviteFriend">👥 直接邀請好友</button></div>`:''}
  <div class="v135RoomPlayers"><div class="${room.host?.ready?'ready':''}"><small>房主</small><b>${esc(room.host?.name||'')}</b><span>${room.host?.ready?'✅ 準備完成':'等待準備'}</span></div><div class="${room.guest?.ready?'ready':''}"><small>玩家 2</small><b>${esc(room.guest?.name||'等待加入')}</b><span>${room.guest?(room.guest.ready?'✅ 準備完成':'等待準備'):'房間尚有空位'}</span></div></div>
  <div class="v135RoomControls"><label>我的牌組<select id="v135RoomDeck">${LINEUP_DECKS.map((d,i)=>`<option value="${i+1}" ${i+1===Number(me?.deck)?'selected':''} ${normalizeV124Deck(d).starters.length===9?'':'disabled'}>牌組 ${i+1}${normalizeV124Deck(d).starters.length===9?'':'（先發不足）'}</option>`).join('')}</select></label><button id="v135RoomReady" class="${me?.ready?'ready':''}">${me?.ready?'取消準備':'✅ 準備完成'}</button></div>
- <div class="v135VoiceBox"><div><b>🎙️ 房間語音</b><small id="v135VoiceState">${ROOM_VOICE_ON?'🟡 正在建立語音連線':'尚未開啟麥克風'}</small></div><button id="v135VoiceBtn">${ROOM_VOICE_ON?'🔇 關閉語音':'🎙️ 開啟語音'}</button></div>
  ${startHtml}
  </div></div>`;
- $('v135LeaveRoom').onclick=async()=>{try{await roomApi('leave',{roomId:room.id})}catch(_e){}await v135DisconnectVoice();v135StopRoomPoll();if(ROOM_CHANNEL&&supa){try{await supa.removeChannel(ROOM_CHANNEL)}catch(_e){}}ROOM_CHANNEL=null;ROOM_SESSION=null;$('modal').innerHTML=''};
+ $('v135LeaveRoom').onclick=async()=>{try{await roomApi('leave',{roomId:room.id})}catch(_e){}v135StopRoomPoll();if(ROOM_CHANNEL&&supa){try{await supa.removeChannel(ROOM_CHANNEL)}catch(_e){}}ROOM_CHANNEL=null;ROOM_SESSION=null;$('modal').innerHTML=''};
  $('v135RoomReady').onclick=async()=>{try{const d=await roomApi('ready',{roomId:room.id,deck:Number($('v135RoomDeck').value)||1,ready:!me?.ready});ROOM_SESSION=d.room;await v135RoomBroadcast('room-refresh',{player_id:PLAYER?.id});v135RenderRoomLobby(d.room)}catch(e){alert(e.message||e)}};
- $('v135VoiceBtn').onclick=async()=>{if(ROOM_VOICE_ON){await v135DisconnectVoice();v135RenderRoomLobby(ROOM_SESSION)}else await v135EnableVoice()};
+ const invite=$('v217RoomInviteFriend');if(invite)invite.onclick=()=>v217OpenRoomFriendInvite(room);
  const start=$('v135RoomStart');if(start)start.onclick=async()=>{start.disabled=true;try{const d=await roomApi('start',{roomId:room.id});ROOM_SESSION=d.room;await v135RoomBroadcast('room-start',{player_id:PLAYER?.id});if(d.room.match_setup){v135StopRoomPoll();$('modal').innerHTML='';V125_MATCH_SETUP=d.room.match_setup;beginV127Battle(V125_MATCH_SETUP)}}catch(e){alert(e.message||e);start.disabled=false}}
 }
+
+function v217RoomInviteCode(message){const m=String(message||'').match(/房間邀請｜房號\s*(\d{6})/);return m?m[1]:''}
+async function v217OpenRoomFriendInvite(room){
+ if(!room?.room_code)return;V217_ROOM_INVITE_OPEN=true;const code=String(room.room_code),modal=$('modal');
+ modal.innerHTML=`<div class="modalBackdrop"><div class="modal v135RoomLobby"><div class="modalHead"><div><h2 style="margin:0">👥 邀請好友</h2><div class="sub">房間 ${esc(code)}｜好友收到私訊後可一鍵加入</div></div><button class="small" id="v217InviteBack">← 房間</button></div><div id="v217InviteBody"><div class="notice">讀取好友中…</div></div></div></div>`;
+ $('v217InviteBack').onclick=()=>{V217_ROOM_INVITE_OPEN=false;v135RenderRoomLobby(ROOM_SESSION||room)};
+ try{const data=await playerApi('list_social'),friends=Array.isArray(data?.friends)?data.friends:[],body=$('v217InviteBody');if(!body)return;
+  body.innerHTML=friends.length?`<div class="v217RoomInviteList">${friends.map(f=>`<div class="v217RoomInviteRow"><span class="onlineDot ${f.online?'online':''}"></span><div class="name">${esc(f.game_name||'好友')}</div><span class="state ${f.online?'online':''}">${f.online?'上線':'離線'}</span><button data-v217-invite-friend="${esc(f.id)}" data-name="${esc(f.game_name||'好友')}">邀請</button></div>`).join('')}</div>`:'<div class="friendEmpty">目前沒有好友，先到好友管理新增好友。</div>';
+  body.querySelectorAll('[data-v217-invite-friend]').forEach(btn=>btn.onclick=async()=>{btn.disabled=true;const old=btn.textContent;btn.textContent='送出中…';try{await messageApi('send_message',{friendId:btn.dataset.v217InviteFriend,message:`⚾ 房間邀請｜房號 ${code}｜點擊「加入房間」即可直接加入`});btn.textContent='已邀請';v215Toast?.(`已邀請 ${btn.dataset.name||'好友'}`)}catch(e){btn.disabled=false;btn.textContent=old;alert('邀請失敗：'+(e.message||e))}})
+ }catch(e){const body=$('v217InviteBody');if(body)body.innerHTML=`<div class="notice">❌ ${esc(e.message||e)}</div>`}
+}
+async function v217JoinRoomFromInvite(code,btn){if(!/^\d{6}$/.test(String(code||'')))return;if(btn){btn.disabled=true;btn.textContent='加入中…'}try{const d=await roomApi('join',{code:String(code)});clearDmTimers();await v135EnterRoom(d.room)}catch(e){if(btn){btn.disabled=false;btn.textContent='加入房間'}alert('加入房間失敗：'+(e.message||e))}}
+
 async function v135ReturnToRoom(){if(!ROOM_SESSION?.id){showV135RoomHub();return}BATTLE_ACTIVE=false;try{const d=await roomApi('state',{roomId:ROOM_SESSION.id});ROOM_SESSION=d.room;v135RenderRoomLobby(d.room)}catch(_e){showV135RoomHub()}}
 function v135ReceiveRoomPitcher(p){
  const s=V127_BATTLE;if(!s||s.mode!=='room'||!p||p.player_id===PLAYER?.id)return;
@@ -6115,7 +6033,6 @@ async function v135ApplyRoomResolution(p){
  const s=V127_BATTLE;if(!s||s.mode!=='room'||!p||Number(p.seq)!==s.roomPASeq||s.roomApplyingSeq===s.roomPASeq)return;s.roomApplyingSeq=s.roomPASeq;s.busy=true;V127_BATTLE_BUSY=true;
  const batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),outsBefore=s.outs,result=String(p.result||'GO'),resultCount=v209ResultCount(result,p.balls,p.strikes);v146PreparePAContext(s,{noAuto:true});s.balls=resultCount.balls;s.strikes=resultCount.strikes;s.lastResult=null;v127RenderBattle();playV127BattleSfx('pitch');const ball=$('v127Ball');if(ball){if(p.pitchStrategy==='breaking')ball.classList.add('breaking');if(p.pitchStrategy==='nibble')ball.classList.add('nibble');requestAnimationFrame(()=>ball.classList.add('throw'))}await v127Wait(s.animations?520:50);
  if(!['BB','K'].includes(result)){const sw=$('v128SwingArc');if(sw){sw.classList.remove('show');void sw.offsetWidth;sw.classList.add('show')}}if(['1B','2B','3B','HR'].includes(result))playV127BattleSfx(result==='HR'?'hr':'contact');else if(result==='K')playV127BattleSfx('strikeout');else if(result==='BB')playV127BattleSfx('walk');else if(result==='DP')playV127BattleSfx('doubleplay');else playV127BattleSfx('out');
- v216OutcomeCall(result,batter);
  await v128PlayOutcomeAnimation(result,s.animations,p);const before=[...s.bases],runs=v127ApplyResult(s,batter,result,p);const runAnim=v135QueueBaseAnimation(s,result,before,runs,p);v127RenderBattle();await runAnim;if(runs>0)await v135PlayScoreEffect(runs,result)
  const depth=p.flyDepth?({shallow:'淺外野',medium:'中深外野',deep:'深遠外野',wall:'全壘打牆前'})[p.flyDepth]||'外野':'',dpText=result==='DP'?v204DpRouteLabel(p.dpRoute):'';
  s.lastResult={result,detail:runs?`${batter.name}｜${dpText?dpText+'｜':''}${depth?depth+'｜':''}本打席 ${runs} 分`:`${batter.name} vs ${pitcher.name}${dpText?'｜'+dpText:''}${depth?'｜'+depth:''}`};s.lastPlay=`${batter.name}：${v127ResultText(result)}${dpText?`・${dpText}`:''}${depth?`・${depth}`:''}${runs?`・${runs} 分`:''}`;v127RenderBattle();await v127Wait(s.animations?(result==='HR'?900:560):100);
@@ -6393,12 +6310,13 @@ let LINEUP_DRAFTS=null,LINEUP_ACTIVE_DECK=1,LINEUP_EDIT_DECK=1,LINEUP_LOADED=fal
 let PITCHER_SELECTION_TIMER=0,PITCHER_SELECTION_INTERVAL=0;
 let MATCH_DECK_TIMER=0,MATCH_DECK_INTERVAL=0,V125_MATCH_SETUP=null;
 let BATTLE_ACTIVE=false,V127_BATTLE=null,V127_BATTLE_TIMER=0,V127_BATTLE_INTERVAL=0,V127_BATTLE_BUSY=false,V128_ACTION_INTERVAL=0,V128_ACTION_DEADLINE=0;
-let V127_BATTLE_AUDIO={ctx:null,source:null,gain:null,building:false};
+let V127_BATTLE_AUDIO={ctx:null,source:null,gain:null,building:false,mode:'normal'};
+let V217_BATTLE_BUFFER_CTX=null,V217_BATTLE_BUFFERS=new Map();
 let dmChannel=null,dmCurrentFriendId='',dmCurrentFriendName='';
 let DM_UNREAD_TOTAL=0,DM_BADGE_TIMER=0,DM_LIST_TIMER=0,DM_CHAT_TIMER=0;
 function getDeviceId(){let id=storage.getItem('cp_device_id');if(!id){id=(crypto.randomUUID?crypto.randomUUID():'device_'+Date.now()+'_'+Math.random().toString(36).slice(2));storage.setItem('cp_device_id',id)}return id}
 let V201_STAGE_PROGRESS={};let V201_STAGE_REWARDS={chapter:{},all210:false};
-function currentProgressPayload(){return{client_version:'2.07',app_version:'2.15',gems:Number(gems)||0,ssr_tickets:Number(V207_SSR_TICKETS)||0,owned:[...owned],card_counts:{...cardCounts},pity_by_pool:{...pityByPool},daily_day:storage.getItem('test_daily_day')||null,daily_wheel_day:storage.getItem('test_daily_wheel_day')||null,daily_wheel_reward:Number(storage.getItem('test_daily_wheel_reward'))||0,active_pool_id:ACTIVE_POOL_ID||null,stage_progress:V201_STAGE_PROGRESS,stage_rewards:V201_STAGE_REWARDS}}
+function currentProgressPayload(){return{client_version:'2.07',app_version:'2.18',gems:Number(gems)||0,ssr_tickets:Number(V207_SSR_TICKETS)||0,owned:[...owned],card_counts:{...cardCounts},pity_by_pool:{...pityByPool},daily_day:storage.getItem('test_daily_day')||null,daily_wheel_day:storage.getItem('test_daily_wheel_day')||null,daily_wheel_reward:Number(storage.getItem('test_daily_wheel_reward'))||0,active_pool_id:ACTIVE_POOL_ID||null,stage_progress:V201_STAGE_PROGRESS,stage_rewards:V201_STAGE_REWARDS}}
 function cachePlayerProgress(){if(PLAYER)storage.setItem('cp_player_cache',JSON.stringify(PLAYER));storage.setItem('cp_player_progress_cache',JSON.stringify(currentProgressPayload()))}
 function applyPlayerProgress(raw){const p=raw&&typeof raw==='object'?raw:{};const gg=Number(p.gems);gems=Number.isFinite(gg)&&gg>=0?gg:1000;const tt=Number(p.ssr_tickets);V207_SSR_TICKETS=Number.isFinite(tt)&&tt>=0?Math.floor(tt):V207_SSR_TICKETS;owned=Array.isArray(p.owned)?[...new Set(p.owned.map(String))]:[];cardCounts=p.card_counts&&typeof p.card_counts==='object'&&!Array.isArray(p.card_counts)?{...p.card_counts}:{};for(const id of owned)if(!cardCounts[id])cardCounts[id]=1;pityByPool=p.pity_by_pool&&typeof p.pity_by_pool==='object'&&!Array.isArray(p.pity_by_pool)?{...p.pity_by_pool}:{permanent:0};if(!Number.isFinite(Number(pityByPool.permanent)))pityByPool.permanent=0;if(p.daily_day)storage.setItem('test_daily_day',String(p.daily_day));else storage.removeItem('test_daily_day');if(p.daily_wheel_day)storage.setItem('test_daily_wheel_day',String(p.daily_wheel_day));else if(Object.prototype.hasOwnProperty.call(p,'daily_wheel_day'))storage.removeItem('test_daily_wheel_day');if(p.daily_wheel_reward!==undefined)storage.setItem('test_daily_wheel_reward',String(Number(p.daily_wheel_reward)||0));if(p.active_pool_id)ACTIVE_POOL_ID=String(p.active_pool_id);if(p.stage_progress&&typeof p.stage_progress==='object'&&!Array.isArray(p.stage_progress))V201_STAGE_PROGRESS={...p.stage_progress};else V201_STAGE_PROGRESS=safeJSON(v201StageProgressKey(),{})||{};if(p.stage_rewards&&typeof p.stage_rewards==='object'&&!Array.isArray(p.stage_rewards))V201_STAGE_REWARDS={chapter:{...(p.stage_rewards.chapter||{})},all210:!!p.stage_rewards.all210};else V201_STAGE_REWARDS=safeJSON(v201StageRewardsKey(),{chapter:{},all210:false})||{chapter:{},all210:false};storage.setItem(v201StageProgressKey(),JSON.stringify(V201_STAGE_PROGRESS));storage.setItem(v201StageRewardsKey(),JSON.stringify(V201_STAGE_REWARDS));storage.setItem('test_player_gems',gems);storage.setItem('test_player_ssr_tickets',String(V207_SSR_TICKETS));storage.setItem('test_player_owned',JSON.stringify(owned));storage.setItem('test_player_card_counts',JSON.stringify(cardCounts));storage.setItem('test_player_pity_by_pool',JSON.stringify(pityByPool));storage.setItem('test_player_pity',Number(pityByPool.permanent||0));storage.setItem('test_active_pool_id',ACTIVE_POOL_ID);cachePlayerProgress();renderGems();renderPoolBanner();v201UpdateModeSummary?.()}
 async function localPasswordHash(password){try{if(crypto.subtle){const d=await crypto.subtle.digest('SHA-256',new TextEncoder().encode(password));return [...new Uint8Array(d)].map(x=>x.toString(16).padStart(2,'0')).join('')}}catch(e){}let h=2166136261;for(const ch of password){h^=ch.charCodeAt(0);h=Math.imul(h,16777619)}return 'local_'+(h>>>0).toString(16)}
@@ -6736,27 +6654,32 @@ function buildPreparationBuffer(ctx){
  let peak=.001;for(let i=0;i<length;i++)peak=Math.max(peak,Math.abs(L[i]),Math.abs(R[i]));const scale=Math.min(1,.7/peak);for(let i=0;i<length;i++){L[i]*=scale;R[i]*=scale}return buf
 }
 
-function buildV127BattleBuffer(ctx){
- const bpm=116,beat=60/bpm,beats=32,seconds=beats*beat,length=Math.floor(ctx.sampleRate*seconds),buf=ctx.createBuffer(2,length,ctx.sampleRate),L=buf.getChannelData(0),R=buf.getChannelData(1),sr=ctx.sampleRate;
- const tone=(start,dur,f,amp=.06,pan=0,harm=.15)=>{const s=Math.max(0,Math.floor(start*sr)),e=Math.min(length,Math.floor((start+dur)*sr));for(let i=s;i<e;i++){const t=(i-s)/sr,p=t/dur,env=Math.min(1,p/.035)*Math.min(1,(1-p)/.14),ph=2*Math.PI*f*t,v=(Math.sin(ph)+harm*Math.sin(ph*2))*amp*env;L[i]+=v*(1-pan*.28);R[i]+=v*(1+pan*.28)}};
- const kick=(start,amp=.20)=>{const s=Math.floor(start*sr),e=Math.min(length,s+Math.floor(.18*sr));for(let i=s;i<e;i++){const t=(i-s)/sr,env=Math.exp(-t*19),f=82-35*(t/.18),v=Math.sin(2*Math.PI*f*t)*amp*env;L[i]+=v;R[i]+=v}};
- const hat=(start,amp=.025)=>{const s=Math.floor(start*sr),e=Math.min(length,s+Math.floor(.045*sr));for(let i=s;i<e;i++){const t=(i-s)/sr,n=(Math.random()*2-1)*amp*Math.exp(-t*74);L[i]+=n;R[i]+=n*.82}};
- const roots=[55,52,48,50,55,52,48,50];
- for(let b=0;b<beats;b++){const t=b*beat;if(b%2===0)kick(t,b%4===0?.24:.16);hat(t);hat(t+beat/2,.016);const root=roots[Math.floor(b/4)];tone(t,beat*.9,musicFreq(root-12),.10,-.08,.08);if(b%4===0){[root,root+3,root+7].forEach((m,j)=>tone(t,beat*3.4,musicFreq(m),.018,(j-1)*.35,.12))}}
- const motif=[67,70,72,70,67,65,63,65,67,70,74,72,70,67,65,63];
- motif.forEach((m,i)=>tone(i*beat*2,beat*.55,musicFreq(m),.037,i%2?.14:-.14,.22));
- let peak=.001;for(let i=0;i<length;i++)peak=Math.max(peak,Math.abs(L[i]),Math.abs(R[i]));const scale=Math.min(1,.72/peak);for(let i=0;i<length;i++){L[i]*=scale;R[i]*=scale}return buf
+function buildV127BattleBuffer(ctx){return buildV217SituationBuffer(ctx,'normal')}
+function buildV217SituationBuffer(ctx,mode='normal'){
+ const p=({
+  normal:{bpm:116,roots:[55,52,48,50],minor:true,kick:.22,hat:.024,bass:.095,lead:.035,motif:[67,70,72,70,67,65,63,65,67,70,74,72,70,67,65,63]},
+  rally:{bpm:136,roots:[60,65,67,62],minor:false,kick:.25,hat:.034,bass:.10,lead:.052,motif:[72,76,79,81,79,76,74,72,76,79,84,81,79,76,74,76]},
+  danger:{bpm:102,roots:[45,43,46,41],minor:true,kick:.28,hat:.018,bass:.13,lead:.030,motif:[57,58,60,58,55,57,53,55,57,60,61,60,58,55,53,52]},
+  clutch:{bpm:146,roots:[50,53,48,55],minor:true,kick:.28,hat:.040,bass:.115,lead:.060,motif:[74,77,79,82,81,79,77,74,77,79,82,86,84,82,79,77]},
+  victory:{bpm:132,roots:[60,65,67,60],minor:false,kick:.24,hat:.032,bass:.10,lead:.058,motif:[72,76,79,84,79,81,84,88,84,81,79,76,79,84,88,91]},
+  defeat:{bpm:88,roots:[45,41,43,40],minor:true,kick:.12,hat:.010,bass:.10,lead:.024,motif:[57,55,53,52,50,48,50,52,53,52,50,48,47,45,43,41]}
+ })[mode]||({bpm:116,roots:[55,52,48,50],minor:true,kick:.22,hat:.024,bass:.095,lead:.035,motif:[67,70,72,70,67,65,63,65]});
+ const beat=60/p.bpm,beats=32,seconds=beats*beat,length=Math.floor(ctx.sampleRate*seconds),buf=ctx.createBuffer(2,length,ctx.sampleRate),L=buf.getChannelData(0),R=buf.getChannelData(1),sr=ctx.sampleRate;
+ const tone=(start,dur,f,amp=.06,pan=0,harm=.15)=>{const s=Math.max(0,Math.floor(start*sr)),e=Math.min(length,Math.floor((start+dur)*sr));for(let i=s;i<e;i++){const t=(i-s)/sr,q=t/dur,env=Math.min(1,q/.035)*Math.min(1,(1-q)/.14),ph=2*Math.PI*f*t,v=(Math.sin(ph)+harm*Math.sin(ph*2))*amp*env;L[i]+=v*(1-pan*.28);R[i]+=v*(1+pan*.28)}};
+ const kick=(start,amp=p.kick)=>{const s=Math.floor(start*sr),e=Math.min(length,s+Math.floor(.18*sr));for(let i=s;i<e;i++){const t=(i-s)/sr,env=Math.exp(-t*19),f=86-39*(t/.18),v=Math.sin(2*Math.PI*f*t)*amp*env;L[i]+=v;R[i]+=v}};
+ const hat=(start,amp=p.hat)=>{const s=Math.floor(start*sr),e=Math.min(length,s+Math.floor(.045*sr));for(let i=s;i<e;i++){const t=(i-s)/sr,n=(Math.random()*2-1)*amp*Math.exp(-t*74);L[i]+=n;R[i]+=n*.82}};
+ for(let b=0;b<beats;b++){const t=b*beat;if(b%2===0)kick(t,b%4===0?p.kick:p.kick*.7);hat(t);if(mode==='rally'||mode==='clutch'||mode==='victory')hat(t+beat/2,p.hat*.72);const root=p.roots[Math.floor(b/4)%p.roots.length],third=p.minor?3:4;tone(t,beat*.9,musicFreq(root-12),p.bass,-.08,.08);if(b%4===0)[root,root+third,root+7].forEach((m,j)=>tone(t,beat*3.4,musicFreq(m),mode==='danger'?.015:.021,(j-1)*.35,.12))}
+ p.motif.forEach((m,i)=>tone(i*beat*2,beat*(mode==='danger'?.8:.55),musicFreq(m),p.lead,i%2?.14:-.14,mode==='rally'||mode==='victory'?.26:.20));if(mode==='clutch'){for(let b=0;b<beats;b+=2)tone(b*beat,beat*.32,musicFreq(86),.018,b%4?.35:-.35,.08)}if(mode==='danger'){for(let b=0;b<beats;b+=4)tone(b*beat,beat*3.4,musicFreq(38),.055,0,.04)}
+ let peak=.001;for(let i=0;i<length;i++)peak=Math.max(peak,Math.abs(L[i]),Math.abs(R[i]));const scale=Math.min(1,.74/peak);for(let i=0;i<length;i++){L[i]*=scale;R[i]*=scale}return buf
 }
-function ensureV127BattleAudio(){
- const ctx=ensureStadiumAudioContext();if(!ctx)return null;
- if(V127_BATTLE_AUDIO.ctx===ctx&&V127_BATTLE_AUDIO.gain)return V127_BATTLE_AUDIO;
- const gain=ctx.createGain();gain.gain.value=0;gain.connect(STADIUM_AUDIO.filter||ctx.destination);
- V127_BATTLE_AUDIO={ctx,source:null,gain,building:false};return V127_BATTLE_AUDIO
-}
-function startV127BattleMusic(){
- const a=ensureV127BattleAudio();if(!a||a.source||a.building)return;a.building=true;
- setTimeout(()=>{try{if(!V127_BATTLE_AUDIO.ctx||V127_BATTLE_AUDIO.source)return;const s=a.ctx.createBufferSource();s.buffer=buildV127BattleBuffer(a.ctx);s.loop=true;s.connect(a.gain);s.start();a.source=s}catch(_e){}finally{a.building=false;syncStadiumAudioState()}},0)
-}
+function v217BattleBuffer(ctx,mode){if(V217_BATTLE_BUFFER_CTX!==ctx){V217_BATTLE_BUFFER_CTX=ctx;V217_BATTLE_BUFFERS=new Map()}if(!V217_BATTLE_BUFFERS.has(mode))V217_BATTLE_BUFFERS.set(mode,buildV217SituationBuffer(ctx,mode));return V217_BATTLE_BUFFERS.get(mode)}
+function ensureV127BattleAudio(){const ctx=ensureStadiumAudioContext();if(!ctx)return null;if(V127_BATTLE_AUDIO.ctx===ctx&&V127_BATTLE_AUDIO.gain)return V127_BATTLE_AUDIO;const gain=ctx.createGain();gain.gain.value=0;gain.connect(STADIUM_AUDIO.filter||ctx.destination);V127_BATTLE_AUDIO={ctx,source:null,gain,building:false,mode:'normal'};return V127_BATTLE_AUDIO}
+function v217BattleMusicMode(s=V127_BATTLE){if(!s)return'normal';const bases=Array.isArray(s.bases)?s.bases:[null,null,null],baseCount=bases.filter(Boolean).length,scoring=!!bases[1]||!!bases[2],playerBat=v127BattingTeam(s)==='player',diff=Math.abs((Number(s.playerScore)||0)-(Number(s.opponentScore)||0)),reg=Math.max(3,Number(v135RegulationInnings?.(s))||3),late=Number(s.inning)>=Math.max(2,reg-1);if(late&&diff<=1)return'clutch';if(playerBat&&(scoring||baseCount>=2||(late&&(Number(s.playerScore)||0)<=(Number(s.opponentScore)||0))))return'rally';if(!playerBat&&(scoring||baseCount>=2||(late&&(Number(s.playerScore)||0)>=(Number(s.opponentScore)||0))))return'danger';return'normal'}
+function v217MusicLabel(mode){return({normal:'比賽節奏',rally:'攻勢升溫',danger:'守備危機',clutch:'決勝時刻',victory:'勝利時刻',defeat:'賽後低潮'})[mode]||'比賽節奏'}
+function v217MusicBadgeHtml(s=V127_BATTLE){const mode=v217BattleMusicMode(s);return`<span class="v217MusicMood ${mode}">🎵 ${v217MusicLabel(mode)}</span>`}
+function v217SetBattleMusic(mode='normal'){const a=ensureV127BattleAudio();if(!a||a.building)return;mode=String(mode||'normal');if(a.source&&a.mode===mode)return;a.building=true;setTimeout(()=>{try{const current=V127_BATTLE_AUDIO;if(!current.ctx)return;if(current.source){try{current.source.stop()}catch(_e){}current.source=null}const s=current.ctx.createBufferSource();s.buffer=v217BattleBuffer(current.ctx,mode);s.loop=true;s.connect(current.gain);s.start();current.source=s;current.mode=mode}catch(_e){}finally{V127_BATTLE_AUDIO.building=false;syncStadiumAudioState()}},0)}
+function v217UpdateBattleMusic(s=V127_BATTLE){if(!BATTLE_ACTIVE||!s||s.finished)return;v217SetBattleMusic(v217BattleMusicMode(s))}
+function startV127BattleMusic(){v217SetBattleMusic(v217BattleMusicMode(V127_BATTLE))}
 function playV127BattleSfx(kind){
  if(!drawSfxEnabled()&&!stadiumAudioEnabled())return;const ctx=ensureStadiumAudioContext();if(!ctx||ctx.state!=='running')return;
  const k=String(kind||'');
@@ -6843,7 +6766,7 @@ function queuePlayerProgressSave(){if(!PLAYER_READY||!PLAYER_TOKEN)return;clearT
 async function flushPlayerProgress(){if(!PLAYER_READY||!PLAYER_TOKEN||PLAYER_SYNC_BUSY)return;cachePlayerProgress();if(!IS_LOCAL_TEST)return;PLAYER_SYNC_BUSY=true;const progress=currentProgressPayload();try{await playerApi('save_progress',{progress})}finally{PLAYER_SYNC_BUSY=false}}
 function startHeartbeat(){clearInterval(HEARTBEAT_TIMER);if(!PLAYER_TOKEN)return;const beat=()=>{if(document.visibilityState!=='visible')return;playerApi('heartbeat').catch(()=>{});refreshFriendRequestBadge();refreshPrivateMessageBadge();refreshLobbyReplyBadge();if(!PLAYER_SYNC_BUSY&&!PLAYER_SYNC_TIMER)giftApi('sync_gifts').then(d=>{if(d?.progress)applyPlayerProgress(d.progress)}).catch(()=>{})};beat();HEARTBEAT_TIMER=setInterval(beat,60000)}
 async function logoutPlayer(){$('modal').innerHTML='';try{await flushPlayerProgress()}catch(e){}try{await playerApi('logout')}catch(e){}clearInterval(HEARTBEAT_TIMER);clearInterval(CHAT_REPLY_BADGE_TIMER);PLAYER_TOKEN='';PLAYER=null;PLAYER_READY=false;updateFriendRequestBadge(0);updateDmUnreadBadge(0);updateLobbyReplyBadge(0);clearDmTimers();syncStadiumAudioState();storage.removeItem('cp_player_token');storage.removeItem('cp_player_cache');storage.removeItem('cp_player_progress_cache');const mini=$('playerMiniName');if(mini)mini.textContent='';gems=1000;V207_SSR_TICKETS=0;owned=[];cardCounts={};pityByPool={permanent:0};UR_OWNED_CARDS=[];PLAYER_CARD_LEVELS={};storage.removeItem('cp_player_card_levels');LINEUP_DECKS=Array.from({length:5},()=>emptyV124Deck());LINEUP_DRAFTS=null;LINEUP_ACTIVE_DECK=1;LINEUP_EDIT_DECK=1;LINEUP_LOADED=false;LINEUP_DIRTY.clear();storage.removeItem('cp_ur_owned_cache');storage.removeItem(lineupCacheKey());clearPitcherSelectionTimer();renderGems();renderAuthGate('login','已登出')}
-function openSettings(){const modal=$('modal');modal.innerHTML=`<div class="modalBackdrop"><div class="modal settingsModal"><div class="modalHead"><div><h2 style="margin:0">⚙️ 設定</h2><div class="sub">遊戲與帳號設定</div></div><button class="small" id="settingsClose">✕</button></div><div class="settingsHero"><b>🎵 輕快大廳音樂</b><div class="sub" style="margin-top:4px">原創的輕快棒球遊戲風格配樂，會持續循環播放。</div></div><div class="settingsRow"><div class="settingsRowText"><b>背景音樂</b><small>音量已加強；關閉後不會播放大廳音樂。</small></div><label class="settingsSwitch"><input id="stadiumSoundToggle" type="checkbox" ${stadiumAudioEnabled()?'checked':''}><span></span></label></div><div class="settingsRow"><div class="settingsRowText"><b>抽卡音效</b><small>輪盤啟動、每張翻卡、卡牌拖曳、稀有度中獎與 UR 爆閃皆有獨立音效。</small></div><label class="settingsSwitch"><input id="drawSfxToggle" type="checkbox" ${drawSfxEnabled()?'checked':''}><span></span></label></div><button id="openThreadsFromSettings" class="settingsSubBtn settingsThreadsBtn"><span><strong><span class="threadsMark">@</span>官方 Threads</strong><small>@cardgame_0813_26｜最新公告與遊戲動態</small></span><span class="settingsArrow">↗</span></button><button id="openAccountFromSettings" class="settingsSubBtn"><span><strong>👤 帳號資料維護</strong><small>修改遊戲名稱、密碼與登出帳號</small></span><span class="settingsArrow">›</span></button></div></div>`;$('settingsClose').onclick=()=>modal.innerHTML='';$('stadiumSoundToggle').onchange=e=>setStadiumAudioEnabled(!!e.target.checked);$('drawSfxToggle').onchange=e=>setDrawSfxEnabled(!!e.target.checked);$('openThreadsFromSettings').onclick=()=>{const w=window.open('https://www.threads.com/@cardgame_0813_26','_blank','noopener,noreferrer');if(w)w.opener=null};$('openAccountFromSettings').onclick=openAccountMaintenance}
+function openSettings(){const modal=$('modal');modal.innerHTML=`<div class="modalBackdrop"><div class="modal settingsModal"><div class="modalHead"><div><h2 style="margin:0">⚙️ 設定</h2><div class="sub">遊戲與帳號設定</div></div><button class="small" id="settingsClose">✕</button></div><div class="settingsHero"><b>🎵 情境背景音樂</b><div class="sub" style="margin-top:4px">原創配樂會依大廳、賽前、一般打席、攻勢、守備危機與決勝時刻自動切換。</div></div><div class="settingsRow"><div class="settingsRowText"><b>背景音樂</b><small>開啟後依比賽情境自動切換；關閉後所有背景音樂停止。</small></div><label class="settingsSwitch"><input id="stadiumSoundToggle" type="checkbox" ${stadiumAudioEnabled()?'checked':''}><span></span></label></div><div class="settingsRow"><div class="settingsRowText"><b>抽卡音效</b><small>輪盤啟動、每張翻卡、卡牌拖曳、稀有度中獎與 UR 爆閃皆有獨立音效。</small></div><label class="settingsSwitch"><input id="drawSfxToggle" type="checkbox" ${drawSfxEnabled()?'checked':''}><span></span></label></div><button id="openThreadsFromSettings" class="settingsSubBtn settingsThreadsBtn"><span><strong><span class="threadsMark">@</span>官方 Threads</strong><small>@cardgame_0813_26｜最新公告與遊戲動態</small></span><span class="settingsArrow">↗</span></button><button id="openAccountFromSettings" class="settingsSubBtn"><span><strong>👤 帳號資料維護</strong><small>修改遊戲名稱、密碼與登出帳號</small></span><span class="settingsArrow">›</span></button></div></div>`;$('settingsClose').onclick=()=>modal.innerHTML='';$('stadiumSoundToggle').onchange=e=>setStadiumAudioEnabled(!!e.target.checked);$('drawSfxToggle').onchange=e=>setDrawSfxEnabled(!!e.target.checked);$('openThreadsFromSettings').onclick=()=>{const w=window.open('https://www.threads.com/@cardgame_0813_26','_blank','noopener,noreferrer');if(w)w.opener=null};$('openAccountFromSettings').onclick=openAccountMaintenance}
 async function openAccountMaintenance(){
  if(!PLAYER)return;
  const modal=$('modal'),created=PLAYER.created_at?new Date(PLAYER.created_at).toLocaleString('zh-TW'):'—';
@@ -6946,7 +6869,12 @@ async function openDirectMessage(friend){
  await load();DM_CHAT_TIMER=setInterval(()=>{if($('dmMessages'))load(true);else clearInterval(DM_CHAT_TIMER)},2500);
  const submit=async()=>{const input=$('dmInput'),status=$('dmStatus'),btn=$('dmSend'),msg=input.value.trim();if(!msg)return;btn.disabled=true;status.textContent='傳送中…';try{const data=await messageApi('send_message',{friendId:friend.id,message:msg});input.value='';updateDmUnreadBadge(data?.unread_total||0);await load(true);status.textContent='已送出'}catch(e){status.textContent='❌ '+(e.message||e)}finally{btn.disabled=false;input.focus()}};$('dmSend').onclick=submit;$('dmInput').onkeydown=e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();submit()}};setTimeout(()=>$('dmInput')?.focus(),20)
 }
-function renderDmMessages(rows,friend){const wrap=$('dmMessages');if(!wrap)return;const me=String(PLAYER?.id||'');if(!rows.length){wrap.innerHTML='<div class="dmMessagesEmpty">和 '+esc(friend?.game_name||'好友')+' 的私訊會顯示在這裡</div>';return}const stayBottom=wrap.scrollHeight-wrap.scrollTop-wrap.clientHeight<80;wrap.innerHTML=rows.map(row=>`<div class="dmRow ${String(row.sender_id)===me?'mine':''}"><div class="dmBubble"><div class="dmMeta"><span>${String(row.sender_id)===me?'你':esc(friend?.game_name||'好友')}</span><span>${esc(chatTime(row.created_at))}</span></div><div class="dmText">${esc(row.message||'')}</div></div></div>`).join('');if(stayBottom||wrap.scrollTop===0)requestAnimationFrame(()=>{wrap.scrollTop=wrap.scrollHeight})}
+function renderDmMessages(rows,friend){
+ const wrap=$('dmMessages');if(!wrap)return;const me=String(PLAYER?.id||'');if(!rows.length){wrap.innerHTML='<div class="dmMessagesEmpty">和 '+esc(friend?.game_name||'好友')+' 的私訊會顯示在這裡</div>';return}
+ const stayBottom=wrap.scrollHeight-wrap.scrollTop-wrap.clientHeight<80;
+ wrap.innerHTML=rows.map(row=>{const mine=String(row.sender_id)===me,code=v217RoomInviteCode(row.message||'');return`<div class="dmRow ${mine?'mine':''}"><div class="dmBubble"><div class="dmMeta"><span>${mine?'你':esc(friend?.game_name||'好友')}</span><span>${esc(chatTime(row.created_at))}</span></div><div class="dmText">${esc(row.message||'')}</div>${code&&!mine?`<div class="v217DmRoomInvite"><button data-v217-join-room="${code}">⚾ 加入房間 ${code}</button></div>`:''}</div></div>`}).join('');
+ wrap.querySelectorAll('[data-v217-join-room]').forEach(btn=>btn.onclick=()=>v217JoinRoomFromInvite(btn.dataset.v217JoinRoom,btn));if(stayBottom||wrap.scrollTop===0)requestAnimationFrame(()=>{wrap.scrollTop=wrap.scrollHeight})
+}
 async function openFriendManagement(){
  if(!PLAYER)return;clearDmTimers();const modal=$('modal');modal.innerHTML='<div class="modalBackdrop"><div class="modal friendModal"><div class="modalHead"><div><h2 style="margin:0">👥 好友管理</h2><div class="sub">新增、接受與刪除好友</div></div><div class="chatListHeadActions"><button class="small friendManageBack" id="friendBackChats">← 聊天列表</button><button class="small" id="friendClose">✕</button></div></div><div id="friendBody"><div class="notice">讀取好友中…</div></div></div></div>';$('friendClose').onclick=()=>modal.innerHTML='';$('friendBackChats').onclick=()=>openChatList();try{await renderFriends(await playerApi('list_social'))}catch(e){$('friendBody').innerHTML='<div class="notice">❌ '+esc(e.message||e)+'</div>'}
 }
@@ -7859,7 +7787,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 async function v143SetupServiceWorker(){
  if(!('serviceWorker' in navigator))return;
  try{
-  const reg=await navigator.serviceWorker.register('./sw.js?v=216-broadcast-1',{scope:'./',updateViaCache:'none'});
+  const reg=await navigator.serviceWorker.register('./sw.js?v=218-sandbox-history-replay-1',{scope:'./',updateViaCache:'none'});
   reg.update().catch(()=>{})
  }catch(e){console.warn('v1.48 service worker setup failed',e)}
 }
@@ -8155,7 +8083,7 @@ function v215OpenPlayerFromElement(el,e){
   if(!playerId&&!gameName)return false;
   showV215PublicPlayerProfile({playerId,gameName});
  }catch(err){
-  console.error('v2.16 player profile click failed',err);
+  console.error('v2.17 player profile click failed',err);
   try{v215CreateOverlay('v215PlayerProfileOverlay',`<div class="v215Dialog"><div class="notice">❌ 玩家資訊開啟失敗：${esc(err?.message||err)}</div></div>`)}catch(_e){}
  }
  return false
@@ -8222,4 +8150,159 @@ function v215SelectAdminDeck(n){
 }
 document.addEventListener('click',e=>{const b=e.target.closest?.('[data-v215-admin-deck-tab]');if(!b)return;v215SelectAdminDeck(b.dataset.v215AdminDeckTab)},false);
 
-</script></body></html>
+</script>
+<style id="v218-sandbox-history-style">
+/* ===== v2.18：完全測試模式／對戰紀錄／逐打席重播 ===== */
+.v218SandboxHero{padding:12px;border-radius:14px;background:linear-gradient(135deg,#16283f,#111826);border:1px solid #6ab7ff3d;margin-bottom:10px}
+.v218SandboxHero b{display:block;font-size:13px}.v218SandboxHero small{display:block;color:#ffffffa2;font-size:8px;line-height:1.55;margin-top:4px}
+.v218SandboxBtn{margin-top:9px!important;width:100%!important;padding:12px!important;background:linear-gradient(135deg,#264b69,#172b42)!important;border:1px solid #73c4ff66!important;color:#dff4ff!important}
+.v218SandboxModal{max-width:920px!important;width:min(96vw,920px)!important;max-height:91dvh;overflow:hidden;display:flex;flex-direction:column}
+.v218SandboxScroll{overflow:auto;padding-right:2px;min-height:0}
+.v218SandboxSection{margin:9px 0;padding:10px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff12}
+.v218SandboxSection h3{margin:0 0 8px;font-size:11px}.v218SandboxGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}
+.v218SandboxField{display:grid;gap:4px;font-size:7px;color:#ffffff93}.v218SandboxField input,.v218SandboxField select{width:100%;padding:8px 9px;border-radius:9px;background:#090d14;color:#fff;border:1px solid #ffffff20;font-size:9px}
+.v218CheckRow{display:flex;flex-wrap:wrap;gap:9px;align-items:center}.v218CheckRow label{display:flex;align-items:center;gap:5px;font-size:8px;color:#ffffffb8}
+.v218RosterHead{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin-bottom:7px}.v218RosterHead input[type="search"]{flex:1;min-width:130px;padding:8px;border-radius:9px;background:#090d14;color:#fff;border:1px solid #ffffff20}
+.v218RosterCount{font-size:8px;color:#8ed6ff;font-weight:900}.v218CardGrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;max-height:245px;overflow:auto}
+.v218CardPick{position:relative;display:grid;grid-template-columns:42px 1fr;gap:6px;align-items:center;padding:6px!important;text-align:left!important;background:#101722!important;border:1px solid #ffffff12!important;border-radius:10px!important;min-height:56px}
+.v218CardPick.selected{border-color:#7ed2ff88!important;background:#16314a!important;box-shadow:inset 0 0 0 1px #7ed2ff33}.v218CardPick img{width:42px;height:42px;object-fit:cover;border-radius:7px;background:#0a0d12}.v218CardPick b{font-size:8px;display:block}.v218CardPick small{font-size:6px;color:#ffffff6f;display:block;margin-top:2px}.v218OrderBadge{position:absolute;right:4px;top:4px;border-radius:999px;background:#65c9ff;color:#07131d;font-size:6px;font-weight:1000;padding:2px 5px}
+.v218SandboxFooter{display:flex;justify-content:flex-end;gap:7px;padding-top:9px}.v218SandboxFooter button{min-width:110px}
+.v218BattleTools{display:flex;gap:5px;align-items:center}.v218TestConsoleBtn{background:#173d5e!important;color:#d9f2ff!important;border-color:#67c7ff55!important}.v218TestBadge{font-size:6px;padding:3px 6px;border-radius:999px;background:#56c4ff1f;border:1px solid #56c4ff4f;color:#aee7ff;font-weight:900}
+#v136BattleExit{background:#381e25!important;color:#ffd9dd!important;border:1px solid #ff879044!important}
+.v218ExitDialog{max-width:390px!important}.v218ExitHero{padding:14px;border-radius:12px;background:#ffffff08;border:1px solid #ffffff12;line-height:1.55;font-size:9px;color:#ffffffb6}.v218ExitActions{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.v218ExitConfirm{background:#7a2934!important;color:#fff!important;border-color:#ff879055!important}
+.v218InfoTabs{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0}.v218InfoTabs button{padding:9px!important}.v218InfoTabs button.active{background:#e9f5ff!important;color:#0b1520!important;border-color:#e9f5ff!important}
+.v218HistoryToolbar{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px}.v218HistoryToolbar button{font-size:7px!important;padding:6px 8px!important}.v218HistoryToolbar button.active{background:#315d7d!important;border-color:#78cfff55!important}.v218HistoryList{display:grid;gap:7px;max-height:57dvh;overflow:auto}.v218HistoryRow{display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center;padding:10px;border-radius:11px;background:#ffffff08;border:1px solid #ffffff12;cursor:pointer}.v218HistoryRow:hover{border-color:#79cfff42}.v218ModeChip{font-size:7px;font-weight:900;padding:4px 6px;border-radius:999px;background:#ffffff12}.v218HistoryMain b{display:block;font-size:9px}.v218HistoryMain small{display:block;font-size:7px;color:#ffffff75;margin-top:3px}.v218HistoryScore{text-align:right}.v218HistoryScore b{display:block;font-size:14px}.v218HistoryScore small{font-size:7px}.v218ResultWin{color:#8bf0ac}.v218ResultLoss{color:#ff9ca4}.v218ResultDraw{color:#cbd1dd}.v218HistoryEmpty{padding:24px;text-align:center;color:#ffffff70}
+.v218DetailHead{display:flex;justify-content:space-between;gap:8px;align-items:start}.v218DetailScore{font-size:24px;font-weight:1000}.v218DetailGrid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.v218DetailBox{padding:9px;border-radius:11px;background:#ffffff08;border:1px solid #ffffff12}.v218DetailBox b{font-size:9px}.v218DetailBox small{display:block;color:#ffffff70;font-size:7px;line-height:1.5;margin-top:4px}.v218LineupMini{display:flex;flex-wrap:wrap;gap:5px;margin-top:6px}.v218LineupMini span{font-size:7px;padding:4px 6px;border-radius:8px;background:#0c121a;border:1px solid #ffffff10}.v218PaList{display:grid;gap:5px;max-height:34dvh;overflow:auto;margin-top:7px}.v218PaRow{display:grid;grid-template-columns:52px 1fr auto;gap:6px;padding:7px 8px;border-radius:9px;background:#0c121a;border:1px solid #ffffff0d;font-size:7px}.v218PaRow b{font-size:8px}.v218PaRow small{color:#ffffff6f}.v218DetailActions{display:flex;gap:7px;flex-wrap:wrap;margin-top:10px}.v218DetailActions button{flex:1;min-width:120px}
+.v218ReplayModal{max-width:680px!important}.v218ReplayStage{padding:12px;border-radius:14px;background:linear-gradient(180deg,#132132,#0b1119);border:1px solid #ffffff16}.v218ReplayScore{display:flex;justify-content:center;gap:18px;align-items:center;margin:8px 0}.v218ReplayScore b{font-size:26px}.v218ReplayState{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:8px}.v218ReplayState div{padding:7px;border-radius:9px;background:#ffffff08;text-align:center}.v218ReplayState small{display:block;font-size:6px;color:#ffffff68}.v218ReplayState b{display:block;font-size:9px;margin-top:2px}.v218ReplayBases{display:flex;justify-content:center;gap:6px;margin:9px 0}.v218ReplayBases i{width:18px;height:18px;transform:rotate(45deg);border:1px solid #ffffff35;background:#ffffff09}.v218ReplayBases i.on{background:#ffd45d;border-color:#ffe99a}.v218ReplayCall{text-align:center;padding:12px;font-size:13px;font-weight:1000;min-height:48px}.v218ReplayCall small{display:block;font-size:7px;color:#ffffff78;margin-top:5px;font-weight:600}.v218ReplayControls{display:grid;grid-template-columns:1fr 1fr 1fr;gap:7px;margin-top:8px}.v218ReplayProgress{text-align:center;font-size:7px;color:#ffffff78;margin-top:7px}
+.v218FullLiveTag{color:#9fe9ff;font-size:7px;font-weight:900}.v218DownloadNote{font-size:7px;color:#ffffff70;margin-top:5px}
+@media(max-width:720px){.v218SandboxGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.v218CardGrid{grid-template-columns:repeat(2,minmax(0,1fr))}.v218DetailGrid{grid-template-columns:1fr}.v218ReplayState{grid-template-columns:repeat(2,1fr)}}
+</style>
+
+<script id="v218-sandbox-history-script">
+(()=>{
+'use strict';
+const V218_HISTORY_MAX=80;
+const V218_FULL_MAX=5;
+let V218_SANDBOX_DRAFT=null;
+let V218_HISTORY_FILTER='all';
+let V218_REPLAY_TIMER=0;
+
+function v218PlayerStorageId(){return String(PLAYER?.id||PLAYER?.game_name||'local').replace(/[^a-zA-Z0-9_-]/g,'_')||'local'}
+function v218HistoryKey(){return'cp_v218_battle_history_'+v218PlayerStorageId()}
+function v218FullKey(){return'cp_v218_full_replays_'+v218PlayerStorageId()}
+function v218Read(key,fallback=[]){try{const x=JSON.parse(storage.getItem(key)||'null');return x??fallback}catch(_e){return fallback}}
+function v218Write(key,value){try{storage.setItem(key,JSON.stringify(value));return true}catch(e){console.warn('v2.18 storage full',e);return false}}
+function v218Uid(){return'm'+Date.now().toString(36)+Math.random().toString(36).slice(2,8)}
+function v218ModeLabel(mode){return({room:'房間',stage:'關卡',cpu:'電腦',ranked:'排位',sandbox:'測試'})[mode]||String(mode||'對戰')}
+function v218ResultLabel(r){return r==='win'?'勝':r==='loss'?'敗':'和'}
+function v218HalfText(h){return h==='bottom'?'下':'上'}
+function v218ResultText(r){try{return v127ResultText(r)}catch(_e){return String(r||'')}}
+function v218LiteCard(c){if(!c)return null;return{id:String(c.source_id||c._v218SourceId||c.id||''),name:String(c.name||''),rarity:String(c.rarity||''),position:String(c.position||''),power:Number(c.power)||0}}
+function v218UniqueLite(cards){const out=[],seen=new Set();for(const c of cards||[]){const x=v218LiteCard(c);if(!x||!x.id||seen.has(x.id))continue;seen.add(x.id);out.push(x)}return out}
+function v218BasesLite(b){return(Array.isArray(b)?b:[]).map(x=>x?String(x.name||'跑者'):'')}
+function v218Toast(msg){if(typeof v215UpgradeToast==='function')v215UpgradeToast(msg);else console.log(msg)}
+
+// --- 逐打席記錄：在既有 PA 紀錄後補上當下完整局面 ---
+const V218_ORIG_RECORD_PA=v144RecordPA;
+v144RecordPA=function(s,batter,pitcher,result,runs,batStrategy,pitchStrategy){
+ V218_ORIG_RECORD_PA(s,batter,pitcher,result,runs,batStrategy,pitchStrategy);
+ if(!s)return;const row=s.paLog?.[s.paLog.length-1];if(!row)return;
+ Object.assign(row,{player_score:Number(s.playerScore)||0,opponent_score:Number(s.opponentScore)||0,outs:Number(s.outs)||0,balls:Number(s.balls)||0,strikes:Number(s.strikes)||0,bases:v218BasesLite(s.bases),batter_id:String(batter?.source_id||batter?.id||''),pitcher_id:String(pitcher?.source_id||pitcher?.id||''),at:Date.now()});
+ s.v218Timeline||(s.v218Timeline=[]);s.v218Timeline.push({...row})
+};
+
+function v218BuildRecord(s,result){
+ const id=String(s.v218HistoryId||v218Uid());s.v218HistoryId=id;
+ return{id,created_at:new Date().toISOString(),mode:String(s.mode||''),mode_label:v218ModeLabel(s.mode),result:String(result||'draw'),player_name:String(s.playerName||PLAYER?.game_name||'玩家'),opponent_name:String(s.opponentName||'對手'),player_score:Number(s.playerScore)||0,opponent_score:Number(s.opponentScore)||0,player_side:String(s.playerSide||'first'),inning:Number(s.inning)||1,stage_id:String(s.stage?.id||s.setup?.stage?.id||''),stage_title:String(s.stage?.title||s.setup?.stage?.title||''),player_lineup:v218UniqueLite([...(s.playerOriginalStarters||[]),...(s.playerCards||[]),...(s.playerBench||[])]),opponent_lineup:v218UniqueLite([...(s.opponentOriginalStarters||[]),...(s.opponentCards||[]),...(s.opponentBench||[])]),plays:(s.paLog||[]).slice(-300).map(x=>({...x})),team_stats:{player:s.teamStats?.player||{},opponent:s.teamStats?.opponent||{}},events:(s.v218Events||[]).slice(-120)}
+}
+function v218SaveCompletedBattle(s,result){
+ if(!s||s.mode==='sandbox'||s._v218HistorySaved)return;s._v218HistorySaved=true;
+ const rec=v218BuildRecord(s,result),history=v218Read(v218HistoryKey(),[]).filter(x=>x&&x.id!==rec.id);history.unshift(rec);v218Write(v218HistoryKey(),history.slice(0,V218_HISTORY_MAX));
+ const full=v218Read(v218FullKey(),[]).filter(x=>x&&x.id!==rec.id);full.unshift({...rec,full_live:true});v218Write(v218FullKey(),full.slice(0,V218_FULL_MAX))
+}
+const V218_ORIG_FINISH=v127FinishGame;
+v127FinishGame=async function(){const s=V127_BATTLE;if(s?.mode==='sandbox')return;const result=s?.forcedPlayerWin?'win':Number(s?.playerScore)>Number(s?.opponentScore)?'win':Number(s?.playerScore)<Number(s?.opponentScore)?'loss':'draw';const r=await V218_ORIG_FINISH.apply(this,arguments);if(s&&!s.v136SettlementError)v218SaveCompletedBattle(s,result);return r};
+
+// --- 規則 / 我的對戰紀錄 ---
+function v218HistoryBody(filter='all'){
+ V218_HISTORY_FILTER=filter;const rows=v218Read(v218HistoryKey(),[]),fullIds=new Set(v218Read(v218FullKey(),[]).map(x=>x.id));const list=filter==='all'?rows:rows.filter(x=>x.mode===filter);
+ return`<div class="v206InfoScroll"><div class="v218HistoryToolbar">${[['all','全部'],['room','房間'],['stage','關卡'],['cpu','電腦'],['ranked','排位']].map(([k,t])=>`<button data-v218-history-filter="${k}" class="${filter===k?'active':''}">${t}</button>`).join('')}</div><div class="v218HistoryList">${list.length?list.map(x=>{const cls=x.result==='win'?'v218ResultWin':x.result==='loss'?'v218ResultLoss':'v218ResultDraw',date=new Date(x.created_at);return`<div class="v218HistoryRow" data-v218-history-id="${esc(x.id)}"><span class="v218ModeChip">${esc(x.mode_label||v218ModeLabel(x.mode))}</span><span class="v218HistoryMain"><b>${esc(x.stage_id?`${x.stage_id}｜${x.stage_title||x.opponent_name}`:x.opponent_name||'對手')} ${fullIds.has(x.id)?'<em class="v218FullLiveTag">LIVE</em>':''}</b><small>${esc(date.toLocaleString('zh-TW'))}｜${(x.plays||[]).length} 個打席</small></span><span class="v218HistoryScore"><b>${Number(x.player_score)||0}：${Number(x.opponent_score)||0}</b><small class="${cls}">${v218ResultLabel(x.result)}</small></span></div>`}).join(''):'<div class="v218HistoryEmpty">目前沒有這個模式的對戰紀錄。</div>'}</div></div>`
+}
+showV206GameRules=function(tab='rules',filter=V218_HISTORY_FILTER){
+ gameModeButtonSfx();const body=tab==='history'?v218HistoryBody(filter):v206GeneralRulesHtml();$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v206InfoModal"><div class="modalHead"><div><h2 style="margin:0">📘 規則 / 我的對戰紀錄</h2><div class="sub">規則說明與自己的歷史比賽</div></div><button class="small" id="v206RulesClose">✕</button></div><div class="v218InfoTabs"><button data-v218-info-tab="rules" class="${tab==='rules'?'active':''}">遊戲規則</button><button data-v218-info-tab="history" class="${tab==='history'?'active':''}">我的對戰紀錄</button></div>${body}</div></div>`;
+ $('v206RulesClose').onclick=()=>$('modal').innerHTML='';document.querySelectorAll('[data-v218-info-tab]').forEach(b=>b.onclick=()=>showV206GameRules(b.dataset.v218InfoTab||'rules',filter));document.querySelectorAll('[data-v218-history-filter]').forEach(b=>b.onclick=()=>showV206GameRules('history',b.dataset.v218HistoryFilter||'all'));document.querySelectorAll('[data-v218-history-id]').forEach(r=>r.onclick=()=>v218ShowHistoryDetail(r.dataset.v218HistoryId))
+};
+function v218FindRecord(id){return v218Read(v218HistoryKey(),[]).find(x=>x.id===id)||null}
+function v218FindFull(id){return v218Read(v218FullKey(),[]).find(x=>x.id===id)||null}
+function v218LineupHtml(list){return(list||[]).length?`<div class="v218LineupMini">${list.map((c,i)=>`<span>${i+1}. ${esc(c.name||'球員')}｜${esc(c.rarity||'')}</span>`).join('')}</div>`:'<small>無陣容資料</small>'}
+function v218ShowHistoryDetail(id){
+ const x=v218FindRecord(id);if(!x)return showV206GameRules('history');const full=!!v218FindFull(id),plays=x.plays||[];
+ $('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v206InfoModal"><div class="modalHead"><div><h2 style="margin:0">${esc(x.mode_label||v218ModeLabel(x.mode))}｜對戰詳細</h2><div class="sub">${esc(new Date(x.created_at).toLocaleString('zh-TW'))}</div></div><button class="small" id="v218DetailBack">← 對戰紀錄</button></div><div class="v206InfoScroll"><div class="v218DetailHead"><div><b>${esc(x.player_name||'玩家')}</b><div class="sub">vs ${esc(x.stage_id?`${x.stage_id}｜${x.stage_title}`:x.opponent_name||'對手')}</div></div><div class="v218DetailScore">${Number(x.player_score)||0}：${Number(x.opponent_score)||0}</div></div><div class="v218DetailGrid"><div class="v218DetailBox"><b>我方陣容</b>${v218LineupHtml(x.player_lineup)}</div><div class="v218DetailBox"><b>對方陣容</b>${v218LineupHtml(x.opponent_lineup)}</div></div><div class="v218DetailBox" style="margin-top:8px"><b>逐打席紀錄｜${plays.length}</b><div class="v218PaList">${plays.length?plays.map((p,i)=>`<div class="v218PaRow"><span>${Number(p.inning)||1}局${v218HalfText(p.half)}</span><span><b>${esc(p.batter||'打者')}｜${esc(v218ResultText(p.result))}</b><small>vs ${esc(p.pitcher||'投手')}${Number(p.runs)>0?`｜${Number(p.runs)} 分打點`:''}</small></span><span>${Number(p.player_score)||0}：${Number(p.opponent_score)||0}</span></div>`).join(''):'<div class="sub">沒有打席資料</div>'}</div></div><div class="v218DetailActions"><button id="v218ReplayBtn" ${plays.length?'':'disabled'}>▶ 逐打席重播</button>${full?'<button id="v218DownloadFull" class="admin">⬇ 下載完整版直播</button>':'<button disabled>完整版已輪替刪除</button>'}</div><div class="v218DownloadNote">完整版直播只保留最近 5 場；第 6 場完成時會自動移除最舊一場的完整版，但一般對戰紀錄與逐打席內容仍保留。</div></div></div></div>`;
+ $('v218DetailBack').onclick=()=>showV206GameRules('history',V218_HISTORY_FILTER);if($('v218ReplayBtn'))$('v218ReplayBtn').onclick=()=>v218OpenReplay(x);if(full&&$('v218DownloadFull'))$('v218DownloadFull').onclick=()=>v218DownloadFullReplay(v218FindFull(id))
+}
+function v218ReplayFrameHtml(x,p,index,total){const bases=Array.isArray(p?.bases)?p.bases:[];return`<div class="v218ReplayStage"><div class="sub" style="text-align:center">${esc(x.mode_label||v218ModeLabel(x.mode))}｜${esc(x.player_name||'玩家')} vs ${esc(x.opponent_name||'對手')}</div><div class="v218ReplayScore"><b>${Number(p?.player_score)||0}</b><span>：</span><b>${Number(p?.opponent_score)||0}</b></div><div class="v218ReplayState"><div><small>局數</small><b>${Number(p?.inning)||1}局${v218HalfText(p?.half)}</b></div><div><small>出局</small><b>${Number(p?.outs)||0}</b></div><div><small>球數</small><b>B${Number(p?.balls)||0} S${Number(p?.strikes)||0}</b></div><div><small>打點</small><b>${Number(p?.runs)||0}</b></div></div><div class="v218ReplayBases"><i class="${bases[2]?'on':''}"></i><i class="${bases[1]?'on':''}"></i><i class="${bases[0]?'on':''}"></i></div><div class="v218ReplayCall">${esc(p?.batter||'打者')}｜${esc(v218ResultText(p?.result))}<small>投手 ${esc(p?.pitcher||'')}｜${esc(p?.bat_strategy||'')} / ${esc(p?.pitch_strategy||'')}</small></div><div class="v218ReplayProgress">${index+1} / ${total}</div></div>`}
+function v218OpenReplay(x){clearInterval(V218_REPLAY_TIMER);let idx=0,playing=false;const plays=x.plays||[];$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v218ReplayModal"><div class="modalHead"><div><h2 style="margin:0">▶ 逐打席重播</h2><div class="sub">${esc(new Date(x.created_at).toLocaleString('zh-TW'))}</div></div><button class="small" id="v218ReplayClose">✕</button></div><div id="v218ReplayFrame"></div><div class="v218ReplayControls"><button id="v218ReplayPrev">← 上一打席</button><button id="v218ReplayPlay" class="admin">自動播放</button><button id="v218ReplayNext">下一打席 →</button></div></div></div>`;const render=()=>{$('v218ReplayFrame').innerHTML=v218ReplayFrameHtml(x,plays[idx],idx,plays.length);$('v218ReplayPrev').disabled=idx<=0;$('v218ReplayNext').disabled=idx>=plays.length-1;$('v218ReplayPlay').textContent=playing?'暫停':'自動播放'};const stop=()=>{playing=false;clearInterval(V218_REPLAY_TIMER);V218_REPLAY_TIMER=0;render()};$('v218ReplayClose').onclick=()=>{clearInterval(V218_REPLAY_TIMER);v218ShowHistoryDetail(x.id)};$('v218ReplayPrev').onclick=()=>{stop();idx=Math.max(0,idx-1);render()};$('v218ReplayNext').onclick=()=>{stop();idx=Math.min(plays.length-1,idx+1);render()};$('v218ReplayPlay').onclick=()=>{if(playing){stop();return}playing=true;render();V218_REPLAY_TIMER=setInterval(()=>{if(idx>=plays.length-1){stop();return}idx++;render()},1350)};render()}
+function v218StandaloneReplayHtml(x){const data=JSON.stringify(x).replace(/<\/script/gi,'<\\/script');return`<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>完整直播｜${esc(x.player_name)} vs ${esc(x.opponent_name)}</title><style>body{margin:0;background:#071018;color:#fff;font-family:system-ui,-apple-system,"Noto Sans TC",sans-serif}.w{max-width:760px;margin:auto;padding:18px}.box{background:#101c29;border:1px solid #ffffff20;border-radius:16px;padding:16px}.head{text-align:center}.score{font-size:38px;font-weight:900;text-align:center;margin:18px}.state{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.state div{background:#ffffff0c;padding:10px;border-radius:10px;text-align:center}.call{margin:14px 0;padding:18px;background:#071019;border-radius:12px;text-align:center;font-size:20px;font-weight:900}.bases{display:flex;justify-content:center;gap:10px}.bases i{width:22px;height:22px;transform:rotate(45deg);border:1px solid #fff5}.bases i.on{background:#ffd45d}.ctrl{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:12px}button{padding:12px;border:0;border-radius:10px;font-weight:800}.sub{font-size:12px;color:#ffffff88}</style></head><body><div class="w"><div class="box"><div class="head"><h2>完整直播回顧</h2><div class="sub" id="meta"></div></div><div id="frame"></div><div class="ctrl"><button id="prev">← 上一打席</button><button id="play">自動播放</button><button id="next">下一打席 →</button></div></div></div><script>const X=${data};let i=0,t=0,on=false;const $=x=>document.getElementById(x),half=h=>h==='bottom'?'下':'上',res=r=>({K:'三振',BB:'保送','1B':'一壘安打','2B':'二壘安打','3B':'三壘安打',HR:'全壘打',FO:'接殺出局',LO:'平飛出局',GO:'滾地出局',DP:'雙殺',SF:'高飛犧牲打',SFOUT:'本壘觸殺'})[r]||r;function draw(){const p=X.plays[i]||{},b=p.bases||[];$('meta').textContent=new Date(X.created_at).toLocaleString('zh-TW')+'｜'+X.player_name+' vs '+X.opponent_name;$('frame').innerHTML='<div class="score">'+(p.player_score||0)+' ： '+(p.opponent_score||0)+'</div><div class="state"><div>局數<br><b>'+((p.inning||1)+'局'+half(p.half))+'</b></div><div>出局<br><b>'+(p.outs||0)+'</b></div><div>球數<br><b>B'+(p.balls||0)+' S'+(p.strikes||0)+'</b></div><div>進度<br><b>'+(i+1)+' / '+X.plays.length+'</b></div></div><div class="bases"><i class="'+(b[2]?'on':'')+'"></i><i class="'+(b[1]?'on':'')+'"></i><i class="'+(b[0]?'on':'')+'"></i></div><div class="call">'+(p.batter||'打者')+'｜'+res(p.result)+'<div class="sub">投手 '+(p.pitcher||'')+(p.runs?'｜'+p.runs+' 分打點':'')+'</div></div>';$('prev').disabled=i<=0;$('next').disabled=i>=X.plays.length-1;$('play').textContent=on?'暫停':'自動播放'}function stop(){on=false;clearInterval(t);draw()}$('prev').onclick=()=>{stop();i=Math.max(0,i-1);draw()};$('next').onclick=()=>{stop();i=Math.min(X.plays.length-1,i+1);draw()};$('play').onclick=()=>{if(on){stop();return}on=true;draw();t=setInterval(()=>{if(i>=X.plays.length-1){stop();return}i++;draw()},1350)};draw();<\/script></body></html>`}
+function v218DownloadFullReplay(x){if(!x)return;const blob=new Blob([v218StandaloneReplayHtml(x)],{type:'text/html;charset=utf-8'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=`完整直播_${(x.mode_label||v218ModeLabel(x.mode))}_${String(x.created_at||'').slice(0,10)}_${x.id}.html`;document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),3000)}
+
+// --- 完全測試模式 ---
+function v218SourceId(c){return String(c?._v218SourceId||c?.source_id||c?.id||'').split('__v218_')[0]}
+function v218OwnedCards(){const a=[...(Array.isArray(CARDS)?CARDS.filter(c=>owned.includes(c.id)):[]),...(Array.isArray(UR_OWNED_CARDS)?UR_OWNED_CARDS:[])],m=new Map();for(const c of a)if(c?.id&&!m.has(String(c.id)))m.set(String(c.id),c);return[...m.values()]}
+function v218CpuPool(){const a=[...(Array.isArray(CARDS)?CARDS:[]),...(Array.isArray(UR_ADMIN_CARDS)?UR_ADMIN_CARDS:[])],m=new Map();for(const c of a)if(c?.id&&!m.has(String(c.id)))m.set(String(c.id),c);return[...m.values()]}
+function v218FindAnyCard(id,side='player'){const pool=side==='player'?v218OwnedCards():v218CpuPool();return pool.find(c=>String(c.id)===String(id))||null}
+function v218Clamp(n,a,b,d=a){n=Number(n);return Number.isFinite(n)?Math.max(a,Math.min(b,n)):d}
+function v218RandomIds(n){const pool=[...v218CpuPool()].sort(()=>Math.random()-.5);return pool.slice(0,Math.max(1,Math.min(12,Number(n)||1))).map(c=>String(c.id))}
+function v218DefaultSandboxDraft(){
+ const deck=normalizeV124Deck(LINEUP_DECKS[Math.max(0,LINEUP_ACTIVE_DECK-1)]||{}),ownedIds=new Set(v218OwnedCards().map(c=>String(c.id))),p=deck.starters.filter(id=>ownedIds.has(String(id))).slice(0,12);if(!p.length&&v218OwnedCards()[0])p.push(String(v218OwnedCards()[0].id));
+ const cpu=v218RandomIds(9);return{inning:1,half:'top',playerScore:0,cpuScore:0,outs:0,balls:0,strikes:0,bases:[false,false,false],playerSide:'first',playerOrder:0,cpuOrder:0,playerAtk:100,playerDef:100,cpuAtk:100,cpuDef:100,timer:true,animations:true,forcedResult:'',playerIds:p,cpuIds:cpu,cpuRandomCount:9,playerPitcherId:p[0]||'',cpuPitcherId:cpu[0]||''}
+}
+function v218CardForSandbox(c,side,slot,d){if(!c)return null;const source=String(c.id),n={...c,id:`${source}__v218_${side}_${slot}_${Date.now().toString(36)}`,source_id:source,_v218SourceId:source,_v218AtkMult:(side==='p'?d.playerAtk:d.cpuAtk)/100,_v218DefMult:(side==='p'?d.playerDef:d.cpuDef)/100};return n}
+function v218BuildRoster(ids,side,d){const pool=side==='p'?v218OwnedCards():v218CpuPool(),cards=ids.map(id=>pool.find(c=>String(c.id)===String(id))).filter(Boolean);if(!cards.length)return{starters:[],bench:[]};const starters=Array.from({length:9},(_,i)=>v218CardForSandbox(cards[i%cards.length],side,i,d)),bench=cards.slice(9,12).map((c,i)=>v218CardForSandbox(c,side,'b'+i,d));return{starters,bench}}
+const V218_ORIG_NORM=v127NormBattleCard;
+v127NormBattleCard=function(c){const x=V218_ORIG_NORM(c);if(x&&c){x._v218SourceId=String(c._v218SourceId||c.source_id||c.id||'');x._v218AtkMult=Number(c._v218AtkMult)||1;x._v218DefMult=Number(c._v218DefMult)||1}return x};
+const V218_ORIG_ATK=lineupAttackValue,V218_ORIG_DEF=lineupDefenseValue;
+lineupAttackValue=function(c){const base=V218_ORIG_ATK(c),m=Number(c?._v218AtkMult)||1;return Math.round(base*m)};
+lineupDefenseValue=function(c){const base=V218_ORIG_DEF(c),m=Number(c?._v218DefMult)||1;return Math.round(base*m)};
+function v218CardGrid(cards,selected,side){const order=new Map((selected||[]).map((id,i)=>[String(id),i+1]));return cards.map(c=>{const id=String(c.id),sel=order.has(id),search=`${c.name||''} ${c.rarity||''} ${c.position||''}`.toLowerCase();return`<button class="v218CardPick ${sel?'selected':''}" data-v218-pick-side="${side}" data-v218-card-id="${esc(id)}" data-v218-search="${esc(search)}"><img src="${esc(c.image||c.image_url||PLACE)}" onerror="this.src='${PLACE}'"><span><b>${esc(c.name||'球員')}</b><small>${esc(c.rarity||'')}｜${esc(c.position||'')}｜攻 ${lineupAttackValue(c)}・守 ${lineupDefenseValue(c)}</small></span>${sel?`<em class="v218OrderBadge">${order.get(id)}</em>`:''}</button>`}).join('')}
+function v218CollectSandboxForm(){const d=V218_SANDBOX_DRAFT||v218DefaultSandboxDraft(),val=(id,fallback)=>$(id)?$(id).value:fallback,chk=(id,fallback)=>$(id)?$(id).checked:fallback;d.inning=v218Clamp(val('v218SbInning',d.inning),1,99,1);d.half=val('v218SbHalf',d.half)==='bottom'?'bottom':'top';d.playerScore=v218Clamp(val('v218SbPS',d.playerScore),0,999,0);d.cpuScore=v218Clamp(val('v218SbOS',d.cpuScore),0,999,0);d.outs=v218Clamp(val('v218SbOuts',d.outs),0,2,0);d.balls=v218Clamp(val('v218SbBalls',d.balls),0,3,0);d.strikes=v218Clamp(val('v218SbStrikes',d.strikes),0,2,0);d.playerSide=val('v218SbSide',d.playerSide)==='second'?'second':'first';d.playerOrder=v218Clamp(val('v218SbPO',d.playerOrder),0,8,0);d.cpuOrder=v218Clamp(val('v218SbOO',d.cpuOrder),0,8,0);d.playerAtk=v218Clamp(val('v218SbPAtk',d.playerAtk),10,500,100);d.playerDef=v218Clamp(val('v218SbPDef',d.playerDef),10,500,100);d.cpuAtk=v218Clamp(val('v218SbOAtk',d.cpuAtk),10,500,100);d.cpuDef=v218Clamp(val('v218SbODef',d.cpuDef),10,500,100);d.bases=[chk('v218SbB1',d.bases[0]),chk('v218SbB2',d.bases[1]),chk('v218SbB3',d.bases[2])];d.timer=chk('v218SbTimer',d.timer);d.animations=chk('v218SbAnim',d.animations);d.forcedResult=val('v218SbForced',d.forcedResult)||'';d.cpuRandomCount=v218Clamp(val('v218SbRandomN',d.cpuRandomCount),1,12,9);d.playerPitcherId=val('v218SbPPitch',d.playerPitcherId)||d.playerIds[0]||'';d.cpuPitcherId=val('v218SbOPitch',d.cpuPitcherId)||d.cpuIds[0]||'';V218_SANDBOX_DRAFT=d;return d}
+function v218SandboxDraftFromBattle(s){const d=v218DefaultSandboxDraft();if(!s)return d;d.inning=s.inning;d.half=s.half;d.playerScore=s.playerScore;d.cpuScore=s.opponentScore;d.outs=s.outs;d.balls=s.balls;d.strikes=s.strikes;d.bases=(s.bases||[]).map(Boolean);d.playerSide=s.playerSide;d.playerOrder=s.playerOrder%9;d.cpuOrder=s.opponentOrder%9;d.timer=s.v218Timer!==false;d.animations=s.animations!==false;d.forcedResult=s.v218ForcedResult||'';d.playerIds=v218UniqueLite(s.playerCards).map(c=>c.id);d.cpuIds=v218UniqueLite(s.opponentCards).map(c=>c.id);d.playerPitcherId=v218SourceId(s.playerPitcher)||d.playerIds[0]||'';d.cpuPitcherId=v218SourceId(s.opponentPitcher)||d.cpuIds[0]||'';d.playerAtk=Math.round((Number(s.playerCards?.[0]?._v218AtkMult)||1)*100);d.playerDef=Math.round((Number(s.playerCards?.[0]?._v218DefMult)||1)*100);d.cpuAtk=Math.round((Number(s.opponentCards?.[0]?._v218AtkMult)||1)*100);d.cpuDef=Math.round((Number(s.opponentCards?.[0]?._v218DefMult)||1)*100);return d}
+function v218SandboxPitchOptions(side,selected){const cards=side==='player'?v218OwnedCards():v218CpuPool();return cards.map(c=>`<option value="${esc(c.id)}" ${String(c.id)===String(selected)?'selected':''}>${esc(c.name||c.id)}｜${esc(c.rarity||'')}</option>`).join('')}
+function v218OpenSandbox(inGame=false){
+ if(inGame&&V127_BATTLE?.busy){v218Toast('請等目前打席動畫結束後再修改測試數值');return}V218_SANDBOX_DRAFT=inGame?v218SandboxDraftFromBattle(V127_BATTLE):(V218_SANDBOX_DRAFT||v218DefaultSandboxDraft());v218RenderSandbox(inGame)
+}
+function v218RenderSandbox(inGame=false){const d=V218_SANDBOX_DRAFT||v218DefaultSandboxDraft(),pc=v218OwnedCards(),oc=v218CpuPool();$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v218SandboxModal"><div class="modalHead"><div><h2 style="margin:0">🧪 完全測試模式${inGame?'｜遊戲中控制台':''}</h2><div class="sub">不計戰績、RP、關卡、獎勵｜沒有勝利條件｜可隨時退出</div></div><button class="small" id="v218SbClose">✕</button></div><div class="v218SandboxScroll"><div class="v218SandboxHero"><b>完全由玩家控制</b><small>開賽前能設定的內容，遊戲中全部都能再改。陣容最低 1 名角色即可；不足 9 人時會循環同一批角色填滿打席槽。投手不限登板局數。</small></div><div class="v218SandboxSection"><h3>比賽局面</h3><div class="v218SandboxGrid"><label class="v218SandboxField">局數<input id="v218SbInning" type="number" min="1" max="99" value="${d.inning}"></label><label class="v218SandboxField">局上／局下<select id="v218SbHalf"><option value="top" ${d.half==='top'?'selected':''}>局上</option><option value="bottom" ${d.half==='bottom'?'selected':''}>局下</option></select></label><label class="v218SandboxField">玩家比分<input id="v218SbPS" type="number" min="0" max="999" value="${d.playerScore}"></label><label class="v218SandboxField">電腦比分<input id="v218SbOS" type="number" min="0" max="999" value="${d.cpuScore}"></label><label class="v218SandboxField">出局數<select id="v218SbOuts">${[0,1,2].map(n=>`<option ${d.outs===n?'selected':''}>${n}</option>`).join('')}</select></label><label class="v218SandboxField">壞球<select id="v218SbBalls">${[0,1,2,3].map(n=>`<option ${d.balls===n?'selected':''}>${n}</option>`).join('')}</select></label><label class="v218SandboxField">好球<select id="v218SbStrikes">${[0,1,2].map(n=>`<option ${d.strikes===n?'selected':''}>${n}</option>`).join('')}</select></label><label class="v218SandboxField">玩家先／後攻<select id="v218SbSide"><option value="first" ${d.playerSide==='first'?'selected':''}>先攻</option><option value="second" ${d.playerSide==='second'?'selected':''}>後攻</option></select></label><label class="v218SandboxField">玩家目前棒次<select id="v218SbPO">${Array.from({length:9},(_,i)=>`<option value="${i}" ${d.playerOrder===i?'selected':''}>第 ${i+1} 棒</option>`).join('')}</select></label><label class="v218SandboxField">電腦目前棒次<select id="v218SbOO">${Array.from({length:9},(_,i)=>`<option value="${i}" ${d.cpuOrder===i?'selected':''}>第 ${i+1} 棒</option>`).join('')}</select></label><label class="v218SandboxField">下一打席結果<select id="v218SbForced"><option value="">正常隨機</option>${['K','BB','1B','2B','3B','HR','GO','FO','LO','DP','SF','SFOUT'].map(r=>`<option value="${r}" ${d.forcedResult===r?'selected':''}>${esc(v218ResultText(r))}</option>`).join('')}</select></label><label class="v218SandboxField">電腦隨機幾人<input id="v218SbRandomN" type="number" min="1" max="12" value="${d.cpuRandomCount}"></label></div><div class="v218CheckRow" style="margin-top:8px"><label><input id="v218SbB1" type="checkbox" ${d.bases[0]?'checked':''}>一壘有人</label><label><input id="v218SbB2" type="checkbox" ${d.bases[1]?'checked':''}>二壘有人</label><label><input id="v218SbB3" type="checkbox" ${d.bases[2]?'checked':''}>三壘有人</label><label><input id="v218SbTimer" type="checkbox" ${d.timer?'checked':''}>15 秒倒數</label><label><input id="v218SbAnim" type="checkbox" ${d.animations?'checked':''}>比賽動畫</label><button id="v218SbRandomCpu">🎲 隨機 ${d.cpuRandomCount} 人</button></div></div><div class="v218SandboxSection"><h3>能力倍率</h3><div class="v218SandboxGrid"><label class="v218SandboxField">玩家進攻 %<input id="v218SbPAtk" type="number" min="10" max="500" value="${d.playerAtk}"></label><label class="v218SandboxField">玩家防守 %<input id="v218SbPDef" type="number" min="10" max="500" value="${d.playerDef}"></label><label class="v218SandboxField">電腦進攻 %<input id="v218SbOAtk" type="number" min="10" max="500" value="${d.cpuAtk}"></label><label class="v218SandboxField">電腦防守 %<input id="v218SbODef" type="number" min="10" max="500" value="${d.cpuDef}"></label><label class="v218SandboxField">我方投手<select id="v218SbPPitch">${v218SandboxPitchOptions('player',d.playerPitcherId)}</select></label><label class="v218SandboxField">電腦投手<select id="v218SbOPitch">${v218SandboxPitchOptions('cpu',d.cpuPitcherId)}</select></label></div></div><div class="v218SandboxSection"><h3>玩家陣容｜所有已擁有卡片</h3><div class="v218RosterHead"><span class="v218RosterCount">已選 ${d.playerIds.length} 人｜最低 1 人</span><input id="v218SbPlayerSearch" type="search" placeholder="搜尋玩家卡片"></div><div class="v218CardGrid" id="v218SbPlayerGrid">${v218CardGrid(pc,d.playerIds,'player')}</div></div><div class="v218SandboxSection"><h3>電腦陣容｜可手選或按隨機幾人</h3><div class="v218RosterHead"><span class="v218RosterCount">已選 ${d.cpuIds.length} 人</span><input id="v218SbCpuSearch" type="search" placeholder="搜尋電腦卡片"></div><div class="v218CardGrid" id="v218SbCpuGrid">${v218CardGrid(oc,d.cpuIds,'cpu')}</div></div></div><div class="v218SandboxFooter"><button id="v218SbCancel">取消</button><button id="v218SbApply" class="admin">${inGame?'立即套用':'PLAY BALL｜開始測試'}</button></div></div></div>`;
+ const close=()=>{$('modal').innerHTML=''};$('v218SbClose').onclick=$('v218SbCancel').onclick=close;
+ const filter=(id,grid)=>{$(id).oninput=e=>{const q=String(e.target.value||'').trim().toLowerCase();$(grid).querySelectorAll('[data-v218-search]').forEach(b=>b.hidden=q&&!String(b.dataset.v218Search||'').includes(q))}};filter('v218SbPlayerSearch','v218SbPlayerGrid');filter('v218SbCpuSearch','v218SbCpuGrid');
+ document.querySelectorAll('[data-v218-pick-side]').forEach(b=>b.onclick=()=>{const dd=v218CollectSandboxForm(),key=b.dataset.v218PickSide==='player'?'playerIds':'cpuIds',id=String(b.dataset.v218CardId),arr=dd[key],i=arr.indexOf(id);if(i>=0)arr.splice(i,1);else if(arr.length<12)arr.push(id);if(!arr.length){v218Toast('至少保留 1 名角色');arr.push(id)}v218RenderSandbox(inGame)});
+ $('v218SbRandomCpu').onclick=()=>{const dd=v218CollectSandboxForm();dd.cpuIds=v218RandomIds(dd.cpuRandomCount);dd.cpuPitcherId=dd.cpuIds[0]||'';v218RenderSandbox(inGame)};
+ $('v218SbApply').onclick=()=>{const dd=v218CollectSandboxForm();if(!dd.playerIds.length||!dd.cpuIds.length){v218Toast('玩家與電腦至少都要 1 名角色');return}inGame?v218ApplySandboxToBattle(dd):v218StartSandbox(dd)}
+}
+function v218StartSandbox(d){const pr=v218BuildRoster(d.playerIds,'p',d),or=v218BuildRoster(d.cpuIds,'o',d);if(pr.starters.length!==9||or.starters.length!==9)return;const setup={mode:'sandbox',match_id:'sandbox-'+Date.now(),player_side:d.playerSide,player_deck:{starters:pr.starters,bench:pr.bench,cheer_cards:[]},opponent:{game_name:'測試電腦',starters:or.starters,bench:or.bench,cheer_cards:[],difficulty_level:4},sandbox_config:{...d}};V125_MATCH_SETUP=setup;$('modal').innerHTML='';beginV127Battle(setup);setTimeout(()=>v218ApplySandboxToBattle(d,true),0)}
+function v218PickBattleCard(side,id,d){const c=v218FindAnyCard(id,side==='p'?'player':'cpu')||(side==='p'?v218OwnedCards()[0]:v218CpuPool()[0]);return c?v127NormBattleCard(v218CardForSandbox(c,side,'pitch',d)):null}
+function v218ApplySandboxToBattle(d,first=false){const s=V127_BATTLE;if(!s||s.mode!=='sandbox')return;v128ClearActionTimer();v127ClearTimers();const pr=v218BuildRoster(d.playerIds,'p',d),or=v218BuildRoster(d.cpuIds,'o',d);s.playerCards=pr.starters.map(v127NormBattleCard);s.playerBench=pr.bench.map(v127NormBattleCard);s.opponentCards=or.starters.map(v127NormBattleCard);s.opponentBench=or.bench.map(v127NormBattleCard);s.playerOriginalStarters=s.playerCards.map(c=>({...c}));s.opponentOriginalStarters=s.opponentCards.map(c=>({...c}));s.playerOriginalStarterIds=s.playerCards.map(c=>c.id);s.opponentOriginalStarterIds=s.opponentCards.map(c=>c.id);s.playerBattingSlots=s.playerCards.map(c=>[{card:{...c},starter:true,inning:d.inning,half:d.half}]);s.playerBenchUsed=[];s.opponentBenchUsed=[];s.playerSubbedOut=[];s.opponentSubbedOut=[];s.playerFieldAvg=Math.round(s.playerCards.reduce((n,c)=>n+lineupDefenseValue(c),0)/Math.max(1,s.playerCards.length));s.opponentFieldAvg=Math.round(s.opponentCards.reduce((n,c)=>n+lineupDefenseValue(c),0)/Math.max(1,s.opponentCards.length));s.inning=d.inning;s.half=d.half;s.playerScore=d.playerScore;s.opponentScore=d.cpuScore;s.outs=d.outs;s.balls=d.balls;s.strikes=d.strikes;s.playerSide=d.playerSide;s.playerOrder=d.playerOrder;s.opponentOrder=d.cpuOrder;s.animations=!!d.animations;s.v218Timer=!!d.timer;s.v218ForcedResult=d.forcedResult||'';s.playerPitchersUsed=[];s.opponentPitchersUsed=[];s.playerPitcher=v218PickBattleCard('p',d.playerPitcherId,d);s.opponentPitcher=v218PickBattleCard('o',d.cpuPitcherId,d);s.v218PreferredPlayerPitcher=v218SourceId(s.playerPitcher);s.v218PreferredOpponentPitcher=v218SourceId(s.opponentPitcher);const bat=v127BattingTeam(s),runners=bat==='player'?s.playerCards:s.opponentCards;s.bases=d.bases.map((on,i)=>on?(runners[(i+2)%runners.length]||runners[0]):null);s.busy=false;s.finished=false;s.lastResult=null;s.selectedStrategy='';s.lastPlay=first?'完全測試模式｜PLAY BALL':'測試控制台設定已立即套用';V127_BATTLE_BUSY=false;$('modal').innerHTML='';v127RenderBattle();if(s.v218Timer)setTimeout(v128StartActionTimer,0)}
+
+// 測試模式沒有勝利條件／再見結束，半局永遠繼續往下跑。
+const V218_ORIG_WALKOFF=v127IsWalkoff;v127IsWalkoff=function(s=V127_BATTLE){if(s?.mode==='sandbox')return false;return V218_ORIG_WALKOFF(s)};
+const V218_ORIG_ADVANCE=v127AdvanceHalf;v127AdvanceHalf=function(){const s=V127_BATTLE;if(!s||s.mode!=='sandbox')return V218_ORIG_ADVANCE.apply(this,arguments);v128RecordLOB(s);v128ClearActionTimer();s.busy=false;V127_BATTLE_BUSY=false;s.lastResult=null;s.selectedStrategy='';s.balls=0;s.strikes=0;if(s.half==='top')s.half='bottom';else{s.inning++;s.half='top'}v127StartHalf()};
+const V218_ORIG_START_HALF=v127StartHalf;v127StartHalf=function(){const s=V127_BATTLE;if(!s||s.mode!=='sandbox')return V218_ORIG_START_HALF.apply(this,arguments);s.outs=0;s.bases=[null,null,null];s.balls=0;s.strikes=0;s.lastResult=null;s.selectedStrategy='';s.busy=false;s.pitcherSelecting=false;s.v146PaContext=null;s.cheerUsedPA={player:false,opponent:false};v128ClearActionTimer();const batting=v127BattingTeam(s);if(s.teamStats?.[batting]?.played)s.teamStats[batting].played[s.inning-1]=true;const fielding=batting==='player'?'opponent':'player';if(fielding==='opponent'){const src=s.v218PreferredOpponentPitcher||v218SourceId(s.opponentCards[0]);s.opponentPitcher=s.opponentCards.find(c=>v218SourceId(c)===src)||s.opponentCards[0]}else{const src=s.v218PreferredPlayerPitcher||v218SourceId(s.playerCards[0]);s.playerPitcher=s.playerCards.find(c=>v218SourceId(c)===src)||s.playerCards[0]}s.lastPlay=`${s.inning}局${v218HalfText(s.half)}｜測試模式`;v127RenderBattle()};
+const V218_ORIG_TIMER=v128StartActionTimer;v128StartActionTimer=function(){if(V127_BATTLE?.mode==='sandbox'&&V127_BATTLE?.v218Timer===false)return;return V218_ORIG_TIMER.apply(this,arguments)};
+const V218_ORIG_ACTION_HTML=v127ActionHtml;v127ActionHtml=function(){let h=V218_ORIG_ACTION_HTML.apply(this,arguments);if(V127_BATTLE?.mode==='sandbox'&&V127_BATTLE?.v218Timer===false)h=h.replace(/<span id="v128ActionTimer"[^>]*>.*?<\/span>/,'<span id="v128ActionTimer" class="v128ActionTimer">自由操作</span>');return h};
+const V218_ORIG_PITCH_STATE=v150PitchChangeState;v150PitchChangeState=function(s=V127_BATTLE){if(s?.mode!=='sandbox')return V218_ORIG_PITCH_STATE(s);if(v127BattingTeam(s)==='player'||!s.playerPitcher)return{available:[],cycleReset:false,roster:[]};const roster=v207PlayerRoster12(s),currentId=String(s.playerPitcher?.id||''),available=roster.filter(x=>x.id!==currentId);return{available,cycleReset:false,roster}};
+const V218_ORIG_RESOLVE=v127ResolvePA;v127ResolvePA=function(batter,pitcher,fieldAvg,batStrategy,pitchStrategy,s){if(s?.mode==='sandbox'&&s.v218ForcedResult){const result=String(s.v218ForcedResult);s.v218ForcedResult='';return{result,p:{},flyDepth:result==='SF'?'deep':'',tagAttempt:result==='SF'||result==='SFOUT',tagSafe:result==='SF',dpRoute:result==='DP'?'second-first':''}}return V218_ORIG_RESOLVE.apply(this,arguments)};
+
+// 比賽畫面加入測試控制台按鈕。
+const V218_ORIG_RENDER=v127RenderBattle;v127RenderBattle=function(){const r=V218_ORIG_RENDER.apply(this,arguments),s=V127_BATTLE;if(s?.mode==='sandbox'){const root=v127BattleRoot(),actions=root.querySelector('.v136BattleTopActions');if(actions&&!root.querySelector('#v218TestConsole')){const b=document.createElement('button');b.id='v218TestConsole';b.className='v218TestConsoleBtn';b.textContent='🧪 測試控制台';b.onclick=()=>v218OpenSandbox(true);actions.prepend(b);const badge=document.createElement('span');badge.className='v218TestBadge';badge.textContent='TEST';actions.prepend(badge)}}return r};
+
+// 打電腦入口：保留 7 難度，再加完全測試模式。
+showV126CpuDifficulty=function(){gameModeButtonSfx();$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal cpuDifficultyModal"><div class="modalHead"><div><h2 style="margin:0">🤖 打電腦</h2><div class="sub">一般 CPU 對戰或完全測試模式</div></div><button class="small" id="v126CpuDiffClose">✕</button></div><div class="v218SandboxHero"><b>🧪 完全測試模式</b><small>開賽比分、局數、出局數、壘況、球數、先後攻、排組、能力倍率都由玩家控制。1 名角色即可開賽，投手不限局數，遊戲中也能隨時重新設定。</small><button id="v218OpenSandbox" class="v218SandboxBtn">進入完全測試模式</button></div><div class="cpuDifficultyGrid">${Object.entries(V126_CPU_LEVELS).map(([k,v])=>`<button class="cpuDifficultyBtn" data-cpu-difficulty="${k}"><span class="cpuDifficultyNo">${k}</span><span class="cpuDifficultyInfo"><b>${esc(v.name)}</b><small>${esc(v.trend)}｜三局制</small></span><span class="cpuDifficultyReward"><b>💎 ${v.reward}</b><small>每次勝利</small></span></button>`).join('')}</div></div></div>`;$('v126CpuDiffClose').onclick=()=>$('modal').innerHTML='';$('v218OpenSandbox').onclick=()=>{V218_SANDBOX_DRAFT=v218DefaultSandboxDraft();v218OpenSandbox(false)};document.querySelectorAll('[data-cpu-difficulty]').forEach(b=>b.onclick=()=>startV126PreMatch('cpu',Number(b.dataset.cpuDifficulty)||1))};
+
+// CPU / 關卡使用同款退出視窗；測試模式自由退出。
+function v218ExitDialog(s){const mode=s.mode,note=mode==='sandbox'?'完全測試模式不計勝敗、RP、獎勵或任何正式紀錄。':mode==='stage'?'退出本關後，本次挑戰不計通關、星星與獎勵。':mode==='ranked'?'退出排位賽會直接判敗並進行 RP 結算。':'退出電腦對戰不會獲得本場勝利獎勵。';$('modal').innerHTML=`<div class="modalBackdrop"><div class="modal v218ExitDialog"><div class="modalHead"><h2>退出比賽</h2><button class="small" id="v218ExitX">✕</button></div><div class="v218ExitHero">${esc(note)}</div><div class="v218ExitActions"><button id="v218ExitCancel">繼續比賽</button><button id="v218ExitConfirm" class="v218ExitConfirm">確定退出</button></div></div></div>`;$('v218ExitX').onclick=$('v218ExitCancel').onclick=()=>$('modal').innerHTML='';$('v218ExitConfirm').onclick=()=>v218ConfirmExit(s)}
+async function v218ConfirmExit(s){const btn=$('v218ExitConfirm');if(btn){btn.disabled=true;btn.textContent='退出中…'}try{v127ClearTimers();if(s.mode==='sandbox'){$('modal').innerHTML='';v127ReturnToGameModes();return}if(s.mode==='stage'){const ctx=await v205AbandonStageAttempt(s);$('modal').innerHTML='';v205ReturnToStageChapter(ctx);return}const ranked=s.mode==='ranked';const d=await v127AbandonCurrentMatch();$('modal').innerHTML='';v127ReturnToGameModes();if(ranked){showV135RankedHub();v218Toast(`排位退出${Number(d?.attacker_delta)?`｜${Number(d.attacker_delta)} RP`:''}`)}}catch(e){if(btn){btn.disabled=false;btn.textContent='確定退出'}v218Toast('退出失敗：'+(e.message||e))}}
+v136ExitCurrentBattle=function(){const s=V127_BATTLE;if(!s||s.finished||s.mode==='room')return;v218ExitDialog(s)};
+
+// 重新綁定規則按鈕；openGamePrep 之後仍會使用新版函式。
+try{const rules=$('gameModeRules'),cpu=$('gameModeCpu');if(rules)rules.onclick=()=>showV206GameRules('rules');if(cpu)cpu.onclick=showV126CpuDifficulty}catch(_e){}
+})();
+</script>
+</body></html>
