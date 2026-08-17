@@ -3847,6 +3847,21 @@ input,textarea,[contenteditable="true"]{
 </style>
 
 
+
+<style id="v216-broadcast-ui">
+/* ===== v2.16：主播／賽評播報 + 打席語音節奏 ===== */
+.v216BroadcastToggle{min-width:78px!important;border-color:#7ed7ff3d!important;background:#10283bd9!important;color:#cdeeff!important}
+.v216BroadcastToggle.on{background:linear-gradient(180deg,#1f566f,#123145)!important;border-color:#7edfff7a!important;color:#ecfbff!important;box-shadow:0 0 14px #54cfff22}
+.v216BroadcastToggle.on::before{content:"●";color:#6ff0a8;margin-right:4px;font-size:7px;vertical-align:1px}
+.v216BroadcastCaption{position:absolute;left:7px;right:7px;top:42px;z-index:15;pointer-events:none;display:flex;align-items:flex-start;gap:7px;padding:7px 9px;border-radius:10px;background:linear-gradient(90deg,#07111eea,#12273dea);border:1px solid #8bcfff3c;box-shadow:0 7px 24px #0009;animation:v216CaptionIn .18s ease both}
+.v216BroadcastCaption.analyst{background:linear-gradient(90deg,#17131fea,#30233dea);border-color:#d7b2ff3d}
+.v216BroadcastMic{flex:0 0 auto;display:grid;place-items:center;width:24px;height:24px;border-radius:50%;background:#ffffff12;font-size:12px}
+.v216BroadcastCopy{min-width:0}.v216BroadcastCopy b{display:block;font-size:7px;letter-spacing:.08em;color:#8ddcff}.v216BroadcastCaption.analyst .v216BroadcastCopy b{color:#dfbdff}.v216BroadcastCopy span{display:block;margin-top:2px;font-size:7.3px;line-height:1.45;color:#fff;white-space:normal}
+.v216BroadcastWaiting{color:#8edfff!important}.v216BroadcastWaiting b{color:#a9eaff!important}
+@keyframes v216CaptionIn{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:440px){.v216BroadcastToggle{min-width:66px!important;padding-left:7px!important;padding-right:7px!important;font-size:7px!important}.v216BroadcastCaption{top:38px}.v216BroadcastCopy span{font-size:6.8px}}
+</style>
+
 <style id="v215-ui">
 /* ===== v2.15：玩家資訊／升級確認／關卡榜／Super Admin ===== */
 .v215ClickablePlayer{cursor:pointer;color:#ffe08a;text-decoration:underline;text-decoration-color:#ffe08a55;text-underline-offset:2px}
@@ -3868,7 +3883,7 @@ input,textarea,[contenteditable="true"]{
 
 <style id="v215-ui-hotfix-2">
 /* v2.15 hotfix：玩家資訊層級 + Super Admin 視覺化 */
-.v215Overlay{position:absolute!important;inset:0!important;z-index:65000!important;padding:10px!important;background:#02050be8!important;backdrop-filter:blur(10px)}
+.v215Overlay{position:absolute!important;inset:0!important;z-index:99999!important;padding:10px!important;background:#02050be8!important;backdrop-filter:blur(10px);pointer-events:auto!important}
 .v215Dialog{animation:v215PopIn .16s ease-out both}
 @keyframes v215PopIn{from{opacity:0;transform:translateY(8px) scale(.985)}to{opacity:1;transform:none}}
 .v215PlayerNameBtn{appearance:none!important;-webkit-appearance:none!important;display:inline!important;width:auto!important;min-width:0!important;padding:0!important;margin:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:#ffe18a!important;font:inherit!important;font-weight:1000!important;line-height:inherit!important;text-align:left!important;text-decoration:underline!important;text-decoration-color:#ffe18a55!important;text-underline-offset:3px!important;box-shadow:none!important;cursor:pointer!important}
@@ -3906,7 +3921,7 @@ input,textarea,[contenteditable="true"]{
     <button id="mailboxBtn" class="topSettingsBtn v207MailboxBtn" type="button" aria-label="信箱" title="信箱">✉️<i id="mailboxDot" class="v207MailboxDot" hidden></i></button>
     <button id="settingsBtn" class="topSettingsBtn" type="button" aria-label="設定" title="設定">⚙️</button>
   </div>
-</div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span><em id="lobbyReplyDot" class="lobbyReplyDot" hidden></em></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion">v2.15</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
+</div><div id="playerMiniName" class="playerMiniName"></div><div class="topGemLine">💎 <span id="gems">1000</span></div></div></div><section id="drawMenu" class="homePoolCarousel lobbyPoolCarousel v143DrawBanner" aria-label="點擊進入抽獎系統"><div class="homePoolRail" id="homePoolRail"></div><div class="homePoolDots" id="homePoolDots"></div><div class="v143DrawCue">TAP TO DRAW <b>›</b></div></section><div id="notice" class="notice lobbyNotice"></div><div class="v143LobbyCore"><aside class="v143SideRail v143SideLeft"><button id="collection" class="v143QuickBtn"><span class="v143QuickIcon">📖</span><b>圖鑑</b><small>COLLECTION</small></button><button id="giftBtn" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>贈送</b><small>GIFT</small></button></aside><section id="lobbyHero" class="v143Hero" aria-label="動態主視覺"><div class="v143HeroLayer v143HeroBg" data-depth="0.12"></div><div class="v143HeroLayer v143HeroLights" data-depth="0.20"><i></i><i></i><i></i></div><div class="v143HeroLayer v143HeroHaze" data-depth="0.28"></div><div class="v143HeroLayer v143HeroSubject" data-depth="0.42"><img id="v143HeroImage" alt=""><div class="v143HeroFallback">⚾</div></div><div class="v143HeroLayer v143HeroBall v143HeroBallOne" data-depth="0.60">⚾</div><div class="v143HeroLayer v143HeroBall v143HeroBallTwo" data-depth="0.78">⚾</div><div class="v143HeroLayer v143HeroParticles" data-depth="0.90"></div><div class="v143HeroShade"></div><div class="v143HeroCopy"><small id="v143HeroEyebrow">BALLPARK NIGHT</small><b id="v143HeroName">棒球抽卡對戰</b><span id="v143HeroMeta">依目前卡池名稱自動切換主視覺風格</span></div></section><aside class="v143SideRail v143SideRight"><button id="daily" class="v143QuickBtn"><span class="v143QuickIcon">🎁</span><b>登入</b><small id="v143DailyState">DAILY</small></button><button id="dailyWheel" class="v143QuickBtn"><span class="v143QuickIcon">🎡</span><b>轉盤</b><small id="v143WheelState">FREE</small><em id="v143WheelDot" class="v143QuickDot"></em></button></aside></div><div class="battleDock"><button id="friendsBtn" class="dockIconBtn friendLobbyBtn" type="button" aria-label="好友"><span>👥</span><b id="dmUnreadBadge" class="dmUnreadBadge" hidden>0</b><b id="friendRequestBadge" class="friendRequestBadge" hidden>0</b></button><button id="battleMainBtn" class="battleButton" type="button" data-no-ui-sfx="1"><span class="battleBall">⚾</span><span>遊戲</span><small>GAME</small></button><button id="lobbyChat" class="dockIconBtn" type="button" aria-label="聊天室"><span>💬</span><em id="lobbyReplyDot" class="lobbyReplyDot" hidden></em></button></div><div id="results" class="results"></div><div class="appVersion" id="appVersion" data-build="v216-broadcast-1">v2.16</div></div></div><div id="gamePrepScreen" class="gamePrepScreen" hidden>
  <div class="gamePrepWood">
   <button id="gamePrepBack" class="gamePrepBack" type="button">← 返回大廳</button>
   <div class="gamePrepContent">
@@ -4602,7 +4617,7 @@ function v124PlayersTabHtml(){
  <div class="starterGrid">${Array.from({length:9},(_,i)=>v124PlayerSlotHtml('starter',i,d.starters[i]||'')).join('')}</div>
  <div class="lineupSectionHead"><b>🪑 替補</b><small>最多 3 張</small></div>
  <div class="benchGrid">${Array.from({length:3},(_,i)=>v124PlayerSlotHtml('bench',i,d.bench[i]||'')).join('')}</div>
- <div class="lineupRuleBox"><b>投手規則：</b>每個守備半局開始前，從目前場上 9 人指定投手；替補上場後也可投球。打席中可換投，已登板球員同一輪不可重複；排位賽若場上球員全數投過才重新全開。每打席的換投、替補與策略選擇共用 15 秒。</div>`
+ <div class="lineupRuleBox"><b>投手規則：</b>每個守備半局開始前，從目前場上 9 人指定投手；替補上場後也可投球。打席中可換投，已登板球員同一輪不可重複；排位賽若場上球員全數投過才重新全開。每打席的換投、替補與策略選擇共用 15 秒；若開啟主播／賽評播報，會等播報結束後才開始這 15 秒。</div>`
 }
 function v124CheerTabHtml(){
  const d=v124CurrentDraft(),usable=CHEER_CARDS.filter(c=>owned.includes(c.id)&&c.isActive!==false).length;
@@ -5001,6 +5016,67 @@ async function showV125MatchReady(setup){
   $('v127StartErrorClose').onclick=$('v136StartBack').onclick=()=>{$('modal').innerHTML='';v127ReturnToGameModes()};$('v136StartRetry').onclick=()=>showV125MatchReady(setup)
  }
 }
+
+/* ===================== v2.16：主播／賽評語音播報 ===================== */
+let V216_SPEECH_TOKEN=0;
+const V216_BROADCAST_KEY='cp_v216_broadcast_enabled';
+function v216BroadcastEnabled(){try{return localStorage.getItem(V216_BROADCAST_KEY)==='1'}catch(_e){return false}}
+function v216SaveBroadcastEnabled(on){try{localStorage.setItem(V216_BROADCAST_KEY,on?'1':'0')}catch(_e){}}
+function v216CancelSpeech(){V216_SPEECH_TOKEN++;try{window.speechSynthesis?.cancel?.()}catch(_e){}}
+function v216PaKey(s=V127_BATTLE){if(!s)return'';return`${Number(s.inning)||1}:${String(s.half||'top')}:${Number(s.playerOrder)||0}:${Number(s.opponentOrder)||0}`}
+function v216BaseSituation(s){const b=Array.isArray(s?.bases)?s.bases:[];const on=[!!b[0],!!b[1],!!b[2]];if(on.every(Boolean))return'滿壘';if(on[1]&&on[2])return'二、三壘有人';if(on[0]&&on[2])return'一、三壘有人';if(on[0]&&on[1])return'一、二壘有人';if(on[2])return'三壘有人';if(on[1])return'二壘有人';if(on[0])return'一壘有人';return'壘上無人'}
+function v216OutWords(n){n=Math.max(0,Math.min(2,Number(n)||0));return n===0?'無人出局':n===1?'一人出局':'兩人出局'}
+function v216VoiceFor(role='anchor',lang='zh-TW'){
+ try{
+  const voices=window.speechSynthesis?.getVoices?.()||[],want=String(lang||'zh-TW').toLowerCase(),root=want.split('-')[0];
+  let pool=voices.filter(v=>String(v.lang||'').toLowerCase()===want);if(!pool.length)pool=voices.filter(v=>String(v.lang||'').toLowerCase().startsWith(root));if(!pool.length)pool=voices;
+  if(!pool.length)return null;return role==='analyst'?(pool[1]||pool[0]):pool[0]
+ }catch(_e){return null}
+}
+function v216SetCaption(s,role,text){if(!s)return;s.v216BroadcastCaption=text?{role,text}:null;if(V127_BATTLE===s&&!s.finished)v127RenderBattle()}
+function v216SpeakPart(s,text,role='anchor',lang='zh-TW',token=V216_SPEECH_TOKEN){
+ return new Promise(resolve=>{
+  if(!text||token!==V216_SPEECH_TOKEN){resolve(false);return}
+  const synth=window.speechSynthesis;if(!synth||typeof window.SpeechSynthesisUtterance!=='function'){setTimeout(()=>resolve(false),240);return}
+  try{
+   v216SetCaption(s,role,text);
+   const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.voice=v216VoiceFor(role,lang);u.volume=1;u.rate=role==='analyst'?.98:1.08;u.pitch=role==='analyst'?.88:1.02;
+   let done=false;const finish=ok=>{if(done)return;done=true;resolve(ok)};u.onend=()=>finish(true);u.onerror=()=>finish(false);synth.speak(u);setTimeout(()=>finish(false),Math.max(4500,Math.min(12500,900+String(text).length*245)))
+  }catch(_e){resolve(false)}
+ })
+}
+function v216BuildPaLines(s){
+ const batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),batting=v127BattingTeam(s),order=((batting==='player'?Number(s.playerOrder):Number(s.opponentOrder))||0)%9+1;
+ const half=s.half==='top'?'上半':'下半',base=v216BaseSituation(s),outs=v216OutWords(s.outs),score=`${s.playerName} ${Number(s.playerScore)||0} 比 ${Number(s.opponentScore)||0} ${s.opponentName}`;
+ const anchor=`${Number(s.inning)||1}局${half}，${outs}，${base}。現在上場打擊，第${order}棒，${batter?.name||'打者'}。投手是，${pitcher?.name||'投手'}。`;
+ const analyst=[];const diff=Math.abs((Number(s.playerScore)||0)-(Number(s.opponentScore)||0));
+ if(v207IsLegendCloser(pitcher))analyst.push('這名終結者的壓制力非常強，打者要把握少數能攻擊的球。');
+ else if(String(batter?.id||'')==='sp_adversity_commander')analyst.push('絕境指揮官站上打擊區，這種比分壓力下，他的價值會被放大。');
+ else if(s.bases?.[1]||s.bases?.[2])analyst.push('現在是得點圈有人，這個打席只要一支安打，就可能直接改變比分。');
+ else if(Number(s.outs)===2)analyst.push('兩人出局之後，這個半局能不能延續，就看這一個打席。');
+ else if(Number(s.inning)>=3&&diff<=1)analyst.push(`目前比分很接近，${score}，這個打席的選擇會很關鍵。`);
+ else if(Math.random()<.32)analyst.push('這組投打對決很有意思，第一個戰術選擇會直接影響這個打席。');
+ return[{role:'anchor',text:anchor},...analyst.slice(0,1).map(text=>({role:'analyst',text}))]
+}
+async function v216RunPaBroadcast(s,key){
+ if(!s||s!==V127_BATTLE||s.finished)return;const token=++V216_SPEECH_TOKEN;try{window.speechSynthesis?.cancel?.()}catch(_e){}
+ const lines=v216BuildPaLines(s);for(const line of lines){if(token!==V216_SPEECH_TOKEN||s!==V127_BATTLE||s.finished||!v216BroadcastEnabled())break;await v216SpeakPart(s,line.text,line.role,'zh-TW',token);await v127Wait(90)}
+ if(s!==V127_BATTLE||s.finished)return;s.v216AnnouncedKey=key;s.v216Broadcasting=false;s.v216BroadcastCaption=null;v127RenderBattle()
+}
+function v216BroadcastCaptionHtml(s=V127_BATTLE){const c=s?.v216BroadcastCaption;if(!c?.text)return'';return`<div class="v216BroadcastCaption ${c.role==='analyst'?'analyst':''}"><span class="v216BroadcastMic">${c.role==='analyst'?'🎧':'🎙️'}</span><span class="v216BroadcastCopy"><b>${c.role==='analyst'?'賽評':'主播'}</b><span>${esc(c.text)}</span></span></div>`}
+function v216ToggleBroadcast(s=V127_BATTLE){
+ const on=!v216BroadcastEnabled();v216SaveBroadcastEnabled(on);v216CancelSpeech();v128ClearActionTimer();if(s){s.v216Broadcasting=false;s.v216BroadcastCaption=null;if(on&&!s.busy)s.v216AnnouncedKey='';else if(!on)s.v216AnnouncedKey=v216PaKey(s)}if(s&&!s.finished)v127RenderBattle();v215Toast?.(on?'主播／賽評播報已開啟':'主播／賽評播報已關閉')
+}
+function v216OutcomeCall(result,batter){
+ if(!v216BroadcastEnabled())return;let text='',lang='zh-TW',role='anchor';
+ if(result==='K'){text='STRIKE OUT!';lang='en-US'}
+ else if(result==='BB'){text='BALL FOUR!';lang='en-US'}
+ else if(result==='HR'){text=`HOME RUN! ${batter?.name||''}，這一球出去了！`;lang='zh-TW'}
+ else if(['1B','2B','3B'].includes(result))text=`${batter?.name||'打者'}，擊出安打！`;
+ else if(['GO','FO','LO','DP','SFOUT'].includes(result)){text='OUT!';lang='en-US'}
+ if(!text)return;try{const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.voice=v216VoiceFor(role,lang);u.rate=lang.startsWith('en')?1.02:1.08;u.pitch=.98;u.volume=1;window.speechSynthesis?.speak?.(u)}catch(_e){}
+}
+
 function v127BattleRoot(){
  let root=$('v127BattleScreen');if(root)return root;
  root=document.createElement('div');root.id='v127BattleScreen';root.className='v127BattleScreen';root.hidden=true;
@@ -5015,7 +5091,7 @@ async function v127AbandonCurrentMatch(){
  try{return await matchApi('abandon_match',{matchId:id})}catch(e){console.error('abandon_match failed',e);throw e}
 }
 function v127ReturnToGameModes(){
- v127ClearTimers();BATTLE_ACTIVE=false;V127_BATTLE=null;V127_BATTLE_BUSY=false;V125_MATCH_SETUP=null;
+ v216CancelSpeech();v127ClearTimers();BATTLE_ACTIVE=false;V127_BATTLE=null;V127_BATTLE_BUSY=false;V125_MATCH_SETUP=null;
  const root=$('v127BattleScreen');if(root){root.classList.remove('v210AdversityBattle');root.hidden=true;root.innerHTML=''}
  syncStadiumAudioState()
 }
@@ -5085,6 +5161,7 @@ function beginV127Battle(setup){
   roomSettings:setup.room_settings||null,pendingRoomPitchers:{},pitcherSelecting:false,pitcherSelectionKey:'',
   v210Commander:{uses:0,active:false},v210OpponentCommander:{uses:0,active:false},
   cpuDifficulty:Number(setup.opponent?.difficulty_level)||Math.max(4,Math.min(7,Math.round((Number(setup.opponent?.rating)||1000)/300))),
+  v216Broadcasting:false,v216AnnouncedKey:'',v216BroadcastCaption:null,
  };
  if(setup.mode==='stage'&&setup.stage){v201ApplyStageScenario(V127_BATTLE,setup.stage)}
  playV127BattleSfx('playball');v127StartHalf()
@@ -5216,7 +5293,7 @@ function v150CancelTacticalOverlays(){
  const sub=$('v130SubOverlay'),pitch=$('v150PitchChangeOverlay');if(sub)sub.remove();if(pitch)pitch.remove()
 }
 function v128StartActionTimer(){
- const s=V127_BATTLE;if(!s||s.busy||s.finished||V128_ACTION_INTERVAL)return;
+ const s=V127_BATTLE;if(!s||s.busy||s.finished||s.v216Broadcasting||V128_ACTION_INTERVAL)return;
  if(!V128_ACTION_DEADLINE)V128_ACTION_DEADLINE=Date.now()+15000;
  const tick=()=>{
   const sec=v128ChoiceSeconds();
@@ -5227,8 +5304,8 @@ function v128StartActionTimer(){
  tick();V128_ACTION_INTERVAL=setInterval(tick,120)
 }
 function v127ActionHtml(){
- const s=V127_BATTLE,playerBat=v127BattingTeam(s)==='player',disabled=s.busy?'disabled':'',remain=v128ChoiceSeconds(),sel=String(s.selectedStrategy||''),legendPitcher=!playerBat&&v207IsLegendCloser(v127CurrentPitcher(s));
- const timer=`<span id="v128ActionTimer" class="v128ActionTimer ${remain<=2?'urgent':''}">選擇 <b id="v128ActionSeconds">${remain}</b> 秒</span>`;
+ const s=V127_BATTLE,playerBat=v127BattingTeam(s)==='player',locked=!!s.v216Broadcasting,disabled=(s.busy||locked)?'disabled':'',remain=v128ChoiceSeconds(),sel=String(s.selectedStrategy||''),legendPitcher=!playerBat&&v207IsLegendCloser(v127CurrentPitcher(s));
+ const timer=locked?`<span id="v128ActionTimer" class="v128ActionTimer v216BroadcastWaiting">🎙 <b>播報中</b></span>`:`<span id="v128ActionTimer" class="v128ActionTimer ${remain<=2?'urgent':''}">選擇 <b id="v128ActionSeconds">${remain}</b> 秒</span>`;
  if(playerBat)return`<div class="v127ActionHead"><b>打擊策略</b>${timer}</div><div class="v127ActionGrid"><button class="v127ActionBtn ${sel==='contact'?'selected':''}" data-v127-action="contact" ${disabled}><b>穩健打擊</b><small>較少三振・長打下降</small></button><button class="v127ActionBtn power ${sel==='power'?'selected':''}" data-v127-action="power" ${disabled}><b>強攻</b><small>長打提高・三振增加</small></button><button class="v127ActionBtn patience ${sel==='patience'?'selected':''}" data-v127-action="patience" ${disabled}><b>選球</b><small>保送提高・攻擊性下降</small></button></div>`;
  if(legendPitcher)return`<div class="v127ActionHead"><b>投球策略｜傳奇終結者</b>${timer}</div><div class="v127ActionGrid" style="grid-template-columns:repeat(2,1fr)"><button class="v127ActionBtn ${sel==='challenge'?'selected':''}" data-v127-action="challenge" ${disabled}><b>正面對決</b><small>標準攻守判定</small></button><button class="v127ActionBtn power ${sel==='breaking'?'selected':''}" data-v127-action="breaking" ${disabled}><b>變化球引誘</b><small>三振↑・被打中風險↑</small></button></div>`;
  return`<div class="v127ActionHead"><b>投球策略</b>${timer}</div><div class="v127ActionGrid"><button class="v127ActionBtn ${sel==='challenge'?'selected':''}" data-v127-action="challenge" ${disabled}><b>正面對決</b><small>標準攻守判定</small></button><button class="v127ActionBtn power ${sel==='breaking'?'selected':''}" data-v127-action="breaking" ${disabled}><b>變化球引誘</b><small>三振↑・被打中風險↑</small></button><button class="v127ActionBtn nibble ${sel==='nibble'?'selected':''}" data-v127-action="nibble" ${disabled}><b>閃躲投球</b><small>安打↓・四壞↑</small></button></div>`
@@ -5532,6 +5609,7 @@ function v209SpEffectHtml(s=V127_BATTLE){
 function v127RenderBattle(){
  const s=V127_BATTLE,root=v127BattleRoot();if(!s||s.finished)return;
  const batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),playerBat=v127BattingTeam(s)==='player';
+ const v216Key=v216PaKey(s),v216NeedsBroadcast=v216BroadcastEnabled()&&!s.busy&&!s.pitcherSelecting&&!s.v216Broadcasting&&s.v216AnnouncedKey!==v216Key;if(v216NeedsBroadcast){s.v216Broadcasting=true;s.v216BroadcastCaption={role:'anchor',text:'準備播報本打席…'}}
  if(s.mode==='room'&&!pitcher){
   if(playerBat){root.hidden=false;root.innerHTML=`<div class="v127PitcherOverlay"><div class="v127PitcherHead"><div><h3>🧢 等待對手選擇投手</h3><small>對手有 30 秒選擇本局投手</small></div></div><div class="v135RoomWaiting">⚾<br><span>等待對手中…</span></div></div>`;return}
   if(s.pitcherSelecting)return;
@@ -5539,15 +5617,15 @@ function v127RenderBattle(){
  }
  const next=playerBat?s.playerCards[(s.playerOrder+1)%9]:s.opponentCards[(s.opponentOrder+1)%9],readyClass=!s.busy&&s.animations?'v128DuelReady':'';
  const firstTeam=v130SideTeam(s,'first'),secondTeam=v130SideTeam(s,'second'),battingTeam=v127BattingTeam(s);
- const subAvailable=playerBat&&(s.playerBench||[]).some(c=>!s.playerBenchUsed.includes(c.id)),pitchChangeAvailable=v150CanChangePitcher(s);
- root.hidden=false;root.innerHTML=`<div class="v127BattleTop"><div class="v127ScoreHead"><div class="v127InningBadge">${s.inning}局${s.half==='top'?'上':'下'}</div><div class="v127ScoreRows"><div class="v127ScoreRow"><span class="${battingTeam===firstTeam?'batting':''}">先攻｜${esc(v130TeamName(s,firstTeam))}</span><b>${v130TeamScore(s,firstTeam)}</b></div><div class="v127ScoreRow"><span class="${battingTeam===secondTeam?'batting':''}">後攻｜${esc(v130TeamName(s,secondTeam))}</span><b>${v130TeamScore(s,secondTeam)}</b></div></div><div class="v136BattleTopActions"><button id="v127AnimToggle" class="v127BattleAnimToggle">動畫 ${s.animations?'ON':'OFF'}</button>${s.mode!=='room'?'<button id="v136BattleExit" class="v136BattleExit">退出</button>':''}</div></div><div class="v127CountStrip"><span class="v127CountGroup">B ${v127Dots(s.balls,3,'ball')}</span><span class="v127CountGroup">S ${v127Dots(s.strikes,2,'strike')}</span><span class="v127CountGroup">O ${v127Dots(s.outs,2,'out')}</span>${v127DiamondHtml(s.bases,s)}</div></div><div class="v127BattleBody"><div class="v149BattleMainGrid">${v149CheerPanelHtml(s)}<div class="v127DuelStage ${readyClass}">${v146BuffHtml(s)}<div class="v127DuelLabels"><span class="v127RoleTag">${playerBat?'對方投手':'我方投手'}</span><span class="v127RoleTag">${playerBat?'我方打者':'對方打者'}</span></div>${v127CardHtml(pitcher,'pitcher')}${v209SpEffectHtml(s)}<div class="v127PitchLane"></div><div id="v127Ball" class="v127Ball"></div><div id="v128SwingArc" class="v128SwingArc"></div><div id="v128ImpactFlash" class="v128ImpactFlash"></div>${v127CardHtml(batter,'batter')}${v203PlateProbabilityHtml(s)}${!s.busy&&s.animations?'<div class="v128VsFlash">VS</div>':''}<div class="v127LastPlay">${esc(s.lastPlay||'')}</div><div class="v127NextBatter">下一棒：${esc(next?.name||'')}</div>${s.lastResult?`<div class="v127ResultBanner show ${v127ResultClass(s.lastResult.result)}"><b>${esc(v127ResultText(s.lastResult.result))}</b><small>${esc(s.lastResult.detail||'')}</small></div>`:''}</div></div><div class="v127ActionBox">${v127ActionHtml()}<div class="v127BattleStatus">${s.busy?(s.mode==='room'?'已選擇｜等待對手…':'對決進行中…'):(playerBat?'本打席共用 15 秒｜逾時自動穩健打擊':'本打席共用 15 秒｜逾時自動正面對決')}</div><div class="v130BattleUtilityRow"><span>${s.playerBenchUsed.length}/${s.playerBench.length} 名替補已使用</span><div class="v150UtilityButtons"><button id="v150PitchChangeBtn" class="v150PitchChangeBtn" ${s.busy||!pitchChangeAvailable?'disabled':''}>🧢 換投</button><button id="v130SubBtn" class="v130SubBtn" ${s.busy||!subAvailable?'disabled':''}>🔄 替補／換人</button></div></div></div></div>`;
- $('v127AnimToggle').onclick=()=>{s.animations=!s.animations;v127RenderBattle()};if($('v136BattleExit'))$('v136BattleExit').onclick=v136ExitCurrentBattle;
+ const subAvailable=!s.v216Broadcasting&&playerBat&&(s.playerBench||[]).some(c=>!s.playerBenchUsed.includes(c.id)),pitchChangeAvailable=!s.v216Broadcasting&&v150CanChangePitcher(s);
+ root.hidden=false;root.innerHTML=`<div class="v127BattleTop"><div class="v127ScoreHead"><div class="v127InningBadge">${s.inning}局${s.half==='top'?'上':'下'}</div><div class="v127ScoreRows"><div class="v127ScoreRow"><span class="${battingTeam===firstTeam?'batting':''}">先攻｜${esc(v130TeamName(s,firstTeam))}</span><b>${v130TeamScore(s,firstTeam)}</b></div><div class="v127ScoreRow"><span class="${battingTeam===secondTeam?'batting':''}">後攻｜${esc(v130TeamName(s,secondTeam))}</span><b>${v130TeamScore(s,secondTeam)}</b></div></div><div class="v136BattleTopActions"><button id="v216BroadcastToggle" class="v127BattleAnimToggle v216BroadcastToggle ${v216BroadcastEnabled()?'on':''}">🎙 播報 ${v216BroadcastEnabled()?'ON':'OFF'}</button><button id="v127AnimToggle" class="v127BattleAnimToggle">動畫 ${s.animations?'ON':'OFF'}</button>${s.mode!=='room'?'<button id="v136BattleExit" class="v136BattleExit">退出</button>':''}</div></div><div class="v127CountStrip"><span class="v127CountGroup">B ${v127Dots(s.balls,3,'ball')}</span><span class="v127CountGroup">S ${v127Dots(s.strikes,2,'strike')}</span><span class="v127CountGroup">O ${v127Dots(s.outs,2,'out')}</span>${v127DiamondHtml(s.bases,s)}</div></div><div class="v127BattleBody"><div class="v149BattleMainGrid">${v149CheerPanelHtml(s)}<div class="v127DuelStage ${readyClass}">${v146BuffHtml(s)}${v216BroadcastCaptionHtml(s)}<div class="v127DuelLabels"><span class="v127RoleTag">${playerBat?'對方投手':'我方投手'}</span><span class="v127RoleTag">${playerBat?'我方打者':'對方打者'}</span></div>${v127CardHtml(pitcher,'pitcher')}${v209SpEffectHtml(s)}<div class="v127PitchLane"></div><div id="v127Ball" class="v127Ball"></div><div id="v128SwingArc" class="v128SwingArc"></div><div id="v128ImpactFlash" class="v128ImpactFlash"></div>${v127CardHtml(batter,'batter')}${v203PlateProbabilityHtml(s)}${!s.busy&&s.animations?'<div class="v128VsFlash">VS</div>':''}<div class="v127LastPlay">${esc(s.lastPlay||'')}</div><div class="v127NextBatter">下一棒：${esc(next?.name||'')}</div>${s.lastResult?`<div class="v127ResultBanner show ${v127ResultClass(s.lastResult.result)}"><b>${esc(v127ResultText(s.lastResult.result))}</b><small>${esc(s.lastResult.detail||'')}</small></div>`:''}</div></div><div class="v127ActionBox">${v127ActionHtml()}<div class="v127BattleStatus">${s.busy?(s.mode==='room'?'已選擇｜等待對手…':'對決進行中…'):(s.v216Broadcasting?'🎙 主播／賽評播報中｜播完才開始 15 秒倒數':(playerBat?'本打席共用 15 秒｜逾時自動穩健打擊':'本打席共用 15 秒｜逾時自動正面對決'))}</div><div class="v130BattleUtilityRow"><span>${s.playerBenchUsed.length}/${s.playerBench.length} 名替補已使用</span><div class="v150UtilityButtons"><button id="v150PitchChangeBtn" class="v150PitchChangeBtn" ${s.busy||!pitchChangeAvailable?'disabled':''}>🧢 換投</button><button id="v130SubBtn" class="v130SubBtn" ${s.busy||!subAvailable?'disabled':''}>🔄 替補／換人</button></div></div></div></div>`;
+ $('v216BroadcastToggle').onclick=()=>v216ToggleBroadcast(s);$('v127AnimToggle').onclick=()=>{s.animations=!s.animations;v127RenderBattle()};if($('v136BattleExit'))$('v136BattleExit').onclick=v136ExitCurrentBattle;
  document.querySelectorAll('[data-v127-action]').forEach(b=>b.onclick=()=>v127HandleAction(b.dataset.v127Action||'',false));
  document.querySelectorAll('[data-v146-cheer]').forEach(b=>b.onclick=()=>v146UsePlayerCheer(b.dataset.v146Cheer||''));
  if($('v210CommanderActivate'))$('v210CommanderActivate').onclick=v210ActivateCommander;
  if($('v130SubBtn'))$('v130SubBtn').onclick=()=>v130OpenSubstitute();
  if($('v150PitchChangeBtn'))$('v150PitchChangeBtn').onclick=()=>v150OpenPitchChange();
- if(!s.busy)setTimeout(v128StartActionTimer,0)
+ if(v216NeedsBroadcast)setTimeout(()=>v216RunPaBroadcast(s,v216Key),0);else if(!s.busy&&!s.v216Broadcasting)setTimeout(v128StartActionTimer,0)
 }
 
 
@@ -5576,7 +5654,7 @@ function v150PitchChangeState(s=V127_BATTLE){
  return{available,cycleReset,roster}
 }
 function v150CanChangePitcher(s=V127_BATTLE){
- if(!s||s.busy||s.finished||s.pitcherSelecting||s.subOpen||s.pitchChangeOpen||v127BattingTeam(s)==='player')return false;
+ if(!s||s.busy||s.finished||s.v216Broadcasting||s.pitcherSelecting||s.subOpen||s.pitchChangeOpen||v127BattingTeam(s)==='player')return false;
  return v150PitchChangeState(s).available.length>0
 }
 function v150ClosePitchChange(){
@@ -5604,7 +5682,7 @@ function v130CloseSubstitute(){
  const s=V127_BATTLE;if(!s)return;s.subOpen=false;const ov=$('v130SubOverlay');if(ov)ov.remove();if(!s.busy)v127RenderBattle()
 }
 function v130OpenSubstitute(){
- const s=V127_BATTLE;if(!s||s.busy||s.finished||v127BattingTeam(s)!=='player')return;const bench=(s.playerBench||[]).filter(Boolean);if(!bench.length)return;
+ const s=V127_BATTLE;if(!s||s.busy||s.finished||s.v216Broadcasting||v127BattingTeam(s)!=='player')return;const bench=(s.playerBench||[]).filter(Boolean);if(!bench.length)return;
  const used=new Set((s.playerBenchUsed||[]).map(String)),slot=v207NextPlayerBattingSlot(s),out=s.playerCards[slot];if(!out)return;s.subOpen=true;const root=v127BattleRoot(),old=$('v130SubOverlay');if(old)old.remove();const overlay=document.createElement('div');overlay.id='v130SubOverlay';overlay.className='v130SubOverlay';
  overlay.innerHTML=`<div class="v207QuickSubPanel"><div class="v130SubHead"><div><h3>🔄 本打席替補</h3><small>不用再選換下球員；點一張替補卡就直接接替目前打者。</small></div><div class="v150OverlayHeadTools"><span class="v150OverlayTimer">剩 <b id="v150SubSeconds">${v128ChoiceSeconds()}</b>s</span><button id="v130SubClose" class="small">✕</button></div></div><div class="v207QuickSubCurrent">目前打者｜第 ${slot+1} 棒 <b>${esc(out.name)}</b></div><div class="v207QuickSubBench">${bench.map((c,i)=>{const unavailable=used.has(String(c.id));return`<button class="v130SubCard ${unavailable?'disabled':''}" data-v130-quick-in="${esc(c.id)}" ${unavailable?'disabled':''}><img src="${esc(c.image||PLACE)}" onerror="this.src='${PLACE}'"><span><b>替補 ${i+1}｜${esc(c.name)}</b><small>${unavailable?'已使用':`攻 ${lineupAttackValue(c)}｜守 ${lineupDefenseValue(c)}｜點擊直接換上`}</small></span></button>`}).join('')}</div></div>`;
  root.appendChild(overlay);$('v130SubClose').onclick=v130CloseSubstitute;overlay.querySelectorAll('[data-v130-quick-in]').forEach(b=>b.onclick=()=>v130ApplySubstitute(slot,b.dataset.v130QuickIn||''))
@@ -5840,7 +5918,7 @@ async function v128PlayOutcomeAnimation(result,animations=true,meta={}){
  }
 }
 async function v127HandleAction(strategy,auto=false){
- const s=V127_BATTLE;if(!s||s.busy||s.finished||s.subOpen||s.pitchChangeOpen)return;if(s.mode==='room')return v135HandleRoomAction(strategy,auto);
+ const s=V127_BATTLE;if(!s||s.busy||s.finished||s.v216Broadcasting||s.subOpen||s.pitchChangeOpen)return;if(s.mode==='room')return v135HandleRoomAction(strategy,auto);
  v128ClearActionTimer();s.busy=true;s.selectedStrategy=String(strategy||'');V127_BATTLE_BUSY=true;
  const playerBat=v127BattingTeam(s)==='player';v135RecordTelemetry(playerBat?'bat':'pitch',String(strategy||''),s);
  const batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),batStrategy=playerBat?strategy:v127CpuBatStrategy(s),pitchStrategy=v208NormalizePitchStrategy(pitcher,playerBat?v127CpuPitchStrategy(s):strategy);
@@ -5854,6 +5932,7 @@ async function v127HandleAction(strategy,auto=false){
   if(['1B','2B','3B','HR'].includes(resolved.result)){const impact=$('v128ImpactFlash');if(impact){impact.classList.remove('show');void impact.offsetWidth;impact.classList.add('show')}}
  }
  if(['1B','2B','3B','HR'].includes(resolved.result))playV127BattleSfx(resolved.result==='HR'?'hr':'contact');else if(resolved.result==='K')playV127BattleSfx('strikeout');else if(resolved.result==='BB')playV127BattleSfx('walk');else if(resolved.result==='DP')playV127BattleSfx('doubleplay');else playV127BattleSfx('out');
+ v216OutcomeCall(resolved.result,batter);
  await v128PlayOutcomeAnimation(resolved.result,s.animations,resolved);
  const beforeBases=[...s.bases],runs=v127ApplyResult(s,batter,resolved.result,resolved);v144RecordPA(s,batter,pitcher,resolved.result,runs,batStrategy,pitchStrategy);const runAnim=v135QueueBaseAnimation(s,resolved.result,beforeBases,runs,resolved);v127RenderBattle();
  if(runs>0&&resolved.result!=='HR')playV127BattleSfx('run');await runAnim;if(runs>0)await v135PlayScoreEffect(runs,resolved.result)
@@ -6036,6 +6115,7 @@ async function v135ApplyRoomResolution(p){
  const s=V127_BATTLE;if(!s||s.mode!=='room'||!p||Number(p.seq)!==s.roomPASeq||s.roomApplyingSeq===s.roomPASeq)return;s.roomApplyingSeq=s.roomPASeq;s.busy=true;V127_BATTLE_BUSY=true;
  const batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),outsBefore=s.outs,result=String(p.result||'GO'),resultCount=v209ResultCount(result,p.balls,p.strikes);v146PreparePAContext(s,{noAuto:true});s.balls=resultCount.balls;s.strikes=resultCount.strikes;s.lastResult=null;v127RenderBattle();playV127BattleSfx('pitch');const ball=$('v127Ball');if(ball){if(p.pitchStrategy==='breaking')ball.classList.add('breaking');if(p.pitchStrategy==='nibble')ball.classList.add('nibble');requestAnimationFrame(()=>ball.classList.add('throw'))}await v127Wait(s.animations?520:50);
  if(!['BB','K'].includes(result)){const sw=$('v128SwingArc');if(sw){sw.classList.remove('show');void sw.offsetWidth;sw.classList.add('show')}}if(['1B','2B','3B','HR'].includes(result))playV127BattleSfx(result==='HR'?'hr':'contact');else if(result==='K')playV127BattleSfx('strikeout');else if(result==='BB')playV127BattleSfx('walk');else if(result==='DP')playV127BattleSfx('doubleplay');else playV127BattleSfx('out');
+ v216OutcomeCall(result,batter);
  await v128PlayOutcomeAnimation(result,s.animations,p);const before=[...s.bases],runs=v127ApplyResult(s,batter,result,p);const runAnim=v135QueueBaseAnimation(s,result,before,runs,p);v127RenderBattle();await runAnim;if(runs>0)await v135PlayScoreEffect(runs,result)
  const depth=p.flyDepth?({shallow:'淺外野',medium:'中深外野',deep:'深遠外野',wall:'全壘打牆前'})[p.flyDepth]||'外野':'',dpText=result==='DP'?v204DpRouteLabel(p.dpRoute):'';
  s.lastResult={result,detail:runs?`${batter.name}｜${dpText?dpText+'｜':''}${depth?depth+'｜':''}本打席 ${runs} 分`:`${batter.name} vs ${pitcher.name}${dpText?'｜'+dpText:''}${depth?'｜'+depth:''}`};s.lastPlay=`${batter.name}：${v127ResultText(result)}${dpText?`・${dpText}`:''}${depth?`・${depth}`:''}${runs?`・${runs} 分`:''}`;v127RenderBattle();await v127Wait(s.animations?(result==='HR'?900:560):100);
@@ -7779,7 +7859,7 @@ document.addEventListener('visibilitychange',()=>{if(document.visibilityState===
 async function v143SetupServiceWorker(){
  if(!('serviceWorker' in navigator))return;
  try{
-  const reg=await navigator.serviceWorker.register('./sw.js?v=207-threads-chat-replies-1',{scope:'./',updateViaCache:'none'});
+  const reg=await navigator.serviceWorker.register('./sw.js?v=216-broadcast-1',{scope:'./',updateViaCache:'none'});
   reg.update().catch(()=>{})
  }catch(e){console.warn('v1.48 service worker setup failed',e)}
 }
@@ -7983,7 +8063,7 @@ function v126RankedOpponentHtml(o){
  const opponent=String(o.game_name||'排位對手');
  return`<div class="opponentHero"><div class="opponentTitle"><b class="v215ClickablePlayer" data-v215-player-name="${esc(opponent)}">${esc(opponent)}</b><span>RANKED OPPONENT</span></div><div class="rankedOpponentStats"><div class="rankedStat"><small>玩家等級</small><b>Lv.${Number(o.player_level)||1}</b></div><div class="rankedStat"><small>目前段位</small><b>${esc(o.rank_tier||'未定級')}</b></div><div class="rankedStat"><small>排位積分</small><b>${Number(o.rating)||1000}</b></div><div class="rankedStat"><small>本季戰績</small><b>${Number(o.wins)||0} 勝 ${Number(o.losses)||0} 敗</b></div><div class="rankedStat"><small>勝率</small><b>${Number(o.win_rate)||0}%</b></div><div class="rankedStat"><small>目前連勝</small><b>${Number(o.win_streak)||0}</b></div></div><div class="lineupRuleBox">對手是真實玩家的防守牌組快照，由 AI 盡可能依照該玩家過往打擊、投球、換投與替補習慣操作。賽前不公開實際牌組。</div></div>`
 }
-document.addEventListener('click',e=>{const el=e.target.closest?.('[data-v215-player-id],[data-v215-player-name]');if(!el)return;const pid=el.dataset.v215PlayerId||'',name=el.dataset.v215PlayerName||'';if(!pid&&!name)return;e.preventDefault();e.stopPropagation();showV215PublicPlayerProfile({playerId:pid,gameName:name})},true);
+document.addEventListener('click',e=>{const el=e.target.closest?.('[data-v215-player-id],[data-v215-player-name]');if(!el)return;const pid=el.dataset.v215PlayerId||'',name=el.dataset.v215PlayerName||'';if(!pid&&!name)return;e.preventDefault();showV215PublicPlayerProfile({playerId:pid,gameName:name})},false);
 
 // Stage leaderboard
 function showV201StageHub(){
@@ -8066,26 +8146,40 @@ function v215CreateOverlay(id,html){
  el.addEventListener('click',e=>{if(e.target===el)v215CloseOverlay(id)});
  const host=document.getElementById('appViewport')||document.body;host.appendChild(el);return el
 }
+function v215OpenPlayerFromElement(el,e){
+ try{
+  if(e){e.preventDefault?.();e.stopPropagation?.();}
+  const node=el?.closest?.('[data-v215-player-id],[data-v215-player-name]')||el;
+  const playerId=String(node?.dataset?.v215PlayerId||'');
+  const gameName=String(node?.dataset?.v215PlayerName||'');
+  if(!playerId&&!gameName)return false;
+  showV215PublicPlayerProfile({playerId,gameName});
+ }catch(err){
+  console.error('v2.16 player profile click failed',err);
+  try{v215CreateOverlay('v215PlayerProfileOverlay',`<div class="v215Dialog"><div class="notice">❌ 玩家資訊開啟失敗：${esc(err?.message||err)}</div></div>`)}catch(_e){}
+ }
+ return false
+}
 function v215PlayerNameButton(name,{playerId='',className=''}={}){
  const attrs=playerId?`data-v215-player-id="${esc(playerId)}"`:`data-v215-player-name="${esc(name)}"`;
- return`<button type="button" class="v215PlayerNameBtn ${className}" ${attrs}>${esc(name||'玩家')}<i class="v215ProfileHint">玩家資訊</i></button>`
+ return`<button type="button" class="v215PlayerNameBtn ${className}" ${attrs} onclick="return v215OpenPlayerFromElement(this,event)">${esc(name||'玩家')}<i class="v215ProfileHint">玩家資訊</i></button>`
 }
 function v135HistoryRow(x,defense=false){
  const win=defense?x.attacker_result==='loss':x.attacker_result==='win',loss=defense?x.attacker_result==='win':x.attacker_result==='loss',delta=defense?Number(x.defender_delta)||0:Number(x.attacker_delta)||0,legacy=!!x?.metadata?.legacy;
  const score=legacy?'舊版紀錄｜比分未保存':`${Number(x.attacker_score)||0}：${Number(x.defender_score)||0}`,rp=legacy?'舊版':`${delta>0?'+':''}${delta} RP`,opponent=String(x.opponent_name||'玩家'),pid=String(defense?x.attacker_id||'':x.defender_id||'');
- return`<button type="button" class="v135HistoryRow v144HistoryButton ${legacy?'v136LegacyHistory':''}" data-v144-match-detail="${esc(x.match_id||'')}" data-v144-history-tab="${defense?'defense':'offense'}"><span class="v135HistoryResult ${win?'win':loss?'loss':'draw'}">${defense?(win?'防守成功':'防守失敗'):(win?'勝':'敗')}</span><span><b class="v215ClickablePlayer" ${pid?`data-v215-player-id="${esc(pid)}"`:`data-v215-player-name="${esc(opponent)}"`}>${esc(opponent)} <i class="v215ProfileHint">玩家資訊</i></b><small>${score}｜${new Date(x.created_at).toLocaleString()}</small></span><strong class="${delta>0?'plus':delta<0?'minus':''}">${rp}<small>查看 ›</small></strong></button>`
+ return`<button type="button" class="v135HistoryRow v144HistoryButton ${legacy?'v136LegacyHistory':''}" data-v144-match-detail="${esc(x.match_id||'')}" data-v144-history-tab="${defense?'defense':'offense'}"><span class="v135HistoryResult ${win?'win':loss?'loss':'draw'}">${defense?(win?'防守成功':'防守失敗'):(win?'勝':'敗')}</span><span><b class="v215ClickablePlayer" ${pid?`data-v215-player-id="${esc(pid)}"`:`data-v215-player-name="${esc(opponent)}"`} onclick="return v215OpenPlayerFromElement(this,event)">${esc(opponent)} <i class="v215ProfileHint">玩家資訊</i></b><small>${score}｜${new Date(x.created_at).toLocaleString()}</small></span><strong class="${delta>0?'plus':delta<0?'minus':''}">${rp}<small>查看 ›</small></strong></button>`
 }
 function v145LeaderboardRow(x){
  const rank=Number(x?.rank)||0,medal=rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':`#${rank||'-'}`,name=String(x?.game_name||'玩家');
- return`<div class="v145LeaderboardRow ${x?.is_self?'self':''}" data-v215-player-id="${esc(x?.player_id||'')}"><span class="v145LeaderboardRank">${medal}</span><span class="v145LeaderboardPlayer"><b>${v215PlayerNameButton(name,{playerId:String(x?.player_id||'')})}${x?.is_self?' <em>你</em>':''}</b><small>${esc(x?.rank_tier||'未定級')}｜${Number(x?.wins)||0}勝 ${Number(x?.losses)||0}敗｜最高連勝 ${Number(x?.best_win_streak)||0}</small></span><strong>${Number(x?.rating)||1000}<small>RP</small></strong></div>`
+ return`<div class="v145LeaderboardRow ${x?.is_self?'self':''}" role="button" tabindex="0" data-v215-player-id="${esc(x?.player_id||'')}" onclick="return v215OpenPlayerFromElement(this,event)"><span class="v145LeaderboardRank">${medal}</span><span class="v145LeaderboardPlayer"><b>${v215PlayerNameButton(name,{playerId:String(x?.player_id||'')})}${x?.is_self?' <em>你</em>':''}</b><small>${esc(x?.rank_tier||'未定級')}｜${Number(x?.wins)||0}勝 ${Number(x?.losses)||0}敗｜最高連勝 ${Number(x?.best_win_streak)||0}</small></span><strong>${Number(x?.rating)||1000}<small>RP</small></strong></div>`
 }
 function v206PlacementRow(x){
  const rank=Number(x?.rank)||0,medal=rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':`#${rank||'-'}`,pg=Math.max(0,Number(x?.placement_games)||0),tier=pg<5?`分段賽 ${pg}/5`:`已定級・${esc(x?.rank_tier||v135RankName(x?.rating,pg))}`,name=String(x?.game_name||'玩家');
- return`<div class="v145LeaderboardRow ${x?.is_self?'self':''}" data-v215-player-id="${esc(x?.player_id||'')}"><span class="v145LeaderboardRank">${medal}</span><span class="v145LeaderboardPlayer"><b>${v215PlayerNameButton(name,{playerId:String(x?.player_id||'')})}${x?.is_self?' <em>你</em>':''}</b><small>${tier}<i class="v206PlacementProgress">${pg<5?`${5-pg} 場後定級`:'正式段位'}</i>｜${Number(x?.wins)||0}勝 ${Number(x?.losses)||0}敗</small></span><strong>${Number(x?.rating)||1000}<small>RP</small></strong></div>`
+ return`<div class="v145LeaderboardRow ${x?.is_self?'self':''}" role="button" tabindex="0" data-v215-player-id="${esc(x?.player_id||'')}" onclick="return v215OpenPlayerFromElement(this,event)"><span class="v145LeaderboardRank">${medal}</span><span class="v145LeaderboardPlayer"><b>${v215PlayerNameButton(name,{playerId:String(x?.player_id||'')})}${x?.is_self?' <em>你</em>':''}</b><small>${tier}<i class="v206PlacementProgress">${pg<5?`${5-pg} 場後定級`:'正式段位'}</i>｜${Number(x?.wins)||0}勝 ${Number(x?.losses)||0}敗</small></span><strong>${Number(x?.rating)||1000}<small>RP</small></strong></div>`
 }
 function v215StageLeaderboardRow(x){
  const rank=Number(x?.rank)||0,medal=rank===1?'🥇':rank===2?'🥈':rank===3?'🥉':`#${rank||'-'}`,self=String(x?.player_id||'')===String(PLAYER?.id||''),name=String(x?.game_name||'玩家');
- return`<div class="v215StageLeaderboardRow ${self?'self':''}" data-v215-player-id="${esc(x?.player_id||'')}"><span>${medal}</span><span><b>${v215PlayerNameButton(name,{playerId:String(x?.player_id||'')})}${self?'（你）':''}</b><small>${x?.highest_stage?`最高通關 ${esc(x.highest_stage)}`:'尚未通關'}</small></span><strong>${Number(x?.total_stars)||0}<small>★ / 210</small></strong></div>`
+ return`<div class="v215StageLeaderboardRow ${self?'self':''}" role="button" tabindex="0" data-v215-player-id="${esc(x?.player_id||'')}" onclick="return v215OpenPlayerFromElement(this,event)"><span>${medal}</span><span><b>${v215PlayerNameButton(name,{playerId:String(x?.player_id||'')})}${self?'（你）':''}</b><small>${x?.highest_stage?`最高通關 ${esc(x.highest_stage)}`:'尚未通關'}</small></span><strong>${Number(x?.total_stars)||0}<small>★ / 210</small></strong></div>`
 }
 function v126RankedOpponentHtml(o){
  const opponent=String(o.game_name||'排位對手'),pid=String(o.player_id||o.id||'');
