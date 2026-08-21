@@ -9427,12 +9427,87 @@ v227PlaySpRewardEffect=function(cardOrId,options={}){
  setTimeout(()=>overlay.classList.add('phase-ready'),280);setTimeout(()=>{overlay.classList.remove('phase-intro');overlay.classList.add('phase-open')},1250);
  return new Promise(resolve=>{let done=false;const finish=()=>{if(done)return;done=true;overlay.classList.add('leaving');setTimeout(()=>{overlay.remove();resolve(true)},180)};overlay.addEventListener('click',e=>{if(e.target===overlay||e.target.closest('[data-v227-close]')||e.target.closest('[data-v227-copy]'))finish()});document.addEventListener('keydown',function onKey(ev){if(ev.key!=='Escape')return;document.removeEventListener('keydown',onKey);finish()},{once:true})})
 };
-window.__V229={version:'2.29',battleFx:true,rewardFx:true,showBattleFx:v229ShowBattleFx,playReward:v227PlaySpRewardEffect};
+window.__V229={version:'2.30',battleFx:true,rewardFx:true,showBattleFx:v229ShowBattleFx,playReward:v227PlaySpRewardEffect};
 
-try{const ver=$('appVersion');if(ver){ver.textContent='v2.29';ver.dataset.build='v229-sp-battle-fx'}}catch(_e){}
-window.__V227={version:'2.29',playSpRewardEffect:v227PlaySpRewardEffect,rewardByStage:v227StageRewardEffect,spMeta:v227SpRewardMeta};
-window.__V228={version:'2.29',mobileFit:true,noScroll:true,playSpRewardEffect:v227PlaySpRewardEffect};
-window.__V226={version:'2.29',ACE_ID:V226_ACE_ID,CLUTCH_ID:V226_CLUTCH_ID,CHAIN_ID:V226_CHAIN_ID,specialStages:V226_SPECIAL_STAGES,isSpecial:v226IsSpecialStage,selfTest:v226SelfTest,buildOpponent:v226BuildOpponent,applyMods:v226ApplySpMods,acePct:v226AcePct};
+/* ===== v2.30：補 SP 上場照片＋完全測試模式可隨時選投手 ===== */
+const V230_SP_PATCH_STYLE=`
+.v229BattleFxSilhouette img{filter:none!important;transform:scale(1.02)}
+.v229BattleFx.compact .v229BattleFxSilhouette{display:grid!important;width:min(28vw,112px)!important;height:min(28vw,112px)!important;margin:8px auto 8px;border-radius:18px;opacity:1}
+.v229BattleFx.compact .v229BattleFxTitle{font-size:clamp(20px,5.4vw,28px)}
+.v229BattleFx.compact .v229BattleFxSub{font-size:11px}
+@media(max-width:640px){.v229BattleFx.compact .v229BattleFxSilhouette{width:min(24vw,92px)!important;height:min(24vw,92px)!important;border-radius:14px}}
+`;
+(function(){if(!document.getElementById('v230-sp-patch-style')){const st=document.createElement('style');st.id='v230-sp-patch-style';st.textContent=V230_SP_PATCH_STYLE;document.head.appendChild(st)}})();
+const V230_OLD_BATTLE_PRESET=v229BattlePreset;
+v229BattlePreset=function(kind,opts={}){
+ const base=V230_OLD_BATTLE_PRESET(kind,opts);
+ if(kind==='legend_hold')base.compact=false;
+ if(['chain_start','chain_1','chain_2','chain_break','ace_drop','ace_limit'].includes(kind))base.compact=true;
+ return {...base,...opts};
+};
+const V230_OLD_AFTER_PA=v146AfterPA;
+v146AfterPA=function(s,result,outsBefore,ctx){
+ if(!s)return V230_OLD_AFTER_PA(s,result,outsBefore,ctx);
+ const team=v226Batting(s),batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),on=v226OnBaseResult(result),chainBefore={...(v226ChainState?.(s,team)||{})};
+ const pteam=v226Other(team),aceBefore=v226IsAce?.(pitcher)?v226AcePct(s,pteam):null,clutchBefore=v226ClutchActive?.(s,batter);
+ V230_OLD_AFTER_PA(s,result,outsBefore,ctx);
+ if(v226IsAce?.(pitcher)){
+   const after=v226AcePct(s,pteam);
+   if(aceBefore!=null&&aceBefore>=85&&after<85)v229EnqueueBattleFx(s,{...v229BattlePreset('ace_drop'),image:v229CardImage(pitcher),key:`v230-ace-drop:${s.inning}:${s.half}:${after}`});
+   if(after<=50&&aceBefore!=null&&aceBefore>50)v229EnqueueBattleFx(s,{...v229BattlePreset('ace_limit'),image:v229CardImage(pitcher),key:`v230-ace-limit:${s.inning}:${s.half}`});
+ }
+ if(clutchBefore&&result==='HR')v229EnqueueBattleFx(s,{...v229BattlePreset('clutch_hr'),image:v229CardImage(batter),key:`v230-clutch-hr:${s.inning}:${s.half}:${s.outs}`});
+ const chainAfter=v226ChainState?.(s,team)||{};
+ if(v226IsChain?.(batter)&&on){v229EnqueueBattleFx(s,{...v229BattlePreset('chain_start'),image:v229CardImage(batter),key:`v230-chain-start:${s.inning}:${s.half}:${s.outs}`})}
+ else if(chainBefore.active&&!chainBefore.finalReady&&on){
+   const step=Number(chainAfter.step)||0;
+   if(chainAfter.finalReady)v229EnqueueBattleFx(s,{...v229BattlePreset('chain_complete'),image:v229CardImage(batter),key:`v230-chain-complete:${s.inning}:${s.half}:${s.outs}`});
+   else if(step===1)v229EnqueueBattleFx(s,{...v229BattlePreset('chain_1'),image:v229CardImage(batter),key:`v230-chain-1:${s.inning}:${s.half}:${s.outs}`});
+   else if(step===2)v229EnqueueBattleFx(s,{...v229BattlePreset('chain_2'),image:v229CardImage(batter),key:`v230-chain-2:${s.inning}:${s.half}:${s.outs}`});
+ }
+ else if(chainBefore.active&&!on){v229EnqueueBattleFx(s,{...v229BattlePreset('chain_break'),image:v229CardImage(batter),key:`v230-chain-break:${s.inning}:${s.half}:${s.outs}`})}
+ setTimeout(()=>{try{v229RenderFieldState(s);v229DrainBattleFx(s)}catch(_e){}},30)
+};
+const V230_OLD_RENDER_BATTLE=v127RenderBattle;
+v127RenderBattle=function(){
+ const r=V230_OLD_RENDER_BATTLE.apply(this,arguments),s=V127_BATTLE;if(!s||s.finished)return r;const st=v229FxState(s);const pitcher=v127CurrentPitcher(s),batter=v127CurrentBatter(s),pa=v229PaKey(s);
+ if(v226ClutchActive?.(s,batter)){
+   const key=`v230-clutch:${pa}`;if(!st.seen[key]){st.seen[key]=1;v229EnqueueBattleFx(s,{...v229BattlePreset('clutch'),image:v229CardImage(batter),key})}
+ }
+ if(v207IsLegendCloser?.(pitcher)){
+   const key=`v230-legend:${pa}`;if(!st.seen[key]){st.seen[key]=1;v229EnqueueBattleFx(s,{...v229BattlePreset('legend_hold'),image:v229CardImage(pitcher),key})}
+ }
+ v229DrainBattleFx(s);return r
+};
+const V230_OLD_SANDBOX_PITCH_STATE=v150PitchChangeState;
+v150PitchChangeState=function(s=V127_BATTLE){
+ if(s?.mode!=='sandbox')return V230_OLD_SANDBOX_PITCH_STATE(s);
+ if(!s||!s.playerPitcher)return{available:[],cycleReset:false,roster:[]};
+ const roster=v207PlayerRoster12(s),currentId=String(s.playerPitcher?.id||''),available=roster.filter(x=>!x.unavailable&&x.id!==currentId);
+ return{available,cycleReset:false,roster};
+};
+const V230_OLD_CAN_CHANGE=v150CanChangePitcher;
+v150CanChangePitcher=function(s=V127_BATTLE){
+ if(s?.mode==='sandbox')return !!s&&!s.busy&&!s.finished&&!s.pitcherSelecting&&!s.subOpen&&!s.pitchChangeOpen&&v150PitchChangeState(s).available.length>0;
+ return V230_OLD_CAN_CHANGE(s)
+};
+const V230_OLD_OPEN_CHANGE=v150OpenPitchChange;
+v150OpenPitchChange=function(selectedId=''){
+ const s=V127_BATTLE;if(s?.mode==='sandbox'){if(!s||s.busy||s.finished)return;const state=v150PitchChangeState(s);if(!state.available.length)return;s.pitchChangeOpen=true;const root=v127BattleRoot(),old=$('v150PitchChangeOverlay');if(old)old.remove();const overlay=document.createElement('div');overlay.id='v150PitchChangeOverlay';overlay.className='v130SubOverlay v150PitchChangeOverlay';const currentId=String(s.playerPitcher?.id||''),availableIds=new Set(state.available.map(x=>x.id));overlay.innerHTML=`<div class="v150PitchChangePanel"><div class="v130SubHead"><div><h3>🧢 測試模式選擇投手</h3><small>完全測試模式可在任何半局隨時替我方更換投手</small></div><div class="v150OverlayHeadTools"><button id="v150PitchChangeClose" class="small">✕</button></div></div><div class="v150PitchCurrent">目前投手｜<b>${esc(s.playerPitcher?.name||'')}</b>｜防守 ${lineupDefenseValue(s.playerPitcher)}</div><div class="v150PitchGrid v207PitcherRoster12">${state.roster.map(x=>{const isCurrent=x.id===currentId,ok=availableIds.has(x.id),label=x.rosterIndex<9?`${x.rosterIndex+1}棒`:`替補 ${x.rosterIndex-8}`,status=isCurrent?'目前投手':x.unavailable?'已退場':x.isBench&&!x.isActive?'選擇後直接換下一棒':x.isBench?'替補已上場':'先發';return`<button class="v127PitcherPick ${selectedId===x.id?'selected ':''}${!ok?'used':''}" data-v150-pitcher="${esc(x.id)}" ${ok?'':'disabled'}><img src="${esc(x.card.image||PLACE)}" onerror="this.src='${PLACE}'"><b>${label}｜${esc(x.card.name)}</b><small>防守 ${lineupDefenseValue(x.card)}｜${status}</small></button>`}).join('')}</div><button id="v150PitchChangeConfirm" class="admin v150PitchConfirm" ${selectedId&&availableIds.has(String(selectedId))?'':'disabled'}>確認換投</button></div>`;root.appendChild(overlay);$('v150PitchChangeClose').onclick=v150ClosePitchChange;overlay.querySelectorAll('[data-v150-pitcher]').forEach(b=>b.onclick=()=>v150OpenPitchChange(b.dataset.v150Pitcher||''));$('v150PitchChangeConfirm').onclick=()=>v150ApplyPitchChange(selectedId,false);return}
+ return V230_OLD_OPEN_CHANGE(selectedId)
+};
+const V230_OLD_APPLY_CHANGE=v150ApplyPitchChange;
+v150ApplyPitchChange=async function(cardId,cycleReset=false){
+ const s=V127_BATTLE;if(s?.mode==='sandbox'){if(!s||s.busy||s.finished)return;const state=v150PitchChangeState(s),item=state.available.find(x=>x.id===String(cardId));if(!item)return;const old=s.playerPitcher;let card=item.card,subSlot=-1,sub=null;if(item.isBench&&!item.isActive){subSlot=v207NextPlayerBattingSlot(s);sub=v207ApplyPlayerBenchToSlot(s,item.id,subSlot,{broadcast:false,reason:'sandbox_pitcher_change'});if(!sub)return;card=sub.inc}s.playerPitcher=card;s.v218PreferredPlayerPitcher=v218SourceId(card);s.v146PaContext=null;s.lastPlay=subSlot>=0?`測試換投：${old?.name||'投手'} → ${card.name}（替補接替第 ${subSlot+1} 棒）`:`測試換投：${old?.name||'投手'} → ${card.name}`;s.pitchChangeOpen=false;const ov=$('v150PitchChangeOverlay');if(ov)ov.remove();if(v207IsLegendCloser(card))v207MaybePlayLegendEntrance(card).finally(()=>v127RenderBattle());else{playV127BattleSfx('fieldcatch');v127RenderBattle()}return}
+ return V230_OLD_APPLY_CHANGE(cardId,cycleReset)
+};
+window.__V230={version:'2.30',battlePhotosFixed:true,sandboxPitcherAnytime:true};
+
+
+try{const ver=$('appVersion');if(ver){ver.textContent='v2.30';ver.dataset.build='v229-sp-battle-fx'}}catch(_e){}
+window.__V227={version:'2.30',playSpRewardEffect:v227PlaySpRewardEffect,rewardByStage:v227StageRewardEffect,spMeta:v227SpRewardMeta};
+window.__V228={version:'2.30',mobileFit:true,noScroll:true,playSpRewardEffect:v227PlaySpRewardEffect};
+window.__V226={version:'2.30',ACE_ID:V226_ACE_ID,CLUTCH_ID:V226_CLUTCH_ID,CHAIN_ID:V226_CHAIN_ID,specialStages:V226_SPECIAL_STAGES,isSpecial:v226IsSpecialStage,selfTest:v226SelfTest,buildOpponent:v226BuildOpponent,applyMods:v226ApplySpMods,acePct:v226AcePct};
 })();
 </script>
 
