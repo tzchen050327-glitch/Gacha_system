@@ -9267,10 +9267,172 @@ v201FinishStageBattle=async function(s,result){
  if(!was&&v201StageEntry(s?.stage?.id).cleared){setTimeout(()=>v227StageRewardEffect(s.stage),260)}
  return out
 };
-try{const ver=$('appVersion');if(ver){ver.textContent='v2.28';ver.dataset.build='v228-sp-reward-mobile-fit'}}catch(_e){}
-window.__V227={version:'2.28',playSpRewardEffect:v227PlaySpRewardEffect,rewardByStage:v227StageRewardEffect,spMeta:v227SpRewardMeta};
-window.__V228={version:'2.28',mobileFit:true,noScroll:true,playSpRewardEffect:v227PlaySpRewardEffect};
-window.__V226={version:'2.28',ACE_ID:V226_ACE_ID,CLUTCH_ID:V226_CLUTCH_ID,CHAIN_ID:V226_CHAIN_ID,specialStages:V226_SPECIAL_STAGES,isSpecial:v226IsSpecialStage,selfTest:v226SelfTest,buildOpponent:v226BuildOpponent,applyMods:v226ApplySpMods,acePct:v226AcePct};
+
+/* ===== v2.29：SP 獲得演出強化＋球場內 SP 特效 ===== */
+const V229_SP_CINE_STYLE=`
+.v229BattleFxHost{position:absolute;inset:0;pointer-events:none;z-index:12;overflow:hidden}
+.v229BattleFx{position:absolute;inset:0;display:grid;place-items:center;opacity:0;transition:opacity .2s ease;pointer-events:none}
+.v229BattleFx.show{opacity:1}
+.v229BattleFx.leave{opacity:0}
+.v229BattleFxShade{position:absolute;inset:0;background:radial-gradient(circle at 50% 48%,var(--v229-glow,rgba(255,255,255,.16)),transparent 30%),linear-gradient(180deg,rgba(4,6,13,.15),rgba(3,5,10,.64));backdrop-filter:blur(1px)}
+.v229BattleFxRays,.v229BattleFxRays:before,.v229BattleFxRays:after{position:absolute;inset:-24%;content:"";background:conic-gradient(from 0deg,transparent 0 8%,color-mix(in srgb,var(--v229-accent,#fff) 45%, transparent) 10%,transparent 14% 24%,color-mix(in srgb,var(--v229-accent,#fff) 30%, transparent) 26%,transparent 29% 100%);animation:v229Spin 4.6s linear infinite;filter:blur(1px)}
+.v229BattleFxRays:before{transform:scale(1.12);opacity:.45;animation-direction:reverse}.v229BattleFxRays:after{transform:scale(.88);opacity:.6;animation-duration:3.2s}
+.v229BattleFxStage{position:relative;z-index:1;min-width:min(82vw,620px);max-width:min(88vw,720px);display:grid;place-items:center;text-align:center;padding:20px 18px;color:#fff}
+.v229BattleFxKicker{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);font-size:11px;font-weight:1000;letter-spacing:.18em;text-transform:uppercase;color:#fff3b5;box-shadow:0 0 18px color-mix(in srgb,var(--v229-accent,#fff) 24%, transparent)}
+.v229BattleFxKicker b{display:inline-block;padding:4px 8px;border-radius:999px;background:linear-gradient(180deg,#fff7cf,#efbc53);color:#2d1800}
+.v229BattleFxSilhouette{width:min(45vw,220px);height:min(45vw,220px);margin:12px auto 10px;border-radius:22px;background:linear-gradient(180deg,#ffffff16,#ffffff05);border:1px solid rgba(255,255,255,.16);display:grid;place-items:center;box-shadow:0 24px 50px rgba(0,0,0,.35),0 0 0 1px rgba(255,255,255,.04) inset;overflow:hidden;transform:translateY(20px) scale(.82);opacity:0;animation:v229Rise .74s cubic-bezier(.18,.78,.2,1) .15s forwards}
+.v229BattleFxSilhouette img{width:100%;height:100%;object-fit:cover;filter:brightness(.08) saturate(0) contrast(1.25)}
+.v229BattleFxTitle{margin:0;font-size:clamp(34px,8vw,64px);line-height:.98;font-weight:1000;letter-spacing:-.03em;text-shadow:0 6px 28px rgba(0,0,0,.45);transform:translateY(12px);opacity:0;animation:v229Rise .72s cubic-bezier(.18,.78,.2,1) .38s forwards}
+.v229BattleFxSub{margin:8px 0 0;font-size:clamp(13px,3vw,18px);line-height:1.55;color:#ffffffd2;max-width:min(82vw,640px);transform:translateY(10px);opacity:0;animation:v229Rise .72s cubic-bezier(.18,.78,.2,1) .52s forwards}
+.v229BattleFxStats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-top:14px;transform:translateY(10px);opacity:0;animation:v229Rise .72s cubic-bezier(.18,.78,.2,1) .62s forwards}
+.v229BattleFxStats span{padding:8px 11px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);font-size:12px;font-weight:900;box-shadow:0 8px 18px rgba(0,0,0,.18)}
+.v229BattleFx.compact .v229BattleFxShade{background:linear-gradient(180deg,rgba(5,7,12,.14),rgba(4,6,12,.40))}
+.v229BattleFx.compact .v229BattleFxRays,.v229BattleFx.compact .v229BattleFxRays:before,.v229BattleFx.compact .v229BattleFxRays:after{inset:-36%;opacity:.35}
+.v229BattleFx.compact .v229BattleFxStage{min-width:auto;max-width:min(82vw,520px);padding:8px 12px 10px}
+.v229BattleFx.compact .v229BattleFxSilhouette{display:none}
+.v229BattleFx.compact .v229BattleFxTitle{font-size:clamp(20px,5.6vw,30px);animation-delay:.08s}
+.v229BattleFx.compact .v229BattleFxSub{font-size:12px;animation-delay:.14s}.v229BattleFx.compact .v229BattleFxStats{margin-top:8px;animation-delay:.18s}.v229BattleFx.compact .v229BattleFxStats span{font-size:11px;padding:6px 9px}
+.v229FieldBorder{position:absolute;inset:8px;border-radius:28px;pointer-events:none;z-index:1;border:1px solid rgba(255,255,255,.06);box-shadow:inset 0 0 0 1px rgba(255,255,255,.02),0 0 0 rgba(0,0,0,0);transition:opacity .22s ease, box-shadow .22s ease, border-color .22s ease, background .22s ease;overflow:hidden}
+.v229FieldBorder:before,.v229FieldBorder:after{content:"";position:absolute;inset:-30%;pointer-events:none;opacity:0;transition:opacity .22s ease}
+.v229FieldBorder:before{background:conic-gradient(from 0deg,transparent 0 8%,var(--v229-field-a,transparent) 12%,transparent 16% 25%,var(--v229-field-b,transparent) 28%,transparent 33% 100%);animation:v229Spin 5.8s linear infinite;filter:blur(1px)}
+.v229FieldBorder:after{background:radial-gradient(circle at 50% 50%,transparent 55%,var(--v229-field-glow,transparent) 100%)}
+.v229FieldBorder.active{opacity:1;border-color:var(--v229-field-line,rgba(255,255,255,.22));box-shadow:inset 0 0 0 1px color-mix(in srgb,var(--v229-field-line,#fff) 35%, transparent),0 0 28px color-mix(in srgb,var(--v229-field-line,#fff) 18%, transparent)}
+.v229FieldBorder.active:before,.v229FieldBorder.active:after{opacity:1}
+.v229FieldBorder.chain1{--v229-field-a:rgba(169,104,255,.28);--v229-field-b:rgba(121,210,255,.14);--v229-field-glow:rgba(156,102,255,.22);--v229-field-line:rgba(194,145,255,.55)}
+.v229FieldBorder.chain2{--v229-field-a:rgba(175,115,255,.36);--v229-field-b:rgba(255,214,92,.20);--v229-field-glow:rgba(175,116,255,.28);--v229-field-line:rgba(218,180,255,.68)}
+.v229FieldBorder.chain3,.v229FieldBorder.chainFinal{--v229-field-a:rgba(185,120,255,.42);--v229-field-b:rgba(255,219,104,.30);--v229-field-glow:rgba(255,211,105,.30);--v229-field-line:rgba(255,230,165,.85)}
+.v229FieldBorder.chainFinal{box-shadow:inset 0 0 0 1px rgba(255,233,167,.35),0 0 32px rgba(211,159,255,.18),0 0 42px rgba(255,213,92,.10)}
+.v229FieldBorder.ace{--v229-field-a:rgba(107,197,255,.28);--v229-field-b:rgba(203,238,255,.16);--v229-field-glow:rgba(92,188,255,.18);--v229-field-line:rgba(122,214,255,.60)}
+.v229FieldBorder.clutch{--v229-field-a:rgba(255,122,83,.30);--v229-field-b:rgba(255,219,106,.22);--v229-field-glow:rgba(255,118,65,.18);--v229-field-line:rgba(255,155,95,.68)}
+.v229FieldBorder.legend{--v229-field-a:rgba(255,217,112,.28);--v229-field-b:rgba(242,179,61,.22);--v229-field-glow:rgba(255,214,102,.16);--v229-field-line:rgba(255,222,143,.70)}
+.v229FieldBorder.commander{--v229-field-a:rgba(255,118,108,.24);--v229-field-b:rgba(255,180,100,.16);--v229-field-glow:rgba(255,111,111,.14);--v229-field-line:rgba(255,130,109,.56)}
+.v229ChainHud{position:absolute;left:50%;top:68px;transform:translateX(-50%);z-index:13;display:none;align-items:center;gap:8px;padding:7px 10px;border-radius:999px;background:rgba(6,7,12,.68);border:1px solid rgba(255,255,255,.10);color:#fff;box-shadow:0 10px 26px rgba(0,0,0,.22);font-size:12px;font-weight:900;pointer-events:none}
+.v229ChainHud.show{display:flex}.v229ChainHud b{color:#f9dc92}.v229ChainHud em{font-style:normal;color:#d2b1ff}.v229ChainHud i{font-style:normal;color:#8bffbb}
+@keyframes v229Spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+@keyframes v229Rise{0%{opacity:0;transform:translateY(18px) scale(.92)}100%{opacity:1;transform:translateY(0) scale(1)}}
+@media(max-width:640px){.v229BattleFxStage{padding:16px 12px;min-width:min(92vw,420px)}.v229BattleFxKicker{font-size:9px;padding:7px 10px}.v229BattleFxSilhouette{width:min(48vw,180px);height:min(48vw,180px)}.v229BattleFxTitle{font-size:clamp(28px,9vw,40px)}.v229BattleFxSub{font-size:12px}.v229BattleFxStats span{font-size:10px;padding:6px 8px}.v229FieldBorder{inset:4px;border-radius:22px}.v229ChainHud{top:58px;font-size:10px;padding:6px 8px;max-width:88vw;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}}
+.v227SpFxOverlay.v229RewardCine .v227SpFxPanel{overflow:hidden}
+.v227SpFxOverlay.v229RewardCine .v229RewardIntro{position:absolute;inset:0;z-index:4;display:grid;place-items:center;text-align:center;padding:18px;background:linear-gradient(180deg,rgba(3,4,9,.12),rgba(3,4,9,.72));transition:opacity .45s ease,transform .45s ease}
+.v227SpFxOverlay.v229RewardCine.phase-ready .v229RewardIntro,.v227SpFxOverlay.v229RewardCine.phase-open .v229RewardIntro{opacity:0;transform:scale(1.04);pointer-events:none}
+.v229RewardIntroBox{display:grid;gap:12px;justify-items:center}.v229RewardIntroTag{display:inline-flex;align-items:center;gap:10px;padding:10px 16px;border-radius:999px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);font-size:13px;font-weight:1000;letter-spacing:.20em;color:#fff3b5;text-transform:uppercase}
+.v229RewardIntroTag b{display:inline-block;padding:6px 10px;border-radius:999px;background:linear-gradient(180deg,#fff3bf,#efb53f);color:#2e1800}.v229RewardIntroTitle{font-size:clamp(34px,8vw,56px);font-weight:1000;line-height:1;letter-spacing:-.04em;margin:0;text-shadow:0 8px 28px rgba(0,0,0,.45)}.v229RewardIntroSub{font-size:14px;color:#ffffffd2;line-height:1.7;max-width:520px}
+.v227SpFxOverlay.v229RewardCine .v227SpFxCard img{transition:filter .6s ease,transform .6s ease;filter:brightness(.08) saturate(0) contrast(1.2)}
+.v227SpFxOverlay.v229RewardCine.phase-ready .v227SpFxCard img{filter:brightness(.18) saturate(0) contrast(1.25)}
+.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxCard img{filter:brightness(1) saturate(1) contrast(1);transform:scale(1.02)}
+.v227SpFxOverlay.v229RewardCine .v227SpFxTitle,.v227SpFxOverlay.v229RewardCine .v227SpFxSub,.v227SpFxOverlay.v229RewardCine .v227SpFxBurst,.v227SpFxOverlay.v229RewardCine .v227SpFxGrid,.v227SpFxOverlay.v229RewardCine .v227SpFxFoot,.v227SpFxOverlay.v229RewardCine .v227SpFxEyebrow{opacity:0;transform:translateY(10px);transition:opacity .5s ease,transform .5s ease}
+.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxTitle,.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxSub,.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxBurst,.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxGrid,.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxFoot,.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxEyebrow{opacity:1;transform:translateY(0)}
+.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxSub{transition-delay:.08s}.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxBurst{transition-delay:.14s}.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxGrid{transition-delay:.20s}.v227SpFxOverlay.v229RewardCine.phase-open .v227SpFxFoot{transition-delay:.28s}
+@media(max-width:640px){.v229RewardIntroTitle{font-size:34px}.v229RewardIntroSub{font-size:12px;max-width:90vw}.v229RewardIntroTag{font-size:10px;padding:8px 12px}}
+`;
+(function(){if(!document.getElementById('v229-sp-cine-style')){const st=document.createElement('style');st.id='v229-sp-cine-style';st.textContent=V229_SP_CINE_STYLE;document.head.appendChild(st)}})();
+function v229PaKey(s=V127_BATTLE){if(!s)return'';const b=v127CurrentBatter(s);return [s.inning,s.half,v127BattingTeam(s),b?.id||b?.source_id||'na',s.playerOrder,s.opponentOrder,s.outs].join(':')}
+function v229FxState(s=V127_BATTLE){return s.v229Fx||(s.v229Fx={queue:[],showing:false,seen:{},lastRenderKey:'',fieldMode:''})}
+function v229CardImage(card){return String(card?.image||card?.image_url||v207SpImage?.()||PLACE)}
+function v229BattlePreset(kind,opts={}){
+ const map={
+  ace:{accent:'#66cfff',glow:'rgba(102,207,255,.24)',kicker:'ACE ON THE MOUND',title:'王牌先發',sub:'比賽開始前，整個投手戰的節奏都會先落在他的手上。',stats:['可跨局續投','狀態遞減','85%↑ 壓制 ×1.20'],compact:false,duration:3600},
+  ace_drop:{accent:'#69cfff',glow:'rgba(102,207,255,.18)',kicker:'STATUS DROP',title:'王牌壓制解除',sub:'狀態跌破 85%，球威開始回落。',stats:['壓制解除'],compact:true,duration:1300},
+  ace_limit:{accent:'#8fdcff',glow:'rgba(126,217,255,.20)',kicker:'LIMIT',title:'極限疲勞',sub:'王牌先發已降到最低狀態 50%。',stats:['狀態 50%'],compact:true,duration:1700},
+  commander:{accent:'#ff6a63',glow:'rgba(255,106,99,.26)',kicker:'ADVERSITY COMMAND',title:'逆轉指揮',sub:'絕境指揮官接手節奏，全隊進入逆境爆發。',stats:['安打 ×1.25','長打 ×1.20','保送 ×1.25'],compact:false,duration:3500},
+  clutch:{accent:'#ff9648',glow:'rgba(255,150,72,.24)',kicker:'DECISIVE MOMENT',title:'一棒定江山',sub:'只要輪到這個打席，就有機會一棒改寫比賽。',stats:['三振 ×0.25','安打 ×2.20','長打 ×1.60','HR ×1.75'],compact:false,duration:3800},
+  clutch_hr:{accent:'#ff8b4d',glow:'rgba(255,140,77,.24)',kicker:'DECISIVE SHOT',title:'決勝一擊',sub:'這一棒直接把勝負炸開。',stats:['全壘打'],compact:true,duration:1700},
+  chain_start:{accent:'#b886ff',glow:'rgba(184,134,255,.20)',kicker:'CHAIN START',title:'串聯攻勢啟動',sub:'串聯核心先上壘，打線開始啟動。',stats:['球場邊框變化'],compact:true,duration:1100},
+  chain_1:{accent:'#b886ff',glow:'rgba(184,134,255,.20)',kicker:'CHAIN 1 / 3',title:'第一段串聯',sub:'攻勢正在接續。',stats:['邊框強化'],compact:true,duration:900},
+  chain_2:{accent:'#c895ff',glow:'rgba(200,149,255,.22)',kicker:'CHAIN 2 / 3',title:'第二段串聯',sub:'再一棒就會完成整條打線連接。',stats:['邊框再強化'],compact:true,duration:950},
+  chain_complete:{accent:'#ffd26c',glow:'rgba(255,210,108,.24)',kicker:'CHAIN COMPLETE',title:'打線串起來了',sub:'下一棒進入 FINAL LINK，吃到最高等級串聯加成。',stats:['保送 ×1.50','三振 ×0.15','安打 ×2.00','長打 ×1.80'],compact:false,duration:3600},
+  chain_break:{accent:'#f89f7a',glow:'rgba(248,159,122,.18)',kicker:'CHAIN BREAK',title:'串聯中斷',sub:'只要斷掉一環，整條攻勢就會停止。',stats:['邊框重置'],compact:true,duration:1000},
+  legend_hold:{accent:'#f0c35c',glow:'rgba(240,195,92,.18)',kicker:'LEGEND SUPPRESSION',title:'傳奇終結者',sub:'終局壓制持續中。',stats:['保送 ×0.5','安打 ×1/3','長打 ×0.5'],compact:true,duration:900},
+ };
+ const base=map[kind]||map.ace;
+ return {...base,...opts};
+}
+function v229BattleFxHtml(cfg){
+ const img=cfg.image?`<img src="${esc(cfg.image)}" onerror="this.remove()">`:'';
+ const stats=(cfg.stats||[]).map(x=>`<span>${esc(x)}</span>`).join('');
+ return `<div class="v229BattleFxShade"></div><div class="v229BattleFxRays"></div><div class="v229BattleFxStage"><div class="v229BattleFxKicker"><b>SP</b><span>${esc(cfg.kicker||'SPECIAL PLAYER')}</span></div><div class="v229BattleFxSilhouette">${img}</div><h2 class="v229BattleFxTitle">${esc(cfg.title||'SP')}</h2><p class="v229BattleFxSub">${esc(cfg.sub||'')}</p>${stats?`<div class="v229BattleFxStats">${stats}</div>`:''}</div>`;
+}
+function v229EnqueueBattleFx(s,fx){if(!s||!fx)return;const st=v229FxState(s);const key=String(fx.key||'');if(key&&(st.queue.some(x=>x.key===key)||st.activeKey===key))return;st.queue.push(fx)}
+function v229ShowBattleFx(fx,s=V127_BATTLE){
+ const root=v127BattleRoot();if(!root||!fx)return Promise.resolve(false);
+ let host=root.querySelector('.v229BattleFxHost');if(!host){host=document.createElement('div');host.className='v229BattleFxHost';root.appendChild(host)}
+ const wrap=document.createElement('div');wrap.className='v229BattleFx'+(fx.compact?' compact':'');wrap.style.setProperty('--v229-accent',fx.accent||'#fff');wrap.style.setProperty('--v229-glow',fx.glow||'rgba(255,255,255,.18)');wrap.innerHTML=v229BattleFxHtml(fx);host.appendChild(wrap);requestAnimationFrame(()=>wrap.classList.add('show'));
+ return new Promise(resolve=>{setTimeout(()=>{wrap.classList.add('leave');setTimeout(()=>{wrap.remove();resolve(true)},220)},Math.max(300,Number(fx.duration)||1200))})
+}
+async function v229DrainBattleFx(s=V127_BATTLE){
+ const st=v229FxState(s);if(st.showing||!st.queue.length)return;st.showing=true;const fx=st.queue.shift();st.activeKey=fx?.key||'';
+ try{await v229ShowBattleFx(fx,s)}catch(_e){}st.showing=false;st.activeKey='';if(st.queue.length)setTimeout(()=>v229DrainBattleFx(s),40)
+}
+function v229RenderFieldState(s=V127_BATTLE){
+ const root=v127BattleRoot();if(!s||!root)return;let border=root.querySelector('.v229FieldBorder');if(!border){border=document.createElement('div');border.className='v229FieldBorder';root.appendChild(border)}
+ let hud=root.querySelector('.v229ChainHud');if(!hud){hud=document.createElement('div');hud.className='v229ChainHud';root.appendChild(hud)}
+ border.className='v229FieldBorder';hud.className='v229ChainHud';hud.innerHTML='';
+ const batting=v226Batting(s),pitcher=v127CurrentPitcher(s),batter=v127CurrentBatter(s),chain=v226ChainState?.(s,batting);
+ const classes=[];
+ if(v207IsLegendCloser?.(pitcher))classes.push('active','legend');
+ if(v226IsAce?.(pitcher))classes.push('active','ace');
+ if(v226ClutchActive?.(s,batter))classes.push('active','clutch');
+ const comm=batting==='player'?s?.v210Commander?.active:s?.v210OpponentCommander?.active;if(comm)classes.push('active','commander');
+ if(chain?.active){classes.push('active');
+  if(chain.finalReady)classes.push('chainFinal');
+  else if(Number(chain.step)>=2)classes.push('chain3');
+  else if(Number(chain.step)===1)classes.push('chain2');
+  else classes.push('chain1');
+  hud.classList.add('show');
+  const label=chain.finalReady?'FINAL LINK READY':`🔗 ${Number(chain.step)||0} / 3`;
+  hud.innerHTML=`<b>SP｜串聯核心</b><em>${esc(label)}</em><i>${chain.finalReady?'下一棒最終加成':'球場邊框已進入串聯狀態'}</i>`;
+ }
+ border.classList.add(...classes);
+}
+const V229_OLD_RENDER_BATTLE=v127RenderBattle;
+v127RenderBattle=function(){V229_OLD_RENDER_BATTLE();const s=V127_BATTLE;if(!s||s.finished)return;const st=v229FxState(s);v229RenderFieldState(s);const pitcher=v127CurrentPitcher(s),batter=v127CurrentBatter(s),pa=v229PaKey(s);
+ if(v226IsAce?.(pitcher)){const team=v226Other(v226Batting(s)),pct=v226AcePct(s,team);const key=`ace-start:${team}:${String(pitcher?.id||pitcher?.source_id||'')}`;if(!st.seen[key]){st.seen[key]=1;v229EnqueueBattleFx(s,{...v229BattlePreset('ace'),image:v229CardImage(pitcher),sub:`狀態 ${pct}%｜可跨局續投，85% 以上維持王牌壓制。`,key})}}
+ if(v226ClutchActive?.(s,batter)){const key=`clutch:${pa}`;if(!st.seen[key]){st.seen[key]=1;v229EnqueueBattleFx(s,{...v229BattlePreset('clutch'),image:v229CardImage(batter),key})}}
+ if(v207IsLegendCloser?.(pitcher)){const key=`legend:${pa}`;if(!st.seen[key]){st.seen[key]=1;v229EnqueueBattleFx(s,{...v229BattlePreset('legend_hold'),compact:true,key})}}
+ v229DrainBattleFx(s)};
+const V229_OLD_AFTER_PA=v146AfterPA;
+v146AfterPA=function(s,result,outsBefore,ctx){
+ if(!s)return V229_OLD_AFTER_PA(s,result,outsBefore,ctx);const team=v226Batting(s),batter=v127CurrentBatter(s),pitcher=v127CurrentPitcher(s),on=v226OnBaseResult(result),chainBefore={...(v226ChainState?.(s,team)||{})};
+ const pteam=v226Other(team),aceBefore=v226IsAce?.(pitcher)?v226AcePct(s,pteam):null,clutchBefore=v226ClutchActive?.(s,batter);
+ V229_OLD_AFTER_PA(s,result,outsBefore,ctx);
+ const st=v229FxState(s);
+ if(v226IsAce?.(pitcher)){const after=v226AcePct(s,pteam);if(aceBefore!=null&&aceBefore>=85&&after<85)v229EnqueueBattleFx(s,{...v229BattlePreset('ace_drop'),key:`ace-drop:${s.inning}:${s.half}:${after}`});if(after<=50&&aceBefore!=null&&aceBefore>50)v229EnqueueBattleFx(s,{...v229BattlePreset('ace_limit'),key:`ace-limit:${s.inning}:${s.half}`})}
+ if(clutchBefore&&result==='HR')v229EnqueueBattleFx(s,{...v229BattlePreset('clutch_hr'),key:`clutch-hr:${s.inning}:${s.half}:${s.outs}`});
+ const chainAfter=v226ChainState?.(s,team)||{};
+ if(v226IsChain?.(batter)&&on){v229EnqueueBattleFx(s,{...v229BattlePreset('chain_start'),key:`chain-start:${s.inning}:${s.half}:${s.outs}`})}
+ else if(chainBefore.active&&!chainBefore.finalReady&&on){
+   const step=Number(chainAfter.step)||0;
+   if(chainAfter.finalReady)v229EnqueueBattleFx(s,{...v229BattlePreset('chain_complete'),key:`chain-complete:${s.inning}:${s.half}:${s.outs}`});
+   else if(step===1)v229EnqueueBattleFx(s,{...v229BattlePreset('chain_1'),key:`chain-1:${s.inning}:${s.half}:${s.outs}`});
+   else if(step===2)v229EnqueueBattleFx(s,{...v229BattlePreset('chain_2'),key:`chain-2:${s.inning}:${s.half}:${s.outs}`});
+ }
+ else if(chainBefore.active&&!on){v229EnqueueBattleFx(s,{...v229BattlePreset('chain_break'),key:`chain-break:${s.inning}:${s.half}:${s.outs}`})}
+ setTimeout(()=>{try{v229RenderFieldState(s);v229DrainBattleFx(s)}catch(_e){}},30)
+};
+function v229CommanderFx(){const s=V127_BATTLE;return v229ShowBattleFx({...v229BattlePreset('commander'),image:v229CardImage((CARDS||[]).find(c=>String(c?.id||'')===String(V210_COMMANDER_CARD_ID))||{} )},s)}
+v210PlayCommanderFx=v229CommanderFx;
+const V229_OLD_BEGIN_BATTLE=beginV127Battle;
+beginV127Battle=function(setup){V229_OLD_BEGIN_BATTLE(setup);const s=V127_BATTLE;if(s){s.v229Fx={queue:[],showing:false,seen:{},lastRenderKey:'',fieldMode:''}}};
+const V229_OLD_RETURN_MODES=v127ReturnToGameModes;
+v127ReturnToGameModes=function(){const root=v127BattleRoot();if(root){root.querySelectorAll('.v229BattleFxHost,.v229FieldBorder,.v229ChainHud').forEach(x=>x.remove())}return V229_OLD_RETURN_MODES()};
+const V229_OLD_PLAY_SP_REWARD=v227PlaySpRewardEffect;
+v227PlaySpRewardEffect=function(cardOrId,options={}){
+ const meta=v227SpRewardMeta(cardOrId);if(!meta)return Promise.resolve(false);const card=v227SpRewardCard(cardOrId)||{};const cfg=meta.cfg||{};
+ if(document.querySelector('.v227SpFxOverlay'))document.querySelector('.v227SpFxOverlay').remove();
+ const overlay=document.createElement('div');overlay.className='v227SpFxOverlay v229RewardCine phase-intro';overlay.style.setProperty('--v227-accent',cfg.accent);overlay.style.setProperty('--v227-glow',cfg.glow);overlay.style.setProperty('--v227-accent-fade',cfg.accentFade);
+ const img=String(options.image||card.image||card.image_url||v207SpImage()||defaultPositionImage(card.position||'投手',card.rarity||'SP')||PLACE);
+ const originLabel=String(options.originLabel||options.origin||'SPECIAL REWARD');const originText=String(options.originText||options.sourceText||'限定 SP 演出');const burst=String(options.burstText||cfg.burst||'SPECIAL PLAYER');
+ const chips=(options.chips||cfg.chips||[]).map(([a,b])=>`<div class="v227SpFxChip"><small>${esc(a||'SP')}</small>${esc(b||'')}</div>`).join('');
+ overlay.innerHTML=`<div class="v227SpFxBackdrop"><div class="v227SpFxRings">${Array.from({length:4},(_,i)=>`<i style="--i:${i}"></i>`).join('')}</div><div class="v227SpFxStreaks">${Array.from({length:15},(_,i)=>`<i style="--i:${i}"></i>`).join('')}</div></div><div class="v227SpFxPanel"><div class="v229RewardIntro"><div class="v229RewardIntroBox"><div class="v229RewardIntroTag"><b>SP</b><span>${esc(originLabel)}</span></div><h2 class="v229RewardIntroTitle">${esc(cfg.title||card.name||'SP 卡片')}</h2><div class="v229RewardIntroSub">${esc(burst)}<br>${esc(originText)}</div></div></div><div class="v227SpFxHead"><div class="v227SpFxTag"><b>SP</b><span>${esc(originLabel)}</span></div><div class="v227SpFxMini">${esc(originText)}<br>點擊畫面或按鈕可關閉</div></div><div class="v227SpFxBody"><div class="v227SpFxCardWrap"><div class="v227SpFxAura"></div><div class="v227SpFxCard"><span class="v227SpFxCardBadge">${esc(cfg.badge||'SP')}</span><img src="${esc(img)}" onerror="this.src='${PLACE}'"></div></div><div class="v227SpFxText"><span class="v227SpFxEyebrow">${esc(cfg.eyebrow||'SPECIAL PLAYER')}</span><h2 class="v227SpFxTitle">${esc(cfg.title||card.name||'SP 卡片')}</h2><p class="v227SpFxSub">${esc(cfg.subtitle||card.description||'限定 SP 加入收藏。')}</p><div class="v227SpFxBurst">✨ <b>${esc(burst)}</b></div><div class="v227SpFxGrid">${chips}</div></div></div><div class="v227SpFxFoot"><div class="v227SpFxHint">${options.preview?'圖鑑中的 SP 卡可隨時重播這段演出。':'首次獲得後已加入圖鑑，可在圖鑑中再次查看。'}</div><div class="v227SpFxActions"><button class="v227SpFxBtn" data-v227-copy>${options.preview?'關閉回放':'稍後再看'}</button><button class="v227SpFxBtn primary" data-v227-close>${options.preview?'完成':'加入收藏'}</button></div></div></div>`;
+ document.body.appendChild(overlay);requestAnimationFrame(()=>overlay.classList.add('show'));
+ setTimeout(()=>overlay.classList.add('phase-ready'),280);setTimeout(()=>{overlay.classList.remove('phase-intro');overlay.classList.add('phase-open')},1250);
+ return new Promise(resolve=>{let done=false;const finish=()=>{if(done)return;done=true;overlay.classList.add('leaving');setTimeout(()=>{overlay.remove();resolve(true)},180)};overlay.addEventListener('click',e=>{if(e.target===overlay||e.target.closest('[data-v227-close]')||e.target.closest('[data-v227-copy]'))finish()});document.addEventListener('keydown',function onKey(ev){if(ev.key!=='Escape')return;document.removeEventListener('keydown',onKey);finish()},{once:true})})
+};
+window.__V229={version:'2.29',battleFx:true,rewardFx:true,showBattleFx:v229ShowBattleFx,playReward:v227PlaySpRewardEffect};
+
+try{const ver=$('appVersion');if(ver){ver.textContent='v2.29';ver.dataset.build='v229-sp-battle-fx'}}catch(_e){}
+window.__V227={version:'2.29',playSpRewardEffect:v227PlaySpRewardEffect,rewardByStage:v227StageRewardEffect,spMeta:v227SpRewardMeta};
+window.__V228={version:'2.29',mobileFit:true,noScroll:true,playSpRewardEffect:v227PlaySpRewardEffect};
+window.__V226={version:'2.29',ACE_ID:V226_ACE_ID,CLUTCH_ID:V226_CLUTCH_ID,CHAIN_ID:V226_CHAIN_ID,specialStages:V226_SPECIAL_STAGES,isSpecial:v226IsSpecialStage,selfTest:v226SelfTest,buildOpponent:v226BuildOpponent,applyMods:v226ApplySpMods,acePct:v226AcePct};
 })();
 </script>
 
